@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] FreeType2 support addition
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-May/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20FreeType2%20support%20addition&In-Reply-To=%3C200605190853.13704.juvinious%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000175.html">
+   <LINK REL="Next"  HREF="000177.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] FreeType2 support addition</H1>
+    <B>Miguel A. Gavidia</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20FreeType2%20support%20addition&In-Reply-To=%3C200605190853.13704.juvinious%40gmail.com%3E"
+       TITLE="[Openlayer-developer] FreeType2 support addition">juvinious at gmail.com
+       </A><BR>
+    <I>Fri May 19 02:53:13 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000175.html">[Openlayer-developer] screen offset issue
+</A></li>
+        <LI>Next message: <A HREF="000177.html">[Openlayer-developer] FreeType2 support addition
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#174">[ date ]</a>
+              <a href="thread.html#174">[ thread ]</a>
+              <a href="subject.html#174">[ subject ]</a>
+              <a href="author.html#174">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've finally gotten around to start inclusion of FreeType within openlayer.
+I've created a new class called Glyph and have added Glyph.{cpp/hpp} to the 
+lib. So far I've set it up so that it provides an alternative to GlyphKeepers 
+routines within TextRenderer that way it doesn't break the API (although much 
+of the routines are incomplete). As the Glyph class matures, it will 
+eventually become more than capable of replacing GlyphKeeper itself which at 
+that point we can remove any reference to GK and drop the compatible routines 
+in Glyph and finally the GK dependency.
+I will continue to work on it when I have time.
+Fladimir I encourage you to continue to use GlyphKeeper's library if you need 
+to improve or tweak TextRenderer in the meantime.
+As such, the library will compile if you decide to enable internal TTF, but be 
+warned that it's mostly guaranteed not to do anything and might even crash 
+your applications. If you are still interested in seeing it or testing it 
+out, you must enable the developer flag when compiling the library. At which 
+point it will prompt you for inclusion of the new support during the 
+configuration prompts.
+Thus on linux/macosx/msys you can do (make sure it is clean first):
+$ ./cbuild.c developer
+
+or
+
+windows cmd.exe:
+c:\buildme.bat developer
+
+-- 
+-juvinious
+
+&lt;a href=&quot;<A HREF="http://chasm.hopto.org">http://chasm.hopto.org</A>&quot;&gt;The Chasm&lt;/a&gt; - My Site.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000175.html">[Openlayer-developer] screen offset issue
+</A></li>
+	<LI>Next message: <A HREF="000177.html">[Openlayer-developer] FreeType2 support addition
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#174">[ date ]</a>
+              <a href="thread.html#174">[ thread ]</a>
+              <a href="subject.html#174">[ subject ]</a>
+              <a href="author.html#174">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

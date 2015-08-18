@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] bug in allegro conversion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20bug%20in%20allegro%20conversion&In-Reply-To=%3CBAY21-F11F39B66F8559AF4323B0ADFC90%40phx.gbl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000111.html">
+   <LINK REL="Next"  HREF="000114.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] bug in allegro conversion</H1>
+    <B>openlayer-developer-admin at lists.berlios.de</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20bug%20in%20allegro%20conversion&In-Reply-To=%3CBAY21-F11F39B66F8559AF4323B0ADFC90%40phx.gbl%3E"
+       TITLE="[Openlayer-developer] bug in allegro conversion">openlayer-developer-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat Apr  8 01:30:49 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000111.html">[Openlayer-developer] bug in allegro conversion
+</A></li>
+        <LI>Next message: <A HREF="000114.html">[Openlayer-developer] bug in allegro conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#112">[ date ]</a>
+              <a href="thread.html#112">[ thread ]</a>
+              <a href="subject.html#112">[ subject ]</a>
+              <a href="author.html#112">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>OK, you guys type faster than I can read these posts ;)
+
+Firstly, there's no such thing as a CollisionPoly, it's a typo in the 
+manual. Such thing was planned in the beginning, but things changed.
+
+Secondly, the magic pink conversion might have been broken when all the 
+Allegro stuff was moved to neat containers, to allow for SDL targets, for 
+example. Why it's not fixed - that's because it hasn't been detected before. 
+I originally left out the magic pink conversion in early versions of OL for 
+a reason - it's not 80's anymore, guys! Magic pink transparency hasn't been 
+used in commercial products like, a dozen of years? For some reason 
+allegroids still think it's a good and fresh idea, maybe because Allegro 
+uses it. But I know it should be fixed right away, could you just send me 
+the images that you can't load?
+
+About the collision polygon generation. Creating the collision polygon 
+requires a memory copy of the Bitmap. However, no such thing exist after the 
+constructor/Load-method call. So there's no way the sub-bitmap constructor 
+would get the memory copy*. However, the flag parameters should be listed in 
+the Load methods, I'll go and add them there.
+
+And finally about the Wiki - if someone wants to set one up and somehow move 
+the manual there, go ahead ;) I also think that if a Wiki is set up, only 
+registered members should be able to modify it...
+
+* Actually, there is, but it won't work with older GFX cards if the image is 
+too large
+
+/Esa
+
+_________________________________________________________________
+Uutiset ja kasvot uutisten takaa. MSN Search, t&#228;yden palvelun hakukone. 
+<A HREF="http://search.msn.fi">http://search.msn.fi</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000111.html">[Openlayer-developer] bug in allegro conversion
+</A></li>
+	<LI>Next message: <A HREF="000114.html">[Openlayer-developer] bug in allegro conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#112">[ date ]</a>
+              <a href="thread.html#112">[ thread ]</a>
+              <a href="subject.html#112">[ subject ]</a>
+              <a href="author.html#112">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

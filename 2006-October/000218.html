@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] Canvas clipping
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Canvas%20clipping&In-Reply-To=%3C200610252008.14002.juvinious%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000217.html">
+   <LINK REL="Next"  HREF="000219.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] Canvas clipping</H1>
+    <B>Miguel A. Gavidia</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Canvas%20clipping&In-Reply-To=%3C200610252008.14002.juvinious%40gmail.com%3E"
+       TITLE="[Openlayer-developer] Canvas clipping">juvinious at gmail.com
+       </A><BR>
+    <I>Wed Oct 25 14:08:13 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000217.html">[Openlayer-developer] Canvas clipping
+</A></li>
+        <LI>Next message: <A HREF="000219.html">[Openlayer-developer] Using 8 bpp bitmap as alpha channel.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#218">[ date ]</a>
+              <a href="thread.html#218">[ thread ]</a>
+              <a href="subject.html#218">[ subject ]</a>
+              <a href="author.html#218">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Cool. :)
+&#27700;&#26332;&#26085; 25 10&#26376; 2006 19:57&#12289;Esa Tanskanen &#12373;&#12435;&#12399;&#26360;&#12365;&#12414;&#12375;&#12383;:
+&gt;<i> &gt;When calling SetClipping is there any specific
+</I>&gt;<i> &gt;reason why this code block is necessary?:
+</I>&gt;<i>
+</I>&gt;<i> It was intended to clip the region to the edges of the screen. But it
+</I>&gt;<i> appears that it's not necessary, so now it's removed.
+</I>&gt;<i>
+</I>&gt;<i> &gt;The other concern is GetClippingRegion. I mentioned it before but if the
+</I>&gt;<i> &gt;stack is empty the function will die and crash the program. I made a
+</I>&gt;<i> &gt; change
+</I>&gt;<i>
+</I>&gt;<i> Yeah, I totally forgot that :) I committed your changes.
+</I>&gt;<i>
+</I>&gt;<i> &gt;From: &quot;Miguel Gavidia&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">juvinious at gmail.com</A>&gt;
+</I>&gt;<i> &gt;Reply-To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at berlios.de</A>
+</I>&gt;<i> &gt;To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at berlios.de</A>
+</I>&gt;<i> &gt;Subject: [Openlayer-developer] Canvas clipping
+</I>&gt;<i> &gt;Date: Wed, 25 Oct 2006 08:59:05 +0800
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Two concerns with clipping. When calling SetClipping is there any specific
+</I>&gt;<i> &gt;reason why this code block is necessary?:
+</I>&gt;<i> &gt;if( !clippingRegions.empty() ) {
+</I>&gt;<i> &gt;clippingRegion = clippingRegions.top();
+</I>&gt;<i> &gt;}
+</I>&gt;<i> &gt;if( x &lt; clippingRegion.x ) {
+</I>&gt;<i> &gt;w -= clippingRegion.x - x;
+</I>&gt;<i> &gt;x = clippingRegion.x;
+</I>&gt;<i> &gt;}
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;if( y &lt; clippingRegion.y ) {
+</I>&gt;<i> &gt;h -= clippingRegion.y - y;
+</I>&gt;<i> &gt;y = clippingRegion.y;
+</I>&gt;<i> &gt;}
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;if( x + w &gt; clippingRegion.w ) {
+</I>&gt;<i> &gt;w = clippingRegion.w - x;
+</I>&gt;<i> &gt;}
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;if( y + h &gt; clippingRegion.h ) {
+</I>&gt;<i> &gt;h = clippingRegion.h - y;
+</I>&gt;<i> &gt;}
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Reason I ask is because I've ran some tests and have had some clipping
+</I>&gt;<i> &gt;regions shrunk/modified from the actual size region I passed. I built
+</I>&gt;<i> &gt;canvas
+</I>&gt;<i> &gt;without it and the passed clipping regions are unmodified and are set as
+</I>&gt;<i> &gt;expected.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;The other concern is GetClippingRegion. I mentioned it before but if the
+</I>&gt;<i> &gt;stack is empty the function will die and crash the program. I made a
+</I>&gt;<i> &gt; change which I can apply that checks if the stack is empty:
+</I>&gt;<i> &gt;Rect Canvas::SurfaceInfo::
+</I>&gt;<i> &gt;GetClippingRegion() {
+</I>&gt;<i> &gt;if(!clippingRegions.empty())
+</I>&gt;<i> &gt;{
+</I>&gt;<i> &gt;const OlRectangle&lt; int &gt; &amp;clippingRegion = clippingRegions.top();
+</I>&gt;<i> &gt;return Rect( clippingRegion.x, clippingRegion.y, clippingRegion.w,
+</I>&gt;<i> &gt;clippingRegion.h );
+</I>&gt;<i> &gt;}
+</I>&gt;<i> &gt;else
+</I>&gt;<i> &gt;{
+</I>&gt;<i> &gt;return Rect( 0, 0, Width(), Height() );
+</I>&gt;<i> &gt;}
+</I>&gt;<i> &gt;}
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Thanks.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;_______________________________________________
+</I>&gt;<i> &gt;Openlayer-developer mailing list
+</I>&gt;<i> &gt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> &gt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">https://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;<i>
+</I>&gt;<i> _________________________________________________________________
+</I>&gt;<i> Nyt l&#246;yd&#228;t etsim&#228;si tiedot nopeasti niin koneeltasi kuin netist&#228;.
+</I>&gt;<i> <A HREF="http://toolbar.msn.fi">http://toolbar.msn.fi</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openlayer-developer mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">https://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>
+-- 
+-juvinious
+
+<A HREF="http://chasm.hopto.org">http://chasm.hopto.org</A> - The Chasm - My Site
+<A HREF="http://openlayer.berlios.de">http://openlayer.berlios.de</A> - Openlayer
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000217.html">[Openlayer-developer] Canvas clipping
+</A></li>
+	<LI>Next message: <A HREF="000219.html">[Openlayer-developer] Using 8 bpp bitmap as alpha channel.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#218">[ date ]</a>
+              <a href="thread.html#218">[ thread ]</a>
+              <a href="subject.html#218">[ subject ]</a>
+              <a href="author.html#218">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

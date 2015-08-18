@@ -1,0 +1,481 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] Updates
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Updates&In-Reply-To=%3CBAY122-F8E78FF7E7D6A0482E10E6DFB50%40phx.gbl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000244.html">
+   <LINK REL="Next"  HREF="000246.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] Updates</H1>
+    <B>Esa Tanskanen</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Updates&In-Reply-To=%3CBAY122-F8E78FF7E7D6A0482E10E6DFB50%40phx.gbl%3E"
+       TITLE="[Openlayer-developer] Updates">fladimir2002 at hotmail.com
+       </A><BR>
+    <I>Mon Jan 15 14:41:31 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000244.html">[Openlayer-developer] Updates
+</A></li>
+        <LI>Next message: <A HREF="000246.html">[Openlayer-developer] Updates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#245">[ date ]</a>
+              <a href="thread.html#245">[ thread ]</a>
+              <a href="subject.html#245">[ subject ]</a>
+              <a href="author.html#245">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Excellent news, that's exactly what's missing from OL!
+
+However, when I (temporarily) added #define OL_LIB_BUILD and #define 
+OL_SHARED to OpenLayer.hpp and used the build system, I got:
+
+src/loadpng.c:113: warning: implicit declaration of function `png_get_valid'
+src/loadpng.c:113: error: `PNG_INFO_tRNS' undeclared (first use in this 
+function
+)
+src/loadpng.c:114: warning: implicit declaration of function 
+`png_set_tRNS_to_al
+pha'
+src/loadpng.c:120: warning: implicit declaration of function 
+`png_set_strip_16'
+src/loadpng.c:124: error: `PNG_COLOR_TYPE_GRAY_ALPHA' undeclared (first use 
+in t
+his function)
+src/loadpng.c:125: warning: implicit declaration of function 
+`png_set_gray_to_rg
+b'
+src/loadpng.c:131: warning: implicit declaration of function `png_get_sRGB'
+src/loadpng.c:132: warning: implicit declaration of function `png_set_gamma'
+src/loadpng.c:134: warning: implicit declaration of function `png_get_gAMA'
+src/loadpng.c:142: warning: implicit declaration of function 
+`png_set_interlace_
+handling'
+src/loadpng.c:147: warning: implicit declaration of function 
+`png_read_update_in
+fo'
+src/loadpng.c:152: error: `pal' undeclared (first use in this function)
+src/loadpng.c:156: error: `PNG_COLOR_MASK_PALETTE' undeclared (first use in 
+this
+function)
+src/loadpng.c:158: error: `png_colorp' undeclared (first use in this 
+function)
+src/loadpng.c:158: error: syntax error before &quot;palette&quot;
+src/loadpng.c:160: warning: implicit declaration of function `png_get_PLTE'
+src/loadpng.c:160: error: `palette' undeclared (first use in this function)
+src/loadpng.c:176: error: `rowbytes' undeclared (first use in this function)
+src/loadpng.c:176: warning: implicit declaration of function 
+`png_get_rowbytes'
+src/loadpng.c:193: warning: implicit declaration of function `png_set_bgr'
+src/loadpng.c:198: error: syntax error before &quot;y&quot;
+src/loadpng.c:199: error: `y' undeclared (first use in this function)
+src/loadpng.c:200: warning: implicit declaration of function `png_read_row'
+src/loadpng.c:208: warning: implicit declaration of function `png_read_end'
+src/loadpng.c: In function `load_png':
+src/loadpng.c:222: error: `png_structp' undeclared (first use in this 
+function)
+src/loadpng.c:222: error: syntax error before &quot;png_ptr&quot;
+src/loadpng.c:223: error: `png_infop' undeclared (first use in this 
+function)
+src/loadpng.c:242: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:242: warning: implicit declaration of function 
+`png_create_read_st
+ruct'
+src/loadpng.c:242: error: `PNG_LIBPNG_VER_STRING' undeclared (first use in 
+this
+function)
+src/loadpng.c:250: error: `info_ptr' undeclared (first use in this function)
+src/loadpng.c:250: warning: implicit declaration of function 
+`png_create_info_st
+ruct'
+src/loadpng.c:252: warning: implicit declaration of function 
+`png_destroy_read_s
+truct'
+src/loadpng.c:252: error: `png_infopp' undeclared (first use in this 
+function)
+src/loadpng.c:261: warning: implicit declaration of function `setjmp'
+src/loadpng.c:270: warning: implicit declaration of function 
+`png_set_read_fn'
+src/loadpng.c:270: error: `png_rw_ptr' undeclared (first use in this 
+function)
+src/loadpng.c:270: error: syntax error before &quot;read_data&quot;
+src/loadpng.c:273: warning: implicit declaration of function 
+`png_set_sig_bytes'
+
+src/loadpng.c: At top level:
+src/loadpng.c:295: error: syntax error before &quot;png_uint_32&quot;
+src/loadpng.c:295: warning: no semicolon at end of struct or union
+src/loadpng.c:296: warning: type defaults to `int' in declaration of 
+`current_po
+s'
+src/loadpng.c:296: warning: data definition has no type or storage class
+src/loadpng.c:297: warning: type defaults to `int' in declaration of 
+`MEMORY_REA
+DER_STATE'
+src/loadpng.c:297: warning: data definition has no type or storage class
+src/loadpng.c:299: error: syntax error before &quot;png_ptr&quot;
+src/loadpng.c: In function `read_data_memory':
+src/loadpng.c:301: error: `f' undeclared (first use in this function)
+src/loadpng.c:301: error: syntax error before ')' token
+src/loadpng.c:303: error: `length' undeclared (first use in this function)
+src/loadpng.c:304: warning: implicit declaration of function `png_error'
+src/loadpng.c:304: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:306: warning: implicit declaration of function `memcpy'
+src/loadpng.c:306: error: `data' undeclared (first use in this function)
+src/loadpng.c: In function `check_if_png_memory':
+src/loadpng.c:317: error: `png_byte' undeclared (first use in this function)
+src/loadpng.c:317: error: syntax error before ')' token
+src/loadpng.c: In function `load_memory_png':
+src/loadpng.c:327: error: syntax error before &quot;memory_reader_state&quot;
+src/loadpng.c:329: error: `png_structp' undeclared (first use in this 
+function)
+src/loadpng.c:329: error: syntax error before &quot;png_ptr&quot;
+src/loadpng.c:330: error: `png_infop' undeclared (first use in this 
+function)
+src/loadpng.c:344: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:344: error: `PNG_LIBPNG_VER_STRING' undeclared (first use in 
+this
+function)
+src/loadpng.c:350: error: `info_ptr' undeclared (first use in this function)
+src/loadpng.c:352: error: `png_infopp' undeclared (first use in this 
+function)
+src/loadpng.c:368: error: `memory_reader_state' undeclared (first use in 
+this fu
+nction)
+src/loadpng.c:373: error: `png_rw_ptr' undeclared (first use in this 
+function)
+src/loadpng.c:373: error: syntax error before &quot;read_data_memory&quot;
+src/loadpng.c: At top level:
+src/loadpng.c:50: warning: 'read_data' defined but not used
+src/loadpng.c:300: warning: 'read_data_memory' defined but not used
+
+C:\Projektit\OpenLayer\OpenLayer2D\Source&gt;buildme.bat clean
+- Cleaning up -
+Deleting obj/Animation.o...
+Deleting dep/Animation.d...
+Deleting obj/Bitmap.o...
+Deleting dep/Bitmap.d...
+Deleting obj/Blenders.o...
+Deleting dep/Blenders.d...
+Deleting obj/Canvas.o...
+Deleting dep/Canvas.d...
+Deleting obj/Circle.o...
+Deleting dep/Circle.d...
+Deleting obj/Collisions.o...
+Deleting dep/Collisions.d...
+Deleting obj/Effects.o...
+Deleting dep/Effects.d...
+Deleting obj/FpsCounter.o...
+Deleting dep/FpsCounter.d...
+Deleting obj/Framebuffer.o...
+Deleting dep/Framebuffer.d...
+Deleting obj/GarbageCollector.o...
+Deleting dep/GarbageCollector.d...
+Deleting obj/General.o...
+Deleting dep/General.d...
+Deleting obj/GfxRend.o...
+Deleting dep/GfxRend.d...
+Deleting obj/GlDriver.o...
+Deleting dep/GlDriver.d...
+Deleting obj/Glyph.o...
+Deleting dep/Glyph.d...
+Deleting obj/Internal.o...
+Deleting dep/Internal.d...
+Deleting obj/Line.o...
+Deleting dep/Line.d...
+Deleting obj/LineStrip.o...
+Deleting dep/LineStrip.d...
+Deleting dep/loadpng.d...
+Deleting build/options...
+Deleting obj...
+Deleting lib...
+Deleting dep...
+
+C:\Projektit\OpenLayer\OpenLayer2D\Source&gt;buildme.bat
+Seting up for msys environment
+Do you wish to drop TTF support? [y/N]
+
+Do you wish to use FreeType directly and drop GlyphKeeper? [y/N]
+
+Do you wish to drop PNG support? [y/N]
+
+Do you wish to drop old API Support? [y/N]
+
+Do you wish to drop State Changes? [y/N]
+
+- Creating required directories -
+Creating directory obj/...
+Creating directory dep/...
+Creating directory lib/...
+- Starting compilation -
+Compiling src/Animation.cpp...
+Compiling src/Bitmap.cpp...
+Compiling src/Blenders.cpp...
+Compiling src/Canvas.cpp...
+Compiling src/Circle.cpp...
+Compiling src/Collisions.cpp...
+Compiling src/Effects.cpp...
+Compiling src/FpsCounter.cpp...
+Compiling src/Framebuffer.cpp...
+Compiling src/GarbageCollector.cpp...
+Compiling src/General.cpp...
+Compiling src/GfxRend.cpp...
+Compiling src/GlDriver.cpp...
+src/GlDriver.cpp: In member function `virtual ol::OlTextureInfo 
+ol::AllegroGLDri
+ver::UploadTexture(BITMAP*, bool)':
+src/GlDriver.cpp:139: warning: unused variable 'useTemp'
+src/GlDriver.cpp:158: warning: unused variable 'useExtendedDimensions'
+src/GlDriver.cpp:162: warning: unused variable 'bitmapBpp'
+src/GlDriver.cpp: In member function `virtual BITMAP* 
+ol::AllegroGLDriver::GetMe
+moryBitmap(int, int, int, unsigned char*)':
+src/GlDriver.cpp:340: warning: unused variable 'bytesPerLine'
+Compiling src/Glyph.cpp...
+Compiling src/Internal.cpp...
+Compiling src/Line.cpp...
+Compiling src/LineStrip.cpp...
+Compiling src/loadpng.c...
+src/loadpng.c:8:17: png.h: No such file or directory
+src/loadpng.c:22: error: `Z_BEST_COMPRESSION' undeclared here (not in a 
+function
+)
+src/loadpng.c:49: error: syntax error before &quot;png_ptr&quot;
+src/loadpng.c: In function `read_data':
+src/loadpng.c:51: warning: implicit declaration of function `png_get_io_ptr'
+src/loadpng.c:51: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:51: error: (Each undeclared identifier is reported only once
+src/loadpng.c:51: error: for each function it appears in.)
+src/loadpng.c:52: error: `png_uint_32' undeclared (first use in this 
+function)
+src/loadpng.c:52: error: syntax error before &quot;pack_fread&quot;
+src/loadpng.c:51: warning: unused variable `f'
+src/loadpng.c: In function `check_if_png':
+src/loadpng.c:72: warning: implicit declaration of function `png_sig_cmp'
+src/loadpng.c:72: error: `png_byte' undeclared (first use in this function)
+src/loadpng.c:72: error: syntax error before ')' token
+src/loadpng.c: At top level:
+src/loadpng.c:80: error: syntax error before &quot;png_ptr&quot;
+src/loadpng.c: In function `really_load_png':
+src/loadpng.c:84: error: `png_uint_32' undeclared (first use in this 
+function)
+src/loadpng.c:84: error: syntax error before &quot;width&quot;
+src/loadpng.c:97: warning: implicit declaration of function `png_read_info'
+src/loadpng.c:97: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:97: error: `info_ptr' undeclared (first use in this function)
+src/loadpng.c:99: warning: implicit declaration of function `png_get_IHDR'
+src/loadpng.c:99: error: `width' undeclared (first use in this function)
+src/loadpng.c:99: error: `height' undeclared (first use in this function)
+src/loadpng.c:105: warning: implicit declaration of function 
+`png_set_packing'
+src/loadpng.c:108: error: `PNG_COLOR_TYPE_GRAY' undeclared (first use in 
+this fu
+nction)
+src/loadpng.c:109: warning: implicit declaration of function 
+`png_set_expand'
+src/loadpng.c:113: warning: implicit declaration of function `png_get_valid'
+src/loadpng.c:113: error: `PNG_INFO_tRNS' undeclared (first use in this 
+function
+)
+src/loadpng.c:114: warning: implicit declaration of function 
+`png_set_tRNS_to_al
+pha'
+src/loadpng.c:120: warning: implicit declaration of function 
+`png_set_strip_16'
+src/loadpng.c:124: error: `PNG_COLOR_TYPE_GRAY_ALPHA' undeclared (first use 
+in t
+his function)
+src/loadpng.c:125: warning: implicit declaration of function 
+`png_set_gray_to_rg
+b'
+src/loadpng.c:131: warning: implicit declaration of function `png_get_sRGB'
+src/loadpng.c:132: warning: implicit declaration of function `png_set_gamma'
+src/loadpng.c:134: warning: implicit declaration of function `png_get_gAMA'
+src/loadpng.c:142: warning: implicit declaration of function 
+`png_set_interlace_
+handling'
+src/loadpng.c:147: warning: implicit declaration of function 
+`png_read_update_in
+fo'
+src/loadpng.c:152: error: `pal' undeclared (first use in this function)
+src/loadpng.c:156: error: `PNG_COLOR_MASK_PALETTE' undeclared (first use in 
+this
+function)
+src/loadpng.c:158: error: `png_colorp' undeclared (first use in this 
+function)
+src/loadpng.c:158: error: syntax error before &quot;palette&quot;
+src/loadpng.c:160: warning: implicit declaration of function `png_get_PLTE'
+src/loadpng.c:160: error: `palette' undeclared (first use in this function)
+src/loadpng.c:176: error: `rowbytes' undeclared (first use in this function)
+src/loadpng.c:176: warning: implicit declaration of function 
+`png_get_rowbytes'
+src/loadpng.c:193: warning: implicit declaration of function `png_set_bgr'
+src/loadpng.c:198: error: syntax error before &quot;y&quot;
+src/loadpng.c:199: error: `y' undeclared (first use in this function)
+src/loadpng.c:200: warning: implicit declaration of function `png_read_row'
+src/loadpng.c:208: warning: implicit declaration of function `png_read_end'
+src/loadpng.c: In function `load_png':
+src/loadpng.c:222: error: `png_structp' undeclared (first use in this 
+function)
+src/loadpng.c:222: error: syntax error before &quot;png_ptr&quot;
+src/loadpng.c:223: error: `png_infop' undeclared (first use in this 
+function)
+src/loadpng.c:242: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:242: warning: implicit declaration of function 
+`png_create_read_st
+ruct'
+src/loadpng.c:242: error: `PNG_LIBPNG_VER_STRING' undeclared (first use in 
+this
+function)
+src/loadpng.c:250: error: `info_ptr' undeclared (first use in this function)
+src/loadpng.c:250: warning: implicit declaration of function 
+`png_create_info_st
+ruct'
+src/loadpng.c:252: warning: implicit declaration of function 
+`png_destroy_read_s
+truct'
+src/loadpng.c:252: error: `png_infopp' undeclared (first use in this 
+function)
+src/loadpng.c:261: warning: implicit declaration of function `setjmp'
+src/loadpng.c:270: warning: implicit declaration of function 
+`png_set_read_fn'
+src/loadpng.c:270: error: `png_rw_ptr' undeclared (first use in this 
+function)
+src/loadpng.c:270: error: syntax error before &quot;read_data&quot;
+src/loadpng.c:273: warning: implicit declaration of function 
+`png_set_sig_bytes'
+
+src/loadpng.c: At top level:
+src/loadpng.c:295: error: syntax error before &quot;png_uint_32&quot;
+src/loadpng.c:295: warning: no semicolon at end of struct or union
+src/loadpng.c:296: warning: type defaults to `int' in declaration of 
+`current_po
+s'
+src/loadpng.c:296: warning: data definition has no type or storage class
+src/loadpng.c:297: warning: type defaults to `int' in declaration of 
+`MEMORY_REA
+DER_STATE'
+src/loadpng.c:297: warning: data definition has no type or storage class
+src/loadpng.c:299: error: syntax error before &quot;png_ptr&quot;
+src/loadpng.c: In function `read_data_memory':
+src/loadpng.c:301: error: `f' undeclared (first use in this function)
+src/loadpng.c:301: error: syntax error before ')' token
+src/loadpng.c:303: error: `length' undeclared (first use in this function)
+src/loadpng.c:304: warning: implicit declaration of function `png_error'
+src/loadpng.c:304: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:306: warning: implicit declaration of function `memcpy'
+src/loadpng.c:306: error: `data' undeclared (first use in this function)
+src/loadpng.c: In function `check_if_png_memory':
+src/loadpng.c:317: error: `png_byte' undeclared (first use in this function)
+src/loadpng.c:317: error: syntax error before ')' token
+src/loadpng.c: In function `load_memory_png':
+src/loadpng.c:327: error: syntax error before &quot;memory_reader_state&quot;
+src/loadpng.c:329: error: `png_structp' undeclared (first use in this 
+function)
+src/loadpng.c:329: error: syntax error before &quot;png_ptr&quot;
+src/loadpng.c:330: error: `png_infop' undeclared (first use in this 
+function)
+src/loadpng.c:344: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:344: error: `PNG_LIBPNG_VER_STRING' undeclared (first use in 
+this
+function)
+src/loadpng.c:350: error: `info_ptr' undeclared (first use in this function)
+src/loadpng.c:352: error: `png_infopp' undeclared (first use in this 
+function)
+src/loadpng.c:368: error: `memory_reader_state' undeclared (first use in 
+this fu
+nction)
+src/loadpng.c:373: error: `png_rw_ptr' undeclared (first use in this 
+function)
+src/loadpng.c:373: error: syntax error before &quot;read_data_memory&quot;
+src/loadpng.c: At top level:
+src/loadpng.c:50: warning: 'read_data' defined but not used
+src/loadpng.c:300: warning: 'read_data_memory' defined but not used
+
+C:\Projektit\OpenLayer\OpenLayer2D\Source&gt;
+C:\Projektit\OpenLayer\OpenLayer2D\Source&gt;
+
+Any ideas?
+
+/Esa
+
+&gt;<i>From: &quot;Miguel A. Gavidia&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">juvinious at gmail.com</A>&gt;
+</I>&gt;<i>Reply-To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at berlios.de</A>
+</I>&gt;<i>To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i>Subject: [Openlayer-developer] Updates
+</I>&gt;<i>Date: Mon, 15 Jan 2007 02:58:57 +0800
+</I>&gt;<i>
+</I>&gt;<i>Ok so I went about the task of exporting the symbols in OpenLayer. I tested 
+</I>&gt;<i>it
+</I>&gt;<i>on windows and was able to create a DLL of the library with success and was
+</I>&gt;<i>able to link the demos with it. Any of the windows users that have any
+</I>&gt;<i>interest in this I ask you to test it out yourself in your apps to make 
+</I>&gt;<i>sure
+</I>&gt;<i>all required symbols are exported. I know some people were asking for this
+</I>&gt;<i>so, this is a good step in that general direction. In order to accomplish
+</I>&gt;<i>this I added two new preprocessors:
+</I>&gt;<i>OL_SHARED and OL_LIB_BUILD
+</I>&gt;<i>It should be fairly straightforward, when building the library pass
+</I>&gt;<i>both -DOL_SHARED and -DOL_LIB_BUILD. When linking against the library only
+</I>&gt;<i>pass -DOL_SHARED, however you might just want to throw #define OL_SHARED 
+</I>&gt;<i>into
+</I>&gt;<i>the OpenLayer.hpp that way it's transparent.
+</I>&gt;<i>Additionally I also merged loadpng into the library as it is small and
+</I>&gt;<i>required if OL_NO_PNG is not defined. Of course it won't be included if
+</I>&gt;<i>OL_NO_PNG is enabled so there is no need to worry about it. Just make sure
+</I>&gt;<i>you aren't linking with -lloadpng or -lldpng anymore in your link line. If
+</I>&gt;<i>you are on linux nothing changes as `openlayer-config --libs` produces the
+</I>&gt;<i>proper link line for you. :)
+</I>&gt;<i>So regarding the dll stuff if you do happen to run across problems with it,
+</I>&gt;<i>missing symbols and what not, please post them here so I can correct them.
+</I>&gt;<i>Thanks.
+</I>&gt;<i>
+</I>&gt;<i>--
+</I>&gt;<i>-juvinious
+</I>&gt;<i>
+</I>&gt;<i><A HREF="http://saggui.sourceforge.net">http://saggui.sourceforge.net</A> - Simplified All Gaming GUI
+</I>&gt;<i><A HREF="http://chasm.hopto.org">http://chasm.hopto.org</A> - The Chasm - My Site
+</I>&gt;<i><A HREF="http://openlayer.berlios.de">http://openlayer.berlios.de</A> - Openlayer
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Openlayer-developer mailing list
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">https://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>
+_________________________________________________________________
+Nyt l&#246;yd&#228;t etsim&#228;si tiedot nopeasti niin koneeltasi kuin netist&#228;. 
+<A HREF="http://toolbar.msn.fi">http://toolbar.msn.fi</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000244.html">[Openlayer-developer] Updates
+</A></li>
+	<LI>Next message: <A HREF="000246.html">[Openlayer-developer] Updates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#245">[ date ]</a>
+              <a href="thread.html#245">[ thread ]</a>
+              <a href="subject.html#245">[ subject ]</a>
+              <a href="author.html#245">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

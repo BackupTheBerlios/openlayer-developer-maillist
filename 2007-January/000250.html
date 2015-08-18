@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] OpenLayer Errors upon compile
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20OpenLayer%20Errors%20upon%20compile&In-Reply-To=%3Cc9004b820701292214v23b1168v25e48c0b06098c57%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000252.html">
+   <LINK REL="Next"  HREF="000254.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] OpenLayer Errors upon compile</H1>
+    <B>kotori83</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20OpenLayer%20Errors%20upon%20compile&In-Reply-To=%3Cc9004b820701292214v23b1168v25e48c0b06098c57%40mail.gmail.com%3E"
+       TITLE="[Openlayer-developer] OpenLayer Errors upon compile">kotori83 at gmail.com
+       </A><BR>
+    <I>Tue Jan 30 07:14:00 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000252.html">[Openlayer-developer] License
+</A></li>
+        <LI>Next message: <A HREF="000254.html">[Openlayer-developer] OpenLayer Errors upon compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#250">[ date ]</a>
+              <a href="thread.html#250">[ thread ]</a>
+              <a href="subject.html#250">[ subject ]</a>
+              <a href="author.html#250">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I got the following today while trying to compile with a fresh install.
+
+In file included from C:/Program
+Files/Dev-Cpp/include/OpenLayer/RenderModes.hpp:6,
+                 from C:/Program
+Files/Dev-Cpp/include/OpenLayer/Bitmap.hpp:13,
+                 from C:/Program
+Files/Dev-Cpp/include/OpenLayer/Animation.hpp:6,
+                 from C:/Program Files/Dev-Cpp/include/OpenLayer.hpp:35,
+                 from main.cpp:26:
+C:/Program Files/Dev-Cpp/include/OpenLayer/Rectangle.hpp: In member function
+`void ol::Rect::SetAccuracy(float)':
+C:/Program Files/Dev-Cpp/include/OpenLayer/Rectangle.hpp:72: error: `min'
+undeclared (first use this function)
+C:/Program Files/Dev-Cpp/include/OpenLayer/Rectangle.hpp:72: error: (Each
+undeclared identifier is reported only once for each function it appears
+in.)
+
+In file included from C:/Program Files/Dev-Cpp/include/OpenLayer.hpp:57,
+                 from main.cpp:26:
+C:/Program Files/Dev-Cpp/include/OpenLayer/Circle.hpp: In member function
+`void ol::Ellipse::SetAccuracy(float)':
+C:/Program Files/Dev-Cpp/include/OpenLayer/Circle.hpp:116: error: `max'
+undeclared (first use this function)
+C:/Program Files/Dev-Cpp/include/OpenLayer/Circle.hpp:118: error: `min'
+undeclared (first use this function)
+
+mingw32-make.exe: *** [obj/main.o] Error 1
+
+Execution terminated
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/openlayer-developer/attachments/20070130/c2dff1d9/attachment.html">https://lists.berlios.de/pipermail/openlayer-developer/attachments/20070130/c2dff1d9/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000252.html">[Openlayer-developer] License
+</A></li>
+	<LI>Next message: <A HREF="000254.html">[Openlayer-developer] OpenLayer Errors upon compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#250">[ date ]</a>
+              <a href="thread.html#250">[ thread ]</a>
+              <a href="subject.html#250">[ subject ]</a>
+              <a href="author.html#250">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

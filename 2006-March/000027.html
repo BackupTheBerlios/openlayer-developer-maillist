@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] Fwd from Esa
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Fwd%20from%20Esa&In-Reply-To=%3C4408955D.8050803%40bradeeoh.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000026.html">
+   <LINK REL="Next"  HREF="000028.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] Fwd from Esa</H1>
+    <B>B E</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Fwd%20from%20Esa&In-Reply-To=%3C4408955D.8050803%40bradeeoh.com%3E"
+       TITLE="[Openlayer-developer] Fwd from Esa">bradeeoh at bradeeoh.com
+       </A><BR>
+    <I>Fri Mar  3 20:13:33 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000026.html">[Openlayer-developer] Fwd from Esa
+</A></li>
+        <LI>Next message: <A HREF="000028.html">[Openlayer-developer] A Proposal - OpenLayer Addons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#27">[ date ]</a>
+              <a href="thread.html#27">[ thread ]</a>
+              <a href="subject.html#27">[ subject ]</a>
+              <a href="author.html#27">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> &gt; To clarify, ol::Poly::MoveBy( Vec2D ) is great but I think there 
+should also be ol::Poly::MoveTo( Vec2D )
+
+
+Having Shape::MoveTo would be useful indeed, but how can you know where 
+the Shape should be moved? Should the top-left corner to be moved to the 
+specified location? Or the center? That's why there's only MoveBy as 
+it's unambiguous.
+
+PS. And Poly should still be moved around mainly by using Transforms. 
+But I'll change that in the future.
+
+ &gt; For example if I create, say, a square...
+ &gt;
+ &gt; Poly p;
+ &gt; p.Add( Vec2D( 0, 0 ));
+ &gt; p.Add( Vec2D( 30, 0 ));
+ &gt; p.Add( Vec2D( 30, 30 ));
+ &gt; p.Add( Vec2D( 0, 30 ));
+ &gt;
+ &gt; I would love to use it as a generically relocatable square.  I can 
+call p.MoveBy( ... ) to move it around the screen but sometimes you can 
+only know an absolute location where you'd like to move it instead of a 
+relative location.  If I've move it around the screen hundreds of times 
+each by a fractional Vec2Ds, floating point math will have compounded 
+flaws to the point that it's exact position in relation to the origin 
+cannot be known.
+ &gt;
+ &gt; Even if I keep track of all of these MoveBy() calls and I try to do a 
+MoveBy() to send it back to the origin, there's no guarantee it will 
+actually end up back at (0.0,0.0).
+ &gt;
+ &gt; Theres a few complexities the arise by my proposal - how to keep 
+track of initial position remains a problem.
+ &gt;
+ &gt; One idea I have would be to keep 2 copies of the vertices - an 
+initial position and a current position.  They would start the same... 
+but a call to MoveBy() would affect the current position and a call to 
+MoveTo() would do its math on the initial position creating a new 
+&quot;current position&quot;
+ &gt;
+ &gt; We could either take a small time penalty upon object initialization 
+by storing two copies of each vertex, or we could do a copy-on-write by 
+only making a &quot;current position&quot; vector upon the first call to MoveBy() 
+or MoveTo()
+ &gt;
+ &gt; The size penalty is obvious but also depends on the number of 
+vertices in the poly.
+ &gt;
+ &gt; What do you think?  If there's no objections I've basically already 
+implemented my method - though I could add copy-on-write to it.  Or, any 
+other ideas on how we could acheive the same thing differently?
+ &gt;
+ &gt; Peace,
+ &gt; -Brady
+ &gt; _______________________________________________
+ &gt; Openlayer-developer mailing list
+ &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+ &gt; <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+
+
+_________________________________________________________________
+Hittej&#228; ja harvinaisuuksia, halvalla ja helposti. MSN Music 
+<A HREF="http://sib1.od2.com/common/Framework.aspx?shid=075E002E&amp;origin=MSNFI&amp;promotion=Perm">http://sib1.od2.com/common/Framework.aspx?shid=075E002E&amp;origin=MSNFI&amp;promotion=Perm</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000026.html">[Openlayer-developer] Fwd from Esa
+</A></li>
+	<LI>Next message: <A HREF="000028.html">[Openlayer-developer] A Proposal - OpenLayer Addons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#27">[ date ]</a>
+              <a href="thread.html#27">[ thread ]</a>
+              <a href="subject.html#27">[ subject ]</a>
+              <a href="author.html#27">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

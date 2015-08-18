@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] updates to files of OL
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20updates%20to%20files%20of%20OL&In-Reply-To=%3C200610221647.51317.juvinious%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000198.html">
+   <LINK REL="Next"  HREF="000200.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] updates to files of OL</H1>
+    <B>Miguel A. Gavidia</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20updates%20to%20files%20of%20OL&In-Reply-To=%3C200610221647.51317.juvinious%40gmail.com%3E"
+       TITLE="[Openlayer-developer] updates to files of OL">juvinious at gmail.com
+       </A><BR>
+    <I>Sun Oct 22 10:47:51 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000198.html">[Openlayer-developer] updates to files of OL
+</A></li>
+        <LI>Next message: <A HREF="000200.html">[Openlayer-developer] updates to files of OL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#199">[ date ]</a>
+              <a href="thread.html#199">[ thread ]</a>
+              <a href="subject.html#199">[ subject ]</a>
+              <a href="author.html#199">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Welcome tobias sorry I couldn't respond earlier I was having some system 
+problems in the last 2 days.
+About your text rendering problem, try not using GlyphKeeper and use the 
+internal renderer. When compiling the code pass -DUSE_NEW_TTF and omit 
+linking to glyphkeeper. You do need to make sure you have freetype2 installed 
+properly and just link against that. If you like you can can make a patch of 
+your changes on the source tree, attach it here and I'll test them out for 
+you on gcc.
+
+&#22303;&#26332;&#26085; 21 10&#26376; 2006 23:12&#12289;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">tobing at gmx.net</A> &#12373;&#12435;&#12399;&#26360;&#12365;&#12414;&#12375;&#12383;:
+&gt;<i> Hi all,
+</I>&gt;<i>
+</I>&gt;<i> I have now made some changes to some files of OL (latest SVN), but of
+</I>&gt;<i> course cannot submit these changes. I've also not compiled them with gcc:
+</I>&gt;<i> Though I installed MinGW 5.0.3, the cbuild build process does not work.
+</I>&gt;<i> Seems that it makes some assumptions about the environment which are
+</I>&gt;<i> different from what I have here. Anyway.
+</I>&gt;<i>
+</I>&gt;<i> How to proceed? I could send the modified files to somebody (or all) and
+</I>&gt;<i> explain what I have changed?
+</I>&gt;<i>
+</I>&gt;<i> Currently the text rendering does not work on both my PCs, can't figure out
+</I>&gt;<i> why. It's also not possible to use Glyphkeeper with another target than
+</I>&gt;<i> GLYPH_TARGET_ALLEGGL, so I couldn't try anything about that. The AGL
+</I>&gt;<i> examples work fine, except the fonttest, which simply crashes upon loading
+</I>&gt;<i> the first font.
+</I>
+-- 
+-juvinious
+
+<A HREF="http://chasm.hopto.org">http://chasm.hopto.org</A> - The Chasm - My Site
+<A HREF="http://openlayer.berlios.de">http://openlayer.berlios.de</A> - Openlayer
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000198.html">[Openlayer-developer] updates to files of OL
+</A></li>
+	<LI>Next message: <A HREF="000200.html">[Openlayer-developer] updates to files of OL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#199">[ date ]</a>
+              <a href="thread.html#199">[ thread ]</a>
+              <a href="subject.html#199">[ subject ]</a>
+              <a href="author.html#199">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

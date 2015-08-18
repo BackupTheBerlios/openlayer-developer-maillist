@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] what the glyph
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20what%20the%20glyph&In-Reply-To=%3C448F3965.3070201%40retrospec.sgn.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000185.html">
+   <LINK REL="Next"  HREF="000186.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] what the glyph</H1>
+    <B>neil</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20what%20the%20glyph&In-Reply-To=%3C448F3965.3070201%40retrospec.sgn.net%3E"
+       TITLE="[Openlayer-developer] what the glyph">neil at retrospec.sgn.net
+       </A><BR>
+    <I>Wed Jun 14 00:17:09 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000185.html">[Openlayer-developer] what the glyph
+</A></li>
+        <LI>Next message: <A HREF="000186.html">[Openlayer-developer] GlDriver
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#188">[ date ]</a>
+              <a href="thread.html#188">[ thread ]</a>
+              <a href="subject.html#188">[ subject ]</a>
+              <a href="author.html#188">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm not making changes everytime, I'm reapplying my changes to new 
+builds in the hope that it compiles, so don't worry there is little work 
+on my behalf. As for the changes, they are quite minor and really just 
+make it more robust and platform neutral. I test everything on gcc as 
+well, btw.
+
+Changes include stuff like:
+- declaring NOMINMAX as MSVC doesn't do this, but gcc does
+- renaming loop variables so no duplicate warning messages (and errors 
+in VC6) appear
+- removing the gcc specific code (like the breakout demo)
+- altering pragmas to work (e.g. the prettify pragma for the debug in 
+the code is for gcc only)
+
+etc.
+
+Neil.
+
+
+Miguel A. Gavidia wrote:
+
+&gt;<i>Glyph.{cpp/hpp} are a WIP and won't be ready for use just yet. If you've read 
+</I>&gt;<i>my previous posts you would see where it stands.
+</I>&gt;<i>When it's completed though, the glyph class will replace the Glyph Keeper 
+</I>&gt;<i>requirement as it will use freetype directly.
+</I>&gt;<i>Another note, even if you include the files with your project it won't compile 
+</I>&gt;<i>nothing unless you set USE_NEW_TTF. And if you do set that env variable
+</I>&gt;<i>all the source will compile soundly even text renderer you just won't get no 
+</I>&gt;<i>textout support.  
+</I>&gt;<i>
+</I>&gt;<i>What kind of changes are you making so that it compiles with msvc? If you are 
+</I>&gt;<i>not breaking anything with the gcc compile I'd like to test it out on other 
+</I>&gt;<i>platforms that way we can see if we can get these changes into svn. It seems 
+</I>&gt;<i>redundant that you have to make changes everytime just to make a msvc compile 
+</I>&gt;<i>work.
+</I>&gt;<i>
+</I>&gt;<i>&#28779;&#26332;&#26085; 13 6&#26376; 2006 05:30&#12289;neil &#12373;&#12435;&#12399;&#26360;&#12365;&#12414;&#12375;&#12383;:
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>Hello,
+</I>&gt;&gt;<i>Sorry, I've been working away for the past few months and only get time
+</I>&gt;&gt;<i>to do occasional postings here and there. Anyway I'm back and am
+</I>&gt;&gt;<i>continuing porting OL to MSVC (well recompiling every now and again to
+</I>&gt;&gt;<i>see if a working version is there!).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I've compiled and everything (when I make my MSVC changes) seems to
+</I>&gt;&gt;<i>work, which is great. Just one question, I've not included glyph.cpp
+</I>&gt;&gt;<i>into the my project file as I assume this is just a work in progress and
+</I>&gt;&gt;<i>all text demos seem to work. Is this right, or should I be including
+</I>&gt;&gt;<i>glyph.cpp?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> From quick memory, half the demos need minor updates and about 6 header
+</I>&gt;&gt;<i>and 8 source code files need changes to work. I'm re-testing all changes
+</I>&gt;&gt;<i>I make onto dev-c++ so I assume all will be well. If not, there's always
+</I>&gt;&gt;<i>SVN ;)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Neil.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;<i>Openlayer-developer mailing list
+</I>&gt;&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;&gt;<i><A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000185.html">[Openlayer-developer] what the glyph
+</A></li>
+	<LI>Next message: <A HREF="000186.html">[Openlayer-developer] GlDriver
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#188">[ date ]</a>
+              <a href="thread.html#188">[ thread ]</a>
+              <a href="subject.html#188">[ subject ]</a>
+              <a href="author.html#188">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] FreeType2 and Glyph system
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20FreeType2%20and%20Glyph%20system&In-Reply-To=%3C200604240959.21998.juvinious%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000161.html">
+   <LINK REL="Next"  HREF="000164.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] FreeType2 and Glyph system</H1>
+    <B>Miguel A. Gavidia</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20FreeType2%20and%20Glyph%20system&In-Reply-To=%3C200604240959.21998.juvinious%40gmail.com%3E"
+       TITLE="[Openlayer-developer] FreeType2 and Glyph system">juvinious at gmail.com
+       </A><BR>
+    <I>Mon Apr 24 03:59:21 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000161.html">[Openlayer-developer] collision demo
+</A></li>
+        <LI>Next message: <A HREF="000164.html">[Openlayer-developer] FreeType2 and Glyph system
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#162">[ date ]</a>
+              <a href="thread.html#162">[ thread ]</a>
+              <a href="subject.html#162">[ subject ]</a>
+              <a href="author.html#162">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>As this was brought up before, just like to revist it with news. :)
+I was discussing on #allegro with Birdee-oh (brady) and others about the 
+possibility of just using FreeType2 directly and the difficulty of doing so.
+We were referred by someone to check out this simple library that shows how 
+easy it is to use freetype:
+<A HREF="http://fudgefont.sf.net">http://fudgefont.sf.net</A>
+The library simply loads TTF fonts into an Allegro type Font which is also 
+useable by AllegroGL. However it doesn't provide kerning support.
+Going through the documentation of FreeType2 I found that it with a little 
+more work, kerning support and other features are easily adoptable.
+Thus I propose we begin work to use FreeType directly so we can slowly 
+deprecate the troublesome Glyph Keeper dependency.
+Instead of adding more code to TextRenderer, we could create a new class Glyph 
+or something akin to that and do everything with FreeType there.
+We can also adopt it so that it retains the functionality of GlyphKeeper's 
+interface, that way we don't have to break the api of TextRenderer, making it 
+transparent to the end user. This will also allow us to expand the 
+functionality of TextRender to do more or so the things proposed by Fladimir 
+before on being able to manipulate Glyphs directly.
+With that in place we can then simply use preprocessors to switch from using 
+GlyphKeeper to the new Glyph handler when compiling the library for testing 
+until it is stable enough to completely deprecate GlyphKeeper.
+What do you think? 
+:<i>)
+</I>
+-- 
+-juvinious
+
+&lt;a href=&quot;<A HREF="http://chasm.hopto.org">http://chasm.hopto.org</A>&quot;&gt;The Chasm&lt;/a&gt; - My Site.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000161.html">[Openlayer-developer] collision demo
+</A></li>
+	<LI>Next message: <A HREF="000164.html">[Openlayer-developer] FreeType2 and Glyph system
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#162">[ date ]</a>
+              <a href="thread.html#162">[ thread ]</a>
+              <a href="subject.html#162">[ subject ]</a>
+              <a href="author.html#162">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

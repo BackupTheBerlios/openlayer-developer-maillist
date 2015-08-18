@@ -1,0 +1,2943 @@
+From fladimir2002 at hotmail.com  Fri May  5 15:35:56 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Fri, 05 May 2006 16:35:56 +0300
+Subject: [Openlayer-developer] CBuild problem?
+In-Reply-To: <200604251653.05799.juvinious@gmail.com>
+Message-ID: <BAY21-F7B0DAEEC24BD91F329515DFB50@phx.gbl>
+
+I get the following output when runing buildme.bat:
+
+Starting compilation
+Compiling src/Circle.cpp...
+Compiling src/Collisions.cpp...
+Assembling library
+Deleting lib/libopenlayer.a...
+Linking lib/libopenlayer.a...
+ar: 'obj/Collisions.cpp.o': No such file
+ar: 'obj/OpenLayer/.o': No such file
+
+Compilation completed.
+
+You can now install the lib by doing:
+./cbuild.c install
+
+Is the "No such file" anything problematic?
+
+/Esa
+
+_________________________________________________________________
+Uutiset ja kasvot uutisten takaa. MSN Search, t?yden palvelun hakukone. 
+http://search.msn.fi
+
+
+
+From juvinious at gmail.com  Fri May  5 16:02:57 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Fri, 5 May 2006 22:02:57 +0800
+Subject: [Openlayer-developer] CBuild problem?
+In-Reply-To: <BAY21-F7B0DAEEC24BD91F329515DFB50@phx.gbl>
+References: <BAY21-F7B0DAEEC24BD91F329515DFB50@phx.gbl>
+Message-ID: <200605052202.57160.juvinious@gmail.com>
+
+??? 05 5? 2006 21:35?Esa Tanskanen ????????:
+> I get the following output when runing buildme.bat:
+>
+> Starting compilation
+> Compiling src/Circle.cpp...
+> Compiling src/Collisions.cpp...
+> Assembling library
+> Deleting lib/libopenlayer.a...
+> Linking lib/libopenlayer.a...
+> ar: 'obj/Collisions.cpp.o': No such file
+> ar: 'obj/OpenLayer/.o': No such file
+>
+> Compilation completed.
+>
+> You can now install the lib by doing:
+> ./cbuild.c install
+>
+> Is the "No such file" anything problematic?
+>
+> /Esa
+>
+> _________________________________________________________________
+> Uutiset ja kasvot uutisten takaa. MSN Search, t?yden palvelun hakukone.
+> http://search.msn.fi
+>
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+Strange, seems to be having parsing problems lately.
+Can you do me a favor and do:
+buildme.bat verbose
+and post the output of the whole compilation that way I can see what's wrong. 
+I'll also check if cbuild has been updated or changed recently.
+Thanks.
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From fladimir2002 at hotmail.com  Fri May  5 15:52:30 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Fri, 05 May 2006 16:52:30 +0300
+Subject: [Openlayer-developer] CBuild problem?
+In-Reply-To: <200605052202.57160.juvinious@gmail.com>
+Message-ID: <BAY21-F6DFAADB62F5A8DDFBFA92DFB50@phx.gbl>
+
+OK, here:
+
+Installing OpenLayer to 'C:/Dev-Cpp'
+Creating directory C:/Dev-Cpp/include/OpenLayer/...
+!!! Could not create directory !!!
+--- Error 1 ignored. ---
+
+chmod 755 C:/Dev-Cpp/include/OpenLayer
+'chmod' is not recognized as an internal or external command,
+operable program or batch file.
+--- Error 2 ignored. ---
+
+Copying 'include/OpenLayer/Animation.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Anima
+tion.hpp'...
+Copying 'include/OpenLayer/Bitmap.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Bitmap.h
+pp'...
+Copying 'include/OpenLayer/Blenders.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Blende
+rs.hpp'...
+Copying 'include/OpenLayer/Canvas.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Canvas.h
+pp'...
+Copying 'include/OpenLayer/Circle.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Circle.h
+pp'...
+Copying 'include/OpenLayer/Collisions.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Coll
+isions.hpp'...
+Copying 'include/OpenLayer/Collisions.hpp.backup' to 
+'C:/Dev-Cpp/include/OpenLay
+er/Collisions.hpp.backup'...
+Copying 'include/OpenLayer/Effects.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Effects
+.hpp'...
+Copying 'include/OpenLayer/FpsCounter.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/FpsC
+ounter.hpp'...
+Copying 'include/OpenLayer/Framebuffer.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Fra
+mebuffer.hpp'...
+Copying 'include/OpenLayer/GarbageCollector.hpp' to 
+'C:/Dev-Cpp/include/OpenLaye
+r/GarbageCollector.hpp'...
+Copying 'include/OpenLayer/General.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/General
+.hpp'...
+Copying 'include/OpenLayer/GfxRend.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/GfxRend
+.hpp'...
+Copying 'include/OpenLayer/GlDriver.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/GlDriv
+er.hpp'...
+Copying 'include/OpenLayer/Includes.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Includ
+es.hpp'...
+Copying 'include/OpenLayer/Internal.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Intern
+al.hpp'...
+Copying 'include/OpenLayer/Line.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Line.hpp'.
+..
+Copying 'include/OpenLayer/LineStrip.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/LineS
+trip.hpp'...
+Copying 'include/OpenLayer/LineStripRender.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer
+/LineStripRender.hpp'...
+Copying 'include/OpenLayer/Matrix.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Matrix.h
+pp'...
+Copying 'include/OpenLayer/Mouse.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Mouse.hpp
+'...
+Copying 'include/OpenLayer/OlRectangle.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/OlR
+ectangle.hpp'...
+Copying 'include/OpenLayer/PendingLoad.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Pen
+dingLoad.hpp'...
+Copying 'include/OpenLayer/Placement.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Place
+ment.hpp'...
+Copying 'include/OpenLayer/Point.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Point.hpp
+'...
+Copying 'include/OpenLayer/Polygon.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Polygon
+.hpp'...
+Copying 'include/OpenLayer/RawLineStrip.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Ra
+wLineStrip.hpp'...
+Copying 'include/OpenLayer/Rectangle.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Recta
+ngle.hpp'...
+Copying 'include/OpenLayer/RenderModes.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Ren
+derModes.hpp'...
+Copying 'include/OpenLayer/Rgba.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Rgba.hpp'.
+..
+Copying 'include/OpenLayer/Settings.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Settin
+gs.hpp'...
+Copying 'include/OpenLayer/Setup.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Setup.hpp
+'...
+Copying 'include/OpenLayer/Shape.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Shape.hpp
+'...
+Copying 'include/OpenLayer/Templates.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Templ
+ates.hpp'...
+Copying 'include/OpenLayer/TextRenderer.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Te
+xtRenderer.hpp'...
+Copying 'include/OpenLayer/TexturedPoly.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Te
+xturedPoly.hpp'...
+Copying 'include/OpenLayer/TextureInfo.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Tex
+tureInfo.hpp'...
+Copying 'include/OpenLayer/TransformMatrix.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer
+/TransformMatrix.hpp'...
+Copying 'include/OpenLayer/Transforms.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Tran
+sforms.hpp'...
+Copying 'include/OpenLayer/Vec2D.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Vec2D.hpp
+'...
+Copying 'include/OpenLayer/VertexListCollision.hpp' to 
+'C:/Dev-Cpp/include/OpenL
+ayer/VertexListCollision.hpp'...
+Copying 'include/OpenLayer.hpp' to 'C:/Dev-Cpp/include/OpenLayer.hpp'...
+Copying 'lib/libopenlayer.a' to 'C:/Dev-Cpp/lib/libopenlayer.a'...
+
+Install completed
+
+C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat
+Creating required directories
+Creating directory obj/...
+!!! Could not create directory !!!
+--- Error 1 ignored. ---
+
+Creating directory dep/...
+!!! Could not create directory !!!
+--- Error 2 ignored. ---
+
+Creating directory lib/...
+!!! Could not create directory !!!
+--- Error 3 ignored. ---
+
+Starting compilation
+Compiling src/Circle.cpp...
+Compiling src/TexturedPoly.cpp...
+Assembling library
+Deleting lib/libopenlayer.a...
+Linking lib/libopenlayer.a...
+ar: 'obj/Collisions.cpp.o': No such file
+ar: 'obj/OpenLayer/.o': No such file
+
+Compilation completed.
+
+You can now install the lib by doing:
+./cbuild.c install
+
+C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat install
+Where do you wish to install OpenLayer?
+example: /usr/local (make sure lib and include exist in the directory)
+Enter exit or cancel if you don't want to install at this time.
+C:/Dev-Cpp
+Installing OpenLayer to 'C:/Dev-Cpp'
+Creating directory C:/Dev-Cpp/include/OpenLayer/...
+!!! Could not create directory !!!
+--- Error 1 ignored. ---
+
+chmod 755 C:/Dev-Cpp/include/OpenLayer
+'chmod' is not recognized as an internal or external command,
+operable program or batch file.
+--- Error 2 ignored. ---
+
+Copying 'include/OpenLayer/Animation.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Anima
+tion.hpp'...
+Copying 'include/OpenLayer/Bitmap.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Bitmap.h
+pp'...
+Copying 'include/OpenLayer/Blenders.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Blende
+rs.hpp'...
+Copying 'include/OpenLayer/Canvas.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Canvas.h
+pp'...
+Copying 'include/OpenLayer/Circle.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Circle.h
+pp'...
+Copying 'include/OpenLayer/Collisions.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Coll
+isions.hpp'...
+Copying 'include/OpenLayer/Collisions.hpp.backup' to 
+'C:/Dev-Cpp/include/OpenLay
+er/Collisions.hpp.backup'...
+Copying 'include/OpenLayer/Effects.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Effects
+.hpp'...
+Copying 'include/OpenLayer/FpsCounter.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/FpsC
+ounter.hpp'...
+Copying 'include/OpenLayer/Framebuffer.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Fra
+mebuffer.hpp'...
+Copying 'include/OpenLayer/GarbageCollector.hpp' to 
+'C:/Dev-Cpp/include/OpenLaye
+r/GarbageCollector.hpp'...
+Copying 'include/OpenLayer/General.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/General
+.hpp'...
+Copying 'include/OpenLayer/GfxRend.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/GfxRend
+.hpp'...
+Copying 'include/OpenLayer/GlDriver.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/GlDriv
+er.hpp'...
+Copying 'include/OpenLayer/Includes.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Includ
+es.hpp'...
+Copying 'include/OpenLayer/Internal.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Intern
+al.hpp'...
+Copying 'include/OpenLayer/Line.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Line.hpp'.
+..
+Copying 'include/OpenLayer/LineStrip.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/LineS
+trip.hpp'...
+Copying 'include/OpenLayer/LineStripRender.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer
+/LineStripRender.hpp'...
+Copying 'include/OpenLayer/Matrix.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Matrix.h
+pp'...
+Copying 'include/OpenLayer/Mouse.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Mouse.hpp
+'...
+Copying 'include/OpenLayer/OlRectangle.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/OlR
+ectangle.hpp'...
+Copying 'include/OpenLayer/PendingLoad.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Pen
+dingLoad.hpp'...
+Copying 'include/OpenLayer/Placement.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Place
+ment.hpp'...
+Copying 'include/OpenLayer/Point.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Point.hpp
+'...
+Copying 'include/OpenLayer/Polygon.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Polygon
+.hpp'...
+Copying 'include/OpenLayer/RawLineStrip.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Ra
+wLineStrip.hpp'...
+Copying 'include/OpenLayer/Rectangle.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Recta
+ngle.hpp'...
+Copying 'include/OpenLayer/RenderModes.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Ren
+derModes.hpp'...
+Copying 'include/OpenLayer/Rgba.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Rgba.hpp'.
+..
+Copying 'include/OpenLayer/Settings.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Settin
+gs.hpp'...
+Copying 'include/OpenLayer/Setup.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Setup.hpp
+'...
+Copying 'include/OpenLayer/Shape.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Shape.hpp
+'...
+Copying 'include/OpenLayer/Templates.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Templ
+ates.hpp'...
+Copying 'include/OpenLayer/TextRenderer.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Te
+xtRenderer.hpp'...
+Copying 'include/OpenLayer/TexturedPoly.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Te
+xturedPoly.hpp'...
+Copying 'include/OpenLayer/TextureInfo.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Tex
+tureInfo.hpp'...
+Copying 'include/OpenLayer/TransformMatrix.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer
+/TransformMatrix.hpp'...
+Copying 'include/OpenLayer/Transforms.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Tran
+sforms.hpp'...
+Copying 'include/OpenLayer/Vec2D.hpp' to 
+'C:/Dev-Cpp/include/OpenLayer/Vec2D.hpp
+'...
+Copying 'include/OpenLayer/VertexListCollision.hpp' to 
+'C:/Dev-Cpp/include/OpenL
+ayer/VertexListCollision.hpp'...
+Copying 'include/OpenLayer.hpp' to 'C:/Dev-Cpp/include/OpenLayer.hpp'...
+Copying 'lib/libopenlayer.a' to 'C:/Dev-Cpp/lib/libopenlayer.a'...
+
+Install completed
+
+C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat verbose
+Creating required directories
+mkdir("obj");
+!!! Could not create directory !!!
+--- Error 1 ignored. ---
+
+mkdir("dep");
+!!! Could not create directory !!!
+--- Error 2 ignored. ---
+
+mkdir("lib");
+!!! Could not create directory !!!
+--- Error 3 ignored. ---
+
+Starting compilation
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Bitmap.d" -o "obj/Bitmap.o" -c "src/Bitmap.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Canvas.d" -o "obj/Canvas.o" -c "src/Canvas.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Framebuffer.d" -o "obj/Framebuffer.o" -c 
+"src/Framebuffer.c
+pp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/GfxRend.d" -o "obj/GfxRend.o" -c "src/GfxRend.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Polygon.d" -o "obj/Polygon.o" -c "src/Polygon.cpp"
+src/Polygon.cpp: In member function `virtual void ol::Poly::SetVertex(int, 
+const
+ol::Vec2D&)':
+src/Polygon.cpp:40: warning: comparison between signed and unsigned integer 
+expr
+essions
+include/OpenLayer/LineStripRender.hpp: In member function `void 
+ol::RawLineStrip
+<std_container1, std_container2>::LineStripRender(const ol::Rgba*, const 
+ol::Rgb
+a*, const ol::Bitmap*, float, const ol::Placement&, bool) const [with 
+std_contai
+ner1 = std::vector<ol::Vec2D, std::allocator<ol::Vec2D> >, std_container2 = 
+std:
+:vector<float, std::allocator<float> >]':
+src/Polygon.cpp:34:   instantiated from here
+include/OpenLayer/LineStripRender.hpp:59: warning: comparison between signed 
+and
+unsigned integer expressions
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Rectangle.d" -o "obj/Rectangle.o" -c 
+"src/Rectangle.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/RenderModes.d" -o "obj/RenderModes.o" -c 
+"src/RenderModes.c
+pp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Setup.d" -o "obj/Setup.o" -c "src/Setup.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/TexturedPoly.d" -o "obj/TexturedPoly.o" -c 
+"src/TexturedPol
+y.cpp"
+Assembling library
+remove("lib/libopenlayer.a");
+ar rcs "lib/libopenlayer.a" "obj/Animation.o" "obj/Animation.o" 
+"obj/Bitmap.o" "
+obj/Bitmap.o" "obj/Blenders.o" "obj/Blenders.o" "obj/Canvas.o" 
+"obj/Canvas.o" "o
+bj/Circle.o" "obj/Circle.o" "obj/Collisions.o" "obj/Collisions.cpp.o" 
+"obj/Colli
+sions.o" "obj/Effects.o" "obj/FpsCounter.o" "obj/FpsCounter.o" 
+"obj/Framebuffer.
+o" "obj/Framebuffer.o" "obj/GarbageCollector.o" "obj/GarbageCollector.o" 
+"obj/Ge
+neral.o" "obj/General.o" "obj/GfxRend.o" "obj/GlDriver.o" "obj/GlDriver.o" 
+"obj/
+Internal.o" "obj/Internal.o" "obj/Line.o" "obj/Line.o" "obj/LineStrip.o" 
+"obj/Li
+neStrip.o" "obj/Matrix.o" "obj/Matrix.o" "obj/OpenLayer/.o" 
+"obj/PendingLoad.o"
+"obj/PendingLoad.o" "obj/Placement.o" "obj/Placement.o" "obj/Point.o" 
+"obj/Point
+.o" "obj/Polygon.o" "obj/Polygon.o" "obj/Rectangle.o" "obj/Rectangle.o" 
+"obj/Ren
+derModes.o" "obj/RenderModes.o" "obj/Rgba.o" "obj/Rgba.o" "obj/Settings.o" 
+"obj/
+Settings.o" "obj/Setup.o" "obj/Setup.o" "obj/Shape.o" "obj/Shape.o" 
+"obj/TextRen
+derer.o" "obj/TextRenderer.o" "obj/TexturedPoly.o" "obj/TexturedPoly.o" 
+"obj/Tex
+tureInfo.o" "obj/TextureInfo.o" "obj/Transforms.o" "obj/Transforms.o"
+ar: 'obj/Collisions.cpp.o': No such file
+ar: 'obj/OpenLayer/.o': No such file
+
+Compilation completed.
+
+You can now install the lib by doing:
+./cbuild.c install
+
+
+
+>From: "Miguel A. Gavidia" <juvinious at gmail.com>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: Re: [Openlayer-developer] CBuild problem?
+>Date: Fri, 5 May 2006 22:02:57 +0800
+>
+>????????? 05 5??? 2006 21:35???Esa Tanskanen ????????????????????????:
+> > I get the following output when runing buildme.bat:
+> >
+> > Starting compilation
+> > Compiling src/Circle.cpp...
+> > Compiling src/Collisions.cpp...
+> > Assembling library
+> > Deleting lib/libopenlayer.a...
+> > Linking lib/libopenlayer.a...
+> > ar: 'obj/Collisions.cpp.o': No such file
+> > ar: 'obj/OpenLayer/.o': No such file
+> >
+> > Compilation completed.
+> >
+> > You can now install the lib by doing:
+> > ./cbuild.c install
+> >
+> > Is the "No such file" anything problematic?
+> >
+> > /Esa
+> >
+> > _________________________________________________________________
+> > Uutiset ja kasvot uutisten takaa. MSN Search, t??yden palvelun hakukone.
+> > http://search.msn.fi
+> >
+> > _______________________________________________
+> > Openlayer-developer mailing list
+> > Openlayer-developer at lists.berlios.de
+> > http://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+>Strange, seems to be having parsing problems lately.
+>Can you do me a favor and do:
+>buildme.bat verbose
+>and post the output of the whole compilation that way I can see what's 
+>wrong.
+>I'll also check if cbuild has been updated or changed recently.
+>Thanks.
+>
+>--
+>-juvinious
+>
+><a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Windows-ty?p?yt?haun avulla l?yd?t tiedot koneeltasi silm?nr?p?yksess?. 
+http://toolbar.msn.fi
+
+
+
+From juvinious at gmail.com  Fri May  5 17:02:40 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Fri, 5 May 2006 23:02:40 +0800
+Subject: [Openlayer-developer] CBuild problem?
+In-Reply-To: <BAY21-F6DFAADB62F5A8DDFBFA92DFB50@phx.gbl>
+References: <BAY21-F6DFAADB62F5A8DDFBFA92DFB50@phx.gbl>
+Message-ID: <200605052302.41056.juvinious@gmail.com>
+
+??? 05 5? 2006 21:52?Esa Tanskanen ????????:
+> OK, here:
+>
+> Installing OpenLayer to 'C:/Dev-Cpp'
+> Creating directory C:/Dev-Cpp/include/OpenLayer/...
+> !!! Could not create directory !!!
+> --- Error 1 ignored. ---
+>
+> chmod 755 C:/Dev-Cpp/include/OpenLayer
+> 'chmod' is not recognized as an internal or external command,
+> operable program or batch file.
+> --- Error 2 ignored. ---
+>
+> Copying 'include/OpenLayer/Animation.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Anima
+> tion.hpp'...
+> Copying 'include/OpenLayer/Bitmap.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Bitmap.h
+> pp'...
+> Copying 'include/OpenLayer/Blenders.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Blende
+> rs.hpp'...
+> Copying 'include/OpenLayer/Canvas.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Canvas.h
+> pp'...
+> Copying 'include/OpenLayer/Circle.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Circle.h
+> pp'...
+> Copying 'include/OpenLayer/Collisions.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Coll
+> isions.hpp'...
+> Copying 'include/OpenLayer/Collisions.hpp.backup' to
+> 'C:/Dev-Cpp/include/OpenLay
+> er/Collisions.hpp.backup'...
+> Copying 'include/OpenLayer/Effects.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Effects
+> .hpp'...
+> Copying 'include/OpenLayer/FpsCounter.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/FpsC
+> ounter.hpp'...
+> Copying 'include/OpenLayer/Framebuffer.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Fra
+> mebuffer.hpp'...
+> Copying 'include/OpenLayer/GarbageCollector.hpp' to
+> 'C:/Dev-Cpp/include/OpenLaye
+> r/GarbageCollector.hpp'...
+> Copying 'include/OpenLayer/General.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/General
+> .hpp'...
+> Copying 'include/OpenLayer/GfxRend.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/GfxRend
+> .hpp'...
+> Copying 'include/OpenLayer/GlDriver.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/GlDriv
+> er.hpp'...
+> Copying 'include/OpenLayer/Includes.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Includ
+> es.hpp'...
+> Copying 'include/OpenLayer/Internal.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Intern
+> al.hpp'...
+> Copying 'include/OpenLayer/Line.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Line.hpp'.
+> ..
+> Copying 'include/OpenLayer/LineStrip.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/LineS
+> trip.hpp'...
+> Copying 'include/OpenLayer/LineStripRender.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer
+> /LineStripRender.hpp'...
+> Copying 'include/OpenLayer/Matrix.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Matrix.h
+> pp'...
+> Copying 'include/OpenLayer/Mouse.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Mouse.hpp
+> '...
+> Copying 'include/OpenLayer/OlRectangle.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/OlR
+> ectangle.hpp'...
+> Copying 'include/OpenLayer/PendingLoad.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Pen
+> dingLoad.hpp'...
+> Copying 'include/OpenLayer/Placement.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Place
+> ment.hpp'...
+> Copying 'include/OpenLayer/Point.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Point.hpp
+> '...
+> Copying 'include/OpenLayer/Polygon.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Polygon
+> .hpp'...
+> Copying 'include/OpenLayer/RawLineStrip.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Ra
+> wLineStrip.hpp'...
+> Copying 'include/OpenLayer/Rectangle.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Recta
+> ngle.hpp'...
+> Copying 'include/OpenLayer/RenderModes.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Ren
+> derModes.hpp'...
+> Copying 'include/OpenLayer/Rgba.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Rgba.hpp'.
+> ..
+> Copying 'include/OpenLayer/Settings.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Settin
+> gs.hpp'...
+> Copying 'include/OpenLayer/Setup.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Setup.hpp
+> '...
+> Copying 'include/OpenLayer/Shape.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Shape.hpp
+> '...
+> Copying 'include/OpenLayer/Templates.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Templ
+> ates.hpp'...
+> Copying 'include/OpenLayer/TextRenderer.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Te
+> xtRenderer.hpp'...
+> Copying 'include/OpenLayer/TexturedPoly.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Te
+> xturedPoly.hpp'...
+> Copying 'include/OpenLayer/TextureInfo.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Tex
+> tureInfo.hpp'...
+> Copying 'include/OpenLayer/TransformMatrix.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer
+> /TransformMatrix.hpp'...
+> Copying 'include/OpenLayer/Transforms.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Tran
+> sforms.hpp'...
+> Copying 'include/OpenLayer/Vec2D.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Vec2D.hpp
+> '...
+> Copying 'include/OpenLayer/VertexListCollision.hpp' to
+> 'C:/Dev-Cpp/include/OpenL
+> ayer/VertexListCollision.hpp'...
+> Copying 'include/OpenLayer.hpp' to 'C:/Dev-Cpp/include/OpenLayer.hpp'...
+> Copying 'lib/libopenlayer.a' to 'C:/Dev-Cpp/lib/libopenlayer.a'...
+>
+> Install completed
+>
+> C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat
+> Creating required directories
+> Creating directory obj/...
+> !!! Could not create directory !!!
+> --- Error 1 ignored. ---
+>
+> Creating directory dep/...
+> !!! Could not create directory !!!
+> --- Error 2 ignored. ---
+>
+> Creating directory lib/...
+> !!! Could not create directory !!!
+> --- Error 3 ignored. ---
+>
+> Starting compilation
+> Compiling src/Circle.cpp...
+> Compiling src/TexturedPoly.cpp...
+> Assembling library
+> Deleting lib/libopenlayer.a...
+> Linking lib/libopenlayer.a...
+> ar: 'obj/Collisions.cpp.o': No such file
+> ar: 'obj/OpenLayer/.o': No such file
+>
+> Compilation completed.
+>
+> You can now install the lib by doing:
+> ./cbuild.c install
+>
+> C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat install
+> Where do you wish to install OpenLayer?
+> example: /usr/local (make sure lib and include exist in the directory)
+> Enter exit or cancel if you don't want to install at this time.
+> C:/Dev-Cpp
+> Installing OpenLayer to 'C:/Dev-Cpp'
+> Creating directory C:/Dev-Cpp/include/OpenLayer/...
+> !!! Could not create directory !!!
+> --- Error 1 ignored. ---
+>
+> chmod 755 C:/Dev-Cpp/include/OpenLayer
+> 'chmod' is not recognized as an internal or external command,
+> operable program or batch file.
+> --- Error 2 ignored. ---
+>
+> Copying 'include/OpenLayer/Animation.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Anima
+> tion.hpp'...
+> Copying 'include/OpenLayer/Bitmap.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Bitmap.h
+> pp'...
+> Copying 'include/OpenLayer/Blenders.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Blende
+> rs.hpp'...
+> Copying 'include/OpenLayer/Canvas.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Canvas.h
+> pp'...
+> Copying 'include/OpenLayer/Circle.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Circle.h
+> pp'...
+> Copying 'include/OpenLayer/Collisions.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Coll
+> isions.hpp'...
+> Copying 'include/OpenLayer/Collisions.hpp.backup' to
+> 'C:/Dev-Cpp/include/OpenLay
+> er/Collisions.hpp.backup'...
+> Copying 'include/OpenLayer/Effects.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Effects
+> .hpp'...
+> Copying 'include/OpenLayer/FpsCounter.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/FpsC
+> ounter.hpp'...
+> Copying 'include/OpenLayer/Framebuffer.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Fra
+> mebuffer.hpp'...
+> Copying 'include/OpenLayer/GarbageCollector.hpp' to
+> 'C:/Dev-Cpp/include/OpenLaye
+> r/GarbageCollector.hpp'...
+> Copying 'include/OpenLayer/General.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/General
+> .hpp'...
+> Copying 'include/OpenLayer/GfxRend.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/GfxRend
+> .hpp'...
+> Copying 'include/OpenLayer/GlDriver.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/GlDriv
+> er.hpp'...
+> Copying 'include/OpenLayer/Includes.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Includ
+> es.hpp'...
+> Copying 'include/OpenLayer/Internal.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Intern
+> al.hpp'...
+> Copying 'include/OpenLayer/Line.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Line.hpp'.
+> ..
+> Copying 'include/OpenLayer/LineStrip.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/LineS
+> trip.hpp'...
+> Copying 'include/OpenLayer/LineStripRender.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer
+> /LineStripRender.hpp'...
+> Copying 'include/OpenLayer/Matrix.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Matrix.h
+> pp'...
+> Copying 'include/OpenLayer/Mouse.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Mouse.hpp
+> '...
+> Copying 'include/OpenLayer/OlRectangle.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/OlR
+> ectangle.hpp'...
+> Copying 'include/OpenLayer/PendingLoad.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Pen
+> dingLoad.hpp'...
+> Copying 'include/OpenLayer/Placement.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Place
+> ment.hpp'...
+> Copying 'include/OpenLayer/Point.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Point.hpp
+> '...
+> Copying 'include/OpenLayer/Polygon.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Polygon
+> .hpp'...
+> Copying 'include/OpenLayer/RawLineStrip.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Ra
+> wLineStrip.hpp'...
+> Copying 'include/OpenLayer/Rectangle.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Recta
+> ngle.hpp'...
+> Copying 'include/OpenLayer/RenderModes.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Ren
+> derModes.hpp'...
+> Copying 'include/OpenLayer/Rgba.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Rgba.hpp'.
+> ..
+> Copying 'include/OpenLayer/Settings.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Settin
+> gs.hpp'...
+> Copying 'include/OpenLayer/Setup.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Setup.hpp
+> '...
+> Copying 'include/OpenLayer/Shape.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Shape.hpp
+> '...
+> Copying 'include/OpenLayer/Templates.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Templ
+> ates.hpp'...
+> Copying 'include/OpenLayer/TextRenderer.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Te
+> xtRenderer.hpp'...
+> Copying 'include/OpenLayer/TexturedPoly.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Te
+> xturedPoly.hpp'...
+> Copying 'include/OpenLayer/TextureInfo.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Tex
+> tureInfo.hpp'...
+> Copying 'include/OpenLayer/TransformMatrix.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer
+> /TransformMatrix.hpp'...
+> Copying 'include/OpenLayer/Transforms.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Tran
+> sforms.hpp'...
+> Copying 'include/OpenLayer/Vec2D.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Vec2D.hpp
+> '...
+> Copying 'include/OpenLayer/VertexListCollision.hpp' to
+> 'C:/Dev-Cpp/include/OpenL
+> ayer/VertexListCollision.hpp'...
+> Copying 'include/OpenLayer.hpp' to 'C:/Dev-Cpp/include/OpenLayer.hpp'...
+> Copying 'lib/libopenlayer.a' to 'C:/Dev-Cpp/lib/libopenlayer.a'...
+>
+> Install completed
+>
+> C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat verbose
+> Creating required directories
+> mkdir("obj");
+> !!! Could not create directory !!!
+> --- Error 1 ignored. ---
+>
+> mkdir("dep");
+> !!! Could not create directory !!!
+> --- Error 2 ignored. ---
+>
+> mkdir("lib");
+> !!! Could not create directory !!!
+> --- Error 3 ignored. ---
+>
+> Starting compilation
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/Bitmap.d" -o "obj/Bitmap.o" -c "src/Bitmap.cpp"
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/Canvas.d" -o "obj/Canvas.o" -c "src/Canvas.cpp"
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/Framebuffer.d" -o "obj/Framebuffer.o" -c
+> "src/Framebuffer.c
+> pp"
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/GfxRend.d" -o "obj/GfxRend.o" -c "src/GfxRend.cpp"
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/Polygon.d" -o "obj/Polygon.o" -c "src/Polygon.cpp"
+> src/Polygon.cpp: In member function `virtual void ol::Poly::SetVertex(int,
+> const
+> ol::Vec2D&)':
+> src/Polygon.cpp:40: warning: comparison between signed and unsigned integer
+> expr
+> essions
+> include/OpenLayer/LineStripRender.hpp: In member function `void
+> ol::RawLineStrip
+> <std_container1, std_container2>::LineStripRender(const ol::Rgba*, const
+> ol::Rgb
+> a*, const ol::Bitmap*, float, const ol::Placement&, bool) const [with
+> std_contai
+> ner1 = std::vector<ol::Vec2D, std::allocator<ol::Vec2D> >, std_container2 =
+>
+> std:
+> :vector<float, std::allocator<float> >]':
+>
+> src/Polygon.cpp:34:   instantiated from here
+> include/OpenLayer/LineStripRender.hpp:59: warning: comparison between
+> signed and
+> unsigned integer expressions
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/Rectangle.d" -o "obj/Rectangle.o" -c
+> "src/Rectangle.cpp"
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/RenderModes.d" -o "obj/RenderModes.o" -c
+> "src/RenderModes.c
+> pp"
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/Setup.d" -o "obj/Setup.o" -c "src/Setup.cpp"
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/TexturedPoly.d" -o "obj/TexturedPoly.o" -c
+> "src/TexturedPol
+> y.cpp"
+> Assembling library
+> remove("lib/libopenlayer.a");
+> ar rcs "lib/libopenlayer.a" "obj/Animation.o" "obj/Animation.o"
+> "obj/Bitmap.o" "
+> obj/Bitmap.o" "obj/Blenders.o" "obj/Blenders.o" "obj/Canvas.o"
+> "obj/Canvas.o" "o
+> bj/Circle.o" "obj/Circle.o" "obj/Collisions.o" "obj/Collisions.cpp.o"
+> "obj/Colli
+> sions.o" "obj/Effects.o" "obj/FpsCounter.o" "obj/FpsCounter.o"
+> "obj/Framebuffer.
+> o" "obj/Framebuffer.o" "obj/GarbageCollector.o" "obj/GarbageCollector.o"
+> "obj/Ge
+> neral.o" "obj/General.o" "obj/GfxRend.o" "obj/GlDriver.o" "obj/GlDriver.o"
+> "obj/
+> Internal.o" "obj/Internal.o" "obj/Line.o" "obj/Line.o" "obj/LineStrip.o"
+> "obj/Li
+> neStrip.o" "obj/Matrix.o" "obj/Matrix.o" "obj/OpenLayer/.o"
+> "obj/PendingLoad.o"
+> "obj/PendingLoad.o" "obj/Placement.o" "obj/Placement.o" "obj/Point.o"
+> "obj/Point
+> .o" "obj/Polygon.o" "obj/Polygon.o" "obj/Rectangle.o" "obj/Rectangle.o"
+> "obj/Ren
+> derModes.o" "obj/RenderModes.o" "obj/Rgba.o" "obj/Rgba.o" "obj/Settings.o"
+> "obj/
+> Settings.o" "obj/Setup.o" "obj/Setup.o" "obj/Shape.o" "obj/Shape.o"
+> "obj/TextRen
+> derer.o" "obj/TextRenderer.o" "obj/TexturedPoly.o" "obj/TexturedPoly.o"
+> "obj/Tex
+> tureInfo.o" "obj/TextureInfo.o" "obj/Transforms.o" "obj/Transforms.o"
+> ar: 'obj/Collisions.cpp.o': No such file
+> ar: 'obj/OpenLayer/.o': No such file
+>
+> Compilation completed.
+>
+> You can now install the lib by doing:
+> ./cbuild.c install
+>
+> >From: "Miguel A. Gavidia" <juvinious at gmail.com>
+> >Reply-To: openlayer-developer at berlios.de
+> >To: openlayer-developer at berlios.de
+> >Subject: Re: [Openlayer-developer] CBuild problem?
+> >Date: Fri, 5 May 2006 22:02:57 +0800
+> >
+> >????????? 05 5??? 2006 21:35???Esa Tanskanen ????????????????????????:
+> > > I get the following output when runing buildme.bat:
+> > >
+> > > Starting compilation
+> > > Compiling src/Circle.cpp...
+> > > Compiling src/Collisions.cpp...
+> > > Assembling library
+> > > Deleting lib/libopenlayer.a...
+> > > Linking lib/libopenlayer.a...
+> > > ar: 'obj/Collisions.cpp.o': No such file
+> > > ar: 'obj/OpenLayer/.o': No such file
+> > >
+> > > Compilation completed.
+> > >
+> > > You can now install the lib by doing:
+> > > ./cbuild.c install
+> > >
+> > > Is the "No such file" anything problematic?
+> > >
+> > > /Esa
+> > >
+> > > _________________________________________________________________
+> > > Uutiset ja kasvot uutisten takaa. MSN Search, t??yden palvelun
+> > > hakukone. http://search.msn.fi
+> > >
+> > > _______________________________________________
+> > > Openlayer-developer mailing list
+> > > Openlayer-developer at lists.berlios.de
+> > > http://lists.berlios.de/mailman/listinfo/openlayer-developer
+> >
+> >Strange, seems to be having parsing problems lately.
+> >Can you do me a favor and do:
+> >buildme.bat verbose
+> >and post the output of the whole compilation that way I can see what's
+> >wrong.
+> >I'll also check if cbuild has been updated or changed recently.
+> >Thanks.
+> >
+> >--
+> >-juvinious
+> >
+> ><a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+> >_______________________________________________
+> >Openlayer-developer mailing list
+> >Openlayer-developer at lists.berlios.de
+> >http://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+> _________________________________________________________________
+> Windows-ty?p?yt?haun avulla l?yd?t tiedot koneeltasi silm?nr?p?yksess?.
+> http://toolbar.msn.fi
+>
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+Hmm I'm curious are you using cmd.exe or msys? Because if you are using msys 
+you can replace buildme.bat with ./cbuild.c, if not disregard.
+
+Ok looks really out of order. :o
+Maybe you can do this first:
+buildme clean
+
+then give me the output of these two in sequence:
+
+buildme verbose
+buildme verbose install
+
+Thanks. Also are you having issues with the actual library after the compile 
+and install?
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From juvinious at gmail.com  Fri May  5 19:24:15 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Sat, 6 May 2006 01:24:15 +0800
+Subject: [Openlayer-developer] CBuild problem?
+In-Reply-To: <BAY21-F6DFAADB62F5A8DDFBFA92DFB50@phx.gbl>
+References: <BAY21-F6DFAADB62F5A8DDFBFA92DFB50@phx.gbl>
+Message-ID: <200605060124.15746.juvinious@gmail.com>
+
+??? 05 5? 2006 21:52?Esa Tanskanen ????????:
+> OK, here:
+>
+> Installing OpenLayer to 'C:/Dev-Cpp'
+> Creating directory C:/Dev-Cpp/include/OpenLayer/...
+> !!! Could not create directory !!!
+> --- Error 1 ignored. ---
+>
+> chmod 755 C:/Dev-Cpp/include/OpenLayer
+> 'chmod' is not recognized as an internal or external command,
+> operable program or batch file.
+> --- Error 2 ignored. ---
+>
+> Copying 'include/OpenLayer/Animation.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Anima
+> tion.hpp'...
+> Copying 'include/OpenLayer/Bitmap.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Bitmap.h
+> pp'...
+> Copying 'include/OpenLayer/Blenders.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Blende
+> rs.hpp'...
+> Copying 'include/OpenLayer/Canvas.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Canvas.h
+> pp'...
+> Copying 'include/OpenLayer/Circle.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Circle.h
+> pp'...
+> Copying 'include/OpenLayer/Collisions.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Coll
+> isions.hpp'...
+> Copying 'include/OpenLayer/Collisions.hpp.backup' to
+> 'C:/Dev-Cpp/include/OpenLay
+> er/Collisions.hpp.backup'...
+> Copying 'include/OpenLayer/Effects.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Effects
+> .hpp'...
+> Copying 'include/OpenLayer/FpsCounter.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/FpsC
+> ounter.hpp'...
+> Copying 'include/OpenLayer/Framebuffer.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Fra
+> mebuffer.hpp'...
+> Copying 'include/OpenLayer/GarbageCollector.hpp' to
+> 'C:/Dev-Cpp/include/OpenLaye
+> r/GarbageCollector.hpp'...
+> Copying 'include/OpenLayer/General.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/General
+> .hpp'...
+> Copying 'include/OpenLayer/GfxRend.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/GfxRend
+> .hpp'...
+> Copying 'include/OpenLayer/GlDriver.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/GlDriv
+> er.hpp'...
+> Copying 'include/OpenLayer/Includes.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Includ
+> es.hpp'...
+> Copying 'include/OpenLayer/Internal.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Intern
+> al.hpp'...
+> Copying 'include/OpenLayer/Line.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Line.hpp'.
+> ..
+> Copying 'include/OpenLayer/LineStrip.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/LineS
+> trip.hpp'...
+> Copying 'include/OpenLayer/LineStripRender.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer
+> /LineStripRender.hpp'...
+> Copying 'include/OpenLayer/Matrix.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Matrix.h
+> pp'...
+> Copying 'include/OpenLayer/Mouse.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Mouse.hpp
+> '...
+> Copying 'include/OpenLayer/OlRectangle.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/OlR
+> ectangle.hpp'...
+> Copying 'include/OpenLayer/PendingLoad.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Pen
+> dingLoad.hpp'...
+> Copying 'include/OpenLayer/Placement.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Place
+> ment.hpp'...
+> Copying 'include/OpenLayer/Point.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Point.hpp
+> '...
+> Copying 'include/OpenLayer/Polygon.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Polygon
+> .hpp'...
+> Copying 'include/OpenLayer/RawLineStrip.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Ra
+> wLineStrip.hpp'...
+> Copying 'include/OpenLayer/Rectangle.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Recta
+> ngle.hpp'...
+> Copying 'include/OpenLayer/RenderModes.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Ren
+> derModes.hpp'...
+> Copying 'include/OpenLayer/Rgba.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Rgba.hpp'.
+> ..
+> Copying 'include/OpenLayer/Settings.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Settin
+> gs.hpp'...
+> Copying 'include/OpenLayer/Setup.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Setup.hpp
+> '...
+> Copying 'include/OpenLayer/Shape.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Shape.hpp
+> '...
+> Copying 'include/OpenLayer/Templates.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Templ
+> ates.hpp'...
+> Copying 'include/OpenLayer/TextRenderer.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Te
+> xtRenderer.hpp'...
+> Copying 'include/OpenLayer/TexturedPoly.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Te
+> xturedPoly.hpp'...
+> Copying 'include/OpenLayer/TextureInfo.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Tex
+> tureInfo.hpp'...
+> Copying 'include/OpenLayer/TransformMatrix.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer
+> /TransformMatrix.hpp'...
+> Copying 'include/OpenLayer/Transforms.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Tran
+> sforms.hpp'...
+> Copying 'include/OpenLayer/Vec2D.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Vec2D.hpp
+> '...
+> Copying 'include/OpenLayer/VertexListCollision.hpp' to
+> 'C:/Dev-Cpp/include/OpenL
+> ayer/VertexListCollision.hpp'...
+> Copying 'include/OpenLayer.hpp' to 'C:/Dev-Cpp/include/OpenLayer.hpp'...
+> Copying 'lib/libopenlayer.a' to 'C:/Dev-Cpp/lib/libopenlayer.a'...
+>
+> Install completed
+>
+> C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat
+> Creating required directories
+> Creating directory obj/...
+> !!! Could not create directory !!!
+> --- Error 1 ignored. ---
+>
+> Creating directory dep/...
+> !!! Could not create directory !!!
+> --- Error 2 ignored. ---
+>
+> Creating directory lib/...
+> !!! Could not create directory !!!
+> --- Error 3 ignored. ---
+>
+> Starting compilation
+> Compiling src/Circle.cpp...
+> Compiling src/TexturedPoly.cpp...
+> Assembling library
+> Deleting lib/libopenlayer.a...
+> Linking lib/libopenlayer.a...
+> ar: 'obj/Collisions.cpp.o': No such file
+> ar: 'obj/OpenLayer/.o': No such file
+>
+> Compilation completed.
+>
+> You can now install the lib by doing:
+> ./cbuild.c install
+>
+> C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat install
+> Where do you wish to install OpenLayer?
+> example: /usr/local (make sure lib and include exist in the directory)
+> Enter exit or cancel if you don't want to install at this time.
+> C:/Dev-Cpp
+> Installing OpenLayer to 'C:/Dev-Cpp'
+> Creating directory C:/Dev-Cpp/include/OpenLayer/...
+> !!! Could not create directory !!!
+> --- Error 1 ignored. ---
+>
+> chmod 755 C:/Dev-Cpp/include/OpenLayer
+> 'chmod' is not recognized as an internal or external command,
+> operable program or batch file.
+> --- Error 2 ignored. ---
+>
+> Copying 'include/OpenLayer/Animation.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Anima
+> tion.hpp'...
+> Copying 'include/OpenLayer/Bitmap.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Bitmap.h
+> pp'...
+> Copying 'include/OpenLayer/Blenders.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Blende
+> rs.hpp'...
+> Copying 'include/OpenLayer/Canvas.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Canvas.h
+> pp'...
+> Copying 'include/OpenLayer/Circle.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Circle.h
+> pp'...
+> Copying 'include/OpenLayer/Collisions.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Coll
+> isions.hpp'...
+> Copying 'include/OpenLayer/Collisions.hpp.backup' to
+> 'C:/Dev-Cpp/include/OpenLay
+> er/Collisions.hpp.backup'...
+> Copying 'include/OpenLayer/Effects.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Effects
+> .hpp'...
+> Copying 'include/OpenLayer/FpsCounter.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/FpsC
+> ounter.hpp'...
+> Copying 'include/OpenLayer/Framebuffer.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Fra
+> mebuffer.hpp'...
+> Copying 'include/OpenLayer/GarbageCollector.hpp' to
+> 'C:/Dev-Cpp/include/OpenLaye
+> r/GarbageCollector.hpp'...
+> Copying 'include/OpenLayer/General.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/General
+> .hpp'...
+> Copying 'include/OpenLayer/GfxRend.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/GfxRend
+> .hpp'...
+> Copying 'include/OpenLayer/GlDriver.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/GlDriv
+> er.hpp'...
+> Copying 'include/OpenLayer/Includes.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Includ
+> es.hpp'...
+> Copying 'include/OpenLayer/Internal.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Intern
+> al.hpp'...
+> Copying 'include/OpenLayer/Line.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Line.hpp'.
+> ..
+> Copying 'include/OpenLayer/LineStrip.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/LineS
+> trip.hpp'...
+> Copying 'include/OpenLayer/LineStripRender.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer
+> /LineStripRender.hpp'...
+> Copying 'include/OpenLayer/Matrix.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Matrix.h
+> pp'...
+> Copying 'include/OpenLayer/Mouse.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Mouse.hpp
+> '...
+> Copying 'include/OpenLayer/OlRectangle.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/OlR
+> ectangle.hpp'...
+> Copying 'include/OpenLayer/PendingLoad.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Pen
+> dingLoad.hpp'...
+> Copying 'include/OpenLayer/Placement.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Place
+> ment.hpp'...
+> Copying 'include/OpenLayer/Point.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Point.hpp
+> '...
+> Copying 'include/OpenLayer/Polygon.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Polygon
+> .hpp'...
+> Copying 'include/OpenLayer/RawLineStrip.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Ra
+> wLineStrip.hpp'...
+> Copying 'include/OpenLayer/Rectangle.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Recta
+> ngle.hpp'...
+> Copying 'include/OpenLayer/RenderModes.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Ren
+> derModes.hpp'...
+> Copying 'include/OpenLayer/Rgba.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Rgba.hpp'.
+> ..
+> Copying 'include/OpenLayer/Settings.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Settin
+> gs.hpp'...
+> Copying 'include/OpenLayer/Setup.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Setup.hpp
+> '...
+> Copying 'include/OpenLayer/Shape.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Shape.hpp
+> '...
+> Copying 'include/OpenLayer/Templates.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Templ
+> ates.hpp'...
+> Copying 'include/OpenLayer/TextRenderer.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Te
+> xtRenderer.hpp'...
+> Copying 'include/OpenLayer/TexturedPoly.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Te
+> xturedPoly.hpp'...
+> Copying 'include/OpenLayer/TextureInfo.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Tex
+> tureInfo.hpp'...
+> Copying 'include/OpenLayer/TransformMatrix.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer
+> /TransformMatrix.hpp'...
+> Copying 'include/OpenLayer/Transforms.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Tran
+> sforms.hpp'...
+> Copying 'include/OpenLayer/Vec2D.hpp' to
+> 'C:/Dev-Cpp/include/OpenLayer/Vec2D.hpp
+> '...
+> Copying 'include/OpenLayer/VertexListCollision.hpp' to
+> 'C:/Dev-Cpp/include/OpenL
+> ayer/VertexListCollision.hpp'...
+> Copying 'include/OpenLayer.hpp' to 'C:/Dev-Cpp/include/OpenLayer.hpp'...
+> Copying 'lib/libopenlayer.a' to 'C:/Dev-Cpp/lib/libopenlayer.a'...
+>
+> Install completed
+>
+> C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat verbose
+> Creating required directories
+> mkdir("obj");
+> !!! Could not create directory !!!
+> --- Error 1 ignored. ---
+>
+> mkdir("dep");
+> !!! Could not create directory !!!
+> --- Error 2 ignored. ---
+>
+> mkdir("lib");
+> !!! Could not create directory !!!
+> --- Error 3 ignored. ---
+>
+> Starting compilation
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/Bitmap.d" -o "obj/Bitmap.o" -c "src/Bitmap.cpp"
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/Canvas.d" -o "obj/Canvas.o" -c "src/Canvas.cpp"
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/Framebuffer.d" -o "obj/Framebuffer.o" -c
+> "src/Framebuffer.c
+> pp"
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/GfxRend.d" -o "obj/GfxRend.o" -c "src/GfxRend.cpp"
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/Polygon.d" -o "obj/Polygon.o" -c "src/Polygon.cpp"
+> src/Polygon.cpp: In member function `virtual void ol::Poly::SetVertex(int,
+> const
+> ol::Vec2D&)':
+> src/Polygon.cpp:40: warning: comparison between signed and unsigned integer
+> expr
+> essions
+> include/OpenLayer/LineStripRender.hpp: In member function `void
+> ol::RawLineStrip
+> <std_container1, std_container2>::LineStripRender(const ol::Rgba*, const
+> ol::Rgb
+> a*, const ol::Bitmap*, float, const ol::Placement&, bool) const [with
+> std_contai
+> ner1 = std::vector<ol::Vec2D, std::allocator<ol::Vec2D> >, std_container2 =
+>
+> std:
+> :vector<float, std::allocator<float> >]':
+>
+> src/Polygon.cpp:34:   instantiated from here
+> include/OpenLayer/LineStripRender.hpp:59: warning: comparison between
+> signed and
+> unsigned integer expressions
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/Rectangle.d" -o "obj/Rectangle.o" -c
+> "src/Rectangle.cpp"
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/RenderModes.d" -o "obj/RenderModes.o" -c
+> "src/RenderModes.c
+> pp"
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/Setup.d" -o "obj/Setup.o" -c "src/Setup.cpp"
+> g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> -DOL_NO_OL
+> D_API  -MMD -MF "dep/TexturedPoly.d" -o "obj/TexturedPoly.o" -c
+> "src/TexturedPol
+> y.cpp"
+> Assembling library
+> remove("lib/libopenlayer.a");
+> ar rcs "lib/libopenlayer.a" "obj/Animation.o" "obj/Animation.o"
+> "obj/Bitmap.o" "
+> obj/Bitmap.o" "obj/Blenders.o" "obj/Blenders.o" "obj/Canvas.o"
+> "obj/Canvas.o" "o
+> bj/Circle.o" "obj/Circle.o" "obj/Collisions.o" "obj/Collisions.cpp.o"
+> "obj/Colli
+> sions.o" "obj/Effects.o" "obj/FpsCounter.o" "obj/FpsCounter.o"
+> "obj/Framebuffer.
+> o" "obj/Framebuffer.o" "obj/GarbageCollector.o" "obj/GarbageCollector.o"
+> "obj/Ge
+> neral.o" "obj/General.o" "obj/GfxRend.o" "obj/GlDriver.o" "obj/GlDriver.o"
+> "obj/
+> Internal.o" "obj/Internal.o" "obj/Line.o" "obj/Line.o" "obj/LineStrip.o"
+> "obj/Li
+> neStrip.o" "obj/Matrix.o" "obj/Matrix.o" "obj/OpenLayer/.o"
+> "obj/PendingLoad.o"
+> "obj/PendingLoad.o" "obj/Placement.o" "obj/Placement.o" "obj/Point.o"
+> "obj/Point
+> .o" "obj/Polygon.o" "obj/Polygon.o" "obj/Rectangle.o" "obj/Rectangle.o"
+> "obj/Ren
+> derModes.o" "obj/RenderModes.o" "obj/Rgba.o" "obj/Rgba.o" "obj/Settings.o"
+> "obj/
+> Settings.o" "obj/Setup.o" "obj/Setup.o" "obj/Shape.o" "obj/Shape.o"
+> "obj/TextRen
+> derer.o" "obj/TextRenderer.o" "obj/TexturedPoly.o" "obj/TexturedPoly.o"
+> "obj/Tex
+> tureInfo.o" "obj/TextureInfo.o" "obj/Transforms.o" "obj/Transforms.o"
+> ar: 'obj/Collisions.cpp.o': No such file
+> ar: 'obj/OpenLayer/.o': No such file
+>
+> Compilation completed.
+>
+> You can now install the lib by doing:
+> ./cbuild.c install
+>
+> >From: "Miguel A. Gavidia" <juvinious at gmail.com>
+> >Reply-To: openlayer-developer at berlios.de
+> >To: openlayer-developer at berlios.de
+> >Subject: Re: [Openlayer-developer] CBuild problem?
+> >Date: Fri, 5 May 2006 22:02:57 +0800
+> >
+> >????????? 05 5??? 2006 21:35???Esa Tanskanen ????????????????????????:
+> > > I get the following output when runing buildme.bat:
+> > >
+> > > Starting compilation
+> > > Compiling src/Circle.cpp...
+> > > Compiling src/Collisions.cpp...
+> > > Assembling library
+> > > Deleting lib/libopenlayer.a...
+> > > Linking lib/libopenlayer.a...
+> > > ar: 'obj/Collisions.cpp.o': No such file
+> > > ar: 'obj/OpenLayer/.o': No such file
+> > >
+> > > Compilation completed.
+> > >
+> > > You can now install the lib by doing:
+> > > ./cbuild.c install
+> > >
+> > > Is the "No such file" anything problematic?
+> > >
+> > > /Esa
+> > >
+> > > _________________________________________________________________
+> > > Uutiset ja kasvot uutisten takaa. MSN Search, t??yden palvelun
+> > > hakukone. http://search.msn.fi
+> > >
+> > > _______________________________________________
+> > > Openlayer-developer mailing list
+> > > Openlayer-developer at lists.berlios.de
+> > > http://lists.berlios.de/mailman/listinfo/openlayer-developer
+> >
+> >Strange, seems to be having parsing problems lately.
+> >Can you do me a favor and do:
+> >buildme.bat verbose
+> >and post the output of the whole compilation that way I can see what's
+> >wrong.
+> >I'll also check if cbuild has been updated or changed recently.
+> >Thanks.
+> >
+> >--
+> >-juvinious
+> >
+> ><a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+> >_______________________________________________
+> >Openlayer-developer mailing list
+> >Openlayer-developer at lists.berlios.de
+> >http://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+> _________________________________________________________________
+> Windows-ty?p?yt?haun avulla l?yd?t tiedot koneeltasi silm?nr?p?yksess?.
+> http://toolbar.msn.fi
+>
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+After looking over your output one more time and although there doesn't seem 
+to be a problem with putting together the lib, there is an annoying parse 
+problem which could lead to other problems later on. Maybe you can do a 
+buildme clean like I suggested in my previous post and try rebuilding and 
+hopefully that helps. In the meantime it should be ok, I'll be updating the 
+cbuild when I get a chance to test it out on a windows box tommorrow.
+Thanks again.
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From fladimir2002 at hotmail.com  Tue May  9 18:56:06 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Tue, 09 May 2006 19:56:06 +0300
+Subject: [Openlayer-developer] CBuild problem?
+In-Reply-To: <200605060124.15746.juvinious@gmail.com>
+Message-ID: <BAY21-F19EE65302123B7C7F1A87FDFA90@phx.gbl>
+
+Alright, here it is:
+
+C:\Projektit\OpenLayer\OpenLayer2D\Source>
+
+
+Deleting dep/Circle.d...
+Deleting obj/Collisions.o...
+Deleting dep/Collisions.d...
+Deleting obj/Effects.o...
+Deleting dep/Effects.d...
+Deleting obj/FpsCounter.o...
+Deleting dep/FpsCounter.d...
+Deleting obj/Framebuffer.o...
+Deleting dep/Framebuffer.d...
+Deleting obj/GarbageCollector.o...
+Deleting dep/GarbageCollector.d...
+Deleting obj/General.o...
+Deleting dep/General.d...
+Deleting obj/GfxRend.o...
+Deleting dep/GfxRend.d...
+Deleting obj/GlDriver.o...
+Deleting dep/GlDriver.d...
+Deleting obj/Internal.o...
+Deleting dep/Internal.d...
+Deleting obj/Line.o...
+Deleting dep/Line.d...
+Deleting obj/LineStrip.o...
+Deleting dep/LineStrip.d...
+Deleting obj/Matrix.o...
+Deleting dep/Matrix.d...
+Deleting obj/PendingLoad.o...
+Deleting dep/PendingLoad.d...
+Deleting obj/Placement.o...
+Deleting dep/Placement.d...
+Deleting obj/Point.o...
+Deleting dep/Point.d...
+Deleting obj/Polygon.o...
+Deleting dep/Polygon.d...
+Deleting obj/Rectangle.o...
+Deleting dep/Rectangle.d...
+Deleting obj/RenderModes.o...
+Deleting dep/RenderModes.d...
+Deleting obj/Rgba.o...
+Deleting dep/Rgba.d...
+Deleting obj/Settings.o...
+Deleting dep/Settings.d...
+Deleting obj/Setup.o...
+Deleting dep/Setup.d...
+Deleting obj/Shape.o...
+Deleting dep/Shape.d...
+Deleting obj/TextRenderer.o...
+Deleting dep/TextRenderer.d...
+Deleting obj/TexturedPoly.o...
+Deleting dep/TexturedPoly.d...
+Deleting obj/TextureInfo.o...
+Deleting dep/TextureInfo.d...
+Deleting obj/Transforms.o...
+Deleting dep/Transforms.d...
+Deleting lib/libopenlayer.a...
+Deleting options...
+Deleting obj...
+Deleting lib...
+Deleting dep...
+
+C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat verbose
+Seting up for msys environment
+Do you wish to drop PNG support? [y/N]
+N
+Do you wish to drop TTF support? [y/N]
+N
+Do you wish to drop old API Support? [y/N]
+y
+Do you wish to drop State Changes? [y/N]
+n
+Creating required directories
+mkdir("obj");
+mkdir("dep");
+mkdir("lib");
+Starting compilation
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Animation.d" -o "obj/Animation.o" -c 
+"src/Animation.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Bitmap.d" -o "obj/Bitmap.o" -c "src/Bitmap.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Blenders.d" -o "obj/Blenders.o" -c "src/Blenders.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Canvas.d" -o "obj/Canvas.o" -c "src/Canvas.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Circle.d" -o "obj/Circle.o" -c "src/Circle.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Collisions.d" -o "obj/Collisions.o" -c 
+"src/Collisions.cpp"
+
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Effects.d" -o "obj/Effects.o" -c "src/Effects.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/FpsCounter.d" -o "obj/FpsCounter.o" -c 
+"src/FpsCounter.cpp"
+
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Framebuffer.d" -o "obj/Framebuffer.o" -c 
+"src/Framebuffer.c
+pp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/GarbageCollector.d" -o "obj/GarbageCollector.o" -c 
+"src/Gar
+bageCollector.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/General.d" -o "obj/General.o" -c "src/General.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/GfxRend.d" -o "obj/GfxRend.o" -c "src/GfxRend.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/GlDriver.d" -o "obj/GlDriver.o" -c "src/GlDriver.cpp"
+src/GlDriver.cpp: In member function `virtual ol::OlTextureInfo 
+ol::AllegroGLDri
+ver::UploadTexture(BITMAP*, bool)':
+src/GlDriver.cpp:131: warning: unused variable 'useTemp'
+src/GlDriver.cpp:150: warning: unused variable 'useExtendedDimensions'
+src/GlDriver.cpp:154: warning: unused variable 'bitmapBpp'
+src/GlDriver.cpp:164: warning: unused variable 'buffer'
+src/GlDriver.cpp: In member function `virtual BITMAP* 
+ol::AllegroGLDriver::GetMe
+moryBitmap(int, int, int, unsigned char*)':
+src/GlDriver.cpp:330: warning: unused variable 'bytesPerLine'
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Internal.d" -o "obj/Internal.o" -c "src/Internal.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Line.d" -o "obj/Line.o" -c "src/Line.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/LineStrip.d" -o "obj/LineStrip.o" -c 
+"src/LineStrip.cpp"
+src/LineStrip.cpp: In member function `ol::Vec2D 
+ol::LineStrip::GetVertex(unsign
+ed int) const':
+src/LineStrip.cpp:65: warning: comparison between signed and unsigned 
+integer ex
+pressions
+include/OpenLayer/LineStripRender.hpp: In member function `void 
+ol::RawLineStrip
+<std_container1, std_container2>::LineStripRender(const ol::Rgba*, const 
+ol::Rgb
+a*, const ol::Bitmap*, float, const ol::Placement&, bool) const [with 
+std_contai
+ner1 = std::list<ol::Vec2D, std::allocator<ol::Vec2D> >, std_container2 = 
+std::l
+ist<float, std::allocator<float> >]':
+src/LineStrip.cpp:48:   instantiated from here
+include/OpenLayer/LineStripRender.hpp:59: warning: comparison between signed 
+and
+unsigned integer expressions
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Matrix.d" -o "obj/Matrix.o" -c "src/Matrix.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/PendingLoad.d" -o "obj/PendingLoad.o" -c 
+"src/PendingLoad.c
+pp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Placement.d" -o "obj/Placement.o" -c 
+"src/Placement.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Point.d" -o "obj/Point.o" -c "src/Point.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Polygon.d" -o "obj/Polygon.o" -c "src/Polygon.cpp"
+src/Polygon.cpp: In member function `virtual void ol::Poly::SetVertex(int, 
+const
+ol::Vec2D&)':
+src/Polygon.cpp:40: warning: comparison between signed and unsigned integer 
+expr
+essions
+include/OpenLayer/LineStripRender.hpp: In member function `void 
+ol::RawLineStrip
+<std_container1, std_container2>::LineStripRender(const ol::Rgba*, const 
+ol::Rgb
+a*, const ol::Bitmap*, float, const ol::Placement&, bool) const [with 
+std_contai
+ner1 = std::vector<ol::Vec2D, std::allocator<ol::Vec2D> >, std_container2 = 
+std:
+:vector<float, std::allocator<float> >]':
+src/Polygon.cpp:34:   instantiated from here
+include/OpenLayer/LineStripRender.hpp:59: warning: comparison between signed 
+and
+unsigned integer expressions
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Rectangle.d" -o "obj/Rectangle.o" -c 
+"src/Rectangle.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/RenderModes.d" -o "obj/RenderModes.o" -c 
+"src/RenderModes.c
+pp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Rgba.d" -o "obj/Rgba.o" -c "src/Rgba.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Settings.d" -o "obj/Settings.o" -c "src/Settings.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Setup.d" -o "obj/Setup.o" -c "src/Setup.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Shape.d" -o "obj/Shape.o" -c "src/Shape.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/TextRenderer.d" -o "obj/TextRenderer.o" -c 
+"src/TextRendere
+r.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/TexturedPoly.d" -o "obj/TexturedPoly.o" -c 
+"src/TexturedPol
+y.cpp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/TextureInfo.d" -o "obj/TextureInfo.o" -c 
+"src/TextureInfo.c
+pp"
+g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations 
+-DOL_NO_OL
+D_API  -MMD -MF "dep/Transforms.d" -o "obj/Transforms.o" -c 
+"src/Transforms.cpp"
+
+Assembling library
+ar rcs "lib/libopenlayer.a" "obj/Animation.o" "obj/Animation.o" 
+"obj/Bitmap.o" "
+obj/Bitmap.o" "obj/Blenders.o" "obj/Blenders.o" "obj/Canvas.o" 
+"obj/Canvas.o" "o
+bj/Circle.o" "obj/Circle.o" "obj/Collisions.o" "obj/Collisions.cpp.o" 
+"obj/Colli
+sions.o" "obj/Effects.o" "obj/FpsCounter.o" "obj/FpsCounter.o" 
+"obj/Framebuffer.
+o" "obj/Framebuffer.o" "obj/GarbageCollector.o" "obj/GarbageCollector.o" 
+"obj/Ge
+neral.o" "obj/General.o" "obj/GfxRend.o" "obj/GlDriver.o" "obj/GlDriver.o" 
+"obj/
+Internal.o" "obj/Internal.o" "obj/Line.o" "obj/Line.o" "obj/LineStrip.o" 
+"obj/Li
+neStrip.o" "obj/Matrix.o" "obj/Matrix.o" "obj/OpenLayer/.o" 
+"obj/PendingLoad.o"
+"obj/PendingLoad.o" "obj/Placement.o" "obj/Placement.o" "obj/Point.o" 
+"obj/Point
+.o" "obj/Polygon.o" "obj/Polygon.o" "obj/Rectangle.o" "obj/Rectangle.o" 
+"obj/Ren
+derModes.o" "obj/RenderModes.o" "obj/Rgba.o" "obj/Rgba.o" "obj/Settings.o" 
+"obj/
+Settings.o" "obj/Setup.o" "obj/Setup.o" "obj/Shape.o" "obj/Shape.o" 
+"obj/TextRen
+derer.o" "obj/TextRenderer.o" "obj/TexturedPoly.o" "obj/TexturedPoly.o" 
+"obj/Tex
+tureInfo.o" "obj/TextureInfo.o" "obj/Transforms.o" "obj/Transforms.o"
+ar: 'obj/Collisions.cpp.o': No such file
+ar: 'obj/OpenLayer/.o': No such file
+
+Compilation completed.
+
+You can now install the lib by doing:
+./cbuild.c install
+
+C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat install verbose
+Where do you wish to install OpenLayer?
+example: /usr/local (make sure lib and include exist in the directory)
+Enter exit or cancel if you don't want to install at this time.
+C:/Dev-Cpp
+Installing OpenLayer to 'C:/Dev-Cpp'
+mkdir("C:/Dev-Cpp/include/OpenLayer");
+!!! Could not create directory !!!
+--- Error 1 ignored. ---
+
+copy_file("include/OpenLayer/Animation.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Anima
+tion.hpp");
+copy_file("include/OpenLayer/Bitmap.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Bitmap.h
+pp");
+copy_file("include/OpenLayer/Blenders.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Blende
+rs.hpp");
+copy_file("include/OpenLayer/Canvas.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Canvas.h
+pp");
+copy_file("include/OpenLayer/Circle.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Circle.h
+pp");
+copy_file("include/OpenLayer/Collisions.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Coll
+isions.hpp");
+copy_file("include/OpenLayer/Collisions.hpp.backup", 
+"C:/Dev-Cpp/include/OpenLay
+er/Collisions.hpp.backup");
+copy_file("include/OpenLayer/Effects.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Effects
+.hpp");
+copy_file("include/OpenLayer/FpsCounter.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/FpsC
+ounter.hpp");
+copy_file("include/OpenLayer/Framebuffer.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Fra
+mebuffer.hpp");
+copy_file("include/OpenLayer/GarbageCollector.hpp", 
+"C:/Dev-Cpp/include/OpenLaye
+r/GarbageCollector.hpp");
+copy_file("include/OpenLayer/General.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/General
+.hpp");
+copy_file("include/OpenLayer/GfxRend.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/GfxRend
+.hpp");
+copy_file("include/OpenLayer/GlDriver.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/GlDriv
+er.hpp");
+copy_file("include/OpenLayer/Includes.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Includ
+es.hpp");
+copy_file("include/OpenLayer/Internal.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Intern
+al.hpp");
+copy_file("include/OpenLayer/Line.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Line.hpp")
+;
+copy_file("include/OpenLayer/LineStrip.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/LineS
+trip.hpp");
+copy_file("include/OpenLayer/LineStripRender.hpp", 
+"C:/Dev-Cpp/include/OpenLayer
+/LineStripRender.hpp");
+copy_file("include/OpenLayer/Matrix.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Matrix.h
+pp");
+copy_file("include/OpenLayer/Mouse.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Mouse.hpp
+");
+copy_file("include/OpenLayer/OlRectangle.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/OlR
+ectangle.hpp");
+copy_file("include/OpenLayer/PendingLoad.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Pen
+dingLoad.hpp");
+copy_file("include/OpenLayer/Placement.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Place
+ment.hpp");
+copy_file("include/OpenLayer/Point.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Point.hpp
+");
+copy_file("include/OpenLayer/Polygon.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Polygon
+.hpp");
+copy_file("include/OpenLayer/RawLineStrip.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Ra
+wLineStrip.hpp");
+copy_file("include/OpenLayer/Rectangle.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Recta
+ngle.hpp");
+copy_file("include/OpenLayer/RenderModes.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Ren
+derModes.hpp");
+copy_file("include/OpenLayer/Rgba.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Rgba.hpp")
+;
+copy_file("include/OpenLayer/Settings.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Settin
+gs.hpp");
+copy_file("include/OpenLayer/Setup.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Setup.hpp
+");
+copy_file("include/OpenLayer/Shape.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Shape.hpp
+");
+copy_file("include/OpenLayer/Templates.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Templ
+ates.hpp");
+copy_file("include/OpenLayer/TextRenderer.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Te
+xtRenderer.hpp");
+copy_file("include/OpenLayer/TexturedPoly.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Te
+xturedPoly.hpp");
+copy_file("include/OpenLayer/TextureInfo.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Tex
+tureInfo.hpp");
+copy_file("include/OpenLayer/TransformMatrix.hpp", 
+"C:/Dev-Cpp/include/OpenLayer
+/TransformMatrix.hpp");
+copy_file("include/OpenLayer/Transforms.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Tran
+sforms.hpp");
+copy_file("include/OpenLayer/Vec2D.hpp", 
+"C:/Dev-Cpp/include/OpenLayer/Vec2D.hpp
+");
+copy_file("include/OpenLayer/VertexListCollision.hpp", 
+"C:/Dev-Cpp/include/OpenL
+ayer/VertexListCollision.hpp");
+copy_file("include/OpenLayer.hpp", "C:/Dev-Cpp/include/OpenLayer.hpp");
+copy_file("lib/libopenlayer.a", "C:/Dev-Cpp/lib/libopenlayer.a");
+
+Install completed
+
+C:\Projektit\OpenLayer\OpenLayer2D\Source>
+
+Thanks for the help!
+
+
+>From: "Miguel A. Gavidia" <juvinious at gmail.com>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: Re: [Openlayer-developer] CBuild problem?
+>Date: Sat, 6 May 2006 01:24:15 +0800
+>
+>????????? 05 5??? 2006 21:52???Esa Tanskanen ????????????????????????:
+> > OK, here:
+> >
+> > Installing OpenLayer to 'C:/Dev-Cpp'
+> > Creating directory C:/Dev-Cpp/include/OpenLayer/...
+> > !!! Could not create directory !!!
+> > --- Error 1 ignored. ---
+> >
+> > chmod 755 C:/Dev-Cpp/include/OpenLayer
+> > 'chmod' is not recognized as an internal or external command,
+> > operable program or batch file.
+> > --- Error 2 ignored. ---
+> >
+> > Copying 'include/OpenLayer/Animation.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Anima
+> > tion.hpp'...
+> > Copying 'include/OpenLayer/Bitmap.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Bitmap.h
+> > pp'...
+> > Copying 'include/OpenLayer/Blenders.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Blende
+> > rs.hpp'...
+> > Copying 'include/OpenLayer/Canvas.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Canvas.h
+> > pp'...
+> > Copying 'include/OpenLayer/Circle.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Circle.h
+> > pp'...
+> > Copying 'include/OpenLayer/Collisions.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Coll
+> > isions.hpp'...
+> > Copying 'include/OpenLayer/Collisions.hpp.backup' to
+> > 'C:/Dev-Cpp/include/OpenLay
+> > er/Collisions.hpp.backup'...
+> > Copying 'include/OpenLayer/Effects.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Effects
+> > .hpp'...
+> > Copying 'include/OpenLayer/FpsCounter.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/FpsC
+> > ounter.hpp'...
+> > Copying 'include/OpenLayer/Framebuffer.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Fra
+> > mebuffer.hpp'...
+> > Copying 'include/OpenLayer/GarbageCollector.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLaye
+> > r/GarbageCollector.hpp'...
+> > Copying 'include/OpenLayer/General.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/General
+> > .hpp'...
+> > Copying 'include/OpenLayer/GfxRend.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/GfxRend
+> > .hpp'...
+> > Copying 'include/OpenLayer/GlDriver.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/GlDriv
+> > er.hpp'...
+> > Copying 'include/OpenLayer/Includes.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Includ
+> > es.hpp'...
+> > Copying 'include/OpenLayer/Internal.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Intern
+> > al.hpp'...
+> > Copying 'include/OpenLayer/Line.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Line.hpp'.
+> > ..
+> > Copying 'include/OpenLayer/LineStrip.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/LineS
+> > trip.hpp'...
+> > Copying 'include/OpenLayer/LineStripRender.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer
+> > /LineStripRender.hpp'...
+> > Copying 'include/OpenLayer/Matrix.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Matrix.h
+> > pp'...
+> > Copying 'include/OpenLayer/Mouse.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Mouse.hpp
+> > '...
+> > Copying 'include/OpenLayer/OlRectangle.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/OlR
+> > ectangle.hpp'...
+> > Copying 'include/OpenLayer/PendingLoad.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Pen
+> > dingLoad.hpp'...
+> > Copying 'include/OpenLayer/Placement.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Place
+> > ment.hpp'...
+> > Copying 'include/OpenLayer/Point.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Point.hpp
+> > '...
+> > Copying 'include/OpenLayer/Polygon.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Polygon
+> > .hpp'...
+> > Copying 'include/OpenLayer/RawLineStrip.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Ra
+> > wLineStrip.hpp'...
+> > Copying 'include/OpenLayer/Rectangle.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Recta
+> > ngle.hpp'...
+> > Copying 'include/OpenLayer/RenderModes.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Ren
+> > derModes.hpp'...
+> > Copying 'include/OpenLayer/Rgba.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Rgba.hpp'.
+> > ..
+> > Copying 'include/OpenLayer/Settings.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Settin
+> > gs.hpp'...
+> > Copying 'include/OpenLayer/Setup.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Setup.hpp
+> > '...
+> > Copying 'include/OpenLayer/Shape.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Shape.hpp
+> > '...
+> > Copying 'include/OpenLayer/Templates.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Templ
+> > ates.hpp'...
+> > Copying 'include/OpenLayer/TextRenderer.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Te
+> > xtRenderer.hpp'...
+> > Copying 'include/OpenLayer/TexturedPoly.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Te
+> > xturedPoly.hpp'...
+> > Copying 'include/OpenLayer/TextureInfo.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Tex
+> > tureInfo.hpp'...
+> > Copying 'include/OpenLayer/TransformMatrix.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer
+> > /TransformMatrix.hpp'...
+> > Copying 'include/OpenLayer/Transforms.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Tran
+> > sforms.hpp'...
+> > Copying 'include/OpenLayer/Vec2D.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Vec2D.hpp
+> > '...
+> > Copying 'include/OpenLayer/VertexListCollision.hpp' to
+> > 'C:/Dev-Cpp/include/OpenL
+> > ayer/VertexListCollision.hpp'...
+> > Copying 'include/OpenLayer.hpp' to 'C:/Dev-Cpp/include/OpenLayer.hpp'...
+> > Copying 'lib/libopenlayer.a' to 'C:/Dev-Cpp/lib/libopenlayer.a'...
+> >
+> > Install completed
+> >
+> > C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat
+> > Creating required directories
+> > Creating directory obj/...
+> > !!! Could not create directory !!!
+> > --- Error 1 ignored. ---
+> >
+> > Creating directory dep/...
+> > !!! Could not create directory !!!
+> > --- Error 2 ignored. ---
+> >
+> > Creating directory lib/...
+> > !!! Could not create directory !!!
+> > --- Error 3 ignored. ---
+> >
+> > Starting compilation
+> > Compiling src/Circle.cpp...
+> > Compiling src/TexturedPoly.cpp...
+> > Assembling library
+> > Deleting lib/libopenlayer.a...
+> > Linking lib/libopenlayer.a...
+> > ar: 'obj/Collisions.cpp.o': No such file
+> > ar: 'obj/OpenLayer/.o': No such file
+> >
+> > Compilation completed.
+> >
+> > You can now install the lib by doing:
+> > ./cbuild.c install
+> >
+> > C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat install
+> > Where do you wish to install OpenLayer?
+> > example: /usr/local (make sure lib and include exist in the directory)
+> > Enter exit or cancel if you don't want to install at this time.
+> > C:/Dev-Cpp
+> > Installing OpenLayer to 'C:/Dev-Cpp'
+> > Creating directory C:/Dev-Cpp/include/OpenLayer/...
+> > !!! Could not create directory !!!
+> > --- Error 1 ignored. ---
+> >
+> > chmod 755 C:/Dev-Cpp/include/OpenLayer
+> > 'chmod' is not recognized as an internal or external command,
+> > operable program or batch file.
+> > --- Error 2 ignored. ---
+> >
+> > Copying 'include/OpenLayer/Animation.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Anima
+> > tion.hpp'...
+> > Copying 'include/OpenLayer/Bitmap.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Bitmap.h
+> > pp'...
+> > Copying 'include/OpenLayer/Blenders.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Blende
+> > rs.hpp'...
+> > Copying 'include/OpenLayer/Canvas.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Canvas.h
+> > pp'...
+> > Copying 'include/OpenLayer/Circle.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Circle.h
+> > pp'...
+> > Copying 'include/OpenLayer/Collisions.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Coll
+> > isions.hpp'...
+> > Copying 'include/OpenLayer/Collisions.hpp.backup' to
+> > 'C:/Dev-Cpp/include/OpenLay
+> > er/Collisions.hpp.backup'...
+> > Copying 'include/OpenLayer/Effects.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Effects
+> > .hpp'...
+> > Copying 'include/OpenLayer/FpsCounter.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/FpsC
+> > ounter.hpp'...
+> > Copying 'include/OpenLayer/Framebuffer.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Fra
+> > mebuffer.hpp'...
+> > Copying 'include/OpenLayer/GarbageCollector.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLaye
+> > r/GarbageCollector.hpp'...
+> > Copying 'include/OpenLayer/General.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/General
+> > .hpp'...
+> > Copying 'include/OpenLayer/GfxRend.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/GfxRend
+> > .hpp'...
+> > Copying 'include/OpenLayer/GlDriver.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/GlDriv
+> > er.hpp'...
+> > Copying 'include/OpenLayer/Includes.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Includ
+> > es.hpp'...
+> > Copying 'include/OpenLayer/Internal.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Intern
+> > al.hpp'...
+> > Copying 'include/OpenLayer/Line.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Line.hpp'.
+> > ..
+> > Copying 'include/OpenLayer/LineStrip.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/LineS
+> > trip.hpp'...
+> > Copying 'include/OpenLayer/LineStripRender.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer
+> > /LineStripRender.hpp'...
+> > Copying 'include/OpenLayer/Matrix.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Matrix.h
+> > pp'...
+> > Copying 'include/OpenLayer/Mouse.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Mouse.hpp
+> > '...
+> > Copying 'include/OpenLayer/OlRectangle.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/OlR
+> > ectangle.hpp'...
+> > Copying 'include/OpenLayer/PendingLoad.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Pen
+> > dingLoad.hpp'...
+> > Copying 'include/OpenLayer/Placement.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Place
+> > ment.hpp'...
+> > Copying 'include/OpenLayer/Point.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Point.hpp
+> > '...
+> > Copying 'include/OpenLayer/Polygon.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Polygon
+> > .hpp'...
+> > Copying 'include/OpenLayer/RawLineStrip.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Ra
+> > wLineStrip.hpp'...
+> > Copying 'include/OpenLayer/Rectangle.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Recta
+> > ngle.hpp'...
+> > Copying 'include/OpenLayer/RenderModes.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Ren
+> > derModes.hpp'...
+> > Copying 'include/OpenLayer/Rgba.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Rgba.hpp'.
+> > ..
+> > Copying 'include/OpenLayer/Settings.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Settin
+> > gs.hpp'...
+> > Copying 'include/OpenLayer/Setup.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Setup.hpp
+> > '...
+> > Copying 'include/OpenLayer/Shape.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Shape.hpp
+> > '...
+> > Copying 'include/OpenLayer/Templates.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Templ
+> > ates.hpp'...
+> > Copying 'include/OpenLayer/TextRenderer.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Te
+> > xtRenderer.hpp'...
+> > Copying 'include/OpenLayer/TexturedPoly.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Te
+> > xturedPoly.hpp'...
+> > Copying 'include/OpenLayer/TextureInfo.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Tex
+> > tureInfo.hpp'...
+> > Copying 'include/OpenLayer/TransformMatrix.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer
+> > /TransformMatrix.hpp'...
+> > Copying 'include/OpenLayer/Transforms.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Tran
+> > sforms.hpp'...
+> > Copying 'include/OpenLayer/Vec2D.hpp' to
+> > 'C:/Dev-Cpp/include/OpenLayer/Vec2D.hpp
+> > '...
+> > Copying 'include/OpenLayer/VertexListCollision.hpp' to
+> > 'C:/Dev-Cpp/include/OpenL
+> > ayer/VertexListCollision.hpp'...
+> > Copying 'include/OpenLayer.hpp' to 'C:/Dev-Cpp/include/OpenLayer.hpp'...
+> > Copying 'lib/libopenlayer.a' to 'C:/Dev-Cpp/lib/libopenlayer.a'...
+> >
+> > Install completed
+> >
+> > C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat verbose
+> > Creating required directories
+> > mkdir("obj");
+> > !!! Could not create directory !!!
+> > --- Error 1 ignored. ---
+> >
+> > mkdir("dep");
+> > !!! Could not create directory !!!
+> > --- Error 2 ignored. ---
+> >
+> > mkdir("lib");
+> > !!! Could not create directory !!!
+> > --- Error 3 ignored. ---
+> >
+> > Starting compilation
+> > g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> > -DOL_NO_OL
+> > D_API  -MMD -MF "dep/Bitmap.d" -o "obj/Bitmap.o" -c "src/Bitmap.cpp"
+> > g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> > -DOL_NO_OL
+> > D_API  -MMD -MF "dep/Canvas.d" -o "obj/Canvas.o" -c "src/Canvas.cpp"
+> > g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> > -DOL_NO_OL
+> > D_API  -MMD -MF "dep/Framebuffer.d" -o "obj/Framebuffer.o" -c
+> > "src/Framebuffer.c
+> > pp"
+> > g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> > -DOL_NO_OL
+> > D_API  -MMD -MF "dep/GfxRend.d" -o "obj/GfxRend.o" -c "src/GfxRend.cpp"
+> > g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> > -DOL_NO_OL
+> > D_API  -MMD -MF "dep/Polygon.d" -o "obj/Polygon.o" -c "src/Polygon.cpp"
+> > src/Polygon.cpp: In member function `virtual void 
+>ol::Poly::SetVertex(int,
+> > const
+> > ol::Vec2D&)':
+> > src/Polygon.cpp:40: warning: comparison between signed and unsigned 
+>integer
+> > expr
+> > essions
+> > include/OpenLayer/LineStripRender.hpp: In member function `void
+> > ol::RawLineStrip
+> > <std_container1, std_container2>::LineStripRender(const ol::Rgba*, const
+> > ol::Rgb
+> > a*, const ol::Bitmap*, float, const ol::Placement&, bool) const [with
+> > std_contai
+> > ner1 = std::vector<ol::Vec2D, std::allocator<ol::Vec2D> >, 
+>std_container2 =
+> >
+> > std:
+> > :vector<float, std::allocator<float> >]':
+> >
+> > src/Polygon.cpp:34:   instantiated from here
+> > include/OpenLayer/LineStripRender.hpp:59: warning: comparison between
+> > signed and
+> > unsigned integer expressions
+> > g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> > -DOL_NO_OL
+> > D_API  -MMD -MF "dep/Rectangle.d" -o "obj/Rectangle.o" -c
+> > "src/Rectangle.cpp"
+> > g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> > -DOL_NO_OL
+> > D_API  -MMD -MF "dep/RenderModes.d" -o "obj/RenderModes.o" -c
+> > "src/RenderModes.c
+> > pp"
+> > g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> > -DOL_NO_OL
+> > D_API  -MMD -MF "dep/Setup.d" -o "obj/Setup.o" -c "src/Setup.cpp"
+> > g++ -O2 -Wall -Iinclude -Iinclude/OpenLayer -fexpensive-optimizations
+> > -DOL_NO_OL
+> > D_API  -MMD -MF "dep/TexturedPoly.d" -o "obj/TexturedPoly.o" -c
+> > "src/TexturedPol
+> > y.cpp"
+> > Assembling library
+> > remove("lib/libopenlayer.a");
+> > ar rcs "lib/libopenlayer.a" "obj/Animation.o" "obj/Animation.o"
+> > "obj/Bitmap.o" "
+> > obj/Bitmap.o" "obj/Blenders.o" "obj/Blenders.o" "obj/Canvas.o"
+> > "obj/Canvas.o" "o
+> > bj/Circle.o" "obj/Circle.o" "obj/Collisions.o" "obj/Collisions.cpp.o"
+> > "obj/Colli
+> > sions.o" "obj/Effects.o" "obj/FpsCounter.o" "obj/FpsCounter.o"
+> > "obj/Framebuffer.
+> > o" "obj/Framebuffer.o" "obj/GarbageCollector.o" "obj/GarbageCollector.o"
+> > "obj/Ge
+> > neral.o" "obj/General.o" "obj/GfxRend.o" "obj/GlDriver.o" 
+>"obj/GlDriver.o"
+> > "obj/
+> > Internal.o" "obj/Internal.o" "obj/Line.o" "obj/Line.o" "obj/LineStrip.o"
+> > "obj/Li
+> > neStrip.o" "obj/Matrix.o" "obj/Matrix.o" "obj/OpenLayer/.o"
+> > "obj/PendingLoad.o"
+> > "obj/PendingLoad.o" "obj/Placement.o" "obj/Placement.o" "obj/Point.o"
+> > "obj/Point
+> > .o" "obj/Polygon.o" "obj/Polygon.o" "obj/Rectangle.o" "obj/Rectangle.o"
+> > "obj/Ren
+> > derModes.o" "obj/RenderModes.o" "obj/Rgba.o" "obj/Rgba.o" 
+>"obj/Settings.o"
+> > "obj/
+> > Settings.o" "obj/Setup.o" "obj/Setup.o" "obj/Shape.o" "obj/Shape.o"
+> > "obj/TextRen
+> > derer.o" "obj/TextRenderer.o" "obj/TexturedPoly.o" "obj/TexturedPoly.o"
+> > "obj/Tex
+> > tureInfo.o" "obj/TextureInfo.o" "obj/Transforms.o" "obj/Transforms.o"
+> > ar: 'obj/Collisions.cpp.o': No such file
+> > ar: 'obj/OpenLayer/.o': No such file
+> >
+> > Compilation completed.
+> >
+> > You can now install the lib by doing:
+> > ./cbuild.c install
+> >
+> > >From: "Miguel A. Gavidia" <juvinious at gmail.com>
+> > >Reply-To: openlayer-developer at berlios.de
+> > >To: openlayer-developer at berlios.de
+> > >Subject: Re: [Openlayer-developer] CBuild problem?
+> > >Date: Fri, 5 May 2006 22:02:57 +0800
+> > >
+> > >?????????????????? 05 5?????? 2006 21:35??????Esa Tanskanen 
+>????????????????????????????????????????????????:
+> > > > I get the following output when runing buildme.bat:
+> > > >
+> > > > Starting compilation
+> > > > Compiling src/Circle.cpp...
+> > > > Compiling src/Collisions.cpp...
+> > > > Assembling library
+> > > > Deleting lib/libopenlayer.a...
+> > > > Linking lib/libopenlayer.a...
+> > > > ar: 'obj/Collisions.cpp.o': No such file
+> > > > ar: 'obj/OpenLayer/.o': No such file
+> > > >
+> > > > Compilation completed.
+> > > >
+> > > > You can now install the lib by doing:
+> > > > ./cbuild.c install
+> > > >
+> > > > Is the "No such file" anything problematic?
+> > > >
+> > > > /Esa
+> > > >
+> > > > _________________________________________________________________
+> > > > Uutiset ja kasvot uutisten takaa. MSN Search, t????yden palvelun
+> > > > hakukone. http://search.msn.fi
+> > > >
+> > > > _______________________________________________
+> > > > Openlayer-developer mailing list
+> > > > Openlayer-developer at lists.berlios.de
+> > > > http://lists.berlios.de/mailman/listinfo/openlayer-developer
+> > >
+> > >Strange, seems to be having parsing problems lately.
+> > >Can you do me a favor and do:
+> > >buildme.bat verbose
+> > >and post the output of the whole compilation that way I can see what's
+> > >wrong.
+> > >I'll also check if cbuild has been updated or changed recently.
+> > >Thanks.
+> > >
+> > >--
+> > >-juvinious
+> > >
+> > ><a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+> > >_______________________________________________
+> > >Openlayer-developer mailing list
+> > >Openlayer-developer at lists.berlios.de
+> > >http://lists.berlios.de/mailman/listinfo/openlayer-developer
+> >
+> > _________________________________________________________________
+> > Windows-ty??p??yt??haun avulla l??yd??t tiedot koneeltasi 
+>silm??nr??p??yksess??.
+> > http://toolbar.msn.fi
+> >
+> > _______________________________________________
+> > Openlayer-developer mailing list
+> > Openlayer-developer at lists.berlios.de
+> > http://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+>After looking over your output one more time and although there doesn't 
+>seem
+>to be a problem with putting together the lib, there is an annoying parse
+>problem which could lead to other problems later on. Maybe you can do a
+>buildme clean like I suggested in my previous post and try rebuilding and
+>hopefully that helps. In the meantime it should be ok, I'll be updating the
+>cbuild when I get a chance to test it out on a windows box tommorrow.
+>Thanks again.
+>
+>--
+>-juvinious
+>
+><a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Windows-ty?p?yt?haun avulla l?yd?t tiedot koneeltasi silm?nr?p?yksess?. 
+http://toolbar.msn.fi
+
+
+
+From rich at reflectedgames.com  Thu May 18 21:30:49 2006
+From: rich at reflectedgames.com (Richard Phipps)
+Date: Thu, 18 May 2006 20:30:49 +0100
+Subject: [Openlayer-developer] screen offset issue
+In-Reply-To: <BAY21-F7B0DAEEC24BD91F329515DFB50@phx.gbl>
+References: <BAY21-F7B0DAEEC24BD91F329515DFB50@phx.gbl>
+Message-ID: <446CCB69.9090906@reflectedgames.com>
+
+Hi there,
+
+A friend of mine was reporting a problem where the view was slightly 
+offset, so he couldn't see the top and left parts of the screen. He's 
+tracked it down and although it's probably only going to apply to a 
+minority of people, I thought you might want to know about it:
+
+>About the screen not being centered... I've noticed that it's perfectly
+>centered when I go into fullscreen mode on the laptop's screen, but it's off
+>center if I'm using my external LCD display.  I bet OpenLayer is pulling the
+>screen dimensions from the wrong commands.  They ought to check laptops with
+>external displays, especially if the laptop has a HD resolution and the
+>external one is a more normal squarish resolution.
+>
+Hope that helps!
+Rich.
+
+
+From juvinious at gmail.com  Fri May 19 02:53:13 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Fri, 19 May 2006 08:53:13 +0800
+Subject: [Openlayer-developer] FreeType2 support addition
+Message-ID: <200605190853.13704.juvinious@gmail.com>
+
+I've finally gotten around to start inclusion of FreeType within openlayer.
+I've created a new class called Glyph and have added Glyph.{cpp/hpp} to the 
+lib. So far I've set it up so that it provides an alternative to GlyphKeepers 
+routines within TextRenderer that way it doesn't break the API (although much 
+of the routines are incomplete). As the Glyph class matures, it will 
+eventually become more than capable of replacing GlyphKeeper itself which at 
+that point we can remove any reference to GK and drop the compatible routines 
+in Glyph and finally the GK dependency.
+I will continue to work on it when I have time.
+Fladimir I encourage you to continue to use GlyphKeeper's library if you need 
+to improve or tweak TextRenderer in the meantime.
+As such, the library will compile if you decide to enable internal TTF, but be 
+warned that it's mostly guaranteed not to do anything and might even crash 
+your applications. If you are still interested in seeing it or testing it 
+out, you must enable the developer flag when compiling the library. At which 
+point it will prompt you for inclusion of the new support during the 
+configuration prompts.
+Thus on linux/macosx/msys you can do (make sure it is clean first):
+$ ./cbuild.c developer
+
+or
+
+windows cmd.exe:
+c:\buildme.bat developer
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From fladimir2002 at hotmail.com  Mon May 22 18:53:04 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Mon, 22 May 2006 19:53:04 +0300
+Subject: [Openlayer-developer] screen offset issue
+In-Reply-To: <446CCB69.9090906@reflectedgames.com>
+Message-ID: <BAY21-F14B44031FEE38ED4AB3C3FDF9A0@phx.gbl>
+
+Unfortunately, that's out of OpenLayer's scope. OpenLayer still uses 
+AllegroGL and OpenGL to set up the screen... maybe AllegroGL's developers 
+would know something.
+
+/Esa
+
+
+>From: Richard Phipps <rich at reflectedgames.com>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: [Openlayer-developer] screen offset issue
+>Date: Thu, 18 May 2006 20:30:49 +0100
+>
+>
+>Hi there,
+>
+>A friend of mine was reporting a problem where the view was slightly 
+>offset, so he couldn't see the top and left parts of the screen. He's 
+>tracked it down and although it's probably only going to apply to a 
+>minority of people, I thought you might want to know about it:
+>
+>>About the screen not being centered... I've noticed that it's perfectly
+>>centered when I go into fullscreen mode on the laptop's screen, but it's 
+>>off
+>>center if I'm using my external LCD display.  I bet OpenLayer is pulling 
+>>the
+>>screen dimensions from the wrong commands.  They ought to check laptops 
+>>with
+>>external displays, especially if the laptop has a HD resolution and the
+>>external one is a more normal squarish resolution.
+>>
+>Hope that helps!
+>Rich.
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Uutisista turhaan tietoon. Mit? ikin? etsitkin, MSN Search l?yt?? hakemasi. 
+http://search.msn.fi
+
+
+
+From fladimir2002 at hotmail.com  Mon May 22 19:18:08 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Mon, 22 May 2006 20:18:08 +0300
+Subject: [Openlayer-developer] FreeType2 support addition
+In-Reply-To: <200605190853.13704.juvinious@gmail.com>
+Message-ID: <BAY21-F11AA636F2035EBF6BA8618DF9A0@phx.gbl>
+
+Lookin' great!
+
+A few things:
+
+- I'd engourage using C++ string routines instead of C ones. The less memory 
+management, the less crashing and bugs which are hard to detect.
+- What does setFaceIndex do?
+- "#define GLYPH_PI2	GLYPH_PI * 2" <- if that's meant for optimization, it's 
+not really necessary. The compiler optimizes out constant multiplication 
+when the operand is a constant, too.
+- Does the Glyph class represent a single glyph or a whole font?
+
+/Esa
+
+>From: "Miguel A. Gavidia" <juvinious at gmail.com>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at lists.berlios.de
+>Subject: [Openlayer-developer] FreeType2 support addition
+>Date: Fri, 19 May 2006 08:53:13 +0800
+>
+>I've finally gotten around to start inclusion of FreeType within openlayer.
+>I've created a new class called Glyph and have added Glyph.{cpp/hpp} to the
+>lib. So far I've set it up so that it provides an alternative to 
+>GlyphKeepers
+>routines within TextRenderer that way it doesn't break the API (although 
+>much
+>of the routines are incomplete). As the Glyph class matures, it will
+>eventually become more than capable of replacing GlyphKeeper itself which 
+>at
+>that point we can remove any reference to GK and drop the compatible 
+>routines
+>in Glyph and finally the GK dependency.
+>I will continue to work on it when I have time.
+>Fladimir I encourage you to continue to use GlyphKeeper's library if you 
+>need
+>to improve or tweak TextRenderer in the meantime.
+>As such, the library will compile if you decide to enable internal TTF, but 
+>be
+>warned that it's mostly guaranteed not to do anything and might even crash
+>your applications. If you are still interested in seeing it or testing it
+>out, you must enable the developer flag when compiling the library. At 
+>which
+>point it will prompt you for inclusion of the new support during the
+>configuration prompts.
+>Thus on linux/macosx/msys you can do (make sure it is clean first):
+>$ ./cbuild.c developer
+>
+>or
+>
+>windows cmd.exe:
+>c:\buildme.bat developer
+>
+>--
+>-juvinious
+>
+><a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Uutisista turhaan tietoon. Mit? ikin? etsitkin, MSN Search l?yt?? hakemasi. 
+http://search.msn.fi
+
+
+
+From fladimir2002 at hotmail.com  Mon May 22 19:18:08 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Mon, 22 May 2006 20:18:08 +0300
+Subject: [Openlayer-developer] FreeType2 support addition
+In-Reply-To: <200605190853.13704.juvinious@gmail.com>
+Message-ID: <BAY21-F11AA636F2035EBF6BA8618DF9A0@phx.gbl>
+
+Lookin' great!
+
+A few things:
+
+- I'd engourage using C++ string routines instead of C ones. The less memory 
+management, the less crashing and bugs which are hard to detect.
+- What does setFaceIndex do?
+- "#define GLYPH_PI2	GLYPH_PI * 2" <- if that's meant for optimization, it's 
+not really necessary. The compiler optimizes out constant multiplication 
+when the operand is a constant, too.
+- Does the Glyph class represent a single glyph or a whole font?
+
+/Esa
+
+>From: "Miguel A. Gavidia" <juvinious at gmail.com>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at lists.berlios.de
+>Subject: [Openlayer-developer] FreeType2 support addition
+>Date: Fri, 19 May 2006 08:53:13 +0800
+>
+>I've finally gotten around to start inclusion of FreeType within openlayer.
+>I've created a new class called Glyph and have added Glyph.{cpp/hpp} to the
+>lib. So far I've set it up so that it provides an alternative to 
+>GlyphKeepers
+>routines within TextRenderer that way it doesn't break the API (although 
+>much
+>of the routines are incomplete). As the Glyph class matures, it will
+>eventually become more than capable of replacing GlyphKeeper itself which 
+>at
+>that point we can remove any reference to GK and drop the compatible 
+>routines
+>in Glyph and finally the GK dependency.
+>I will continue to work on it when I have time.
+>Fladimir I encourage you to continue to use GlyphKeeper's library if you 
+>need
+>to improve or tweak TextRenderer in the meantime.
+>As such, the library will compile if you decide to enable internal TTF, but 
+>be
+>warned that it's mostly guaranteed not to do anything and might even crash
+>your applications. If you are still interested in seeing it or testing it
+>out, you must enable the developer flag when compiling the library. At 
+>which
+>point it will prompt you for inclusion of the new support during the
+>configuration prompts.
+>Thus on linux/macosx/msys you can do (make sure it is clean first):
+>$ ./cbuild.c developer
+>
+>or
+>
+>windows cmd.exe:
+>c:\buildme.bat developer
+>
+>--
+>-juvinious
+>
+><a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Uutisista turhaan tietoon. Mit? ikin? etsitkin, MSN Search l?yt?? hakemasi. 
+http://search.msn.fi
+
+
+
+From juvinious at gmail.com  Wed May 24 10:35:54 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Wed, 24 May 2006 16:35:54 +0800
+Subject: [Openlayer-developer] FreeType2 support addition
+In-Reply-To: <BAY21-F11AA636F2035EBF6BA8618DF9A0@phx.gbl>
+References: <BAY21-F11AA636F2035EBF6BA8618DF9A0@phx.gbl>
+Message-ID: <200605241635.54674.juvinious@gmail.com>
+
+??? 23 5? 2006 01:18?Esa Tanskanen ????????:
+> Lookin' great!
+>
+> A few things:
+>
+> - I'd engourage using C++ string routines instead of C ones. The less
+> memory management, the less crashing and bugs which are hard to detect.
+> - What does setFaceIndex do?
+> - "#define GLYPH_PI2	GLYPH_PI * 2" <- if that's meant for optimization,
+> it's not really necessary. The compiler optimizes out constant
+> multiplication when the operand is a constant, too.
+> - Does the Glyph class represent a single glyph or a whole font?
+>
+> /Esa
+>
+> >From: "Miguel A. Gavidia" <juvinious at gmail.com>
+> >Reply-To: openlayer-developer at berlios.de
+> >To: openlayer-developer at lists.berlios.de
+> >Subject: [Openlayer-developer] FreeType2 support addition
+> >Date: Fri, 19 May 2006 08:53:13 +0800
+> >
+> >I've finally gotten around to start inclusion of FreeType within
+> > openlayer. I've created a new class called Glyph and have added
+> > Glyph.{cpp/hpp} to the lib. So far I've set it up so that it provides an
+> > alternative to
+> >GlyphKeepers
+> >routines within TextRenderer that way it doesn't break the API (although
+> >much
+> >of the routines are incomplete). As the Glyph class matures, it will
+> >eventually become more than capable of replacing GlyphKeeper itself which
+> >at
+> >that point we can remove any reference to GK and drop the compatible
+> >routines
+> >in Glyph and finally the GK dependency.
+> >I will continue to work on it when I have time.
+> >Fladimir I encourage you to continue to use GlyphKeeper's library if you
+> >need
+> >to improve or tweak TextRenderer in the meantime.
+> >As such, the library will compile if you decide to enable internal TTF,
+> > but be
+> >warned that it's mostly guaranteed not to do anything and might even crash
+> >your applications. If you are still interested in seeing it or testing it
+> >out, you must enable the developer flag when compiling the library. At
+> >which
+> >point it will prompt you for inclusion of the new support during the
+> >configuration prompts.
+> >Thus on linux/macosx/msys you can do (make sure it is clean first):
+> >$ ./cbuild.c developer
+> >
+> >or
+> >
+> >windows cmd.exe:
+> >c:\buildme.bat developer
+> >
+> >--
+> >-juvinious
+> >
+> ><a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+> >_______________________________________________
+> >Openlayer-developer mailing list
+> >Openlayer-developer at lists.berlios.de
+> >http://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+> _________________________________________________________________
+> Uutisista turhaan tietoon. Mit? ikin? etsitkin, MSN Search l?yt?? hakemasi.
+> http://search.msn.fi
+>
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+Oh yeah I'm going to replace all the C strings with C++ ones most definitely. 
+I just fleshed that out real quick so I can have a framework to build off of.
+Those #defines I pulled from GK I plan to get rid of them, well the PI I can 
+keep. And most of the other GK stuff I pulled into Glyph. The friend 
+functions will remain until Glyph is completely functional.
+I plan to make the Glyph class represent a complete font and will contain 
+everything you need to transform, modify and render with it. That way you 
+don't have a confusing assortment of different structures. FreeType is not 
+that complicated to begin with and we don't need to support C.
+If you want or are going to need access to specific Glyph's I can do so. I'm 
+still learning the API so it's going to be a bit before I can actually do 
+advanced stuff with FreeType.
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From fladimir2002 at hotmail.com  Sun May 28 17:08:10 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Sun, 28 May 2006 18:08:10 +0300
+Subject: [Openlayer-developer] FreeType2 support addition
+In-Reply-To: <200605241635.54674.juvinious@gmail.com>
+Message-ID: <BAY122-F260188223F92A3A3A4D3F4DF9C0@phx.gbl>
+
+>Oh yeah I'm going to replace all the C strings with C++ ones most 
+>definitely.
+>I just fleshed that out real quick so I can have a framework to build off 
+>of.
+>Those #defines I pulled from GK I plan to get rid of them, well the PI I 
+>can
+>keep. And most of the other GK stuff I pulled into Glyph. The friend
+>functions will remain until Glyph is completely functional.
+>I plan to make the Glyph class represent a complete font and will contain
+>everything you need to transform, modify and render with it. That way you
+>don't have a confusing assortment of different structures. FreeType is not
+>that complicated to begin with and we don't need to support C.
+>If you want or are going to need access to specific Glyph's I can do so. 
+>I'm
+>still learning the API so it's going to be a bit before I can actually do
+>advanced stuff with FreeType.
+
+Finding out the texture of each glyph (and the region inside a bigger 
+container texture) would be useful. But for starters just some functions to 
+render text are well enough - after all that's all that TextRenderer does 
+currently. Yeah, there's no reason to support C or anything, so let's do it 
+as C++ way as possible!
+
+/Esa
+
+_________________________________________________________________
+Windows-ty?p?yt?haun avulla l?yd?t tiedot koneeltasi silm?nr?p?yksess?. 
+http://toolbar.msn.fi
+
+
+
+From indeterminatus_ml at gmx.net  Wed May 31 17:36:28 2006
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Wed, 31 May 2006 17:36:28 +0200
+Subject: [Openlayer-developer] Ping: GUI
+Message-ID: <447DB7FC.3070801@gmx.net>
+
+Hey there,
+
+it was quite a while ago since I last read anything about the planned 
+GUI. Is this still discussed in here, or was it moved to a list of its own?
+
+David.
+
+

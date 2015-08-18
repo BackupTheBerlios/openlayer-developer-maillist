@@ -1,0 +1,1466 @@
+From tobing at gmx.net  Sat Oct 21 17:12:00 2006
+From: tobing at gmx.net (tobing at gmx.net)
+Date: Sat, 21 Oct 2006 17:12:00 +0200
+Subject: [Openlayer-developer] updates to files of OL
+Message-ID: <20061021151200.210520@gmx.net>
+
+Hi all, 
+
+I have now made some changes to some files of OL (latest SVN), but of course cannot submit these changes. I've also not compiled them with gcc: Though I installed MinGW 5.0.3, the cbuild build process does not work. Seems that it makes some assumptions about the environment which are different from what I have here. Anyway. 
+
+How to proceed? I could send the modified files to somebody (or all) and explain what I have changed? 
+
+Currently the text rendering does not work on both my PCs, can't figure out why. It's also not possible to use Glyphkeeper with another target than GLYPH_TARGET_ALLEGGL, so I couldn't try anything about that. The AGL examples work fine, except the fonttest, which simply crashes upon loading the first font. 
+
+
+-- 
+Viele Gr?sse / Best Regards / Amiti?s
+Tobing
+
+http://www.staedtebauen.de
+
+
+From juvinious at gmail.com  Sun Oct 22 10:47:51 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Sun, 22 Oct 2006 16:47:51 +0800
+Subject: [Openlayer-developer] updates to files of OL
+In-Reply-To: <20061021151200.210520@gmx.net>
+References: <20061021151200.210520@gmx.net>
+Message-ID: <200610221647.51317.juvinious@gmail.com>
+
+Welcome tobias sorry I couldn't respond earlier I was having some system 
+problems in the last 2 days.
+About your text rendering problem, try not using GlyphKeeper and use the 
+internal renderer. When compiling the code pass -DUSE_NEW_TTF and omit 
+linking to glyphkeeper. You do need to make sure you have freetype2 installed 
+properly and just link against that. If you like you can can make a patch of 
+your changes on the source tree, attach it here and I'll test them out for 
+you on gcc.
+
+??? 21 10? 2006 23:12?tobing at gmx.net ????????:
+> Hi all,
+>
+> I have now made some changes to some files of OL (latest SVN), but of
+> course cannot submit these changes. I've also not compiled them with gcc:
+> Though I installed MinGW 5.0.3, the cbuild build process does not work.
+> Seems that it makes some assumptions about the environment which are
+> different from what I have here. Anyway.
+>
+> How to proceed? I could send the modified files to somebody (or all) and
+> explain what I have changed?
+>
+> Currently the text rendering does not work on both my PCs, can't figure out
+> why. It's also not possible to use Glyphkeeper with another target than
+> GLYPH_TARGET_ALLEGGL, so I couldn't try anything about that. The AGL
+> examples work fine, except the fonttest, which simply crashes upon loading
+> the first font.
+
+-- 
+-juvinious
+
+http://chasm.hopto.org - The Chasm - My Site
+http://openlayer.berlios.de - Openlayer
+
+
+From juvinious at gmail.com  Sun Oct 22 11:00:20 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Sun, 22 Oct 2006 17:00:20 +0800
+Subject: [Openlayer-developer] updates to files of OL
+In-Reply-To: <200610221647.51317.juvinious@gmail.com>
+References: <20061021151200.210520@gmx.net>
+	<200610221647.51317.juvinious@gmail.com>
+Message-ID: <200610221700.20598.juvinious@gmail.com>
+
+Oops sorry about that tobing, I misread your name as tobias... my bad. Ignore 
+that. ::)
+
+??? 22 10? 2006 16:47?Miguel A. Gavidia ????????:
+> Welcome tobias sorry I couldn't respond earlier I was having some system
+> problems in the last 2 days.
+> About your text rendering problem, try not using GlyphKeeper and use the
+> internal renderer. When compiling the code pass -DUSE_NEW_TTF and omit
+> linking to glyphkeeper. You do need to make sure you have freetype2
+> installed properly and just link against that. If you like you can can make
+> a patch of your changes on the source tree, attach it here and I'll test
+> them out for you on gcc.
+>
+> ??? 21 10? 2006 23:12?tobing at gmx.net ????????:
+> > Hi all,
+> >
+> > I have now made some changes to some files of OL (latest SVN), but of
+> > course cannot submit these changes. I've also not compiled them with gcc:
+> > Though I installed MinGW 5.0.3, the cbuild build process does not work.
+> > Seems that it makes some assumptions about the environment which are
+> > different from what I have here. Anyway.
+> >
+> > How to proceed? I could send the modified files to somebody (or all) and
+> > explain what I have changed?
+> >
+> > Currently the text rendering does not work on both my PCs, can't figure
+> > out why. It's also not possible to use Glyphkeeper with another target
+> > than GLYPH_TARGET_ALLEGGL, so I couldn't try anything about that. The AGL
+> > examples work fine, except the fonttest, which simply crashes upon
+> > loading the first font.
+
+-- 
+-juvinious
+
+http://chasm.hopto.org - The Chasm - My Site
+http://openlayer.berlios.de - Openlayer
+
+
+From tobing at gmx.net  Sun Oct 22 17:03:03 2006
+From: tobing at gmx.net (tobing at gmx.net)
+Date: Sun, 22 Oct 2006 17:03:03 +0200
+Subject: [Openlayer-developer] updates to files of OL
+In-Reply-To: <200610221700.20598.juvinious@gmail.com>
+References: <20061021151200.210520@gmx.net>
+	<200610221647.51317.juvinious@gmail.com>
+	<200610221700.20598.juvinious@gmail.com>
+Message-ID: <20061022150303.261710@gmx.net>
+
+> Oops sorry about that tobing, I misread your name as tobias... my bad.
+> Ignore 
+> that. ::)
+
+tobing is the pseudonym, Tobias is my real name. So there's no need to apologize... 
+
+I've attached ol.rar, containing all 7 changed files. 
+
+OlRectangle.hpp and Circle.hpp have a section included, which undefines min and max, if they are defined. 
+
+Bitmap.cpp has loop variables renamed. 
+
+Internal.hpp has different implementations of OlAssert. This code is copied from Neil Walker, from the thread in the forum. 
+
+shapedemo/Main.cpp has two things corrected: END_OF_FUNCTION and to open the correct file. 
+
+textdemo/Main.cpp das an added Canvas::Fill to have a blank black screen to write on, and the ctor of TextRenderer neuropol changed, then call Load explicitely (helps debugging, but maybe should not go into SVN?). 
+
+gamedemo/Demo.cpp has the gcc-only <? statement replaced by something that works for me - what does <? mean? 
+
+
+Thanks for considering this stuff for updating SVN, hope it works all fine. I'll try to not use GK now... 
+
+
+-- 
+Viele Gr?sse / Best Regards / Amiti?s
+Tobing
+
+http://www.staedtebauen.de
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ol.rar
+Type: application/x-rar-compressed
+Size: 14538 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20061022/867c11d2/attachment.bin>
+
+From fladimir2002 at hotmail.com  Sun Oct 22 19:35:02 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Sun, 22 Oct 2006 20:35:02 +0300
+Subject: [Openlayer-developer] updates to files of OL
+In-Reply-To: <20061022150303.261710@gmx.net>
+Message-ID: <BAY122-F47EA8F94F282834C47B79DF030@phx.gbl>
+
+Thanks a lot, I'll check it out and if everything goes OK, I'll submit it to 
+the SVN repository!
+
+
+>From: tobing at gmx.net
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: Re: [Openlayer-developer] updates to files of OL
+>Date: Sun, 22 Oct 2006 17:03:03 +0200
+>
+> > Oops sorry about that tobing, I misread your name as tobias... my bad.
+> > Ignore
+> > that. ::)
+>
+>tobing is the pseudonym, Tobias is my real name. So there's no need to 
+>apologize...
+>
+>I've attached ol.rar, containing all 7 changed files.
+>
+>OlRectangle.hpp and Circle.hpp have a section included, which undefines min 
+>and max, if they are defined.
+>
+>Bitmap.cpp has loop variables renamed.
+>
+>Internal.hpp has different implementations of OlAssert. This code is copied 
+>from Neil Walker, from the thread in the forum.
+>
+>shapedemo/Main.cpp has two things corrected: END_OF_FUNCTION and to open 
+>the correct file.
+>
+>textdemo/Main.cpp das an added Canvas::Fill to have a blank black screen to 
+>write on, and the ctor of TextRenderer neuropol changed, then call Load 
+>explicitely (helps debugging, but maybe should not go into SVN?).
+>
+>gamedemo/Demo.cpp has the gcc-only <? statement replaced by something that 
+>works for me - what does <? mean?
+>
+>
+>Thanks for considering this stuff for updating SVN, hope it works all fine. 
+>I'll try to not use GK now...
+>
+>
+>--
+>Viele Gr?sse / Best Regards / Amiti?s
+>Tobing
+>
+>http://www.staedtebauen.de
+
+
+><< ol.rar >>
+
+
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Uutiset ja kasvot uutisten takaa. MSN Search, t?yden palvelun hakukone. 
+http://search.msn.fi
+
+
+
+From juvinious at gmail.com  Sun Oct 22 21:55:10 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Mon, 23 Oct 2006 03:55:10 +0800
+Subject: [Openlayer-developer] updates to files of OL
+In-Reply-To: <BAY122-F47EA8F94F282834C47B79DF030@phx.gbl>
+References: <BAY122-F47EA8F94F282834C47B79DF030@phx.gbl>
+Message-ID: <200610230355.10986.juvinious@gmail.com>
+
+Ok I gave the changes a whirl and they worked flawlessly with gcc 4.1 on 
+linux. All compiled well and all the demos work just the same. Hopefully it 
+works just as well on gcc/mingw on windows. :D
+Good work neil and tobing. :)
+??? 23 10? 2006 01:35?Esa Tanskanen ????????:
+> Thanks a lot, I'll check it out and if everything goes OK, I'll submit it
+> to the SVN repository!
+>
+> >From: tobing at gmx.net
+> >Reply-To: openlayer-developer at berlios.de
+> >To: openlayer-developer at berlios.de
+> >Subject: Re: [Openlayer-developer] updates to files of OL
+> >Date: Sun, 22 Oct 2006 17:03:03 +0200
+> >
+> > > Oops sorry about that tobing, I misread your name as tobias... my bad.
+> > > Ignore
+> > > that. ::)
+> >
+> >tobing is the pseudonym, Tobias is my real name. So there's no need to
+> >apologize...
+> >
+> >I've attached ol.rar, containing all 7 changed files.
+> >
+> >OlRectangle.hpp and Circle.hpp have a section included, which undefines
+> > min and max, if they are defined.
+> >
+> >Bitmap.cpp has loop variables renamed.
+> >
+> >Internal.hpp has different implementations of OlAssert. This code is
+> > copied from Neil Walker, from the thread in the forum.
+> >
+> >shapedemo/Main.cpp has two things corrected: END_OF_FUNCTION and to open
+> >the correct file.
+> >
+> >textdemo/Main.cpp das an added Canvas::Fill to have a blank black screen
+> > to write on, and the ctor of TextRenderer neuropol changed, then call
+> > Load explicitely (helps debugging, but maybe should not go into SVN?).
+> >
+> >gamedemo/Demo.cpp has the gcc-only <? statement replaced by something that
+> >works for me - what does <? mean?
+> >
+> >
+> >Thanks for considering this stuff for updating SVN, hope it works all
+> > fine. I'll try to not use GK now...
+> >
+> >
+> >--
+> >Viele Gr?sse / Best Regards / Amiti?s
+> >Tobing
+> >
+> >http://www.staedtebauen.de
+> >
+> >
+> ><< ol.rar >>
+> >
+> >
+> >_______________________________________________
+> >Openlayer-developer mailing list
+> >Openlayer-developer at lists.berlios.de
+> >https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+> _________________________________________________________________
+> Uutiset ja kasvot uutisten takaa. MSN Search, t?yden palvelun hakukone.
+> http://search.msn.fi
+>
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+-- 
+-juvinious
+
+http://chasm.hopto.org - The Chasm - My Site
+http://openlayer.berlios.de - Openlayer
+
+
+From juvinious at gmail.com  Mon Oct 23 14:36:59 2006
+From: juvinious at gmail.com (Miguel Gavidia)
+Date: Mon, 23 Oct 2006 20:36:59 +0800
+Subject: [Openlayer-developer] updates to files of OL
+In-Reply-To: <200610230355.10986.juvinious@gmail.com>
+References: <BAY122-F47EA8F94F282834C47B79DF030@phx.gbl>
+	<200610230355.10986.juvinious@gmail.com>
+Message-ID: <7d8be2250610230536w24ed493eld645ddcc8d2f5952@mail.gmail.com>
+
+I just tried out the changes on windows mingw and it compiled just as well,
+no problems. All demos ran perfectly fine. Flad if you want, I can go ahead
+and commit the changes? Let me know, unless you have other
+plans/tests to do. :)
+
+On 10/23/06, Miguel A. Gavidia <juvinious at gmail.com> wrote:
+>
+> Ok I gave the changes a whirl and they worked flawlessly with gcc 4.1 on
+> linux. All compiled well and all the demos work just the same. Hopefully
+> it
+> works just as well on gcc/mingw on windows. :D
+> Good work neil and tobing. :)
+> ??? 23 10? 2006 01:35?Esa Tanskanen ????????:
+> > Thanks a lot, I'll check it out and if everything goes OK, I'll submit
+> it
+> > to the SVN repository!
+> >
+> > >From: tobing at gmx.net
+> > >Reply-To: openlayer-developer at berlios.de
+> > >To: openlayer-developer at berlios.de
+> > >Subject: Re: [Openlayer-developer] updates to files of OL
+> > >Date: Sun, 22 Oct 2006 17:03:03 +0200
+> > >
+> > > > Oops sorry about that tobing, I misread your name as tobias... my
+> bad.
+> > > > Ignore
+> > > > that. ::)
+> > >
+> > >tobing is the pseudonym, Tobias is my real name. So there's no need to
+> > >apologize...
+> > >
+> > >I've attached ol.rar, containing all 7 changed files.
+> > >
+> > >OlRectangle.hpp and Circle.hpp have a section included, which undefines
+> > > min and max, if they are defined.
+> > >
+> > >Bitmap.cpp has loop variables renamed.
+> > >
+> > >Internal.hpp has different implementations of OlAssert. This code is
+> > > copied from Neil Walker, from the thread in the forum.
+> > >
+> > >shapedemo/Main.cpp has two things corrected: END_OF_FUNCTION and to
+> open
+> > >the correct file.
+> > >
+> > >textdemo/Main.cpp das an added Canvas::Fill to have a blank black
+> screen
+> > > to write on, and the ctor of TextRenderer neuropol changed, then call
+> > > Load explicitely (helps debugging, but maybe should not go into SVN?).
+> > >
+> > >gamedemo/Demo.cpp has the gcc-only <? statement replaced by something
+> that
+> > >works for me - what does <? mean?
+> > >
+> > >
+> > >Thanks for considering this stuff for updating SVN, hope it works all
+> > > fine. I'll try to not use GK now...
+> > >
+> > >
+> > >--
+> > >Viele Gr?sse / Best Regards / Amiti?s
+> > >Tobing
+> > >
+> > >http://www.staedtebauen.de
+> > >
+> > >
+> > ><< ol.rar >>
+> > >
+> > >
+> > >_______________________________________________
+> > >Openlayer-developer mailing list
+> > >Openlayer-developer at lists.berlios.de
+> > >https://lists.berlios.de/mailman/listinfo/openlayer-developer
+> >
+> > _________________________________________________________________
+> > Uutiset ja kasvot uutisten takaa. MSN Search, t?yden palvelun hakukone.
+> > http://search.msn.fi
+> >
+> > _______________________________________________
+> > Openlayer-developer mailing list
+> > Openlayer-developer at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+> --
+> -juvinious
+>
+> http://chasm.hopto.org - The Chasm - My Site
+> http://openlayer.berlios.de - Openlayer
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20061023/c7a20713/attachment.html>
+
+From fladimir2002 at hotmail.com  Mon Oct 23 15:21:52 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Mon, 23 Oct 2006 16:21:52 +0300
+Subject: [Openlayer-developer] updates to files of OL
+In-Reply-To: <7d8be2250610230536w24ed493eld645ddcc8d2f5952@mail.gmail.com>
+Message-ID: <BAY122-F2893F356FEB819C9FE20D8DF000@phx.gbl>
+
+OK, go ahead! I've had a lot of work to do this week, so it's great that 
+you've got the time to check it out.
+
+
+>From: "Miguel Gavidia" <juvinious at gmail.com>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: Re: [Openlayer-developer] updates to files of OL
+>Date: Mon, 23 Oct 2006 20:36:59 +0800
+>
+>I just tried out the changes on windows mingw and it compiled just as well,
+>no problems. All demos ran perfectly fine. Flad if you want, I can go ahead
+>and commit the changes? Let me know, unless you have other
+>plans/tests to do. :)
+>
+>On 10/23/06, Miguel A. Gavidia <juvinious at gmail.com> wrote:
+>>
+>>Ok I gave the changes a whirl and they worked flawlessly with gcc 4.1 on
+>>linux. All compiled well and all the demos work just the same. Hopefully
+>>it
+>>works just as well on gcc/mingw on windows. :D
+>>Good work neil and tobing. :)
+>>????????? 23 10??? 2006 01:35???Esa Tanskanen ????????????????????????:
+>> > Thanks a lot, I'll check it out and if everything goes OK, I'll submit
+>>it
+>> > to the SVN repository!
+>> >
+>> > >From: tobing at gmx.net
+>> > >Reply-To: openlayer-developer at berlios.de
+>> > >To: openlayer-developer at berlios.de
+>> > >Subject: Re: [Openlayer-developer] updates to files of OL
+>> > >Date: Sun, 22 Oct 2006 17:03:03 +0200
+>> > >
+>> > > > Oops sorry about that tobing, I misread your name as tobias... my
+>>bad.
+>> > > > Ignore
+>> > > > that. ::)
+>> > >
+>> > >tobing is the pseudonym, Tobias is my real name. So there's no need to
+>> > >apologize...
+>> > >
+>> > >I've attached ol.rar, containing all 7 changed files.
+>> > >
+>> > >OlRectangle.hpp and Circle.hpp have a section included, which 
+>>undefines
+>> > > min and max, if they are defined.
+>> > >
+>> > >Bitmap.cpp has loop variables renamed.
+>> > >
+>> > >Internal.hpp has different implementations of OlAssert. This code is
+>> > > copied from Neil Walker, from the thread in the forum.
+>> > >
+>> > >shapedemo/Main.cpp has two things corrected: END_OF_FUNCTION and to
+>>open
+>> > >the correct file.
+>> > >
+>> > >textdemo/Main.cpp das an added Canvas::Fill to have a blank black
+>>screen
+>> > > to write on, and the ctor of TextRenderer neuropol changed, then call
+>> > > Load explicitely (helps debugging, but maybe should not go into 
+>>SVN?).
+>> > >
+>> > >gamedemo/Demo.cpp has the gcc-only <? statement replaced by something
+>>that
+>> > >works for me - what does <? mean?
+>> > >
+>> > >
+>> > >Thanks for considering this stuff for updating SVN, hope it works all
+>> > > fine. I'll try to not use GK now...
+>> > >
+>> > >
+>> > >--
+>> > >Viele Gr??sse / Best Regards / Amiti??s
+>> > >Tobing
+>> > >
+>> > >http://www.staedtebauen.de
+>> > >
+>> > >
+>> > ><< ol.rar >>
+>> > >
+>> > >
+>> > >_______________________________________________
+>> > >Openlayer-developer mailing list
+>> > >Openlayer-developer at lists.berlios.de
+>> > >https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>> >
+>> > _________________________________________________________________
+>> > Uutiset ja kasvot uutisten takaa. MSN Search, t??yden palvelun 
+>>hakukone.
+>> > http://search.msn.fi
+>> >
+>> > _______________________________________________
+>> > Openlayer-developer mailing list
+>> > Openlayer-developer at lists.berlios.de
+>> > https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>>
+>>--
+>>-juvinious
+>>
+>>http://chasm.hopto.org - The Chasm - My Site
+>>http://openlayer.berlios.de - Openlayer
+>>
+
+
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Uutisista turhaan tietoon. Mit? ikin? etsitkin, MSN Search l?yt?? hakemasi. 
+http://search.msn.fi
+
+
+
+From tobing at gmx.net  Tue Oct 24 13:33:54 2006
+From: tobing at gmx.net (tobing at gmx.net)
+Date: Tue, 24 Oct 2006 13:33:54 +0200
+Subject: [Openlayer-developer] updates to files of OL
+In-Reply-To: <7d8be2250610230536w24ed493eld645ddcc8d2f5952@mail.gmail.com>
+References: <BAY122-F47EA8F94F282834C47B79DF030@phx.gbl>
+	<200610230355.10986.juvinious@gmail.com>
+	<7d8be2250610230536w24ed493eld645ddcc8d2f5952@mail.gmail.com>
+Message-ID: <20061024113354.210530@gmx.net>
+
+
+> I just tried out the changes on windows mingw and it compiled just as
+> well, no problems. All demos ran perfectly fine. Flad if you want, I can 
+> go ahead and commit the changes? Let me know, unless you have other
+> plans/tests to do. :)
+
+Thank you very much. Got the OL update yesterday. 
+
+
+Two remarks. 
+
+I think that OpenLayer would be a good candidate for a DLL. I would try to make it a DLL, if there's no specific reason to not do so? It might turn out too difficult, but I expect that it would be fine. The advantage might be that the application does not have to link all these libraries which are referenced in OL. 
+
+About coding format. I have since a few years adopted the habit to write each statement into one separate line. The reason is simply that debuggers are line-oriented, and single stepping is so much easier then. The question would be, if you would mind to change the code layout, such that every statement gets its own line? 
+
+The point is, if I would start to make changes to make OL a DLL, I would rather prefer to adhere to that convention. Generally, I would try to write and changes in such a way that they go seamless into existing code, but the one-statement-one-line-rule would be important to me. 
+
+Anyway, doing this DLL stuff will take its time, so there's no hurry to have an ultra-fast decision here. I would like to hear your comments though. 
+
+
+-- 
+Viele Gr?sse / Best Regards / Amiti?s
+Tobing
+
+http://www.staedtebauen.de
+
+
+From fladimir2002 at hotmail.com  Tue Oct 24 15:47:20 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Tue, 24 Oct 2006 16:47:20 +0300
+Subject: [Openlayer-developer] updates to files of OL
+In-Reply-To: <20061024113354.210530@gmx.net>
+Message-ID: <BAY122-F490BBAA35A4086ED00360DF010@phx.gbl>
+
+I remember that one OL user had made the library to compile as a DLL before 
+(I think it was of version 1.8, which is old now), but he never posted me 
+the code. I'm not sure what you mean by one statement per line. I don't 
+think there's many places where that's not true, or is there? If the changes 
+aren't drastical, I won't mind :)
+
+
+>From: tobing at gmx.net
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: Re: [Openlayer-developer] updates to files of OL
+>Date: Tue, 24 Oct 2006 13:33:54 +0200
+>
+>
+> > I just tried out the changes on windows mingw and it compiled just as
+> > well, no problems. All demos ran perfectly fine. Flad if you want, I can
+> > go ahead and commit the changes? Let me know, unless you have other
+> > plans/tests to do. :)
+>
+>Thank you very much. Got the OL update yesterday.
+>
+>
+>Two remarks.
+>
+>I think that OpenLayer would be a good candidate for a DLL. I would try to 
+>make it a DLL, if there's no specific reason to not do so? It might turn 
+>out too difficult, but I expect that it would be fine. The advantage might 
+>be that the application does not have to link all these libraries which are 
+>referenced in OL.
+>
+>About coding format. I have since a few years adopted the habit to write 
+>each statement into one separate line. The reason is simply that debuggers 
+>are line-oriented, and single stepping is so much easier then. The question 
+>would be, if you would mind to change the code layout, such that every 
+>statement gets its own line?
+>
+>The point is, if I would start to make changes to make OL a DLL, I would 
+>rather prefer to adhere to that convention. Generally, I would try to write 
+>and changes in such a way that they go seamless into existing code, but the 
+>one-statement-one-line-rule would be important to me.
+>
+>Anyway, doing this DLL stuff will take its time, so there's no hurry to 
+>have an ultra-fast decision here. I would like to hear your comments 
+>though.
+>
+>
+>--
+>Viele Gr?sse / Best Regards / Amiti?s
+>Tobing
+>
+>http://www.staedtebauen.de
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Windows-ty?p?yt?haun avulla l?yd?t tiedot koneeltasi silm?nr?p?yksess?. 
+http://toolbar.msn.fi
+
+
+
+From neil at retrospec.sgn.net  Tue Oct 24 21:09:08 2006
+From: neil at retrospec.sgn.net (neil)
+Date: Tue, 24 Oct 2006 20:09:08 +0100
+Subject: [Openlayer-developer] updates to files of OL
+In-Reply-To: <BAY122-F490BBAA35A4086ED00360DF010@phx.gbl>
+References: <BAY122-F490BBAA35A4086ED00360DF010@phx.gbl>
+Message-ID: <1161716948.4888.1.camel@localhost>
+
+All he means is where you might have:
+
+if(a==2) dosomething();
+
+change it to:
+if(a==2) 
+	dosomething();
+
+That way you can trace into the debugger easier and set breakpoints.
+
+Neil.
+
+
+
+On Tue, 2006-10-24 at 16:47 +0300, Esa Tanskanen wrote:
+> I remember that one OL user had made the library to compile as a DLL before 
+> (I think it was of version 1.8, which is old now), but he never posted me 
+> the code. I'm not sure what you mean by one statement per line. I don't 
+> think there's many places where that's not true, or is there? If the changes 
+> aren't drastical, I won't mind :)
+> 
+> 
+> >From: tobing at gmx.net
+> >Reply-To: openlayer-developer at berlios.de
+> >To: openlayer-developer at berlios.de
+> >Subject: Re: [Openlayer-developer] updates to files of OL
+> >Date: Tue, 24 Oct 2006 13:33:54 +0200
+> >
+> >
+> > > I just tried out the changes on windows mingw and it compiled just as
+> > > well, no problems. All demos ran perfectly fine. Flad if you want, I can
+> > > go ahead and commit the changes? Let me know, unless you have other
+> > > plans/tests to do. :)
+> >
+> >Thank you very much. Got the OL update yesterday.
+> >
+> >
+> >Two remarks.
+> >
+> >I think that OpenLayer would be a good candidate for a DLL. I would try to 
+> >make it a DLL, if there's no specific reason to not do so? It might turn 
+> >out too difficult, but I expect that it would be fine. The advantage might 
+> >be that the application does not have to link all these libraries which are 
+> >referenced in OL.
+> >
+> >About coding format. I have since a few years adopted the habit to write 
+> >each statement into one separate line. The reason is simply that debuggers 
+> >are line-oriented, and single stepping is so much easier then. The question 
+> >would be, if you would mind to change the code layout, such that every 
+> >statement gets its own line?
+> >
+> >The point is, if I would start to make changes to make OL a DLL, I would 
+> >rather prefer to adhere to that convention. Generally, I would try to write 
+> >and changes in such a way that they go seamless into existing code, but the 
+> >one-statement-one-line-rule would be important to me.
+> >
+> >Anyway, doing this DLL stuff will take its time, so there's no hurry to 
+> >have an ultra-fast decision here. I would like to hear your comments 
+> >though.
+> >
+> >
+> >--
+> >Viele Gr?sse / Best Regards / Amiti?s
+> >Tobing
+> >
+> >http://www.staedtebauen.de
+> >_______________________________________________
+> >Openlayer-developer mailing list
+> >Openlayer-developer at lists.berlios.de
+> >https://lists.berlios.de/mailman/listinfo/openlayer-developer
+> 
+> _________________________________________________________________
+> Windows-ty?p?yt?haun avulla l?yd?t tiedot koneeltasi silm?nr?p?yksess?. 
+> http://toolbar.msn.fi
+> 
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+
+
+From fladimir2002 at hotmail.com  Tue Oct 24 21:09:34 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Tue, 24 Oct 2006 22:09:34 +0300
+Subject: [Openlayer-developer] updates to files of OL
+In-Reply-To: <1161716948.4888.1.camel@localhost>
+Message-ID: <BAY122-F247C7F7EDA4997A2828A4CDF010@phx.gbl>
+
+OK, that's just fine with me.
+
+
+>From: neil <neil at retrospec.sgn.net>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: Re: [Openlayer-developer] updates to files of OL
+>Date: Tue, 24 Oct 2006 20:09:08 +0100
+>
+>All he means is where you might have:
+>
+>if(a==2) dosomething();
+>
+>change it to:
+>if(a==2)
+>	dosomething();
+>
+>That way you can trace into the debugger easier and set breakpoints.
+>
+>Neil.
+>
+>
+>
+>On Tue, 2006-10-24 at 16:47 +0300, Esa Tanskanen wrote:
+> > I remember that one OL user had made the library to compile as a DLL 
+>before
+> > (I think it was of version 1.8, which is old now), but he never posted 
+>me
+> > the code. I'm not sure what you mean by one statement per line. I don't
+> > think there's many places where that's not true, or is there? If the 
+>changes
+> > aren't drastical, I won't mind :)
+> >
+> >
+> > >From: tobing at gmx.net
+> > >Reply-To: openlayer-developer at berlios.de
+> > >To: openlayer-developer at berlios.de
+> > >Subject: Re: [Openlayer-developer] updates to files of OL
+> > >Date: Tue, 24 Oct 2006 13:33:54 +0200
+> > >
+> > >
+> > > > I just tried out the changes on windows mingw and it compiled just 
+>as
+> > > > well, no problems. All demos ran perfectly fine. Flad if you want, I 
+>can
+> > > > go ahead and commit the changes? Let me know, unless you have other
+> > > > plans/tests to do. :)
+> > >
+> > >Thank you very much. Got the OL update yesterday.
+> > >
+> > >
+> > >Two remarks.
+> > >
+> > >I think that OpenLayer would be a good candidate for a DLL. I would try 
+>to
+> > >make it a DLL, if there's no specific reason to not do so? It might 
+>turn
+> > >out too difficult, but I expect that it would be fine. The advantage 
+>might
+> > >be that the application does not have to link all these libraries which 
+>are
+> > >referenced in OL.
+> > >
+> > >About coding format. I have since a few years adopted the habit to 
+>write
+> > >each statement into one separate line. The reason is simply that 
+>debuggers
+> > >are line-oriented, and single stepping is so much easier then. The 
+>question
+> > >would be, if you would mind to change the code layout, such that every
+> > >statement gets its own line?
+> > >
+> > >The point is, if I would start to make changes to make OL a DLL, I 
+>would
+> > >rather prefer to adhere to that convention. Generally, I would try to 
+>write
+> > >and changes in such a way that they go seamless into existing code, but 
+>the
+> > >one-statement-one-line-rule would be important to me.
+> > >
+> > >Anyway, doing this DLL stuff will take its time, so there's no hurry to
+> > >have an ultra-fast decision here. I would like to hear your comments
+> > >though.
+> > >
+> > >
+> > >--
+> > >Viele Gr??sse / Best Regards / Amiti??s
+> > >Tobing
+> > >
+> > >http://www.staedtebauen.de
+> > >_______________________________________________
+> > >Openlayer-developer mailing list
+> > >Openlayer-developer at lists.berlios.de
+> > >https://lists.berlios.de/mailman/listinfo/openlayer-developer
+> >
+> > _________________________________________________________________
+> > Windows-ty??p??yt??haun avulla l??yd??t tiedot koneeltasi 
+>silm??nr??p??yksess??.
+> > http://toolbar.msn.fi
+> >
+> > _______________________________________________
+> > Openlayer-developer mailing list
+> > Openlayer-developer at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Uutisista turhaan tietoon. Mit? ikin? etsitkin, MSN Search l?yt?? hakemasi. 
+http://search.msn.fi
+
+
+
+From fladimir2002 at hotmail.com  Tue Oct 24 22:11:25 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Tue, 24 Oct 2006 23:11:25 +0300
+Subject: [Openlayer-developer] Saving fonts
+In-Reply-To: <BAY122-F247C7F7EDA4997A2828A4CDF010@phx.gbl>
+Message-ID: <BAY122-F27871A89C7507B9BC2292DDF010@phx.gbl>
+
+Hi,
+
+The Font-class doesn't contain any name for the font. Thus, it'd be 
+difficult to generate any sensible name for the saved font. In fact, the 
+Font class doesn't contain any information that could be used to "save" the 
+font in the theme XML file (as <font systemName="arial" size="20" />).
+
+Also, I noticed this: height = texHashMap.get('a').getHeight();
+
+I'd say that's not very accurate. And if the character set doesn't have the 
+letter A in it (for example, a chinese font) that would go crashing down.
+
+/Esa
+
+_________________________________________________________________
+Nyt l?yd?t etsim?si tiedot nopeasti niin koneeltasi kuin netist?. 
+http://toolbar.msn.fi
+
+
+
+From fladimir2002 at hotmail.com  Tue Oct 24 22:16:10 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Tue, 24 Oct 2006 23:16:10 +0300
+Subject: [Openlayer-developer] Saving fonts
+In-Reply-To: <BAY122-F27871A89C7507B9BC2292DDF010@phx.gbl>
+Message-ID: <BAY122-F494DE94992B7321BF3F31DF010@phx.gbl>
+
+It's the same with Pixmaps. There's no way to know how the texture is 
+retrieved...
+
+>From: "Esa Tanskanen" <fladimir2002 at hotmail.com>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: [Openlayer-developer] Saving fonts
+>Date: Tue, 24 Oct 2006 23:11:25 +0300
+>
+>Hi,
+>
+>The Font-class doesn't contain any name for the font. Thus, it'd be
+>difficult to generate any sensible name for the saved font. In fact, the
+>Font class doesn't contain any information that could be used to "save" the
+>font in the theme XML file (as <font systemName="arial" size="20" />).
+>
+>Also, I noticed this: height = texHashMap.get('a').getHeight();
+>
+>I'd say that's not very accurate. And if the character set doesn't have the
+>letter A in it (for example, a chinese font) that would go crashing down.
+>
+>/Esa
+>
+>_________________________________________________________________
+>Nyt l?yd?t etsim?si tiedot nopeasti niin koneeltasi kuin netist?.
+>http://toolbar.msn.fi
+>
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Windows-ty?p?yt?haun avulla l?yd?t tiedot koneeltasi silm?nr?p?yksess?. 
+http://toolbar.msn.fi
+
+
+
+From fladimir2002 at hotmail.com  Tue Oct 24 22:22:40 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Tue, 24 Oct 2006 23:22:40 +0300
+Subject: [Openlayer-developer] Saving fonts
+In-Reply-To: <BAY122-F494DE94992B7321BF3F31DF010@phx.gbl>
+Message-ID: <BAY122-F392C5B280F56FCAE5B662FDF010@phx.gbl>
+
+Hmm... wrong mailing list, ignore me :)
+
+The previous 2 posts were about a GUI library that I'm using...
+
+_________________________________________________________________
+Windows-ty?p?yt?haun avulla l?yd?t tiedot koneeltasi silm?nr?p?yksess?. 
+http://toolbar.msn.fi
+
+
+
+From juvinious at gmail.com  Wed Oct 25 01:32:37 2006
+From: juvinious at gmail.com (Miguel Gavidia)
+Date: Wed, 25 Oct 2006 07:32:37 +0800
+Subject: [Openlayer-developer] Saving fonts
+In-Reply-To: <BAY122-F392C5B280F56FCAE5B662FDF010@phx.gbl>
+References: <BAY122-F494DE94992B7321BF3F31DF010@phx.gbl>
+	<BAY122-F392C5B280F56FCAE5B662FDF010@phx.gbl>
+Message-ID: <7d8be2250610241632rddf7f69k71a1b28aaac6a9d2@mail.gmail.com>
+
+oh. ::)
+I was worried for a moment, because I was like "what are you talking
+about?". :)
+/me ignores
+
+On 10/25/06, Esa Tanskanen <fladimir2002 at hotmail.com> wrote:
+>
+> Hmm... wrong mailing list, ignore me :)
+>
+> The previous 2 posts were about a GUI library that I'm using...
+>
+> _________________________________________________________________
+> Windows-ty?p?yt?haun avulla l?yd?t tiedot koneeltasi silm?nr?p?yksess?.
+> http://toolbar.msn.fi
+>
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20061025/881655f3/attachment.html>
+
+From juvinious at gmail.com  Wed Oct 25 01:34:32 2006
+From: juvinious at gmail.com (Miguel Gavidia)
+Date: Wed, 25 Oct 2006 07:34:32 +0800
+Subject: [Openlayer-developer] updates to files of OL
+In-Reply-To: <BAY122-F247C7F7EDA4997A2828A4CDF010@phx.gbl>
+References: <1161716948.4888.1.camel@localhost>
+	<BAY122-F247C7F7EDA4997A2828A4CDF010@phx.gbl>
+Message-ID: <7d8be2250610241634q3f59d7efj56dfb0546349ed3c@mail.gmail.com>
+
+So is tobing going to be added to the svn developer list? If those are just
+cosmetical changes he can go ahead and commit them himself.
+
+On 10/25/06, Esa Tanskanen <fladimir2002 at hotmail.com> wrote:
+>
+> OK, that's just fine with me.
+>
+>
+> >From: neil <neil at retrospec.sgn.net>
+> >Reply-To: openlayer-developer at berlios.de
+> >To: openlayer-developer at berlios.de
+> >Subject: Re: [Openlayer-developer] updates to files of OL
+> >Date: Tue, 24 Oct 2006 20:09:08 +0100
+> >
+> >All he means is where you might have:
+> >
+> >if(a==2) dosomething();
+> >
+> >change it to:
+> >if(a==2)
+> >       dosomething();
+> >
+> >That way you can trace into the debugger easier and set breakpoints.
+> >
+> >Neil.
+> >
+> >
+> >
+> >On Tue, 2006-10-24 at 16:47 +0300, Esa Tanskanen wrote:
+> > > I remember that one OL user had made the library to compile as a DLL
+> >before
+> > > (I think it was of version 1.8, which is old now), but he never posted
+> >me
+> > > the code. I'm not sure what you mean by one statement per line. I
+> don't
+> > > think there's many places where that's not true, or is there? If the
+> >changes
+> > > aren't drastical, I won't mind :)
+> > >
+> > >
+> > > >From: tobing at gmx.net
+> > > >Reply-To: openlayer-developer at berlios.de
+> > > >To: openlayer-developer at berlios.de
+> > > >Subject: Re: [Openlayer-developer] updates to files of OL
+> > > >Date: Tue, 24 Oct 2006 13:33:54 +0200
+> > > >
+> > > >
+> > > > > I just tried out the changes on windows mingw and it compiled just
+> >as
+> > > > > well, no problems. All demos ran perfectly fine. Flad if you want,
+> I
+> >can
+> > > > > go ahead and commit the changes? Let me know, unless you have
+> other
+> > > > > plans/tests to do. :)
+> > > >
+> > > >Thank you very much. Got the OL update yesterday.
+> > > >
+> > > >
+> > > >Two remarks.
+> > > >
+> > > >I think that OpenLayer would be a good candidate for a DLL. I would
+> try
+> >to
+> > > >make it a DLL, if there's no specific reason to not do so? It might
+> >turn
+> > > >out too difficult, but I expect that it would be fine. The advantage
+> >might
+> > > >be that the application does not have to link all these libraries
+> which
+> >are
+> > > >referenced in OL.
+> > > >
+> > > >About coding format. I have since a few years adopted the habit to
+> >write
+> > > >each statement into one separate line. The reason is simply that
+> >debuggers
+> > > >are line-oriented, and single stepping is so much easier then. The
+> >question
+> > > >would be, if you would mind to change the code layout, such that
+> every
+> > > >statement gets its own line?
+> > > >
+> > > >The point is, if I would start to make changes to make OL a DLL, I
+> >would
+> > > >rather prefer to adhere to that convention. Generally, I would try to
+> >write
+> > > >and changes in such a way that they go seamless into existing code,
+> but
+> >the
+> > > >one-statement-one-line-rule would be important to me.
+> > > >
+> > > >Anyway, doing this DLL stuff will take its time, so there's no hurry
+> to
+> > > >have an ultra-fast decision here. I would like to hear your comments
+> > > >though.
+> > > >
+> > > >
+> > > >--
+> > > >Viele Gr??sse / Best Regards / Amiti?(c)s
+> > > >Tobing
+> > > >
+> > > >http://www.staedtebauen.de
+> > > >_______________________________________________
+> > > >Openlayer-developer mailing list
+> > > >Openlayer-developer at lists.berlios.de
+> > > >https://lists.berlios.de/mailman/listinfo/openlayer-developer
+> > >
+> > > _________________________________________________________________
+> > > Windows-ty??p??yt??haun avulla l??yd??t tiedot koneeltasi
+> >silm??nr??p??yksess??.
+> > > http://toolbar.msn.fi
+> > >
+> > > _______________________________________________
+> > > Openlayer-developer mailing list
+> > > Openlayer-developer at lists.berlios.de
+> > > https://lists.berlios.de/mailman/listinfo/openlayer-developer
+> >
+> >_______________________________________________
+> >Openlayer-developer mailing list
+> >Openlayer-developer at lists.berlios.de
+> >https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+> _________________________________________________________________
+> Uutisista turhaan tietoon. Mit? ikin? etsitkin, MSN Search l?yt??
+> hakemasi.
+> http://search.msn.fi
+>
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20061025/f405d87c/attachment.html>
+
+From juvinious at gmail.com  Wed Oct 25 02:59:05 2006
+From: juvinious at gmail.com (Miguel Gavidia)
+Date: Wed, 25 Oct 2006 08:59:05 +0800
+Subject: [Openlayer-developer] Canvas clipping
+Message-ID: <7d8be2250610241759w7dad80e6w7490fa4017e2d32@mail.gmail.com>
+
+Two concerns with clipping. When calling SetClipping is there any specific
+reason why this code block is necessary?:
+if( !clippingRegions.empty() ) {
+clippingRegion = clippingRegions.top();
+}
+if( x < clippingRegion.x ) {
+w -= clippingRegion.x - x;
+x = clippingRegion.x;
+}
+
+if( y < clippingRegion.y ) {
+h -= clippingRegion.y - y;
+y = clippingRegion.y;
+}
+
+if( x + w > clippingRegion.w ) {
+w = clippingRegion.w - x;
+}
+
+if( y + h > clippingRegion.h ) {
+h = clippingRegion.h - y;
+}
+
+Reason I ask is because I've ran some tests and have had some clipping
+regions shrunk/modified from the actual size region I passed. I built canvas
+without it and the passed clipping regions are unmodified and are set as
+expected.
+
+The other concern is GetClippingRegion. I mentioned it before but if the
+stack is empty the function will die and crash the program. I made a change
+which I can apply that checks if the stack is empty:
+Rect Canvas::SurfaceInfo::
+GetClippingRegion() {
+if(!clippingRegions.empty())
+{
+const OlRectangle< int > &clippingRegion = clippingRegions.top();
+return Rect( clippingRegion.x, clippingRegion.y, clippingRegion.w,
+clippingRegion.h );
+}
+else
+{
+return Rect( 0, 0, Width(), Height() );
+}
+}
+
+Thanks.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20061025/b789b528/attachment.html>
+
+From fladimir2002 at hotmail.com  Wed Oct 25 13:41:49 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Wed, 25 Oct 2006 14:41:49 +0300
+Subject: [Openlayer-developer] Saving fonts
+In-Reply-To: <7d8be2250610241632rddf7f69k71a1b28aaac6a9d2@mail.gmail.com>
+Message-ID: <BAY122-F156686F42F5789ED82DCEDF060@phx.gbl>
+
+No, I haven't gone totally crazy yet, don't worry ;)
+
+
+>From: "Miguel Gavidia" <juvinious at gmail.com>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: Re: [Openlayer-developer] Saving fonts
+>Date: Wed, 25 Oct 2006 07:32:37 +0800
+>
+>oh. ::)
+>I was worried for a moment, because I was like "what are you talking
+>about?". :)
+>/me ignores
+>
+>On 10/25/06, Esa Tanskanen <fladimir2002 at hotmail.com> wrote:
+>>
+>>Hmm... wrong mailing list, ignore me :)
+>>
+>>The previous 2 posts were about a GUI library that I'm using...
+>>
+>>_________________________________________________________________
+>>Windows-ty?p?yt?haun avulla l?yd?t tiedot koneeltasi silm?nr?p?yksess?.
+>>http://toolbar.msn.fi
+>>
+>>_______________________________________________
+>>Openlayer-developer mailing list
+>>Openlayer-developer at lists.berlios.de
+>>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>>
+
+
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Uutisista turhaan tietoon. Mit? ikin? etsitkin, MSN Search l?yt?? hakemasi. 
+http://search.msn.fi
+
+
+
+From fladimir2002 at hotmail.com  Wed Oct 25 13:57:39 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Wed, 25 Oct 2006 14:57:39 +0300
+Subject: [Openlayer-developer] Canvas clipping
+In-Reply-To: <7d8be2250610241759w7dad80e6w7490fa4017e2d32@mail.gmail.com>
+Message-ID: <BAY122-F1403A50B40DF1C311EA0EDDF060@phx.gbl>
+
+>When calling SetClipping is there any specific
+>reason why this code block is necessary?:
+
+It was intended to clip the region to the edges of the screen. But it 
+appears that it's not necessary, so now it's removed.
+
+>The other concern is GetClippingRegion. I mentioned it before but if the
+>stack is empty the function will die and crash the program. I made a change
+
+Yeah, I totally forgot that :) I committed your changes.
+
+>From: "Miguel Gavidia" <juvinious at gmail.com>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: [Openlayer-developer] Canvas clipping
+>Date: Wed, 25 Oct 2006 08:59:05 +0800
+>
+>Two concerns with clipping. When calling SetClipping is there any specific
+>reason why this code block is necessary?:
+>if( !clippingRegions.empty() ) {
+>clippingRegion = clippingRegions.top();
+>}
+>if( x < clippingRegion.x ) {
+>w -= clippingRegion.x - x;
+>x = clippingRegion.x;
+>}
+>
+>if( y < clippingRegion.y ) {
+>h -= clippingRegion.y - y;
+>y = clippingRegion.y;
+>}
+>
+>if( x + w > clippingRegion.w ) {
+>w = clippingRegion.w - x;
+>}
+>
+>if( y + h > clippingRegion.h ) {
+>h = clippingRegion.h - y;
+>}
+>
+>Reason I ask is because I've ran some tests and have had some clipping
+>regions shrunk/modified from the actual size region I passed. I built 
+>canvas
+>without it and the passed clipping regions are unmodified and are set as
+>expected.
+>
+>The other concern is GetClippingRegion. I mentioned it before but if the
+>stack is empty the function will die and crash the program. I made a change
+>which I can apply that checks if the stack is empty:
+>Rect Canvas::SurfaceInfo::
+>GetClippingRegion() {
+>if(!clippingRegions.empty())
+>{
+>const OlRectangle< int > &clippingRegion = clippingRegions.top();
+>return Rect( clippingRegion.x, clippingRegion.y, clippingRegion.w,
+>clippingRegion.h );
+>}
+>else
+>{
+>return Rect( 0, 0, Width(), Height() );
+>}
+>}
+>
+>Thanks.
+
+
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Nyt l?yd?t etsim?si tiedot nopeasti niin koneeltasi kuin netist?. 
+http://toolbar.msn.fi
+
+
+
+From juvinious at gmail.com  Wed Oct 25 14:08:13 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Wed, 25 Oct 2006 20:08:13 +0800
+Subject: [Openlayer-developer] Canvas clipping
+In-Reply-To: <BAY122-F1403A50B40DF1C311EA0EDDF060@phx.gbl>
+References: <BAY122-F1403A50B40DF1C311EA0EDDF060@phx.gbl>
+Message-ID: <200610252008.14002.juvinious@gmail.com>
+
+Cool. :)
+??? 25 10? 2006 19:57?Esa Tanskanen ????????:
+> >When calling SetClipping is there any specific
+> >reason why this code block is necessary?:
+>
+> It was intended to clip the region to the edges of the screen. But it
+> appears that it's not necessary, so now it's removed.
+>
+> >The other concern is GetClippingRegion. I mentioned it before but if the
+> >stack is empty the function will die and crash the program. I made a
+> > change
+>
+> Yeah, I totally forgot that :) I committed your changes.
+>
+> >From: "Miguel Gavidia" <juvinious at gmail.com>
+> >Reply-To: openlayer-developer at berlios.de
+> >To: openlayer-developer at berlios.de
+> >Subject: [Openlayer-developer] Canvas clipping
+> >Date: Wed, 25 Oct 2006 08:59:05 +0800
+> >
+> >Two concerns with clipping. When calling SetClipping is there any specific
+> >reason why this code block is necessary?:
+> >if( !clippingRegions.empty() ) {
+> >clippingRegion = clippingRegions.top();
+> >}
+> >if( x < clippingRegion.x ) {
+> >w -= clippingRegion.x - x;
+> >x = clippingRegion.x;
+> >}
+> >
+> >if( y < clippingRegion.y ) {
+> >h -= clippingRegion.y - y;
+> >y = clippingRegion.y;
+> >}
+> >
+> >if( x + w > clippingRegion.w ) {
+> >w = clippingRegion.w - x;
+> >}
+> >
+> >if( y + h > clippingRegion.h ) {
+> >h = clippingRegion.h - y;
+> >}
+> >
+> >Reason I ask is because I've ran some tests and have had some clipping
+> >regions shrunk/modified from the actual size region I passed. I built
+> >canvas
+> >without it and the passed clipping regions are unmodified and are set as
+> >expected.
+> >
+> >The other concern is GetClippingRegion. I mentioned it before but if the
+> >stack is empty the function will die and crash the program. I made a
+> > change which I can apply that checks if the stack is empty:
+> >Rect Canvas::SurfaceInfo::
+> >GetClippingRegion() {
+> >if(!clippingRegions.empty())
+> >{
+> >const OlRectangle< int > &clippingRegion = clippingRegions.top();
+> >return Rect( clippingRegion.x, clippingRegion.y, clippingRegion.w,
+> >clippingRegion.h );
+> >}
+> >else
+> >{
+> >return Rect( 0, 0, Width(), Height() );
+> >}
+> >}
+> >
+> >Thanks.
+> >
+> >
+> >_______________________________________________
+> >Openlayer-developer mailing list
+> >Openlayer-developer at lists.berlios.de
+> >https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+> _________________________________________________________________
+> Nyt l?yd?t etsim?si tiedot nopeasti niin koneeltasi kuin netist?.
+> http://toolbar.msn.fi
+>
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+-- 
+-juvinious
+
+http://chasm.hopto.org - The Chasm - My Site
+http://openlayer.berlios.de - Openlayer
+
+
+From indeterminatus_ml at gmx.net  Sat Oct 28 13:43:31 2006
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Sat, 28 Oct 2006 13:43:31 +0200
+Subject: [Openlayer-developer] Using 8 bpp bitmap as alpha channel.
+Message-ID: <45434263.5000509@gmx.net>
+
+Hello there!
+
+I was wondering if/how it was possible to use an 8bpp bitmap as an alpha
+channel. The situation is this: we only need the alpha channel, and for
+now we're wasting 24 bpp. Granted, it works, but it's by far not the
+solution I want.
+
+One improvement would be to allow a 8bpp bitmap file to be loaded and
+"deflated" into a 32bpp in memory - it still wastes 24 bpp in memory,
+but at least the required harddisk footprint isn't as huge.
+
+The next (and best) thing would be, of course, if both on harddisk and
+in memory only the channel that is actually needed exists.
+
+Ideas/comments?
+
+Yours,
+   David.
+
+P.S.: In case you're wondering, that's for a static shadowmap ;)
+
+
+
+From fladimir2002 at hotmail.com  Sat Oct 28 22:24:23 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Sat, 28 Oct 2006 23:24:23 +0300
+Subject: [Openlayer-developer] Using 8 bpp bitmap as alpha channel.
+In-Reply-To: <45434263.5000509@gmx.net>
+Message-ID: <BAY122-F1441D58D18646390F1F447DF050@phx.gbl>
+
+>One improvement would be to allow a 8bpp bitmap file to be loaded and
+>"deflated" into a 32bpp in memory - it still wastes 24 bpp in memory,
+>but at least the required harddisk footprint isn't as huge.
+
+That may already be possible if you set a proper palette in Allegro.
+
+>The next (and best) thing would be, of course, if both on harddisk and
+>in memory only the channel that is actually needed exists.
+
+8-bit textures are possible, but may not be supported with all hardware. For 
+example, the text routines originally used 8-bit textures, but I changed 
+them to 32 bpp for compability reasons.
+
+_________________________________________________________________
+Uutiset ja kasvot uutisten takaa. MSN Search, t?yden palvelun hakukone. 
+http://search.msn.fi
+
+
+

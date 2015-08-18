@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] potential feature in ol::Poly
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20potential%20feature%20in%20ol%3A%3APoly&In-Reply-To=%3C4407637C.3070902%40bradeeoh.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000018.html">
+   <LINK REL="Next"  HREF="000020.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] potential feature in ol::Poly</H1>
+    <B>B E</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20potential%20feature%20in%20ol%3A%3APoly&In-Reply-To=%3C4407637C.3070902%40bradeeoh.com%3E"
+       TITLE="[Openlayer-developer] potential feature in ol::Poly">bradeeoh at bradeeoh.com
+       </A><BR>
+    <I>Thu Mar  2 22:28:28 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000018.html">[Openlayer-developer] GUI planned?
+</A></li>
+        <LI>Next message: <A HREF="000020.html">[Openlayer-developer] potential feature in ol::Poly - adding on to my own post...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm having to create my own ways of hanging onto the absolute position 
+of a Poly in relation to its starting coordinates when I think it should 
+be built in.
+
+To clarify, ol::Poly::MoveBy( Vec2D ) is great but I think there should 
+also be ol::Poly::MoveTo( Vec2D )
+
+For example if I create, say, a square...
+
+Poly p;
+p.Add( Vec2D( 0, 0 ));
+p.Add( Vec2D( 30, 0 ));
+p.Add( Vec2D( 30, 30 ));
+p.Add( Vec2D( 0, 30 ));
+
+I would love to use it as a generically relocatable square.  I can call 
+p.MoveBy( ... ) to move it around the screen but sometimes you can only 
+know an absolute location where you'd like to move it instead of a 
+relative location.  If I've move it around the screen hundreds of times 
+each by a fractional Vec2Ds, floating point math will have compounded 
+flaws to the point that it's exact position in relation to the origin 
+cannot be known.
+
+Even if I keep track of all of these MoveBy() calls and I try to do a 
+MoveBy() to send it back to the origin, there's no guarantee it will 
+actually end up back at (0.0,0.0).
+
+Theres a few complexities the arise by my proposal - how to keep track 
+of initial position remains a problem.
+
+One idea I have would be to keep 2 copies of the vertices - an initial 
+position and a current position.  They would start the same...  but a 
+call to MoveBy() would affect the current position and a call to 
+MoveTo() would do its math on the initial position creating a new 
+&quot;current position&quot;
+
+We could either take a small time penalty upon object initialization by 
+storing two copies of each vertex, or we could do a copy-on-write by 
+only making a &quot;current position&quot; vector upon the first call to MoveBy() 
+or MoveTo()
+
+The size penalty is obvious but also depends on the number of vertices 
+in the poly.
+
+What do you think?  If there's no objections I've basically already 
+implemented my method - though I could add copy-on-write to it.  Or, any 
+other ideas on how we could acheive the same thing differently?
+
+Peace,
+-Brady
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000018.html">[Openlayer-developer] GUI planned?
+</A></li>
+	<LI>Next message: <A HREF="000020.html">[Openlayer-developer] potential feature in ol::Poly - adding on to my own post...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,24 @@
+From juvinious at gmail.com  Mon Aug 14 10:14:39 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Mon, 14 Aug 2006 16:14:39 +0800
+Subject: [Openlayer-developer] FreeType support update
+Message-ID: <200608141614.39199.juvinious@gmail.com>
+
+I finally got my opengl back and thus nearly finished up all the internal 
+freetype rendering support. All that is actually missing now is hinting, 
+which I haven't looked into yet. Though it should be something easy to 
+implement. I also removed the required 'developer' paramater when building 
+openlayer to get the prompt for the internal font renderer as it is working 
+just as well as GlyphKeeper I think.
+Please when you have an opportunity give it a run and see how it works for you 
+and provide some feedback if something is wrong or missing. 
+I will also post a thread on a.cc to let users know about the new feature as 
+well. Thanks. :D
+
+-- 
+-juvinious
+
+http://chasm.hopto.org - The Chasm - My Site
+http://openlayer.berlios.de - Openlayer
+
+

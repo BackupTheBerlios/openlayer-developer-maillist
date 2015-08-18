@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] MSVC
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20MSVC&In-Reply-To=%3C7d8be2250611090141j2e14106dseed7ffeb91f3b698%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000238.html">
+   <LINK REL="Next"  HREF="000240.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] MSVC</H1>
+    <B>Miguel Gavidia</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20MSVC&In-Reply-To=%3C7d8be2250611090141j2e14106dseed7ffeb91f3b698%40mail.gmail.com%3E"
+       TITLE="[Openlayer-developer] MSVC">juvinious at gmail.com
+       </A><BR>
+    <I>Thu Nov  9 10:41:36 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000238.html">[Openlayer-developer] MSVC
+</A></li>
+        <LI>Next message: <A HREF="000240.html">[Openlayer-developer] Linker error in Windows
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#239">[ date ]</a>
+              <a href="thread.html#239">[ thread ]</a>
+              <a href="subject.html#239">[ subject ]</a>
+              <a href="author.html#239">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 11/8/06, <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">tobing at gmx.net</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">tobing at gmx.net</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; I have express and yes the other user I know had a full version.
+</I>&gt;<i> &gt; We both uninstalled, cleaned up and re-installed everything same deal,
+</I>&gt;<i> no
+</I>&gt;<i> &gt; go.
+</I>&gt;<i>
+</I>&gt;<i> &gt;Hm, no idea what's going wrong there. Unfortunately I can't easily try it
+</I>&gt;<i> myself, because I &gt;don't want to screw any of my PCs up with an installation
+</I>&gt;<i> of another Studio now. Maybe at &gt;a later time, when we have to use MSVC 8
+</I>&gt;<i> for a newer release here anyway...
+</I>
+
+&gt;<i>Ah, did you build every library you use with MSVC 8 or did you include
+</I>&gt;<i> already compiled &gt;and linked libraries into your link step? Just a guess,
+</I>&gt;<i> but maybe the object files are not &gt;easily compatible?
+</I>
+
+Ok it seems it's not my environment I had to tweak the configuration to make
+it  produce a lib. Now it links the library fine, but when trying to compile
+the demos I'm back to the same spot with the C1900 errors. Frustrating, but
+I'll figure it out.
+
+&gt;<i> Did you use the cmake to generate the project files for 7.1, to test it
+</I>&gt;<i> &gt; out?
+</I>&gt;<i>
+</I>&gt;<i> &gt;I did now, but it didn't work. So first, I had a hard time to configure
+</I>&gt;<i> everything so that it &gt;seemed reasonable. Then I pressed OK, and cmake took
+</I>&gt;<i> quite a time to generate files, do &gt;some compilations etc, I can't say
+</I>&gt;<i> because cmake doesn't give any feedback about what &gt;it's doing.
+</I>
+
+Yeah when it's creating the project files it sucks. It should at least tell
+you or give some indication.
+
+&gt;<i>Eventually it finished and had created a solution and a bunch of project
+</I>&gt;<i> files - but didn't &gt;compile. There are assumptions left about the
+</I>&gt;<i> environment: First, I don't have the paths to &gt;my MSVC directories in my
+</I>&gt;<i> environment, just to avoid any confusion between different &gt;installed
+</I>&gt;<i> versions of MSVC on the same PC (have 6.0, 7.0 and 7.1 here).
+</I>
+
+&gt;<i>Then it assumes that the allegro directory is in the include path, which it
+</I>&gt;<i> isn't for the same &gt;reason actually, because I'm building many different
+</I>&gt;<i> projects with the different studio &gt;versions, so I can't put anything into
+</I>&gt;<i> the standard include path (same for lib path). I guess &gt;this could also be
+</I>&gt;<i> configured with cmake, making the configuration process even longer.
+</I>&gt;<i> &gt;Overall I like that most everything is configurable with cmake, but I don't
+</I>&gt;<i> see yet why it &gt;should be easier that way than having a solution and project
+</I>&gt;<i> files, which could be adopted &gt;to one's environment - well it may be easier
+</I>&gt;<i> for the deployment of the library.
+</I>
+
+Yes I'm totally aware of this and I'm working on including compensation for
+those with separated installs and directories so that it's totally
+configurable by the user. This will not however make it longer, it's just
+long because it takes time for it to generate the project files. When it
+creates unix/msys makefiles it takes but a few seconds.
+The issue with not having static project files is that each environment is
+not going to be the same.  Having cmake generate these files configured to
+your environment is much more sound and increases the odds of deploying the
+library to any environment.
+
+&gt;<i>Why does cmake copy 'Openlayer.hpp' into it's build directory?
+</I>&gt;<i>
+</I>&gt;<i> &gt;Well, I have compared that file with the original file, but I think it's
+</I>&gt;<i> bad style to change the &gt;original file to put additional defines into that
+</I>&gt;<i> header file, or change anything else...
+</I>
+
+The original header doesn't compensate for the preprocessors that are passed
+during compilation. You have to add these yourself and/or pass them whenever
+you want to link against the lib. I've never heard of this as being bad
+style, allegro does this as well as tons of other libraries. If you look at
+the build directory you'll see there is an OpenLayer.hpp.in look at the
+#cmakedefine macros and you'll see why.
+
+Overall it's coming along, just give me some time to get the kinks out of
+it.
+
+--
+&gt;<i> Viele Gr&#252;sse / Best Regards / Amiti&#233;s
+</I>&gt;<i> Tobing
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://www.staedtebauen.de">http://www.staedtebauen.de</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openlayer-developer mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">https://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/openlayer-developer/attachments/20061109/b76c2100/attachment.html">https://lists.berlios.de/pipermail/openlayer-developer/attachments/20061109/b76c2100/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000238.html">[Openlayer-developer] MSVC
+</A></li>
+	<LI>Next message: <A HREF="000240.html">[Openlayer-developer] Linker error in Windows
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#239">[ date ]</a>
+              <a href="thread.html#239">[ thread ]</a>
+              <a href="subject.html#239">[ subject ]</a>
+              <a href="author.html#239">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

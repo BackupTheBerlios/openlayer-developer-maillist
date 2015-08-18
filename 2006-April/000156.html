@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] is this too far for OpenLayer?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20is%20this%20too%20far%20for%20OpenLayer%3F&In-Reply-To=%3C443CAAFD.6030604%40retrospec.sgn.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000154.html">
+   <LINK REL="Next"  HREF="000158.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] is this too far for OpenLayer?</H1>
+    <B>neil</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20is%20this%20too%20far%20for%20OpenLayer%3F&In-Reply-To=%3C443CAAFD.6030604%40retrospec.sgn.net%3E"
+       TITLE="[Openlayer-developer] is this too far for OpenLayer?">neil at retrospec.sgn.net
+       </A><BR>
+    <I>Wed Apr 12 09:23:41 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000154.html">[Openlayer-developer] is this too far for OpenLayer?
+</A></li>
+        <LI>Next message: <A HREF="000158.html">[Openlayer-developer] VC6 port :)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#156">[ date ]</a>
+              <a href="thread.html#156">[ thread ]</a>
+              <a href="subject.html#156">[ subject ]</a>
+              <a href="author.html#156">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The problem is VC6 not having the correct definitions in the cmath file 
+and it's inability to handle the STL properly, for example, one STL 
+workaround for one problem is that std::xxx isn't enough, you have to 
+have 'using namespace std' as well! my solution is the only way I can 
+see it working.
+
+Esa is using std:: everywhere as you should, but the problem is as above.
+
+However, VC8 isn't really free, it runs out after a year and the VC8 
+compiler has loads of problems still with the new C library. However, it 
+might be 1998 technology but it is still a better IDE that devc++ and 
+code::blocks put together, in that it has a proper context dropdown for 
+functions/data types/classes/etc doesn't crash and generally works all 
+day no problem. One other minor thing that it does and I hate with 
+devc++ (especially with the way the openlayer headers are organised!) is 
+you can right click on a #include and simply open the file.
+
+Looking at the errors I'm getting (9 of them) they are all the same 
+collision template.
+
+But the question is more, would everyone feel comfortable using STL_MIN 
+definition instead of std::min everywhere in code. If not, then simply 
+drop support for VC6.
+
+Neil.
+
+
+Brady Eidson wrote:
+
+&gt;<i> Without having VC6 available, and also not having the time to attack 
+</I>&gt;<i> the specific problem right now, it looks like it CAN be solved by 
+</I>&gt;<i> explicitly defining that function for the appropriate template types?
+</I>&gt;<i>
+</I>&gt;<i> My personal take is that all modern compilers handle the STL well 
+</I>&gt;<i> enough to handle OL - we're not doing anything THAT complex, quite 
+</I>&gt;<i> honestly. MinGW/GCC folks are completely fine with upgrading their 
+</I>&gt;<i> compiler because it's very actively developed and free to do so.  Now 
+</I>&gt;<i> that VC express 2005 is free... should this even be an issue?
+</I>&gt;<i>
+</I>&gt;<i> I mean, VC 6 was released in '98 - EIGHT years ago.  That's only 4 
+</I>&gt;<i> years after the STL standard was approved, much less 
+</I>&gt;<i> compilers/libraries became available.  NO compiler handled it well 
+</I>&gt;<i> back then and workarounds had to be made...
+</I>&gt;<i>
+</I>&gt;<i> At this point free compilers have handled the entirety of the stl for 
+</I>&gt;<i> 4 or 5 years and many commercial compilers for longer - is it too much 
+</I>&gt;<i> to ask for a user of a modernly-programmed library use a somewhat 
+</I>&gt;<i> modern compiler?
+</I>&gt;<i>
+</I>&gt;<i> I guess I just don't understand the reason why VC6 people can't 
+</I>&gt;<i> upgrade now that it's free to do so...
+</I>&gt;<i>
+</I>&gt;<i> But when it comes down to the handful of examples you showed regarding 
+</I>&gt;<i> std::math functions, couldn't those just be solved by using the fully 
+</I>&gt;<i> qualified &quot;std::min&quot; and &quot;std::max&quot; in OpenLayer?
+</I>&gt;<i>
+</I>&gt;<i> Or is that the problem?  That VC6, in addition to the namespace 
+</I>&gt;<i> pollution, also doesn't HAVE the std:: versions?
+</I>&gt;<i>
+</I>&gt;<i> -Brady
+</I>&gt;<i>
+</I>&gt;<i> neil wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hello,
+</I>&gt;&gt;<i> VC6 doesn't support the STL very well, in fact it's pretty rubbish. 
+</I>&gt;&gt;<i> However, there are a lot of people using it. I've found a way to get 
+</I>&gt;&gt;<i> round it but is it going too for your Esa/others?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Basically, in Includes.hpp I've done this:
+</I>&gt;&gt;<i> #if defined (_MSC_VER) &amp;&amp; _MSC_VER&lt;1300
+</I>&gt;&gt;<i> #define STL_SIN ::sin
+</I>&gt;&gt;<i> #define STL_COS ::cos
+</I>&gt;&gt;<i> #define STL_ATAN2 ::atan2
+</I>&gt;&gt;<i> #define STL_SQRT ::sqrt
+</I>&gt;&gt;<i> #define min(X, Y)  ((X) &lt; (Y) ? (X) : (Y))
+</I>&gt;&gt;<i> #define max(X, Y)  ((X) &gt; (Y) ? (X) : (Y))
+</I>&gt;&gt;<i> #else
+</I>&gt;&gt;<i> #define STL_SIN std::sin
+</I>&gt;&gt;<i> #define STL_COS std::cos
+</I>&gt;&gt;<i> #define STL_ATAN2 std::atan2
+</I>&gt;&gt;<i> #define STL_SQRT std::sqrt
+</I>&gt;&gt;<i> #define STL_MIN std::min
+</I>&gt;&gt;<i> #define STL_MAX std::max
+</I>&gt;&gt;<i> #endif
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> and, well, you know what the consequences are.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Supposing it is ok, VC6 compiles ok (after a few more minor 
+</I>&gt;&gt;<i> adjustments), except the following. Anyone care to offer a solution 
+</I>&gt;&gt;<i> for the below error, or perhaps will we/I end up chasing shadows for 
+</I>&gt;&gt;<i> every new feature that'll break vc6? This is the error, in a few files:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Polygon.cpp(237) : error C2893: Failed to specialize function 
+</I>&gt;&gt;<i> template 'class ol::Collision __thiscall 
+</I>&gt;&gt;<i> ol::Shape::LineStripCollision(const std_container1 &amp;,const 
+</I>&gt;&gt;<i> std_container2 &amp;,const class ol::Placement &amp;,const class 
+</I>&gt;&gt;<i> ol::Placement &amp;,bool,bool,bool) const'
+</I>&gt;&gt;<i>        With the following template arguments:
+</I>&gt;&gt;<i>        'class std::vector&lt;class ol::Vec2D,class std::allocator&lt;class 
+</I>&gt;&gt;<i> ol::Vec2D&gt; &gt;'
+</I>&gt;&gt;<i>        'class std::list&lt;class ol::Vec2D,class std::allocator&lt;class 
+</I>&gt;&gt;<i> ol::Vec2D&gt; &gt;'
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Neil.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Openlayer-developer mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openlayer-developer mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000154.html">[Openlayer-developer] is this too far for OpenLayer?
+</A></li>
+	<LI>Next message: <A HREF="000158.html">[Openlayer-developer] VC6 port :)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#156">[ date ]</a>
+              <a href="thread.html#156">[ thread ]</a>
+              <a href="subject.html#156">[ subject ]</a>
+              <a href="author.html#156">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

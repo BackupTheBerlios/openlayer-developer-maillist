@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] cmake
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20cmake&In-Reply-To=%3C200611011906.51897.juvinious%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000222.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] cmake</H1>
+    <B>Miguel A. Gavidia</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20cmake&In-Reply-To=%3C200611011906.51897.juvinious%40gmail.com%3E"
+       TITLE="[Openlayer-developer] cmake">juvinious at gmail.com
+       </A><BR>
+    <I>Wed Nov  1 12:06:51 CET 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000222.html">[Openlayer-developer] cmake
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#221">[ date ]</a>
+              <a href="thread.html#221">[ thread ]</a>
+              <a href="subject.html#221">[ subject ]</a>
+              <a href="author.html#221">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Yesterday I wrote up a cmake script for creating build files on different 
+platforms and environments. So far it can generate makefiles for mingw, msys 
+and *nix based platforms as well as MSVC vcproj files. On *nix based 
+platforms it's capable of creating the lib statically or shared. On mingw and 
+msys it can as well, shared being that it generates a dll. However since 
+nothing is exposed in the lib by means of __dllspec(export) the lib is 
+useless in that form. I recall somebody bringing up the idea that they would 
+like to see it as a dll. Now with the possibility of creating it as a dll, 
+what should be exposed? We can probably add in a simple preprocessor like:
+#ifdef DLL_BUILD
+#define DLL_FUNC __dllspec(export)
+#else
+#define DLL_FUNC __dllspec(import)
+#endif
+and prepend the functions of the library that should be exposed.
+Any ideas?
+
+Now for the MSVC related stuff. I wasn't able to get the project files to 
+build since I keep getting an error C1900 
+(<A HREF="http://msdn2.microsoft.com/en-us/library/ks07be9f.aspx">http://msdn2.microsoft.com/en-us/library/ks07be9f.aspx</A>)
+which has to do with my msvc installation.
+If the environment is setup properly and all the requisite libs are installed, 
+I believe that the compilation should work. In the end it should generate the 
+proper openlayer.lib and accompanying files as well as build the examples.
+If anybody has msvc and is willing to install cmake to give it a go, I'd be 
+gratefull. Oh and the names of the libraries I have it set to looks like 
+this:
+alleg.lib - allegro
+agl.lib - allegrogl
+libpng.lib - libpng
+ldpng.lib - loadpng
+freetype.lib - freetype2
+zlib.lib - zlib
+glyph-agl.lib - glyphkeeper (if you are not using the internal render)
+gdi32.lib - windows stuff ?
+glu32.lib - opengl related?
+opengl32.lib - opengl
+
+If I'm missing any other libs I should be linking against please let me know 
+and I'll add them in.
+
+And if you don't know what cmake is take a look: <A HREF="http://www.cmake.org">http://www.cmake.org</A>
+I believe this is the direction where the build system should be going. Since 
+it can provide us the means of allowing OpenLayer to be used in other 
+environments and not limited to gcc.
+And although cbuild works great, it still has the tendency to fail on some 
+environments, allowing cmake to be the better alternative. Also, many FOSS 
+projects (<A HREF="http://www.cmake.org/Wiki/CMake_Projects">http://www.cmake.org/Wiki/CMake_Projects</A>) are going in that 
+direction as well, KDE being the top one.
+
+If you are on windows you can download the binary installer.
+It's relatively simple and straightforward.
+Here's a basic run down of how to get cmake to spit out the files.
+On windows:
+Create a temporary directory in the openlayer root directory. Change into it 
+and run &quot;cmakesetup ../&quot;.
+This will bring up a GUI for configuring it. Choose your environment (ie 
+MinGW, MSVC, etc.) and go through the options fixing anything that shows red 
+and then re-generate the configuration. Once you are done that hit ok. If you 
+are creating vcproj files you're going to have to be patient as that takes 
+some time, it'll seem like the app is hanging, just wait it out. Once it's 
+done if you did makefiles for msys/mingw then just run make. If you created 
+vcproj files open the OpenLayer.sln solution file with msvc and build it.
+
+If any of you have experience working with cmake any help improving the script 
+would be appreciated. If not your feedback will be just as appreciated.
+
+Thanks. :)
+
+-- 
+-juvinious
+
+<A HREF="http://chasm.hopto.org">http://chasm.hopto.org</A> - The Chasm - My Site
+<A HREF="http://openlayer.berlios.de">http://openlayer.berlios.de</A> - Openlayer
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000222.html">[Openlayer-developer] cmake
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#221">[ date ]</a>
+              <a href="thread.html#221">[ thread ]</a>
+              <a href="subject.html#221">[ subject ]</a>
+              <a href="author.html#221">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

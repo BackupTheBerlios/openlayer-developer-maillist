@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] Fwd: from Esa @ [openlayer-svn]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Fwd%3A%20from%20Esa%20%40%20%5Bopenlayer-svn%5D&In-Reply-To=%3C440B28CD.40405%40bradeeoh.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000032.html">
+   <LINK REL="Next"  HREF="000034.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] Fwd: from Esa @ [openlayer-svn]</H1>
+    <B>B E</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Fwd%3A%20from%20Esa%20%40%20%5Bopenlayer-svn%5D&In-Reply-To=%3C440B28CD.40405%40bradeeoh.com%3E"
+       TITLE="[Openlayer-developer] Fwd: from Esa @ [openlayer-svn]">bradeeoh at bradeeoh.com
+       </A><BR>
+    <I>Sun Mar  5 19:07:09 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000032.html">[Openlayer-developer] A Proposal - OpenLayer Addons
+</A></li>
+        <LI>Next message: <A HREF="000034.html">[Openlayer-developer] About general Shape &lt;-&gt; Shape collisions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#33">[ date ]</a>
+              <a href="thread.html#33">[ thread ]</a>
+              <a href="subject.html#33">[ subject ]</a>
+              <a href="author.html#33">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Wrong list, Esa  ;)
+
+Here's the message -
+
+---------------------------------
+Subject: About general Shape &lt;-&gt; Shape collisions
+
+Firstly, do you think that we need, for performance reasons, separate:
+
+bool Collides(...)
+Collision GetCollision( ... )
+
+Or maybe just GetCollision would be enough? I've implemented them both for
+the most time-consuming collisions, namely with Polys and LineStrips.
+
+Also, what do you suppose that the normal for a Point (when colliding)
+should return? Vec2D( 0, 0 ) I guess?
+
+And finally, I think aiming for clean and readable code would be better 
+than
+aiming for absolutely best performance. So maybe when colliding rotated
+Rects they should be converted to Polys first? What do you think?
+
+_________________________________________________________________
+MSN Search l&#246;yt&#228;&#228;! <A HREF="http://search.msn.fi">http://search.msn.fi</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000032.html">[Openlayer-developer] A Proposal - OpenLayer Addons
+</A></li>
+	<LI>Next message: <A HREF="000034.html">[Openlayer-developer] About general Shape &lt;-&gt; Shape collisions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#33">[ date ]</a>
+              <a href="thread.html#33">[ thread ]</a>
+              <a href="subject.html#33">[ subject ]</a>
+              <a href="author.html#33">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

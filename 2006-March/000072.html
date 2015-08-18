@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20build&In-Reply-To=%3C442DA4DE.5080008%40retrospec.sgn.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000068.html">
+   <LINK REL="Next"  HREF="000069.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] build</H1>
+    <B>neil</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20build&In-Reply-To=%3C442DA4DE.5080008%40retrospec.sgn.net%3E"
+       TITLE="[Openlayer-developer] build">neil at retrospec.sgn.net
+       </A><BR>
+    <I>Fri Mar 31 23:53:34 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000068.html">[Openlayer-developer] some MSVC faults
+</A></li>
+        <LI>Next message: <A HREF="000069.html">[Openlayer-developer] Cbuild script
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#72">[ date ]</a>
+              <a href="thread.html#72">[ thread ]</a>
+              <a href="subject.html#72">[ subject ]</a>
+              <a href="author.html#72">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+I keep meaning to mail about this, but I always forget, anyway a posting 
+by marcello at allegro.cc reminded me. I have a few suggestions about 
+the build system:
+
+To make things a bit simpler and require less dll's (i.e. none), why not 
+statically link the png loader and the z library? I know the exe becomes 
+a tad bigger, but when you strip the executable, it's the same size.
+
+Also, I know moves are afoot to replace glyphkeeper, but in the release 
+I put out on my website I've used 0.29 rather than 0.26 of glyph keeper 
+and compiled it with the option to embed freetype.
+
+This not only means you don't have to lump around any dll's (if you 
+assume people have alleg42.dll) but the dependencies are less, the 
+linking becomes easier and you require less .a files in the release.
+
+Neil.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000068.html">[Openlayer-developer] some MSVC faults
+</A></li>
+	<LI>Next message: <A HREF="000069.html">[Openlayer-developer] Cbuild script
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#72">[ date ]</a>
+              <a href="thread.html#72">[ thread ]</a>
+              <a href="subject.html#72">[ subject ]</a>
+              <a href="author.html#72">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

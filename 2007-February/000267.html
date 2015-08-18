@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] Safety of ol::Setup::SetupProgram()
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Safety%20of%20ol%3A%3ASetup%3A%3ASetupProgram%28%29&In-Reply-To=%3C20070228161958.136460%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000266.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] Safety of ol::Setup::SetupProgram()</H1>
+    <B>tobing at gmx.net</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Safety%20of%20ol%3A%3ASetup%3A%3ASetupProgram%28%29&In-Reply-To=%3C20070228161958.136460%40gmx.net%3E"
+       TITLE="[Openlayer-developer] Safety of ol::Setup::SetupProgram()">tobing at gmx.net
+       </A><BR>
+    <I>Wed Feb 28 17:19:58 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000266.html">[Openlayer-developer] Safety of ol::Setup::SetupProgram()
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#267">[ date ]</a>
+              <a href="thread.html#267">[ thread ]</a>
+              <a href="subject.html#267">[ subject ]</a>
+              <a href="author.html#267">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I had the same, but do you need allegro completely initialized or only parts? You could call 
+
+install_allegro( SYSTEM_NONE, &amp;errno, atexit );
+
+and use the config routines and many others, but not have a window opened. 
+At least for me that was sufficient... 
+
+
+&gt;<i> during the usual development work on our current game, I came across an 
+</I>&gt;<i> issue in OpenLayer that I think should be part of the library, not my 
+</I>&gt;<i> code. The thing is, I need to have Allegro initialized before I set up 
+</I>&gt;<i> OpenLayer (this is due to the &quot;runlevel&quot;-ish layout of our homebrewn 
+</I>&gt;<i> engine). ol::Setup::SetupProgram() has some really nasty effects, if 
+</I>&gt;<i> allegro_init() had been called prior to invoking this method (there are 
+</I>&gt;<i> two windows, the keyboard doesn't work properly, ...)
+</I>&gt;<i> 
+</I>&gt;<i> I made the change by manually calling allegro_exit() before 
+</I>&gt;<i> ol::Setup::SetupProgram(), and it appears to work. I'm not entirely 
+</I>&gt;<i> convinced about the safety of this measure (i.e., what happens if 
+</I>&gt;<i> allegro_exit() is called but Allegro had not been initialized), so take 
+</I>&gt;<i> it with a grain of salt.
+</I>&gt;<i> 
+</I>&gt;<i> I don't have the time right now to dig deeper into this stuff (deadlines 
+</I>&gt;<i> :X), I just thought of giving you a pointer that 
+</I>&gt;<i> ol::Setup::SetupProgram() doesn't like a pre-initialized Allegro.
+</I>
+
+-- 
+Viele Gr&#252;sse / Best Regards / Amiti&#233;s
+Tobing
+
+<A HREF="http://www.villages-and-cities.de">http://www.villages-and-cities.de</A>
+<A HREF="http://www.staedtebauen.de">http://www.staedtebauen.de</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000266.html">[Openlayer-developer] Safety of ol::Setup::SetupProgram()
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#267">[ date ]</a>
+              <a href="thread.html#267">[ thread ]</a>
+              <a href="subject.html#267">[ subject ]</a>
+              <a href="author.html#267">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

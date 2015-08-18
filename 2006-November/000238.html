@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] MSVC
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20MSVC&In-Reply-To=%3C20061108100945.69630%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000237.html">
+   <LINK REL="Next"  HREF="000239.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] MSVC</H1>
+    <B>tobing at gmx.net</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20MSVC&In-Reply-To=%3C20061108100945.69630%40gmx.net%3E"
+       TITLE="[Openlayer-developer] MSVC">tobing at gmx.net
+       </A><BR>
+    <I>Wed Nov  8 11:09:45 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000237.html">[Openlayer-developer] MSVC
+</A></li>
+        <LI>Next message: <A HREF="000239.html">[Openlayer-developer] MSVC
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#238">[ date ]</a>
+              <a href="thread.html#238">[ thread ]</a>
+              <a href="subject.html#238">[ subject ]</a>
+              <a href="author.html#238">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> I have express and yes the other user I know had a full version.
+</I>&gt;<i> We both uninstalled, cleaned up and re-installed everything same deal, no
+</I>&gt;<i> go.
+</I>
+Hm, no idea what's going wrong there. Unfortunately I can't easily try it myself, because I don't want to screw any of my PCs up with an installation of another Studio now. Maybe at a later time, when we have to use MSVC 8 for a newer release here anyway... 
+
+Ah, did you build every library you use with MSVC 8 or did you include already compiled and linked libraries into your link step? Just a guess, but maybe the object files are not easily compatible? 
+
+
+&gt;<i> Did you use the cmake to generate the project files for 7.1, to test it
+</I>&gt;<i> out?
+</I>
+I did now, but it didn't work. So first, I had a hard time to configure everything so that it seemed reasonable. Then I pressed OK, and cmake took quite a time to generate files, do some compilations etc, I can't say because cmake doesn't give any feedback about what it's doing. 
+
+Eventually it finished and had created a solution and a bunch of project files - but didn't compile. There are assumptions left about the environment: First, I don't have the paths to my MSVC directories in my environment, just to avoid any confusion between different installed versions of MSVC on the same PC (have 6.0, 7.0 and 7.1 here). 
+
+Then it assumes that the allegro directory is in the include path, which it isn't for the same reason actually, because I'm building many different projects with the different studio versions, so I can't put anything into the standard include path (same for lib path). I guess this could also be configured with cmake, making the configuration process even longer. Overall I like that most everything is configurable with cmake, but I don't see yet why it should be easier that way than having a solution and project files, which could be adopted to one's environment - well it may be easier for the deployment of the library. 
+
+Why does cmake copy 'Openlayer.hpp' into it's build directory? 
+
+Well, I have compared that file with the original file, but I think it's bad style to change the original file to put additional defines into that header file, or change anything else... 
+
+
+-- 
+Viele Gr&#252;sse / Best Regards / Amiti&#233;s
+Tobing
+
+<A HREF="http://www.staedtebauen.de">http://www.staedtebauen.de</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000237.html">[Openlayer-developer] MSVC
+</A></li>
+	<LI>Next message: <A HREF="000239.html">[Openlayer-developer] MSVC
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#238">[ date ]</a>
+              <a href="thread.html#238">[ thread ]</a>
+              <a href="subject.html#238">[ subject ]</a>
+              <a href="author.html#238">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

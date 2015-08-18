@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] updates to files of OL
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20updates%20to%20files%20of%20OL&In-Reply-To=%3C20061024113354.210530%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000205.html">
+   <LINK REL="Next"  HREF="000207.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] updates to files of OL</H1>
+    <B>tobing at gmx.net</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20updates%20to%20files%20of%20OL&In-Reply-To=%3C20061024113354.210530%40gmx.net%3E"
+       TITLE="[Openlayer-developer] updates to files of OL">tobing at gmx.net
+       </A><BR>
+    <I>Tue Oct 24 13:33:54 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000205.html">[Openlayer-developer] updates to files of OL
+</A></li>
+        <LI>Next message: <A HREF="000207.html">[Openlayer-developer] updates to files of OL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#206">[ date ]</a>
+              <a href="thread.html#206">[ thread ]</a>
+              <a href="subject.html#206">[ subject ]</a>
+              <a href="author.html#206">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> I just tried out the changes on windows mingw and it compiled just as
+</I>&gt;<i> well, no problems. All demos ran perfectly fine. Flad if you want, I can 
+</I>&gt;<i> go ahead and commit the changes? Let me know, unless you have other
+</I>&gt;<i> plans/tests to do. :)
+</I>
+Thank you very much. Got the OL update yesterday. 
+
+
+Two remarks. 
+
+I think that OpenLayer would be a good candidate for a DLL. I would try to make it a DLL, if there's no specific reason to not do so? It might turn out too difficult, but I expect that it would be fine. The advantage might be that the application does not have to link all these libraries which are referenced in OL. 
+
+About coding format. I have since a few years adopted the habit to write each statement into one separate line. The reason is simply that debuggers are line-oriented, and single stepping is so much easier then. The question would be, if you would mind to change the code layout, such that every statement gets its own line? 
+
+The point is, if I would start to make changes to make OL a DLL, I would rather prefer to adhere to that convention. Generally, I would try to write and changes in such a way that they go seamless into existing code, but the one-statement-one-line-rule would be important to me. 
+
+Anyway, doing this DLL stuff will take its time, so there's no hurry to have an ultra-fast decision here. I would like to hear your comments though. 
+
+
+-- 
+Viele Gr&#252;sse / Best Regards / Amiti&#233;s
+Tobing
+
+<A HREF="http://www.staedtebauen.de">http://www.staedtebauen.de</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000205.html">[Openlayer-developer] updates to files of OL
+</A></li>
+	<LI>Next message: <A HREF="000207.html">[Openlayer-developer] updates to files of OL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#206">[ date ]</a>
+              <a href="thread.html#206">[ thread ]</a>
+              <a href="subject.html#206">[ subject ]</a>
+              <a href="author.html#206">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] some MSVC faults
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20some%20MSVC%20faults&In-Reply-To=%3CBAY21-F145B359AE1D67FB0F713A7DFDE0%40phx.gbl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000066.html">
+   <LINK REL="Next"  HREF="000068.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] some MSVC faults</H1>
+    <B>Esa Tanskanen</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20some%20MSVC%20faults&In-Reply-To=%3CBAY21-F145B359AE1D67FB0F713A7DFDE0%40phx.gbl%3E"
+       TITLE="[Openlayer-developer] some MSVC faults">fladimir2002 at hotmail.com
+       </A><BR>
+    <I>Thu Mar 23 20:03:00 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000066.html">[Openlayer-developer] some MSVC faults
+</A></li>
+        <LI>Next message: <A HREF="000068.html">[Openlayer-developer] some MSVC faults
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#67">[ date ]</a>
+              <a href="thread.html#67">[ thread ]</a>
+              <a href="subject.html#67">[ subject ]</a>
+              <a href="author.html#67">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>OK, I think then it's fixed by moving the vertices.push_front( vertex ); to 
+the beginning of the function (same with addToBack). Other than that it 
+everything correct.
+
+I uploaded a new version with the correction to SVN repository. I hope that 
+helps ;)
+
+&gt;<i>From: neil &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">neil at retrospec.sgn.net</A>&gt;
+</I>&gt;<i>To: Esa Tanskanen &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">fladimir2002 at hotmail.com</A>&gt;
+</I>&gt;<i>CC: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i>Subject: Re: [Openlayer-developer] some MSVC faults
+</I>&gt;<i>Date: Wed, 22 Mar 2006 23:33:12 +0000
+</I>&gt;<i>
+</I>&gt;<i> &gt;So if the number of vertices is one the LineStrip shouldn't be rendered. 
+</I>&gt;<i>Can you see the exact point of the crash in the debugger?
+</I>&gt;<i>
+</I>&gt;<i>I've traced into it more, and have found the fault, basically at:
+</I>&gt;<i>   inline void AddToBegin( Vec2D vertex ) {
+</I>&gt;<i>      if( vertices.size() &gt; 1 ) {
+</I>&gt;<i>         float length = ( vertices.front() - vertex ).GetMagnitude();
+</I>&gt;<i>         lengths.push_front( length );
+</I>&gt;<i>         totalLength += length;
+</I>&gt;<i>      }
+</I>&gt;<i>
+</I>&gt;<i>      vertices.push_front( vertex );
+</I>&gt;<i>   }
+</I>&gt;<i>
+</I>&gt;<i>It bypasses the code and just adds to vertices as you would expect. It does 
+</I>&gt;<i>this twice, so at that the point of the second addition to 
+</I>&gt;<i>vertices.push_front it hasn't called the code to add to lengths. However, 
+</I>&gt;<i>the render function is called. At this point the number of vertices is 2 so 
+</I>&gt;<i>the code bypasses the check you mentioned at the top of vertices, however 
+</I>&gt;<i>at this point:
+</I>&gt;<i>sumLengths += *lengthIter;
+</I>&gt;<i>
+</I>&gt;<i>lengths is still empty because AddToBeing has not been called. Follow? 
+</I>&gt;<i>Maybe the best thing is to add to the vertices before the check? as I think 
+</I>&gt;<i>a if(lengthIter) before the sumLengths+= statement might be too costly ;)
+</I>&gt;<i>
+</I>&gt;<i>Neil.
+</I>&gt;<i>
+</I>&gt;<i>Esa Tanskanen wrote:
+</I>&gt;<i>
+</I>&gt;&gt;&gt;<i>1.  __PRETTY_FUNCTION__ is gcc only. vc can use __FUNCDNAME__ or 
+</I>&gt;&gt;&gt;<i>__FUNCTION__ (the DNAME being the pretty one). I only tested this on VC8 
+</I>&gt;&gt;&gt;<i>though.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Yeah, that'll be changed.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>All are in the Bitmap.cpp file (around line 1129). Fixing (which is what 
+</I>&gt;&gt;&gt;<i>I did) is as simple as changing y to y2 in the 'for(int y=0;' statement. 
+</I>&gt;&gt;&gt;<i>The VC warning given is:
+</I>&gt;&gt;&gt;<i>nonstandard extension used : 'y' : loop control variable declared in the 
+</I>&gt;&gt;&gt;<i>for-loop is used outside the for-loop scope; it conflicts with the 
+</I>&gt;&gt;&gt;<i>declaration in the outer scope
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>OK, I first thought I could set up MSVC 8 before trying to find where I've 
+</I>&gt;&gt;<i>re-used the loop variables. But I never got that to work... :/
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>3. I don't know if it's a bad ordering of header files or not, but no 
+</I>&gt;&gt;&gt;<i>version of VS can compile the files that uses std::min and std::max. 
+</I>&gt;&gt;&gt;<i>Every build I have to change it to just min/max.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Yeah, maybe some MSVC specific definitions have to be made
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>4. Shapedemo. The bitmaps are missing.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>They're now in the SNV.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>6. VC doesn't support the use of ? in 'ballYSpeed += 
+</I>&gt;&gt;&gt;<i>((float(mouseYMovement) &lt;? 2.5) &lt;? 0 );' in it's compiler. I have to redo 
+</I>&gt;&gt;&gt;<i>this code every time.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Yeah, that's been there for ages. I even though that I had corrected it 
+</I>&gt;&gt;<i>but seems like it's still there :P
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>7. in Rect::SetAccuracy( float accuracy ), there's the possibility of a 
+</I>&gt;&gt;&gt;<i>divide by zero.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Well, I know that but SetAccuracy (as in Circle::SetAccuracy and 
+</I>&gt;&gt;<i>Settings::SetCircleAccuracy) specify that the accuracy must be positive 
+</I>&gt;&gt;<i>(not zero). Maybe a test is in order, anyways. It's not OpenLayer's style 
+</I>&gt;&gt;<i>to crash if the parameter rules aren't followed ;)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>8. in debug mode, VC crashes very badly at the following line in the 
+</I>&gt;&gt;&gt;<i>garbage collector, haven't a clue why, though, the error is in xutility
+</I>&gt;&gt;&gt;<i>   OlLog( std::string( &quot;\nAuto Loader: Executing &quot; ) + ToString( 
+</I>&gt;&gt;&gt;<i>pendings.size() ) + &quot; pending loading commands&quot; );
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>That's with 2.0+? I thought I corrected that by making the auto loader to 
+</I>&gt;&gt;<i>be intialized lazily. Maybe there's still some initializations which 
+</I>&gt;&gt;<i>aren't lazy yet.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>finally, while all the above are easily fixed, there is a fault in 
+</I>&gt;&gt;&gt;<i>LineStrip that means I can't release a VC build
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Yeah, I know that. But there's the following in the beginnin of 
+</I>&gt;&gt;<i>LineStrip::Render:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  if( GetNumOfVertices() &lt; 2 ) {
+</I>&gt;&gt;<i>      return;
+</I>&gt;&gt;<i>   }
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>So if the number of vertices is one the LineStrip shouldn't be rendered. 
+</I>&gt;&gt;<i>Can you see the exact point of the crash in the debugger?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>_________________________________________________________________
+</I>&gt;&gt;<i>Hittej&#228; ja harvinaisuuksia, halvalla ja helposti. MSN Music 
+</I>&gt;&gt;<i><A HREF="http://sib1.od2.com/common/Framework.aspx?shid=075E002E&amp;origin=MSNFI&amp;promotion=Perm">http://sib1.od2.com/common/Framework.aspx?shid=075E002E&amp;origin=MSNFI&amp;promotion=Perm</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;<i>Openlayer-developer mailing list
+</I>&gt;&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;&gt;<i><A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Openlayer-developer mailing list
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i><A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>
+_________________________________________________________________
+Hittej&#228; ja harvinaisuuksia, halvalla ja helposti. MSN Music 
+<A HREF="http://sib1.od2.com/common/Framework.aspx?shid=075E002E&amp;origin=MSNFI&amp;promotion=Perm">http://sib1.od2.com/common/Framework.aspx?shid=075E002E&amp;origin=MSNFI&amp;promotion=Perm</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000066.html">[Openlayer-developer] some MSVC faults
+</A></li>
+	<LI>Next message: <A HREF="000068.html">[Openlayer-developer] some MSVC faults
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#67">[ date ]</a>
+              <a href="thread.html#67">[ thread ]</a>
+              <a href="subject.html#67">[ subject ]</a>
+              <a href="author.html#67">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

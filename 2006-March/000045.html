@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] RFC on incomplete GUI design
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20RFC%20on%20incomplete%20GUI%20design&In-Reply-To=%3C440EAF66.6000509%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000043.html">
+   <LINK REL="Next"  HREF="000048.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] RFC on incomplete GUI design</H1>
+    <B>David Schwingenschl&#246;gl</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20RFC%20on%20incomplete%20GUI%20design&In-Reply-To=%3C440EAF66.6000509%40gmx.net%3E"
+       TITLE="[Openlayer-developer] RFC on incomplete GUI design">indeterminatus_ml at gmx.net
+       </A><BR>
+    <I>Wed Mar  8 11:18:14 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000043.html">[Openlayer-developer] RFC on incomplete GUI design
+</A></li>
+        <LI>Next message: <A HREF="000048.html">[Openlayer-developer] RFC on incomplete GUI design
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thank you for your elaborated answer. I will take the freedom to remove 
+parts of your original post, and reply only to the rest (naturally).
+
+B E wrote:
+&gt;<i> I had a sinking suspiscion there was an &quot;obvious&quot; one missing, that 
+</I>&gt;<i> may have been it  ;)
+</I>&gt;<i> I just added &quot;class Spinner&quot; and &quot;class SpinBox&quot;, which combines a 
+</I>&gt;<i> Spinner and a TextBox
+</I>
+That should do the trick ;-)
+
+&gt;&gt;<i> 3) I'm also kind-of missing a control for tabular output of 
+</I>&gt;&gt;<i> name&lt;-&gt;value tuples. This might be useful especially for tool 
+</I>&gt;&gt;<i> development (all kind of editors etc.), and probably also for 
+</I>&gt;&gt;<i> debugging purposes in-game.
+</I>&gt;<i>
+</I>&gt;<i> Hmmmmm  elaborate more on this.  Are you thinking like a basic 
+</I>&gt;<i> &quot;spreadsheet&quot;-type control with cells that can have arbitrary contents 
+</I>&gt;<i> and alignment?
+</I>
+I wasn't even thinking on such an abstract level, but now that I come to 
+think of it, that would be probably even better, yes. I was thinking in 
+terms of the Object Explorer in IDEs like Delphi, Visual Studio, etc.
+The implementation of such control shouldn't be too difficult, as it is 
+a panel with a grid layout manager and a bunch of labels (and possibly 
+textboxes, or any other control for that matter). The most significant 
+feature of this compound control would be methods for easily 
+adding/modifying rows.
+
+This leads me to another thing, namely what to do with oversize? Should 
+we go the Java awt way and provide both a Panel and a ScrollPanel?
+
+&gt;&gt;<i> 4) class Console. I think this goes beyond the scope of the GUI. I 
+</I>&gt;&gt;<i> already have my own console implemented, so I don't mind, but I think 
+</I>&gt;&gt;<i> if we're going to provide a console, it would be more sensible to 
+</I>&gt;&gt;<i> provide the complete package (along with a framework for command 
+</I>&gt;&gt;<i> parsing etc.) in another (dedicated) add-on.
+</I>&gt;<i>
+</I>&gt;<i> Few reasons I put it in there.
+</I>&gt;<i> A - it's done already  ;)  I was doing my animation framework, ended 
+</I>&gt;<i> up putting in animated Widgets, and the Animated Console was one of 
+</I>&gt;<i> them. B - in my opinion, the console is THE  best debugging tool.
+</I>&gt;<i> C - No need for complex parsing - a Console is, fundamentally, much 
+</I>&gt;<i> simpler than that.  It's a place to output text, and a place for 
+</I>&gt;<i> line-input from the user.  The Console itself doesn't do any parsing, 
+</I>&gt;<i> nor should a user of the class be forced to do parsing in any 
+</I>&gt;<i> particular way.  My current implementation has a simple callback 
+</I>&gt;<i> something like -
+</I>
+I can follow your reasoning, and especially point A is very convincing. 
+Still, I consider the console much like the frontend to a complex 
+system, which is exactly what you also said. With the callback 
+implementation you posted, putting the console in the GUI add-on is fine 
+with me, as the parsing behind can be held very minimal. Even if the 
+console class doesn't do it itself, it has to delegate the user input to 
+some evaluation instance that's capable of tearing the input apart and 
+re-assembling it into a ConsoleCallback. My original concern was, that 
+if that evaluation instance grew too complex, the entire console (both 
+front- and back-end) should go in an add-on of its own.
+
+&gt;&gt;<i> What isn't clear to me still, is how the entire GUI system will be 
+</I>&gt;&gt;<i> integrated into the game. Will there be one routine (e.g. in a 
+</I>&gt;&gt;<i> singletoned class GUI) that has to be called periodically in the game 
+</I>&gt;&gt;<i> loop? Will the GUI system install a thread and run in there?
+</I>&gt;<i>
+</I>&gt;<i> That very much wasn't clear because I very much didn't mention it at 
+</I>&gt;<i> all.  ;)  Just a basic class layout.
+</I>&gt;<i> I was jotting down ideas in a text file last night as an impromptu 
+</I>&gt;<i> design document, but I'm getting sick and I couldn't stay up to finish 
+</I>&gt;<i> it.
+</I>
+All the respect that you did it nonetheless :-).
+
+&gt;<i> Theres alot of potential approaches here-
+</I>&gt;<i>
+</I>&gt;<i> MASkinG approach - call a function in the gui which &quot;takes over&quot; and 
+</I>&gt;<i> doesn't return until the GUI is &quot;finished&quot;
+</I>&gt;<i>
+</I>&gt;<i> GUIChan etc all approach - have one function or a series of functions 
+</I>&gt;<i> which the user must call in their main loop to keep driving the GUI
+</I>&gt;<i>
+</I>&gt;<i> The windowing toolkit approach (gtk, qt, wx, native) - The GUI is 
+</I>&gt;<i> threaded.
+</I>&gt;<i>
+</I>&gt;<i> Lemme start by saying I don't like the MASkinG approach.  It is 
+</I>&gt;<i> incredibly simply to use, but the most inflexible.  It assumes that if 
+</I>&gt;<i> you're using the GUI, you aren't doing anything else.  I don't like 
+</I>&gt;<i> this assumption because, for me at least, it's never true.
+</I>
+I also object this approach. As tempting the simplicity may be, it's too 
+restrictive.
+
+&gt;<i> Personally I thinking the multithreaded model is ideal and &quot;the holy 
+</I>&gt;<i> grail&quot; and I would use it for all of my personal projects.  However I 
+</I>&gt;<i> recognize that it has inherent complexity and difficulty to implement 
+</I>&gt;<i> and automatically discounts certain platforms.
+</I>&gt;<i>
+</I>&gt;<i> That said, I'd like to strive for it.  I'd like to develop things such 
+</I>&gt;<i> that they can be driven by calling an iterative GUI function in a main 
+</I>&gt;<i> loop but can also be driven by a thread when supported.  Since our 
+</I>&gt;<i> rendering will always be parallel - based on OpenGL - alot of the 
+</I>&gt;<i> limitations of these 2d toolkits don't apply to us and we can easily 
+</I>&gt;<i> exploit this flexibility to provide both approaches.
+</I>&gt;<i>
+</I>&gt;<i> That said, I like the GUIChan approach but abhore how complex it makes 
+</I>&gt;<i> it - if you look at the simplest tutorial for GUIChan it just seems 
+</I>&gt;<i> ludicrus.  I think having two simple, magical function such as 
+</I>&gt;<i> &quot;ol::gui::Update()&quot; and &quot;ol::gui::Render()&quot; or something like that 
+</I>&gt;<i> would be great.  They could be driven in a main loop manually or put 
+</I>&gt;<i> behind the scenes in a thread later on.
+</I>
+I second you. It would be stupid not to make use of the advantages we 
+have at hand. I very much like the two-function-approach, as it keeps 
+simple but still flexible enough (so the user can still decide with what 
+priority the GUI should be rendered etc.). I'd suggest we dive deeper 
+into this.
+
+&gt;&gt;<i> The last (but very sensible) issue I'd like to address is skinning. 
+</I>&gt;&gt;<i> It wasn't clear to me from your proposal how that could be achieved. 
+</I>&gt;&gt;<i> I think we should account for that from the beginning, as it could 
+</I>&gt;&gt;<i> mean a major cut in the architecture when installed later on (making 
+</I>&gt;&gt;<i> the whole refactoring process a pain in the butt), even if it isn't 
+</I>&gt;&gt;<i> supported for a couple of releases. Would you mind elaborating on that?
+</I>&gt;<i>
+</I>&gt;<i> I also think it's key.  The native controls obviously can't be skinned 
+</I>&gt;<i> the same as the rest of ol::gui so maybe they could be replaced with 
+</I>&gt;<i> custom controls MUCH LATER down the line...  ;)
+</I>&gt;<i>
+</I>&gt;<i> As I already said, Gui.hpp was just a dirt basic &quot;class shart&quot;.  Hard 
+</I>&gt;<i> to get across my ideas on this.
+</I>&gt;<i>
+</I>&gt;<i> There can be a Skin class, and a default instance thereof.  I think 
+</I>&gt;<i> the way MASkinG does skins is reasonable - having arrays of bitmaps 
+</I>&gt;<i> and colors and fonts with standard indexes for the built-ins and room 
+</I>&gt;<i> for custom indexes for the user.
+</I>&gt;<i>
+</I>&gt;<i> The Window class could have a &quot;applySkin( const Skin&amp; )&quot; method and 
+</I>&gt;<i> &quot;applySkinToChildren( const Skin&amp;)&quot; or something similar and it would 
+</I>&gt;<i> pull out elements from the skin it is interested in.  You could then 
+</I>&gt;<i> reskin any Window in the hierarchy you wanted, or the Skin class could 
+</I>&gt;<i> have an &quot;applyToAll()&quot; method to reskin the entire Window-set.
+</I>&gt;<i>
+</I>&gt;<i> Any other thoughts on this?
+</I>Hm, I'll have to look into MASkinG first, because I don't know how it 
+handles this.
+
+Before any further discussion about the implementation details, we maybe 
+should get the goals, features and restrictions straight, and build the 
+system around that. To make a start:
+
+- Should the GUI support skins at all? (you can skip all further 
+questions on answering this with 'no')
+- Should the creation of a custom skin be focused on ease, or on maximum 
+flexibility?
+- Should skins be changeable at runtime?
+- Should skins be mixable? (i.e. a few controls of skin A, a few of skin 
+B, etc. - I think you get the idea)
+- Should a skin affect the looks, the feel, or both of them?
+
+These are a few questions that came to my mind, albeit I'm confident I 
+missed a bunch, so feel free to add to the list ;-)
+
+Yours,
+  David.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000043.html">[Openlayer-developer] RFC on incomplete GUI design
+</A></li>
+	<LI>Next message: <A HREF="000048.html">[Openlayer-developer] RFC on incomplete GUI design
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

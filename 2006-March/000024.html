@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] Shape::MoveTo()
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Shape%3A%3AMoveTo%28%29&In-Reply-To=%3C4407DCA8.7000901%40bradeeoh.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000023.html">
+   <LINK REL="Next"  HREF="000025.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] Shape::MoveTo()</H1>
+    <B>B E</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Shape%3A%3AMoveTo%28%29&In-Reply-To=%3C4407DCA8.7000901%40bradeeoh.com%3E"
+       TITLE="[Openlayer-developer] Shape::MoveTo()">bradeeoh at bradeeoh.com
+       </A><BR>
+    <I>Fri Mar  3 07:05:28 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000023.html">[Openlayer-developer] GUI
+</A></li>
+        <LI>Next message: <A HREF="000025.html">[Openlayer-developer] About the GUI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I commited changed to initially add MoveTo() to all shapes except 
+LineStrip and Poly.
+
+For Ellipse, Circle, Rect, and Point the entire &quot;position&quot; concept makes 
+perfect sense and is great as implemented.
+
+For Line it still makes sense, but since Line::start and Line::end are 
+public that adds the possibility that the user can change the two points 
+to their liking, it'll work, but then their next call to MoveTo() or 
+MoveBy() will refer to the initial coordinates again.
+
+That kind of brings up a strong case for privatizing those points and 
+make them changable through accessors instead.
+
+I stopped short of changing LineStrip and Poly because of the semantic 
+questions it raises.
+
+Such as, what if some adds a handful of vertices to a Poly, calls 
+MoveTo() or MoveBy(), then adds another vertex?  Should that vertex 
+refer to the initial positions or to the current position (which is what 
+it would do now)?
+
+Who knows, we can talk bout that.
+
+If MoveTo() is decided against, well, we revert to revision 16 of the 
+repository  :)
+
+Peace
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000023.html">[Openlayer-developer] GUI
+</A></li>
+	<LI>Next message: <A HREF="000025.html">[Openlayer-developer] About the GUI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] some MSVC faults
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20some%20MSVC%20faults&In-Reply-To=%3C4421D185.9020609%40retrospec.sgn.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000063.html">
+   <LINK REL="Next"  HREF="000065.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] some MSVC faults</H1>
+    <B>neil</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20some%20MSVC%20faults&In-Reply-To=%3C4421D185.9020609%40retrospec.sgn.net%3E"
+       TITLE="[Openlayer-developer] some MSVC faults">neil at retrospec.sgn.net
+       </A><BR>
+    <I>Wed Mar 22 23:36:53 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000063.html">[Openlayer-developer] Alrighty!
+</A></li>
+        <LI>Next message: <A HREF="000065.html">[Openlayer-developer] some MSVC faults
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+Neil here, first time poster. And hopefully this is the right mailing 
+list to subscribe to, I've tried for a few days to subscribe but never 
+received a mailman email.
+
+I've been compiling build 20060318 on VC8, VC6 and minGW and this time 
+I've managed to note down the problems. Some of which might be fixed in 
+later releases or maybe picked up from my post at allegro.cc.
+
+1.  __PRETTY_FUNCTION__ is gcc only. vc can use __FUNCDNAME__ or 
+__FUNCTION__ (the DNAME being the pretty one). I only tested this on VC8 
+though.
+
+2. Not an error as such, but an annoying warning that fills the scree 
+up. Even in VC8, the compiler grumbles badly about using the same named 
+variable in inner and outer blocks in the same function. All are in the 
+Bitmap.cpp file (around line 1129). Fixing (which is what I did) is as 
+simple as changing y to y2 in the 'for(int y=0;' statement. The VC 
+warning given is:
+nonstandard extension used : 'y' : loop control variable declared in the 
+for-loop is used outside the for-loop scope; it conflicts with the 
+declaration in the outer scope
+
+3. I don't know if it's a bad ordering of header files or not, but no 
+version of VS can compile the files that uses std::min and std::max. 
+Every build I have to change it to just min/max.
+
+4. Shapedemo. The bitmaps are missing.
+
+5. Shapedemo.Not an error, but END_OF_FUNCTION() should have the 
+function name in the ()
+
+6. VC doesn't support the use of ? in 'ballYSpeed += 
+((float(mouseYMovement) &lt;? 2.5) &lt;? 0 );' in it's compiler. I have to 
+redo this code every time.
+
+7. in Rect::SetAccuracy( float accuracy ), there's the possibility of a 
+divide by zero.
+
+8. in debug mode, VC crashes very badly at the following line in the 
+garbage collector, haven't a clue why, though, the error is in xutility
+   OlLog( std::string( &quot;\nAuto Loader: Executing &quot; ) + ToString( 
+pendings.size() ) + &quot; pending loading commands&quot; );
+
+finally, while all the above are easily fixed, there is a fault in 
+LineStrip that means I can't release a VC build, and there are lots of 
+people asking me for a VC binary build at my website of the latest SVN 
+so if anyone has a fix, it'll be welcomed. Heaven knows why it works 
+with minGW. From an allegro posting, Flad knows of it. Anyway, in 
+linstrip render method,
+
+  // Add a vertex to the beginning of the line strip //
+   inline void AddToBegin( Vec2D vertex ) {
+      if( vertices.size() &gt; 1 ) {
+         float length = ( vertices.front() - vertex ).GetMagnitude();
+         lengths.push_front( length );
+         totalLength += length;
+      }
+
+      vertices.push_front( vertex );
+   }
+
+Crashes the linstrip demo. What's happening is the code:
+
+            sumLengths += *lengthIter;
+
+is being called even though lengths has not entries, due to vertices size not being &gt;1
+
+Apologies, I can only list the faults as I don't have any SVN clients and don't really have that much time,
+but hopefully someone is not as lazy as me and implements the changes ;)
+
+
+Neil.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000063.html">[Openlayer-developer] Alrighty!
+</A></li>
+	<LI>Next message: <A HREF="000065.html">[Openlayer-developer] some MSVC faults
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

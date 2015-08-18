@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] Re: Cbuild script
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Re%3A%20Cbuild%20script&In-Reply-To=%3C200603270957.24112.juvinious%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000069.html">
+   <LINK REL="Next"  HREF="000071.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] Re: Cbuild script</H1>
+    <B>Miguel A. Gavidia</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Re%3A%20Cbuild%20script&In-Reply-To=%3C200603270957.24112.juvinious%40gmail.com%3E"
+       TITLE="[Openlayer-developer] Re: Cbuild script">juvinious at gmail.com
+       </A><BR>
+    <I>Mon Mar 27 03:57:24 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000069.html">[Openlayer-developer] Cbuild script
+</A></li>
+        <LI>Next message: <A HREF="000071.html">Fwd: Re: [Openlayer-developer] Alrighty!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#70">[ date ]</a>
+              <a href="thread.html#70">[ thread ]</a>
+              <a href="subject.html#70">[ subject ]</a>
+              <a href="author.html#70">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday 27 March 2006 09:45, Miguel A. Gavidia wrote:
+&gt;<i> I just added a cbuild script to eventually replace the Makefile.
+</I>&gt;<i> Currently it just builds, installs and uninstalls the library so far. There
+</I>&gt;<i> is an msvc build target but as of yet I don't know how to assemble it with
+</I>&gt;<i> msvc. If somebody can explain to me how to do that and what I need to do to
+</I>&gt;<i> produce an openlayer dll (if that's what msvc does?) I'd be happy to
+</I>&gt;<i> complete that. I will also extend it to build the demos later on.
+</I>&gt;<i> I will be away for the remainder of this week in Japan so I'll correct any
+</I>&gt;<i> issues if any should arise with the script on my return.
+</I>&gt;<i>
+</I>&gt;<i> As about using the script to test it out, depending on your system or
+</I>&gt;<i> environment you can:
+</I>&gt;<i> On linux/Unix you can run the source file as is like a shell script:
+</I>&gt;<i> ./cbuild.c
+</I>&gt;<i>
+</I>&gt;<i> On windows in an msys environment you should be able to do the same.
+</I>&gt;<i> Without an msys environment you can just compile the file:
+</I>&gt;<i> gcc cbuild.c -o cbuild.exe
+</I>&gt;<i> and run cbuild.exe
+</I>&gt;<i>
+</I>&gt;<i> After running follow the configuration prompts and then it will build the
+</I>&gt;<i> lib. You can also pass some paramaters to cbuild (ie cbuild param).
+</I>&gt;<i>
+</I>&gt;<i> verbose - Will set verbose mode on (no longer supressing output)
+</I>&gt;<i> help - Displays help
+</I>&gt;<i> install - Begins install after prompting for location
+</I>&gt;<i> uninstall - Begins the uninstall from the last know installation. If not it
+</I>&gt;<i> will prompt for the installation location to be removed.
+</I>
+Oops, you can also add: 
+configure - To force (re)configuration
+clean - To clean up resources
+
+Note that configure and verbose can be used alongside help, install, uninstall 
+and clean.
+
+-- 
+-juvinious
+
+&lt;a href=&quot;<A HREF="http://chasm.hopto.org">http://chasm.hopto.org</A>&quot;&gt;The Chasm&lt;/a&gt; - My Site.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000069.html">[Openlayer-developer] Cbuild script
+</A></li>
+	<LI>Next message: <A HREF="000071.html">Fwd: Re: [Openlayer-developer] Alrighty!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#70">[ date ]</a>
+              <a href="thread.html#70">[ thread ]</a>
+              <a href="subject.html#70">[ subject ]</a>
+              <a href="author.html#70">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

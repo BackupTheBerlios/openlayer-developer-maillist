@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] is this too far for OpenLayer?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20is%20this%20too%20far%20for%20OpenLayer%3F&In-Reply-To=%3C443C3406.4020807%40retrospec.sgn.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000145.html">
+   <LINK REL="Next"  HREF="000154.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] is this too far for OpenLayer?</H1>
+    <B>neil</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20is%20this%20too%20far%20for%20OpenLayer%3F&In-Reply-To=%3C443C3406.4020807%40retrospec.sgn.net%3E"
+       TITLE="[Openlayer-developer] is this too far for OpenLayer?">neil at retrospec.sgn.net
+       </A><BR>
+    <I>Wed Apr 12 00:56:06 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000145.html">[Openlayer-developer] cracked the MSVC std::min problem
+</A></li>
+        <LI>Next message: <A HREF="000154.html">[Openlayer-developer] is this too far for OpenLayer?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#152">[ date ]</a>
+              <a href="thread.html#152">[ thread ]</a>
+              <a href="subject.html#152">[ subject ]</a>
+              <a href="author.html#152">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+VC6 doesn't support the STL very well, in fact it's pretty rubbish. 
+However, there are a lot of people using it. I've found a way to get 
+round it but is it going too for your Esa/others?
+
+Basically, in Includes.hpp I've done this:
+#if defined (_MSC_VER) &amp;&amp; _MSC_VER&lt;1300
+#define STL_SIN ::sin
+#define STL_COS ::cos
+#define STL_ATAN2 ::atan2
+#define STL_SQRT ::sqrt
+#define min(X, Y)  ((X) &lt; (Y) ? (X) : (Y))
+#define max(X, Y)  ((X) &gt; (Y) ? (X) : (Y))
+#else
+#define STL_SIN std::sin
+#define STL_COS std::cos
+#define STL_ATAN2 std::atan2
+#define STL_SQRT std::sqrt
+#define STL_MIN std::min
+#define STL_MAX std::max
+#endif
+
+and, well, you know what the consequences are.
+
+Supposing it is ok, VC6 compiles ok (after a few more minor 
+adjustments), except the following. Anyone care to offer a solution for 
+the below error, or perhaps will we/I end up chasing shadows for every 
+new feature that'll break vc6? This is the error, in a few files:
+
+Polygon.cpp(237) : error C2893: Failed to specialize function template 
+'class ol::Collision __thiscall ol::Shape::LineStripCollision(const 
+std_container1 &amp;,const std_container2 &amp;,const class ol::Placement 
+&amp;,const class ol::Placement &amp;,bool,bool,bool) const'
+        With the following template arguments:
+        'class std::vector&lt;class ol::Vec2D,class std::allocator&lt;class 
+ol::Vec2D&gt; &gt;'
+        'class std::list&lt;class ol::Vec2D,class std::allocator&lt;class 
+ol::Vec2D&gt; &gt;'
+
+
+Neil.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000145.html">[Openlayer-developer] cracked the MSVC std::min problem
+</A></li>
+	<LI>Next message: <A HREF="000154.html">[Openlayer-developer] is this too far for OpenLayer?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#152">[ date ]</a>
+              <a href="thread.html#152">[ thread ]</a>
+              <a href="subject.html#152">[ subject ]</a>
+              <a href="author.html#152">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

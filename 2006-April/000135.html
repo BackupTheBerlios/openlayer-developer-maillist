@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] collision polygons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20collision%20polygons&In-Reply-To=%3CBAY21-F226079340830E785BC7E87DFCC0%40phx.gbl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000133.html">
+   <LINK REL="Next"  HREF="000124.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] collision polygons</H1>
+    <B>Esa Tanskanen</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20collision%20polygons&In-Reply-To=%3CBAY21-F226079340830E785BC7E87DFCC0%40phx.gbl%3E"
+       TITLE="[Openlayer-developer] collision polygons">fladimir2002 at hotmail.com
+       </A><BR>
+    <I>Mon Apr 10 11:06:52 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000133.html">[Openlayer-developer] collision polygons
+</A></li>
+        <LI>Next message: <A HREF="000124.html">[Openlayer-developer] I'm a tortoise
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#135">[ date ]</a>
+              <a href="thread.html#135">[ thread ]</a>
+              <a href="subject.html#135">[ subject ]</a>
+              <a href="author.html#135">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>How does the Bitmap &quot;change&quot;? If you draw the Bitmap to the screen rotated, 
+then it'll seem rotated. But you can't really modify the Bitmap in any 
+way... Also the reason why I wouldn't want to implement Bitmap &lt;-&gt; Bitmap 
+collisions is because that'd mean that separate Shape &lt;-&gt; Bitmap and Bitmap 
+&lt;-&gt; Shape methods would be needed as well. And as the Poly will have a 
+bounding box, too, so what's the difference?
+
+&gt;<i>This'll make it much easier to code without having to call separate poly 
+</I>&gt;<i>methods
+</I>
+Eh, I don't know if it's much easier after all. Now you just need one extra 
+call to retrieve the collision polygon from the Bitmap.
+
+/Esa
+
+&gt;<i>From: neil &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">neil at retrospec.sgn.net</A>&gt;
+</I>&gt;<i>Reply-To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at berlios.de</A>
+</I>&gt;<i>To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at berlios.de</A>
+</I>&gt;<i>Subject: Re: [Openlayer-developer] collision polygons
+</I>&gt;<i>Date: Sun, 09 Apr 2006 22:51:01 +0100
+</I>&gt;<i>
+</I>&gt;<i>I don't know how the collision code works, but I imagine a poly check is 
+</I>&gt;<i>fairly intensive, and because most collision will be bitmap based why not 
+</I>&gt;<i>store a Rect for each bitmap that is the bounding box (as well as any extra 
+</I>&gt;<i>collision poly) and have a bitmap-bitmap collision that internally does a 
+</I>&gt;<i>bounding box followed by a collision poly check if there is one. This'll 
+</I>&gt;<i>make it much easier to code without having to call separate poly methods 
+</I>&gt;<i>and should be faster. There's nothing really stopping you from doing this 
+</I>&gt;<i>for the primitives either as it should speed up most tests.
+</I>&gt;<i>
+</I>&gt;<i>btw, do the collision poly's change when your bitmap changes, e.g. 
+</I>&gt;<i>stretching, distorting, etc?
+</I>&gt;<i>
+</I>&gt;<i>Neil.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Esa Tanskanen wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i>Collision objects are the results of a collision. A Poly object is always 
+</I>&gt;&gt;<i>a collision polygon as well (in other words, Poly &lt;-&gt; Poly collision is 
+</I>&gt;&gt;<i>defined). I could implement a method to change a Bitmap's collision 
+</I>&gt;&gt;<i>polygon. But after all, the collision Poly has to be retrieved from the 
+</I>&gt;&gt;<i>Bitmap before doing to collision test. No separate Bitmap &lt;-&gt; Bitmap 
+</I>&gt;&gt;<i>collision is defined. Also I'm going to implement extra bounding boxes and 
+</I>&gt;&gt;<i>bounding circles for Polys to make the collision tests more efficient.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>/Esa
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>From: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer-admin at berlios.de</A>
+</I>&gt;&gt;&gt;<i>Reply-To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at berlios.de</A>
+</I>&gt;&gt;&gt;<i>To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i>Subject: [Openlayer-developer] collision polygons
+</I>&gt;&gt;&gt;<i>Date: Sat, 08 Apr 2006 09:26:04 +0100
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Hello,
+</I>&gt;&gt;&gt;<i>I've got to be perfectly honest and say I don't know the difference 
+</I>&gt;&gt;&gt;<i>between the Collision object and a polygon collision, so this might all 
+</I>&gt;&gt;&gt;<i>be done, but for my collisions I'm using the poly.collides method and not 
+</I>&gt;&gt;&gt;<i>the collision class for my bitmaps. How about a method, e.g. 
+</I>&gt;&gt;&gt;<i>CreateCollisionPoly(...) that has a few overloaded signatures that lets 
+</I>&gt;&gt;&gt;<i>you post create a bitmap's collision poly from a Poly object, a filename 
+</I>&gt;&gt;&gt;<i>for a text file that contains a series of vectors, or maybe a
+</I>&gt;&gt;&gt;<i>'bool Settings::GenerateBoundingBox' to automatically generate a simply 
+</I>&gt;&gt;&gt;<i>bounding box poly for every bitmap. All the collision poly is, is just a 
+</I>&gt;&gt;&gt;<i>Poly so I can't see a problem with this.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>But like I said, I don't really know what the Collision object does, but 
+</I>&gt;&gt;&gt;<i>I guess there must be a big one, otherwise it wouldn't exist :)
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>To overcome the problems with the CREATE_COLLISION_POLY I've just been 
+</I>&gt;&gt;&gt;<i>creating a poly for my sprites as a bounding box and using the poly 
+</I>&gt;&gt;&gt;<i>collides method.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Neil.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;&gt;<i>Openlayer-developer mailing list
+</I>&gt;&gt;&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i><A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>_________________________________________________________________
+</I>&gt;&gt;<i>Uutiset ja kasvot uutisten takaa. MSN Search, t&#228;yden palvelun hakukone. 
+</I>&gt;&gt;<i><A HREF="http://search.msn.fi">http://search.msn.fi</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;<i>Openlayer-developer mailing list
+</I>&gt;&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;&gt;<i><A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Openlayer-developer mailing list
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i><A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>
+_________________________________________________________________
+Nyt l&#246;yd&#228;t etsim&#228;si tiedot nopeasti niin koneeltasi kuin netist&#228;. 
+<A HREF="http://toolbar.msn.fi">http://toolbar.msn.fi</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000133.html">[Openlayer-developer] collision polygons
+</A></li>
+	<LI>Next message: <A HREF="000124.html">[Openlayer-developer] I'm a tortoise
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#135">[ date ]</a>
+              <a href="thread.html#135">[ thread ]</a>
+              <a href="subject.html#135">[ subject ]</a>
+              <a href="author.html#135">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

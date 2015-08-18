@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] Updates
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Updates&In-Reply-To=%3C200701150258.57950.juvinious%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000243.html">
+   <LINK REL="Next"  HREF="000245.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] Updates</H1>
+    <B>Miguel A. Gavidia</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Updates&In-Reply-To=%3C200701150258.57950.juvinious%40gmail.com%3E"
+       TITLE="[Openlayer-developer] Updates">juvinious at gmail.com
+       </A><BR>
+    <I>Sun Jan 14 19:58:57 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000243.html">[Openlayer-developer] fix for Bitmap::Load
+</A></li>
+        <LI>Next message: <A HREF="000245.html">[Openlayer-developer] Updates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#244">[ date ]</a>
+              <a href="thread.html#244">[ thread ]</a>
+              <a href="subject.html#244">[ subject ]</a>
+              <a href="author.html#244">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ok so I went about the task of exporting the symbols in OpenLayer. I tested it 
+on windows and was able to create a DLL of the library with success and was 
+able to link the demos with it. Any of the windows users that have any 
+interest in this I ask you to test it out yourself in your apps to make sure 
+all required symbols are exported. I know some people were asking for this 
+so, this is a good step in that general direction. In order to accomplish 
+this I added two new preprocessors:
+OL_SHARED and OL_LIB_BUILD
+It should be fairly straightforward, when building the library pass 
+both -DOL_SHARED and -DOL_LIB_BUILD. When linking against the library only 
+pass -DOL_SHARED, however you might just want to throw #define OL_SHARED into 
+the OpenLayer.hpp that way it's transparent.
+Additionally I also merged loadpng into the library as it is small and 
+required if OL_NO_PNG is not defined. Of course it won't be included if 
+OL_NO_PNG is enabled so there is no need to worry about it. Just make sure 
+you aren't linking with -lloadpng or -lldpng anymore in your link line. If 
+you are on linux nothing changes as `openlayer-config --libs` produces the 
+proper link line for you. :)
+So regarding the dll stuff if you do happen to run across problems with it, 
+missing symbols and what not, please post them here so I can correct them.
+Thanks.
+
+-- 
+-juvinious
+
+<A HREF="http://saggui.sourceforge.net">http://saggui.sourceforge.net</A> - Simplified All Gaming GUI
+<A HREF="http://chasm.hopto.org">http://chasm.hopto.org</A> - The Chasm - My Site
+<A HREF="http://openlayer.berlios.de">http://openlayer.berlios.de</A> - Openlayer
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000243.html">[Openlayer-developer] fix for Bitmap::Load
+</A></li>
+	<LI>Next message: <A HREF="000245.html">[Openlayer-developer] Updates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#244">[ date ]</a>
+              <a href="thread.html#244">[ thread ]</a>
+              <a href="subject.html#244">[ subject ]</a>
+              <a href="author.html#244">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

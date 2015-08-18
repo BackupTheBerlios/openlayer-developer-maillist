@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] updates to files of OL
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20updates%20to%20files%20of%20OL&In-Reply-To=%3CBAY122-F47EA8F94F282834C47B79DF030%40phx.gbl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000201.html">
+   <LINK REL="Next"  HREF="000203.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] updates to files of OL</H1>
+    <B>Esa Tanskanen</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20updates%20to%20files%20of%20OL&In-Reply-To=%3CBAY122-F47EA8F94F282834C47B79DF030%40phx.gbl%3E"
+       TITLE="[Openlayer-developer] updates to files of OL">fladimir2002 at hotmail.com
+       </A><BR>
+    <I>Sun Oct 22 19:35:02 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000201.html">[Openlayer-developer] updates to files of OL
+</A></li>
+        <LI>Next message: <A HREF="000203.html">[Openlayer-developer] updates to files of OL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#202">[ date ]</a>
+              <a href="thread.html#202">[ thread ]</a>
+              <a href="subject.html#202">[ subject ]</a>
+              <a href="author.html#202">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks a lot, I'll check it out and if everything goes OK, I'll submit it to 
+the SVN repository!
+
+
+&gt;<i>From: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">tobing at gmx.net</A>
+</I>&gt;<i>Reply-To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at berlios.de</A>
+</I>&gt;<i>To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at berlios.de</A>
+</I>&gt;<i>Subject: Re: [Openlayer-developer] updates to files of OL
+</I>&gt;<i>Date: Sun, 22 Oct 2006 17:03:03 +0200
+</I>&gt;<i>
+</I>&gt;<i> &gt; Oops sorry about that tobing, I misread your name as tobias... my bad.
+</I>&gt;<i> &gt; Ignore
+</I>&gt;<i> &gt; that. ::)
+</I>&gt;<i>
+</I>&gt;<i>tobing is the pseudonym, Tobias is my real name. So there's no need to 
+</I>&gt;<i>apologize...
+</I>&gt;<i>
+</I>&gt;<i>I've attached ol.rar, containing all 7 changed files.
+</I>&gt;<i>
+</I>&gt;<i>OlRectangle.hpp and Circle.hpp have a section included, which undefines min 
+</I>&gt;<i>and max, if they are defined.
+</I>&gt;<i>
+</I>&gt;<i>Bitmap.cpp has loop variables renamed.
+</I>&gt;<i>
+</I>&gt;<i>Internal.hpp has different implementations of OlAssert. This code is copied 
+</I>&gt;<i>from Neil Walker, from the thread in the forum.
+</I>&gt;<i>
+</I>&gt;<i>shapedemo/Main.cpp has two things corrected: END_OF_FUNCTION and to open 
+</I>&gt;<i>the correct file.
+</I>&gt;<i>
+</I>&gt;<i>textdemo/Main.cpp das an added Canvas::Fill to have a blank black screen to 
+</I>&gt;<i>write on, and the ctor of TextRenderer neuropol changed, then call Load 
+</I>&gt;<i>explicitely (helps debugging, but maybe should not go into SVN?).
+</I>&gt;<i>
+</I>&gt;<i>gamedemo/Demo.cpp has the gcc-only &lt;? statement replaced by something that 
+</I>&gt;<i>works for me - what does &lt;? mean?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Thanks for considering this stuff for updating SVN, hope it works all fine. 
+</I>&gt;<i>I'll try to not use GK now...
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>--
+</I>&gt;<i>Viele Gr&#252;sse / Best Regards / Amiti&#233;s
+</I>&gt;<i>Tobing
+</I>&gt;<i>
+</I>&gt;<i><A HREF="http://www.staedtebauen.de">http://www.staedtebauen.de</A>
+</I>
+
+&gt;<i>&lt;&lt; ol.rar &gt;&gt;
+</I>
+
+&gt;<i>_______________________________________________
+</I>&gt;<i>Openlayer-developer mailing list
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">https://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>
+_________________________________________________________________
+Uutiset ja kasvot uutisten takaa. MSN Search, t&#228;yden palvelun hakukone. 
+<A HREF="http://search.msn.fi">http://search.msn.fi</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000201.html">[Openlayer-developer] updates to files of OL
+</A></li>
+	<LI>Next message: <A HREF="000203.html">[Openlayer-developer] updates to files of OL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#202">[ date ]</a>
+              <a href="thread.html#202">[ thread ]</a>
+              <a href="subject.html#202">[ subject ]</a>
+              <a href="author.html#202">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

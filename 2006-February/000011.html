@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] Virtual Destructors
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Virtual%20Destructors&In-Reply-To=%3C4403BB42.90008%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000010.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] Virtual Destructors</H1>
+    <B>David Schwingenschl&#246;gl</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Virtual%20Destructors&In-Reply-To=%3C4403BB42.90008%40gmx.net%3E"
+       TITLE="[Openlayer-developer] Virtual Destructors">indeterminatus_ml at gmx.net
+       </A><BR>
+    <I>Tue Feb 28 03:53:54 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000010.html">[Openlayer-developer] Virtual Destructors
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Miguel A. Gavidia wrote:
+&gt;<i> Afaik, declaring a virtual dtor is standard amongst classes that are 
+</I>&gt;<i> fully abstract to ones that contain a virtual method here or there. 
+</I>&gt;<i> I'd agree with adding them in as it'll make the classes seem more 
+</I>&gt;<i> uniformly correct. :)
+</I>&gt;<i>   
+</I>I agree with juvinious here. Is the destruction of objects really that 
+frequent that the additional vtable lookup would matter? Most compilers 
+are capable of removing the virtual-ism of known object types anyway 
+(and replace them with a non-virtual method call), so for the formally 
+correct case speed shouldn't make a difference. For the incorrect case, 
+however, a non-virtual destructor isn't desirable (as you all know).
+
+I second the motion towards virtual destructors, as they seem to do no 
+harm speed-wise (and protect invalid use of the code). I am, however, 
+not opposing additional tests, although I strongly suggest object 
+pooling if the destruction of objects is that frequent that it actually 
+mattered (if that's possible at all).
+
+Yours,
+ David.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000010.html">[Openlayer-developer] Virtual Destructors
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

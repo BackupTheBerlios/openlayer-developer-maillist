@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] I'm a tortoise
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20I%27m%20a%20tortoise&In-Reply-To=%3C443831FE.4090008%40retrospec.sgn.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000124.html">
+   <LINK REL="Next"  HREF="000127.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] I'm a tortoise</H1>
+    <B>openlayer-developer-admin at lists.berlios.de</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20I%27m%20a%20tortoise&In-Reply-To=%3C443831FE.4090008%40retrospec.sgn.net%3E"
+       TITLE="[Openlayer-developer] I'm a tortoise">openlayer-developer-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat Apr  8 23:58:22 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000124.html">[Openlayer-developer] I'm a tortoise
+</A></li>
+        <LI>Next message: <A HREF="000127.html">[Openlayer-developer] I'm a tortoise
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#125">[ date ]</a>
+              <a href="thread.html#125">[ thread ]</a>
+              <a href="subject.html#125">[ subject ]</a>
+              <a href="author.html#125">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+Found the fault. It's the change made in linestrip.hpp to fix the fault 
+in MSVC that I mentioned last week. Except now the change makes mingw 
+linestrips not work!
+
+Basically it's in addtoend/addtobegin where vertices.push_front/back is 
+moved to before the for loop. Logically this should work and it does 
+with MSVC but it now fails with mingw, except instead of crashing like 
+MSVC does, you simply don't get any linestrips, only the last one. 
+Simply compile the linestrip demo and try it.
+
+Don't know how to fix it though :)
+
+Neil.
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer-admin at berlios.de</A> wrote:
+
+&gt;<i> Hello,
+</I>&gt;<i> Does anyone trust me enough to give me an account? I've made a few 
+</I>&gt;<i> minor changes (well, just one so far - to rename the PointerAlpha.png 
+</I>&gt;<i> to Pointer.png) for the shapedemo - otherwise the demo code won't 
+</I>&gt;<i> compile, but I only got the SVN down via anonymous.
+</I>&gt;<i>
+</I>&gt;<i> Also, I mentioned this in allegro.cc - with the latest version of SVN 
+</I>&gt;<i> the linestrip demo doesn't work anymore. I'll try and trace the fault 
+</I>&gt;<i> but I think it's got something to do with the changes to the 
+</I>&gt;<i> shape.hpp/cpp file. Basically, you don't get line strips anymore, only 
+</I>&gt;<i> a couple of dots. Means I can't do a release yet again!
+</I>&gt;<i>
+</I>&gt;<i> Just a suggestion for the OL hero's - the ordering of where the code 
+</I>&gt;<i> is being stored (hpp/cpp) is getting a bit messy, any chance when you 
+</I>&gt;<i> get time you can make it more consistent, like put all the code in the 
+</I>&gt;<i> cpp files, or at least put all constructors in header files?
+</I>&gt;<i>
+</I>&gt;<i> Neil.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openlayer-developer mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000124.html">[Openlayer-developer] I'm a tortoise
+</A></li>
+	<LI>Next message: <A HREF="000127.html">[Openlayer-developer] I'm a tortoise
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#125">[ date ]</a>
+              <a href="thread.html#125">[ thread ]</a>
+              <a href="subject.html#125">[ subject ]</a>
+              <a href="author.html#125">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

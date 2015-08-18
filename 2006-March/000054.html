@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] petition process for fixes?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20petition%20process%20for%20fixes%3F&In-Reply-To=%3C8e8874da0603121108t87450e7ue283eaecd67fd8e7%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000053.html">
+   <LINK REL="Next"  HREF="000055.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] petition process for fixes?</H1>
+    <B>wil renczes</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20petition%20process%20for%20fixes%3F&In-Reply-To=%3C8e8874da0603121108t87450e7ue283eaecd67fd8e7%40mail.gmail.com%3E"
+       TITLE="[Openlayer-developer] petition process for fixes?">wrenczes at gmail.com
+       </A><BR>
+    <I>Sun Mar 12 20:08:57 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000053.html">[Openlayer-developer] Bitmap::GetCollisionPoly() - issue to resolve
+</A></li>
+        <LI>Next message: <A HREF="000055.html">[Openlayer-developer] petition process for fixes?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#54">[ date ]</a>
+              <a href="thread.html#54">[ thread ]</a>
+              <a href="subject.html#54">[ subject ]</a>
+              <a href="author.html#54">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have a couple of code fixes for MSVC environment compiler errors
+(should be safe for gcc environments, as I've placed #ifdef _MSC_VER
+wrappers where appropriate) -
+
+ie:
+std::min() (used in Rectangle.hpp) not compiling on windows;
+__PRETTY_FUNCTION__  (used in OL::Assert()) doesn't exist in MSVC land...
+
+etc.
+
+
+what's the process for submitting fixes to the depot, and/or getting
+write access?
+
+Thanks -
+
+Wil
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000053.html">[Openlayer-developer] Bitmap::GetCollisionPoly() - issue to resolve
+</A></li>
+	<LI>Next message: <A HREF="000055.html">[Openlayer-developer] petition process for fixes?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#54">[ date ]</a>
+              <a href="thread.html#54">[ thread ]</a>
+              <a href="subject.html#54">[ subject ]</a>
+              <a href="author.html#54">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

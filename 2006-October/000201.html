@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] updates to files of OL
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20updates%20to%20files%20of%20OL&In-Reply-To=%3C20061022150303.261710%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000200.html">
+   <LINK REL="Next"  HREF="000202.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] updates to files of OL</H1>
+    <B>tobing at gmx.net</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20updates%20to%20files%20of%20OL&In-Reply-To=%3C20061022150303.261710%40gmx.net%3E"
+       TITLE="[Openlayer-developer] updates to files of OL">tobing at gmx.net
+       </A><BR>
+    <I>Sun Oct 22 17:03:03 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000200.html">[Openlayer-developer] updates to files of OL
+</A></li>
+        <LI>Next message: <A HREF="000202.html">[Openlayer-developer] updates to files of OL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Oops sorry about that tobing, I misread your name as tobias... my bad.
+</I>&gt;<i> Ignore 
+</I>&gt;<i> that. ::)
+</I>
+tobing is the pseudonym, Tobias is my real name. So there's no need to apologize... 
+
+I've attached ol.rar, containing all 7 changed files. 
+
+OlRectangle.hpp and Circle.hpp have a section included, which undefines min and max, if they are defined. 
+
+Bitmap.cpp has loop variables renamed. 
+
+Internal.hpp has different implementations of OlAssert. This code is copied from Neil Walker, from the thread in the forum. 
+
+shapedemo/Main.cpp has two things corrected: END_OF_FUNCTION and to open the correct file. 
+
+textdemo/Main.cpp das an added Canvas::Fill to have a blank black screen to write on, and the ctor of TextRenderer neuropol changed, then call Load explicitely (helps debugging, but maybe should not go into SVN?). 
+
+gamedemo/Demo.cpp has the gcc-only &lt;? statement replaced by something that works for me - what does &lt;? mean? 
+
+
+Thanks for considering this stuff for updating SVN, hope it works all fine. I'll try to not use GK now... 
+
+
+-- 
+Viele Gr&#252;sse / Best Regards / Amiti&#233;s
+Tobing
+
+<A HREF="http://www.staedtebauen.de">http://www.staedtebauen.de</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ol.rar
+Type: application/x-rar-compressed
+Size: 14538 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/openlayer-developer/attachments/20061022/867c11d2/attachment.bin">https://lists.berlios.de/pipermail/openlayer-developer/attachments/20061022/867c11d2/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000200.html">[Openlayer-developer] updates to files of OL
+</A></li>
+	<LI>Next message: <A HREF="000202.html">[Openlayer-developer] updates to files of OL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

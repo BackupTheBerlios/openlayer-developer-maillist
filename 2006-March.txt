@@ -1,0 +1,2879 @@
+From bradeeoh at bradeeoh.com  Wed Mar  1 00:26:08 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Tue, 28 Feb 2006 15:26:08 -0800
+Subject: [Openlayer-developer] SVN Login
+Message-ID: <4404DC10.6090805@bradeeoh.com>
+
+Fladimir, noticed you mentioned SVN rejecting your login.  It was doing 
+that yesterday because they were upgrading disk space on the SVN server 
+and it was down, but it's back up again today.  I commited some changed 
+today, anyways...
+
+Have you tried today yet?
+
+
+From bradeeoh at bradeeoh.com  Wed Mar  1 06:46:47 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Tue, 28 Feb 2006 21:46:47 -0800
+Subject: [Openlayer-developer] Animation
+Message-ID: <44053547.5080805@bradeeoh.com>
+
+Heya Fladimir,
+
+I know we talked about it a few weeks ago.  I was wondering if you had 
+any specific thoughts or plans on the Animation class.
+
+Right now it's entirely 100% functional but very limited.  Were your 
+plans to leave it as is?  To add anymore features?  To do it differently?
+
+Theres alot more it COULD do but it depends on whether or not you want 
+it too  ;)
+
+
+
+From juvinious at gmail.com  Wed Mar  1 11:37:06 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Wed, 1 Mar 2006 18:37:06 +0800
+Subject: [Openlayer-developer] Mailing lists
+Message-ID: <200603011837.07134.juvinious@gmail.com>
+
+Regarding the mailing lists, maybe we should formally announce it in an a.cc 
+thread so that people can see it and maybe join them if something particular 
+comes up? Specifically the User one so that we all can a have a central point 
+of discussion assisting those that need it.
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From indeterminatus_ml at gmx.net  Wed Mar  1 12:40:52 2006
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Wed, 01 Mar 2006 12:40:52 +0100
+Subject: [Openlayer-developer] Hook on svn commit
+Message-ID: <44058844.2040501@gmx.net>
+
+I thought it would be a good idea to have a hook for the SVN commit that 
+sends an informal mail to this mailing list. I know it is possible with 
+SVN, I don't know if it's possible with berlios.de's service (it might 
+hinge on missing access to the repository). The pro is that the 
+subscribers to this list would be informed automatically about changes 
+(it is possible to include the log message in the mail), the con is that 
+these mails might be considered junk if they are too frequent. What do 
+you think about it?
+
+Yours,
+  David.
+
+
+From juvinious at gmail.com  Wed Mar  1 17:34:21 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Thu, 2 Mar 2006 00:34:21 +0800
+Subject: [Openlayer-developer] Hook on svn commit
+In-Reply-To: <44058844.2040501@gmx.net>
+References: <44058844.2040501@gmx.net>
+Message-ID: <200603020034.21472.juvinious@gmail.com>
+
+This is a great idea, SF has/had the ability to do so. It would also allow us 
+to observe the changes and keep in sync with the rest of the developers.
+:)
+
+On Wednesday 01 March 2006 19:40, David Schwingenschl?gl wrote:
+> I thought it would be a good idea to have a hook for the SVN commit that
+> sends an informal mail to this mailing list. I know it is possible with
+> SVN, I don't know if it's possible with berlios.de's service (it might
+> hinge on missing access to the repository). The pro is that the
+> subscribers to this list would be informed automatically about changes
+> (it is possible to include the log message in the mail), the con is that
+> these mails might be considered junk if they are too frequent. What do
+> you think about it?
+>
+> Yours,
+>   David.
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From indeterminatus_ml at gmx.net  Thu Mar  2 08:37:11 2006
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Thu, 02 Mar 2006 08:37:11 +0100
+Subject: [Openlayer-developer] GUI planned?
+Message-ID: <4406A0A7.3010003@gmx.net>
+
+Quite a while ago, Fladimir talked about a (simple) GUI system in 
+OpenLayer 2.0. Is this still planned? Our current game will soon need a 
+simple GUI, so I figured I'd enquire about the forthcoming plans on that 
+matter. I know of the potential alternative GUIchan, but haven't looked 
+at anything in more detail other than the screenshots on their webpage 
+(http://guichan.sourceforge.net/).
+
+Yours,
+  David.
+
+
+From bradeeoh at bradeeoh.com  Thu Mar  2 22:07:28 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Thu, 02 Mar 2006 13:07:28 -0800
+Subject: [Openlayer-developer] GUI planned?
+In-Reply-To: <4406A0A7.3010003@gmx.net>
+References: <4406A0A7.3010003@gmx.net>
+Message-ID: <44075E90.4030302@bradeeoh.com>
+
+Great question.  After Fladimir answers, we can talk about what it 
+should entail  ;)
+
+I already posted on the forums my plans to develop a basic game-style 
+gui based on OL but it's likely going to be more complicated than a 
+(simple) GUI system as animated widgets are part of my vision...
+
+I think I asked the question about the Animation class on the list not 
+too long ago, I never got an answer, Fladimir!
+
+Talk to us  ;)
+
+David Schwingenschl?gl wrote:
+> Quite a while ago, Fladimir talked about a (simple) GUI system in 
+> OpenLayer 2.0. Is this still planned? Our current game will soon need a 
+> simple GUI, so I figured I'd enquire about the forthcoming plans on that 
+> matter. I know of the potential alternative GUIchan, but haven't looked 
+> at anything in more detail other than the screenshots on their webpage 
+> (http://guichan.sourceforge.net/).
+> 
+> Yours,
+>  David.
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/openlayer-developer
+> 
+> 
+
+
+
+From bradeeoh at bradeeoh.com  Thu Mar  2 22:28:28 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Thu, 02 Mar 2006 13:28:28 -0800
+Subject: [Openlayer-developer] potential feature in ol::Poly
+Message-ID: <4407637C.3070902@bradeeoh.com>
+
+I'm having to create my own ways of hanging onto the absolute position 
+of a Poly in relation to its starting coordinates when I think it should 
+be built in.
+
+To clarify, ol::Poly::MoveBy( Vec2D ) is great but I think there should 
+also be ol::Poly::MoveTo( Vec2D )
+
+For example if I create, say, a square...
+
+Poly p;
+p.Add( Vec2D( 0, 0 ));
+p.Add( Vec2D( 30, 0 ));
+p.Add( Vec2D( 30, 30 ));
+p.Add( Vec2D( 0, 30 ));
+
+I would love to use it as a generically relocatable square.  I can call 
+p.MoveBy( ... ) to move it around the screen but sometimes you can only 
+know an absolute location where you'd like to move it instead of a 
+relative location.  If I've move it around the screen hundreds of times 
+each by a fractional Vec2Ds, floating point math will have compounded 
+flaws to the point that it's exact position in relation to the origin 
+cannot be known.
+
+Even if I keep track of all of these MoveBy() calls and I try to do a 
+MoveBy() to send it back to the origin, there's no guarantee it will 
+actually end up back at (0.0,0.0).
+
+Theres a few complexities the arise by my proposal - how to keep track 
+of initial position remains a problem.
+
+One idea I have would be to keep 2 copies of the vertices - an initial 
+position and a current position.  They would start the same...  but a 
+call to MoveBy() would affect the current position and a call to 
+MoveTo() would do its math on the initial position creating a new 
+"current position"
+
+We could either take a small time penalty upon object initialization by 
+storing two copies of each vertex, or we could do a copy-on-write by 
+only making a "current position" vector upon the first call to MoveBy() 
+or MoveTo()
+
+The size penalty is obvious but also depends on the number of vertices 
+in the poly.
+
+What do you think?  If there's no objections I've basically already 
+implemented my method - though I could add copy-on-write to it.  Or, any 
+other ideas on how we could acheive the same thing differently?
+
+Peace,
+-Brady
+
+
+From bradeeoh at bradeeoh.com  Thu Mar  2 22:37:38 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Thu, 02 Mar 2006 13:37:38 -0800
+Subject: [Openlayer-developer] potential feature in ol::Poly - adding
+ on to my own post...
+In-Reply-To: <4407637C.3070902@bradeeoh.com>
+References: <4407637C.3070902@bradeeoh.com>
+Message-ID: <440765A2.9000609@bradeeoh.com>
+
+To add on to my own post really quick, I'm basing my whole idea off the 
+fact that the other shapes are movable.  You can move a point or an 
+ellipse as their positions are public fields.  Same with the two points 
+of a Line and the dimensions of a rectangle.
+
+I got used to being able to change their "absolute" position that when 
+I'm confronted with the lack of ability to do so in Poly and also 
+LineStrip, I get crazy ideas like the one I just posted.  ;)
+
+But on the note that you can move those other shapes I just described, 
+there's no common interface to be able to do so and I suppose they 
+should get the same treatment.
+
+In other words, I could add a
+
+virtual void MoveTo( const Vec2D& pos ) = 0;
+
+to Shape.hpp and implement it in each Shape.
+
+Lemme know
+
+-Brady
+
+
+From bradeeoh at bradeeoh.com  Fri Mar  3 01:10:55 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Thu, 02 Mar 2006 16:10:55 -0800
+Subject: [Openlayer-developer] Damn spam filter
+In-Reply-To: <200603020034.21472.juvinious@gmail.com>
+References: <44058844.2040501@gmx.net> <200603020034.21472.juvinious@gmail.com>
+Message-ID: <4407898F.3@bradeeoh.com>
+
+I just checked into my ISP's spam filter and found it was wiping out 
+every message from you, Miguel..  lol
+
+I suppose nothing was important enough to respond to other than to say 
+that the SVN hook is present at the list [openlayer-svn]
+
+Hopefully by replying to you right now the spam filter will accept you 
+as legit
+
+*sigh*
+
+Miguel A. Gavidia wrote:
+> This is a great idea, SF has/had the ability to do so. It would also allow us 
+> to observe the changes and keep in sync with the rest of the developers.
+> :)
+> 
+> On Wednesday 01 March 2006 19:40, David Schwingenschl?gl wrote:
+> 
+>>I thought it would be a good idea to have a hook for the SVN commit that
+>>sends an informal mail to this mailing list. I know it is possible with
+>>SVN, I don't know if it's possible with berlios.de's service (it might
+>>hinge on missing access to the repository). The pro is that the
+>>subscribers to this list would be informed automatically about changes
+>>(it is possible to include the log message in the mail), the con is that
+>>these mails might be considered junk if they are too frequent. What do
+>>you think about it?
+>>
+>>Yours,
+>>  David.
+>>_______________________________________________
+>>Openlayer-developer mailing list
+>>Openlayer-developer at lists.berlios.de
+>>http://lists.berlios.de/mailman/listinfo/openlayer-developer
+> 
+> 
+
+
+
+From bradeeoh at bradeeoh.com  Fri Mar  3 02:40:44 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Thu, 02 Mar 2006 17:40:44 -0800
+Subject: [Openlayer-developer] GUI
+Message-ID: <44079E9C.2050506@bradeeoh.com>
+
+Since I posted my RFC re: my GUI on a.cc, I've gotten private messages 
+from 4 people saying "this is good, OpenLayer will definitely benefit 
+from a gui."  Combine that with interest here... I think it's something 
+we should definitely pursue...
+
+
+From juvinious at gmail.com  Fri Mar  3 04:49:39 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Fri, 3 Mar 2006 11:49:39 +0800
+Subject: [Openlayer-developer] GUI
+In-Reply-To: <44079E9C.2050506@bradeeoh.com>
+References: <44079E9C.2050506@bradeeoh.com>
+Message-ID: <200603031149.39810.juvinious@gmail.com>
+
+Well I mentioned in that thread that I had been working on one for some time 
+now. My ideas are simply based on the experiences having from using other 
+peoples GUI's and windowing systems. Either they are overtly complex or lack 
+the desired items needed for a game IMO.
+Although I said I have been working on it, it still is a WIP, probably would 
+be like that for some time and more than likely probably doesn't meet your 
+criteria. :P 
+Although to start it would be nice to see OpenLayer's animation class to 
+include more functionality or to include some form of management system for 
+the animations. (which was being discussed in irc by you and several others).
+With that you can then extend that functionality into your own GUI to cover 
+the animations you so desire in your widgets.
+Although out of curiosity, how extensive do you need the animations in your 
+widgets? For the most part most of the things that I would see or can think 
+of animated are within a widget, which can easily be a canvas/bitmap that is 
+consistently updated like a map. Icons could be animated as well doing that. 
+Maybe I'm not seeing it the way you are thinking, maybe you can elaborate 
+some more on that?
+If anything at all to keep it simple, openlayer can probably just include a 
+simple framework of gui elements that can be extended by the end developer 
+according to his needs in his own projects. ie:
+//Basic classes in OL
+guiWidget
+guiInput
+guiMouse
+dialog : guiWidget : guiInput : guiMouse
+
+//End developers widgets
+myTextBox : dialog
+myInputBox : dialog
+myMap : guiWidget
+etc etc.
+
+Who knows though even that gets complex. :P
+But I think it would be much cleaner than say Allegro's GUI, which is horrible 
+IMO, especially since it OL is c++ and begs for things to be more OO 
+oriented.
+
+On Friday 03 March 2006 09:40, B E wrote:
+> Since I posted my RFC re: my GUI on a.cc, I've gotten private messages
+> from 4 people saying "this is good, OpenLayer will definitely benefit
+> from a gui."  Combine that with interest here... I think it's something
+> we should definitely pursue...
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From bradeeoh at bradeeoh.com  Fri Mar  3 07:05:28 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Thu, 02 Mar 2006 22:05:28 -0800
+Subject: [Openlayer-developer] Shape::MoveTo()
+Message-ID: <4407DCA8.7000901@bradeeoh.com>
+
+I commited changed to initially add MoveTo() to all shapes except 
+LineStrip and Poly.
+
+For Ellipse, Circle, Rect, and Point the entire "position" concept makes 
+perfect sense and is great as implemented.
+
+For Line it still makes sense, but since Line::start and Line::end are 
+public that adds the possibility that the user can change the two points 
+to their liking, it'll work, but then their next call to MoveTo() or 
+MoveBy() will refer to the initial coordinates again.
+
+That kind of brings up a strong case for privatizing those points and 
+make them changable through accessors instead.
+
+I stopped short of changing LineStrip and Poly because of the semantic 
+questions it raises.
+
+Such as, what if some adds a handful of vertices to a Poly, calls 
+MoveTo() or MoveBy(), then adds another vertex?  Should that vertex 
+refer to the initial positions or to the current position (which is what 
+it would do now)?
+
+Who knows, we can talk bout that.
+
+If MoveTo() is decided against, well, we revert to revision 16 of the 
+repository  :)
+
+Peace
+
+
+From fladimir2002 at hotmail.com  Fri Mar  3 20:00:46 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Fri, 03 Mar 2006 21:00:46 +0200
+Subject: [Openlayer-developer] About the GUI
+Message-ID: <BAY21-F11F078D41777384AAD1EACDFEA0@phx.gbl>
+
+I've thought about making a GUI add-on for OpenLayer. The reason for that 
+would be that the GUI could be better integrated to OL than any non-"native" 
+GUI. I mean that you could pass OpenLayer's objects to its methods, for 
+example. In fact I made OL 1.0 to convert my own GUI system from Allegro to 
+OpenGL easily.
+
+The GUI is still compatible with OL (at least most parts of it). It 
+positions the components automatically according to the layout and supports 
+resizeable windows. However, it's not very skinnable in its current state.
+
+But since GuiChan (and most of other OpenGL GUIs) works with OL there hasn't 
+been an immediate need for a native GUI. In the future when the most 
+important additions have been made I could develop my GUI to the state when 
+it's ready to be used by the public :)
+
+_________________________________________________________________
+MSN Search l?yt??! http://search.msn.fi
+
+
+
+From bradeeoh at bradeeoh.com  Fri Mar  3 20:13:02 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Fri, 03 Mar 2006 11:13:02 -0800
+Subject: [Openlayer-developer] Fwd from Esa
+Message-ID: <4408953E.6030405@bradeeoh.com>
+
+One way would be to create an Animation interface and then there could 
+be different animation classes which implement the interface. That 
+interface would be made by using a purely virtual class and it'd have 
+methods to update and render the animation.
+
+Also it crossed my mind to have an superclass for Bitmap, Shape and 
+Animation. The superclass could have a simple Draw( x, y ) method. Does 
+that sound useful? Maybe there could even be a Text object which would 
+combine a text string and a TextRenderer.
+
+
+ > From: B E <bradeeoh at bradeeoh.com>
+ > To: openlayer-developer at lists.berlios.de
+ > Subject: [Openlayer-developer] Animation
+ > Date: Tue, 28 Feb 2006 21:46:47 -0800
+ >
+ > Heya Fladimir,
+ >
+ > I know we talked about it a few weeks ago.  I was wondering if you 
+had any specific thoughts or plans on the Animation class.
+ >
+ > Right now it's entirely 100% functional but very limited.  Were your 
+plans to leave it as is?  To add anymore features?  To do it differently?
+ >
+ > Theres alot more it COULD do but it depends on whether or not you 
+want it too  ;)
+ >
+ > _______________________________________________
+ > Openlayer-developer mailing list
+ > Openlayer-developer at lists.berlios.de
+ > http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+
+_________________________________________________________________
+Hittej? ja harvinaisuuksia, halvalla ja helposti. MSN Music 
+http://sib1.od2.com/common/Framework.aspx?shid=075E002E&origin=MSNFI&promotion=Perm
+
+
+
+From bradeeoh at bradeeoh.com  Fri Mar  3 20:13:33 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Fri, 03 Mar 2006 11:13:33 -0800
+Subject: [Openlayer-developer] Fwd from Esa
+Message-ID: <4408955D.8050803@bradeeoh.com>
+
+ > To clarify, ol::Poly::MoveBy( Vec2D ) is great but I think there 
+should also be ol::Poly::MoveTo( Vec2D )
+
+
+Having Shape::MoveTo would be useful indeed, but how can you know where 
+the Shape should be moved? Should the top-left corner to be moved to the 
+specified location? Or the center? That's why there's only MoveBy as 
+it's unambiguous.
+
+PS. And Poly should still be moved around mainly by using Transforms. 
+But I'll change that in the future.
+
+ > For example if I create, say, a square...
+ >
+ > Poly p;
+ > p.Add( Vec2D( 0, 0 ));
+ > p.Add( Vec2D( 30, 0 ));
+ > p.Add( Vec2D( 30, 30 ));
+ > p.Add( Vec2D( 0, 30 ));
+ >
+ > I would love to use it as a generically relocatable square.  I can 
+call p.MoveBy( ... ) to move it around the screen but sometimes you can 
+only know an absolute location where you'd like to move it instead of a 
+relative location.  If I've move it around the screen hundreds of times 
+each by a fractional Vec2Ds, floating point math will have compounded 
+flaws to the point that it's exact position in relation to the origin 
+cannot be known.
+ >
+ > Even if I keep track of all of these MoveBy() calls and I try to do a 
+MoveBy() to send it back to the origin, there's no guarantee it will 
+actually end up back at (0.0,0.0).
+ >
+ > Theres a few complexities the arise by my proposal - how to keep 
+track of initial position remains a problem.
+ >
+ > One idea I have would be to keep 2 copies of the vertices - an 
+initial position and a current position.  They would start the same... 
+but a call to MoveBy() would affect the current position and a call to 
+MoveTo() would do its math on the initial position creating a new 
+"current position"
+ >
+ > We could either take a small time penalty upon object initialization 
+by storing two copies of each vertex, or we could do a copy-on-write by 
+only making a "current position" vector upon the first call to MoveBy() 
+or MoveTo()
+ >
+ > The size penalty is obvious but also depends on the number of 
+vertices in the poly.
+ >
+ > What do you think?  If there's no objections I've basically already 
+implemented my method - though I could add copy-on-write to it.  Or, any 
+other ideas on how we could acheive the same thing differently?
+ >
+ > Peace,
+ > -Brady
+ > _______________________________________________
+ > Openlayer-developer mailing list
+ > Openlayer-developer at lists.berlios.de
+ > http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+
+_________________________________________________________________
+Hittej? ja harvinaisuuksia, halvalla ja helposti. MSN Music 
+http://sib1.od2.com/common/Framework.aspx?shid=075E002E&origin=MSNFI&promotion=Perm
+
+
+
+
+From bradeeoh at bradeeoh.com  Sat Mar  4 22:56:06 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Sat, 04 Mar 2006 13:56:06 -0800
+Subject: [Openlayer-developer] A Proposal - OpenLayer Addons
+Message-ID: <440A0CF6.10405@bradeeoh.com>
+
+There's alot of interest for a "standard" OpenLayer GUI, and that I 
+understand.
+I also have alot of personal ideas for what would be great OpenLayer 
+features.
+
+Fladimir has a goal of keeping OpenLayer clean and focused on its 
+minimalistic goal.  That, I understand as well.  Can't disagree with it 
+one bit!
+
+So I have a proposal - OpenLayer Addons.  Lemme explain
+
+I started putting together a class structure for a GUI.  I'm putting it 
+into the namespace ol::gui and it's file structure integrates in with 
+the OpenLayer directory tree.
+
+ie - I have
+OpenLayer/Gui.hpp
+as a master header for the gui, then I have
+OpenLayer/Gui/Window.hpp
+for the base Window class, for example.
+
+But I am keeping it as a distinctly seperate project from OL and just 
+add the Openlayer include path into my project for ol::gui
+
+The idea is to either add an "addons" path to the openlayer SVN 
+repository or, probably a better idea, to start an OpenLayer Addons 
+project.
+
+I keep the "addons" concept instead of calling it "gui" because one 
+"addons" project could host multiple addon systems - ol::sprite as an 
+example.
+
+Any ol::[addon] would have a specific OpenLayer dependency and possibly 
+depend on another ol::[addon], but they would all integrate cleanly into 
+the OpenLayer file tree.  Lets say OpenLayer 2.1 is released.  We could 
+then release ol::Gui 2.1 which unzips into the OpenLayer 2.1 file tree, 
+puts a Makefile.gui in the main directory, and therefore is cleanly 
+integrated in for users.
+
+I love the idea of seperating all the add-on stuff from the core 
+OpenLayer so development of OL doesn't rely on addons at all, but it 
+gives a platform for us to explore the GUI addon stuff and other 
+experimental things.  Ideas that work out will persist, and anything 
+that doesn't can die off as it's own module.
+
+Anyways, this is my vision.  Lemme know thoughts and comments!
+
+-Brady
+
+
+
+From fladimir2002 at hotmail.com  Sat Mar  4 23:51:19 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Sun, 05 Mar 2006 00:51:19 +0200
+Subject: [Openlayer-developer] A Proposal - OpenLayer Addons
+In-Reply-To: <440A0CF6.10405@bradeeoh.com>
+Message-ID: <BAY21-F7E5246D3BC142BA901F7ADFEB0@phx.gbl>
+
+That's how I thought it could be done, too. But if we're going to make a GUI 
+it makes sense to plan it together.
+
+
+>From: B E <bradeeoh at bradeeoh.com>
+>To: openlayer-developer at lists.berlios.de
+>Subject: [Openlayer-developer] A Proposal - OpenLayer Addons
+>Date: Sat, 04 Mar 2006 13:56:06 -0800
+>
+>There's alot of interest for a "standard" OpenLayer GUI, and that I 
+>understand.
+>I also have alot of personal ideas for what would be great OpenLayer 
+>features.
+>
+>Fladimir has a goal of keeping OpenLayer clean and focused on its 
+>minimalistic goal.  That, I understand as well.  Can't disagree with it one 
+>bit!
+>
+>So I have a proposal - OpenLayer Addons.  Lemme explain
+>
+>I started putting together a class structure for a GUI.  I'm putting it 
+>into the namespace ol::gui and it's file structure integrates in with the 
+>OpenLayer directory tree.
+>
+>ie - I have
+>OpenLayer/Gui.hpp
+>as a master header for the gui, then I have
+>OpenLayer/Gui/Window.hpp
+>for the base Window class, for example.
+>
+>But I am keeping it as a distinctly seperate project from OL and just add 
+>the Openlayer include path into my project for ol::gui
+>
+>The idea is to either add an "addons" path to the openlayer SVN repository 
+>or, probably a better idea, to start an OpenLayer Addons project.
+>
+>I keep the "addons" concept instead of calling it "gui" because one 
+>"addons" project could host multiple addon systems - ol::sprite as an 
+>example.
+>
+>Any ol::[addon] would have a specific OpenLayer dependency and possibly 
+>depend on another ol::[addon], but they would all integrate cleanly into 
+>the OpenLayer file tree.  Lets say OpenLayer 2.1 is released.  We could 
+>then release ol::Gui 2.1 which unzips into the OpenLayer 2.1 file tree, 
+>puts a Makefile.gui in the main directory, and therefore is cleanly 
+>integrated in for users.
+>
+>I love the idea of seperating all the add-on stuff from the core OpenLayer 
+>so development of OL doesn't rely on addons at all, but it gives a platform 
+>for us to explore the GUI addon stuff and other experimental things.  Ideas 
+>that work out will persist, and anything that doesn't can die off as it's 
+>own module.
+>
+>Anyways, this is my vision.  Lemme know thoughts and comments!
+>
+>-Brady
+>
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+MSN Music ? palvelu musiikin yst?ville 
+http://sib1.od2.com/common/Framework.aspx?shid=075E002E&origin=MSNFI&promotion=Perm
+
+
+
+From indeterminatus_ml at gmx.net  Sun Mar  5 10:45:40 2006
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Sun, 05 Mar 2006 10:45:40 +0100
+Subject: [Openlayer-developer] A Proposal - OpenLayer Addons
+In-Reply-To: <440A0CF6.10405@bradeeoh.com>
+References: <440A0CF6.10405@bradeeoh.com>
+Message-ID: <440AB344.9010606@gmx.net>
+
+B E,
+
+I like your proposal of OpenLayer add-ons. It wasn't quite clear to me, 
+however, if such add-on would be compiled into a library of its own 
+(depending on OpenLayer) or if it would be built into the main OpenLayer 
+library.
+
+Anyway, this is just a minor issue. I am in favor of creating a project 
+of its own, because that will keep the core OpenLayer stuff concise and 
+clean. Actually, every add-on should get its own repository, or will 
+things get too complicated then?
+
+Yours,
+ David.
+
+
+From fladimir2002 at hotmail.com  Sun Mar  5 15:01:10 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Sun, 05 Mar 2006 16:01:10 +0200
+Subject: [Openlayer-developer] A Proposal - OpenLayer Addons
+In-Reply-To: <440AB344.9010606@gmx.net>
+Message-ID: <BAY21-F125813D6C72647E859ACDADFE80@phx.gbl>
+
+>I like your proposal of OpenLayer add-ons. It wasn't quite clear to me, 
+>however, if such add-on would be compiled into a library of its own 
+>(depending on OpenLayer) or if it would be built into the main OpenLayer 
+>library.
+
+Yeah, I've thought the same. It'd be great that it'd be possible to include 
+the add-on libraries in the main library file - that way there would be less 
+hassle with all kinds of different library files. And especially as Allegro 
+users seem to fear having multiple library files. But there could be an 
+option to build separate libraries from the add-ons as well.
+
+>Actually, every add-on should get its own repository, or will things get 
+>too complicated then?
+
+I think they could be included in the same repository. That'd make it easier 
+to handle the library as all parts are in the same package.
+
+_________________________________________________________________
+MSN Search ? tiedon kultainen noutaja http://search.msn.fi
+
+
+
+From bradeeoh at bradeeoh.com  Sun Mar  5 19:03:45 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Sun, 05 Mar 2006 10:03:45 -0800
+Subject: [Openlayer-developer] A Proposal - OpenLayer Addons
+In-Reply-To: <440AB344.9010606@gmx.net>
+References: <440A0CF6.10405@bradeeoh.com> <440AB344.9010606@gmx.net>
+Message-ID: <440B2801.1060305@bradeeoh.com>
+
+
+> I like your proposal of OpenLayer add-ons. It wasn't quite clear to me, 
+> however, if such add-on would be compiled into a library of its own 
+> (depending on OpenLayer) or if it would be built into the main OpenLayer 
+> library.
+
+When it comes down to it a static library is just "a collection of 
+object files" so it would be absolute cake to either build them into the 
+main OL library or into seperatre librarys based on a compile time option.
+
+At least with the GCC-family of compilers (pretty much EVERYTHING except 
+MSVC) you can even take a preexisting static library and just add more 
+object files in as wanted.
+
+Not an issue  :)
+
+> Anyway, this is just a minor issue. I am in favor of creating a project 
+> of its own, because that will keep the core OpenLayer stuff concise and 
+> clean. Actually, every add-on should get its own repository, or will 
+> things get too complicated then?
+
+I've created the "OpenLayer Add-ons" project.  The project page is 
+http://developer.berlios.de/projects/oladdons
+
+Having a seperate repository for each addon may actually make things 
+harder in the long run...
+
+My personal preference would be to put everything into the same /trunk. 
+  That way if someone really wanted to check out one addon and not 
+others, they could checkout /trunk/[add-on name] and the master header 
+for the add-on.
+
+But there could also be multiple trunks, one for each add-on.  HOWEVER, 
+I also kind of forsee that different addons will interdepend on each 
+other - Add-on A won't work without Add-on B - therefore keeping them 
+seperate is kind of silly  ;)
+
+We'll figure that out in the next day or two before i make an initial 
+import.
+
+
+From bradeeoh at bradeeoh.com  Sun Mar  5 19:07:09 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Sun, 05 Mar 2006 10:07:09 -0800
+Subject: [Openlayer-developer] Fwd: from Esa @ [openlayer-svn]
+Message-ID: <440B28CD.40405@bradeeoh.com>
+
+Wrong list, Esa  ;)
+
+Here's the message -
+
+---------------------------------
+Subject: About general Shape <-> Shape collisions
+
+Firstly, do you think that we need, for performance reasons, separate:
+
+bool Collides(...)
+Collision GetCollision( ... )
+
+Or maybe just GetCollision would be enough? I've implemented them both for
+the most time-consuming collisions, namely with Polys and LineStrips.
+
+Also, what do you suppose that the normal for a Point (when colliding)
+should return? Vec2D( 0, 0 ) I guess?
+
+And finally, I think aiming for clean and readable code would be better 
+than
+aiming for absolutely best performance. So maybe when colliding rotated
+Rects they should be converted to Polys first? What do you think?
+
+_________________________________________________________________
+MSN Search l?yt??! http://search.msn.fi
+
+
+From bradeeoh at bradeeoh.com  Sun Mar  5 19:17:13 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Sun, 05 Mar 2006 10:17:13 -0800
+Subject: [Openlayer-developer] About general Shape <-> Shape collisions
+In-Reply-To: <440B28CD.40405@bradeeoh.com>
+References: <440B28CD.40405@bradeeoh.com>
+Message-ID: <440B2B29.7000001@bradeeoh.com>
+
+> Firstly, do you think that we need, for performance reasons, separate:
+> 
+> bool Collides(...)
+> Collision GetCollision( ... )
+
+Personally, I can see a few uses for bool Collides().  But, I also know 
+that it's currently implemented by calling GetCollision() and returning 
+collision.IsCollision()
+
+Meaning that instead of being quicker than GetCollision, which it could 
+be, it's actually a little slower.
+
+> Or maybe just GetCollision would be enough? I've implemented them both for
+> the most time-consuming collisions, namely with Polys and LineStrips.
+
+You've implemented both seperately, or "Collides" relies on GetCollision?
+/me looks at the code
+Yah, it's how I thought, but I think you have changes you just haven't 
+committed because I don't have anything for LineStrip  ;)
+
+So I guess my final opinion is - bool Collides() is useful and worth it 
+IF it is actually done quicker than GetCollision(), but that may require 
+restructuring how the functions are called and/or having two seperate 
+collision methods for the two cases.
+
+> Also, what do you suppose that the normal for a Point (when colliding)
+> should return? Vec2D( 0, 0 ) I guess?
+
+A Point colliding with a Point should be Vec2D( 0, 0 ), if that's what 
+you meant.  I can't think of any other good meaning...
+
+> And finally, I think aiming for clean and readable code would be better 
+> than
+> aiming for absolutely best performance. So maybe when colliding rotated
+> Rects they should be converted to Polys first? What do you think?
+
+I agree!
+
+
+From fladimir2002 at hotmail.com  Sun Mar  5 19:24:31 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Sun, 05 Mar 2006 20:24:31 +0200
+Subject: [Openlayer-developer] About general Shape <-> Shape collisions
+In-Reply-To: <440B2B29.7000001@bradeeoh.com>
+Message-ID: <BAY21-F133DAAFBD002F441D85B1EDFE80@phx.gbl>
+
+>Personally, I can see a few uses for bool Collides().  But, I also know 
+>that it's currently implemented by calling GetCollision() and returning 
+>collision.IsCollision() Meaning that instead of being quicker than 
+>GetCollision, which it could be, it's actually a little slower.
+
+In fact the DoCollisionTest takes the bool getResults parameter, which 
+decides if just Collision( true ) or Collision( all kinds of parameters ) is 
+returned. But there's not much difference in performance anyways, just 
+constructing two lines won't take that much processing power.
+
+>You've implemented both seperately, or "Collides" relies on GetCollision?
+
+See above.
+
+>Yah, it's how I thought, but I think you have changes you just haven't 
+>committed because I don't have anything for LineStrip
+
+Yeah, I didn't commit it immediately. It's there now...
+
+>A Point colliding with a Point should be Vec2D( 0, 0 ), if that's what you 
+>meant.  I can't think of any other good meaning...
+
+Well, I actually mean a Point colliding anything. But since the value isn't 
+meaningful it doesn't really matter...
+
+>I agree!
+
+OK, so be it ;)
+
+_________________________________________________________________
+MSN Music ? palvelu musiikin yst?ville 
+http://sib1.od2.com/common/Framework.aspx?shid=075E002E&origin=MSNFI&promotion=Perm
+
+
+
+From indeterminatus_ml at gmx.net  Sun Mar  5 21:27:19 2006
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Sun, 05 Mar 2006 21:27:19 +0100
+Subject: [Openlayer-developer] Feature Request: forward headers
+Message-ID: <440B49A7.6050805@gmx.net>
+
+Hi gang,
+
+in an attempt to decrease compilation times, I would like to have a 
+"forward" version of OpenLayer.hpp that has all the OpenLayer stuff as 
+forward declarations. The original intent is to use that file (I call it 
+OpenLayerFwd.hpp) in a header file (where no full type specifications 
+are needed), and have it all defined in the corresponding translation 
+unit (where it is to include OpenLayer.hpp as usual).
+
+This will not expose the full OpenLayer class definitions to the outside 
+and should help reduce compilation times.
+
+I can see no downside for that effect, because it doesn't break existing 
+code. Also, it shouldn't be difficult to maintain. What do you think 
+about it?
+
+Yours,
+  David.
+
+P.S.: If you're too busy creating that file, I could do that - I don't 
+have repository access, so somebody else would still have to commit it.
+
+P.P.S.: If there's already a file for that matter, please forgive me. I 
+looked in the source-tree and didn't find anything, which means that I 
+might not have looked well enough.
+
+
+From bradeeoh at bradeeoh.com  Mon Mar  6 17:27:18 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Mon, 06 Mar 2006 08:27:18 -0800
+Subject: [Openlayer-developer] RFC on incomplete GUI design
+Message-ID: <440C62E6.2040500@bradeeoh.com>
+
+I'm putting together different ideas and inspirations I have for an 
+initial vision of an ol::gui.  I decided to put my ideas in a 
+forward-declaration header with basic comments to kind of demonstrate a 
+feel of how I see this working.
+
+Specifically I have 3 areas represented here - the Window/Widget 
+classes, Sizer (auto-layout) classes, and Event classes.  I have these 
+three areas covered because they are the clearest part of my personal 
+vision and my own libraries/projects have parts or all of the concepts 
+implemented already.
+
+So I thought I'd just shoot off this header file to see what any of you 
+think.
+
+Check it out at http://oladdons.berlios.de/Gui.hpp
+
+And I'll take this opportunity to ask - there's the oladdons project now 
+but it doesn't make sense to me to seperate discussion of addons into 
+mailing lists there - not yet.  I think since OL is still raw and in 
+constant flux, and for the first few months the development of both is 
+going to be highly intertwined, we should just keep it all here.  Any 
+arguments on that note?
+
+Peace all,
+-Brady
+
+
+From bradeeoh at bradeeoh.com  Tue Mar  7 00:19:06 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Mon, 06 Mar 2006 15:19:06 -0800
+Subject: [Openlayer-developer] SVN Snapshots on the website
+Message-ID: <440CC36A.2040608@bradeeoh.com>
+
+I set up a script that will make a snapshot of the SVN repository and 
+put it in the anonymous FTP directory off the berlios project page. 
+Since people have a hard enough time with CVS they're not even willing 
+to TRY subversion to find out its easier...
+
+How often do y'all think I should run it?  Every week?  Every day? 
+Every SVN commit?
+
+
+From juvinious at gmail.com  Tue Mar  7 00:41:19 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Tue, 7 Mar 2006 07:41:19 +0800
+Subject: [Openlayer-developer] SVN Snapshots on the website
+In-Reply-To: <440CC36A.2040608@bradeeoh.com>
+References: <440CC36A.2040608@bradeeoh.com>
+Message-ID: <200603070741.19934.juvinious@gmail.com>
+
+I would probably say nightly, but then how often does the repository get 
+updated? Hmmm, maybe it's possible to run it nightly checking if there has 
+been any changes since the last snapshot, if so then have it make a new one.
+
+On Tuesday 07 March 2006 07:19, B E wrote:
+> I set up a script that will make a snapshot of the SVN repository and
+> put it in the anonymous FTP directory off the berlios project page.
+> Since people have a hard enough time with CVS they're not even willing
+> to TRY subversion to find out its easier...
+>
+> How often do y'all think I should run it?  Every week?  Every day?
+> Every SVN commit?
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From indeterminatus_ml at gmx.net  Tue Mar  7 10:35:57 2006
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Tue, 07 Mar 2006 10:35:57 +0100
+Subject: [Openlayer-developer] RFC on incomplete GUI design
+In-Reply-To: <440C62E6.2040500@bradeeoh.com>
+References: <440C62E6.2040500@bradeeoh.com>
+Message-ID: <440D53FD.3050601@gmx.net>
+
+See comments inline.
+
+Yours,
+  David.
+
+B E wrote:
+> Specifically I have 3 areas represented here - the Window/Widget 
+> classes, Sizer (auto-layout) classes, and Event classes.  I have these 
+> three areas covered because they are the clearest part of my personal 
+> vision and my own libraries/projects have parts or all of the concepts 
+> implemented already.
+I like the general idea of that. Would you be willing to let us re-use 
+your (or parts of your) code?
+> So I thought I'd just shoot off this header file to see what any of 
+> you think.
+After taking a quick glance at the header file, here are my comments:
+1) class Frame. As you said, this is way beyond the scope of an initial 
+release. Keeping the possibility in mind, however, doesn't sound like a 
+bad idea to me.
+2) I'm missing a spin-edit kind of Control derivative. This might even 
+inherit from TextBox. Nothing too important, really, but I can imagine 
+it would come in handy in many situations.
+3) I'm also kind-of missing a control for tabular output of name<->value 
+tuples. This might be useful especially for tool development (all kind 
+of editors etc.), and probably also for debugging purposes in-game.
+4) class Console. I think this goes beyond the scope of the GUI. I 
+already have my own console implemented, so I don't mind, but I think if 
+we're going to provide a console, it would be more sensible to provide 
+the complete package (along with a framework for command parsing etc.) 
+in another (dedicated) add-on.
+5) The layout managers (see Sizeable etc.) seem complete enough for me. 
+I like that.
+6) The event system also seems to be complete, I have no further 
+comments on that.
+
+What isn't clear to me still, is how the entire GUI system will be 
+integrated into the game. Will there be one routine (e.g. in a 
+singletoned class GUI) that has to be called periodically in the game 
+loop? Will the GUI system install a thread and run in there?
+
+As extension to your original proposal, I suggest a bunch of pre-made 
+dialogs, like a FileOpenDialog, FileSaveDialog, and whatnot. These, of 
+course, utilize the functionality of the base GUI system and do nothing 
+more than provide quick (and easy) access to them.
+
+The last (but very sensible) issue I'd like to address is skinning. It 
+wasn't clear to me from your proposal how that could be achieved. I 
+think we should account for that from the beginning, as it could mean a 
+major cut in the architecture when installed later on (making the whole 
+refactoring process a pain in the butt), even if it isn't supported for 
+a couple of releases. Would you mind elaborating on that?
+> And I'll take this opportunity to ask - there's the oladdons project 
+> now but it doesn't make sense to me to seperate discussion of addons 
+> into mailing lists there - not yet.  I think since OL is still raw and 
+> in constant flux, and for the first few months the development of both 
+> is going to be highly intertwined, we should just keep it all here.  
+> Any arguments on that note?
+The purist thing to do would be to separate the discussions, but I see 
+no need for that now. As long as the discussions can benefit from each 
+other, they can be put in the same pot, I think. Once they're both 
+established enough, we might want to come back to this very point and 
+decide whether their ways should part or not.
+
+
+
+From indeterminatus_ml at gmx.net  Tue Mar  7 13:52:14 2006
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Tue, 07 Mar 2006 13:52:14 +0100
+Subject: [Openlayer-developer] Patch: Effects.cpp slight performance improvement
+Message-ID: <440D81FE.2070602@gmx.net>
+
+You'll find a patch attached that should slightly improve the 
+performance of void EffectSystem::apply(). I was browsing through the 
+sources when I found a post-increment which could be replaced by a 
+pre-increment. That's all I did. Patch was created against rev. 33. Ok 
+to commit?
+
+Also, I can offer my help to replace all (unnecessary) post-increment 
+occurences by their pre-increment counterparts and provide a unified 
+patch on the whole repository.
+
+Yours,
+  David.
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: Effects.patch
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20060307/7381af74/attachment.ksh>
+
+From juvinious at gmail.com  Tue Mar  7 17:38:11 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Wed, 8 Mar 2006 00:38:11 +0800
+Subject: [Openlayer-developer] SourceForge cvs/svn
+Message-ID: <200603080038.11227.juvinious@gmail.com>
+
+Just a thought, maybe we can close out the CVS portion of the SF project page 
+to avoid any confusions?
+If anything, I can write up a script to add to the crontab that autoupdates 
+the now available SVN on SF so that we can have an external backup.
+Let me know. :)
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From bradeeoh at bradeeoh.com  Tue Mar  7 21:31:40 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Tue, 07 Mar 2006 12:31:40 -0800
+Subject: [Openlayer-developer] RFC on incomplete GUI design
+In-Reply-To: <440D53FD.3050601@gmx.net>
+References: <440C62E6.2040500@bradeeoh.com> <440D53FD.3050601@gmx.net>
+Message-ID: <440DEDAC.5090001@bradeeoh.com>
+
+This is a long post, get ready!!!
+
+> I like the general idea of that. Would you be willing to let us re-use 
+> your (or parts of your) code?
+
+I'm probably going to be transfering what I've already written over to 
+ol::gui as we start getting code down to "paper"  ;)
+
+> 2) I'm missing a spin-edit kind of Control derivative. This might even 
+> inherit from TextBox. Nothing too important, really, but I can imagine 
+> it would come in handy in many situations.
+
+Good call - I had a sinking suspiscion there was an "obvious" one 
+missing, that may have been it  ;)
+
+I just added "class Spinner" and "class SpinBox", which combines a 
+Spinner and a TextBox
+
+> 3) I'm also kind-of missing a control for tabular output of name<->value 
+> tuples. This might be useful especially for tool development (all kind 
+> of editors etc.), and probably also for debugging purposes in-game.
+
+Hmmmmm  elaborate more on this.  Are you thinking like a basic 
+"spreadsheet"-type control with cells that can have arbitrary contents 
+and alignment?
+
+> 4) class Console. I think this goes beyond the scope of the GUI. I 
+> already have my own console implemented, so I don't mind, but I think if 
+> we're going to provide a console, it would be more sensible to provide 
+> the complete package (along with a framework for command parsing etc.) 
+> in another (dedicated) add-on.
+
+Few reasons I put it in there.
+A - it's done already  ;)  I was doing my animation framework, ended up 
+putting in animated Widgets, and the Animated Console was one of them. 
+B - in my opinion, the console is THE  best debugging tool.
+C - No need for complex parsing - a Console is, fundamentally, much 
+simpler than that.  It's a place to output text, and a place for 
+line-input from the user.  The Console itself doesn't do any parsing, 
+nor should a user of the class be forced to do parsing in any particular 
+way.  My current implementation has a simple callback something like -
+
+void ConsoleCallback( std::string command, std::vector< std::string > 
+arguments );
+
+but I think that would fit into the Event framework beautifully.
+
+class ConsoleEvent
+{
+public
+   ConsoleEvent( string command, string args );
+   string GetCommand();
+   vector< string > GetArgs();
+};
+
+And whenever the user enters a command, the console posts that event, 
+and thats it.  That's all the console does  ;)
+
+> What isn't clear to me still, is how the entire GUI system will be 
+> integrated into the game. Will there be one routine (e.g. in a 
+> singletoned class GUI) that has to be called periodically in the game 
+> loop? Will the GUI system install a thread and run in there?
+
+That very much wasn't clear because I very much didn't mention it at 
+all.  ;)  Just a basic class layout.
+I was jotting down ideas in a text file last night as an impromptu 
+design document, but I'm getting sick and I couldn't stay up to finish it.
+
+Theres alot of potential approaches here-
+
+MASkinG approach - call a function in the gui which "takes over" and 
+doesn't return until the GUI is "finished"
+
+GUIChan etc all approach - have one function or a series of functions 
+which the user must call in their main loop to keep driving the GUI
+
+The windowing toolkit approach (gtk, qt, wx, native) - The GUI is threaded.
+
+Lemme start by saying I don't like the MASkinG approach.  It is 
+incredibly simply to use, but the most inflexible.  It assumes that if 
+you're using the GUI, you aren't doing anything else.  I don't like this 
+assumption because, for me at least, it's never true.
+
+Personally I thinking the multithreaded model is ideal and "the holy 
+grail" and I would use it for all of my personal projects.  However I 
+recognize that it has inherent complexity and difficulty to implement 
+and automatically discounts certain platforms.
+
+That said, I'd like to strive for it.  I'd like to develop things such 
+that they can be driven by calling an iterative GUI function in a main 
+loop but can also be driven by a thread when supported.  Since our 
+rendering will always be parallel - based on OpenGL - alot of the 
+limitations of these 2d toolkits don't apply to us and we can easily 
+exploit this flexibility to provide both approaches.
+
+That said, I like the GUIChan approach but abhore how complex it makes 
+it - if you look at the simplest tutorial for GUIChan it just seems 
+ludicrus.  I think having two simple, magical function such as 
+"ol::gui::Update()" and "ol::gui::Render()" or something like that would 
+be great.  They could be driven in a main loop manually or put behind 
+the scenes in a thread later on.
+
+> As extension to your original proposal, I suggest a bunch of pre-made 
+> dialogs, like a FileOpenDialog, FileSaveDialog, and whatnot. These, of 
+> course, utilize the functionality of the base GUI system and do nothing 
+> more than provide quick (and easy) access to them.
+
+I agree, incredibly useful.  I think interfacing with the native 
+controls would be a good stopgap way to fill in the functionality "in 
+the meantime" but that leads to your next point...
+
+> The last (but very sensible) issue I'd like to address is skinning. It 
+> wasn't clear to me from your proposal how that could be achieved. I 
+> think we should account for that from the beginning, as it could mean a 
+> major cut in the architecture when installed later on (making the whole 
+> refactoring process a pain in the butt), even if it isn't supported for 
+> a couple of releases. Would you mind elaborating on that?
+
+I also think it's key.  The native controls obviously can't be skinned 
+the same as the rest of ol::gui so maybe they could be replaced with 
+custom controls MUCH LATER down the line...  ;)
+
+As I already said, Gui.hpp was just a dirt basic "class shart".  Hard to 
+get across my ideas on this.
+
+There can be a Skin class, and a default instance thereof.  I think the 
+way MASkinG does skins is reasonable - having arrays of bitmaps and 
+colors and fonts with standard indexes for the built-ins and room for 
+custom indexes for the user.
+
+The Window class could have a "applySkin( const Skin& )" method and 
+"applySkinToChildren( const Skin&)" or something similar and it would 
+pull out elements from the skin it is interested in.  You could then 
+reskin any Window in the hierarchy you wanted, or the Skin class could 
+have an "applyToAll()" method to reskin the entire Window-set.
+
+Any other thoughts on this?
+
+
+-Brady
+
+
+From bradeeoh at bradeeoh.com  Tue Mar  7 21:38:55 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Tue, 07 Mar 2006 12:38:55 -0800
+Subject: [Openlayer-developer] SourceForge cvs/svn
+In-Reply-To: <200603080038.11227.juvinious@gmail.com>
+References: <200603080038.11227.juvinious@gmail.com>
+Message-ID: <440DEF5F.90700@bradeeoh.com>
+
+Miguel A. Gavidia wrote:
+> Just a thought, maybe we can close out the CVS portion of the SF project page 
+> to avoid any confusions?
+
+Well if you were watching the forums, it was bound to happen - the first 
+person to publically grab the CVS copy and think it was the latest and 
+greatest  ;)
+
+Today I'll finish with the daily-snapshot script assuming our FTP space 
+has been made available and I'll announce it on A.cc - that'll probably 
+make it a non-issue.
+
+ > If anything, I can write up a script to add to the crontab that
+ > autoupdates the now available SVN on SF so that we can have an
+ > external backup. Let me know. :)
+
+I know that's doable - if it's easy enough, go for it!  But the SF CVS 
+itself seems to serve no further purpose and maybe should be shut off...
+
+Fladimir?
+
+
+From indeterminatus_ml at gmx.net  Wed Mar  8 11:18:14 2006
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Wed, 08 Mar 2006 11:18:14 +0100
+Subject: [Openlayer-developer] RFC on incomplete GUI design
+In-Reply-To: <440DEDAC.5090001@bradeeoh.com>
+References: <440C62E6.2040500@bradeeoh.com> <440D53FD.3050601@gmx.net> <440DEDAC.5090001@bradeeoh.com>
+Message-ID: <440EAF66.6000509@gmx.net>
+
+Thank you for your elaborated answer. I will take the freedom to remove 
+parts of your original post, and reply only to the rest (naturally).
+
+B E wrote:
+> I had a sinking suspiscion there was an "obvious" one missing, that 
+> may have been it  ;)
+> I just added "class Spinner" and "class SpinBox", which combines a 
+> Spinner and a TextBox
+
+That should do the trick ;-)
+
+>> 3) I'm also kind-of missing a control for tabular output of 
+>> name<->value tuples. This might be useful especially for tool 
+>> development (all kind of editors etc.), and probably also for 
+>> debugging purposes in-game.
+>
+> Hmmmmm  elaborate more on this.  Are you thinking like a basic 
+> "spreadsheet"-type control with cells that can have arbitrary contents 
+> and alignment?
+
+I wasn't even thinking on such an abstract level, but now that I come to 
+think of it, that would be probably even better, yes. I was thinking in 
+terms of the Object Explorer in IDEs like Delphi, Visual Studio, etc.
+The implementation of such control shouldn't be too difficult, as it is 
+a panel with a grid layout manager and a bunch of labels (and possibly 
+textboxes, or any other control for that matter). The most significant 
+feature of this compound control would be methods for easily 
+adding/modifying rows.
+
+This leads me to another thing, namely what to do with oversize? Should 
+we go the Java awt way and provide both a Panel and a ScrollPanel?
+
+>> 4) class Console. I think this goes beyond the scope of the GUI. I 
+>> already have my own console implemented, so I don't mind, but I think 
+>> if we're going to provide a console, it would be more sensible to 
+>> provide the complete package (along with a framework for command 
+>> parsing etc.) in another (dedicated) add-on.
+>
+> Few reasons I put it in there.
+> A - it's done already  ;)  I was doing my animation framework, ended 
+> up putting in animated Widgets, and the Animated Console was one of 
+> them. B - in my opinion, the console is THE  best debugging tool.
+> C - No need for complex parsing - a Console is, fundamentally, much 
+> simpler than that.  It's a place to output text, and a place for 
+> line-input from the user.  The Console itself doesn't do any parsing, 
+> nor should a user of the class be forced to do parsing in any 
+> particular way.  My current implementation has a simple callback 
+> something like -
+
+I can follow your reasoning, and especially point A is very convincing. 
+Still, I consider the console much like the frontend to a complex 
+system, which is exactly what you also said. With the callback 
+implementation you posted, putting the console in the GUI add-on is fine 
+with me, as the parsing behind can be held very minimal. Even if the 
+console class doesn't do it itself, it has to delegate the user input to 
+some evaluation instance that's capable of tearing the input apart and 
+re-assembling it into a ConsoleCallback. My original concern was, that 
+if that evaluation instance grew too complex, the entire console (both 
+front- and back-end) should go in an add-on of its own.
+
+>> What isn't clear to me still, is how the entire GUI system will be 
+>> integrated into the game. Will there be one routine (e.g. in a 
+>> singletoned class GUI) that has to be called periodically in the game 
+>> loop? Will the GUI system install a thread and run in there?
+>
+> That very much wasn't clear because I very much didn't mention it at 
+> all.  ;)  Just a basic class layout.
+> I was jotting down ideas in a text file last night as an impromptu 
+> design document, but I'm getting sick and I couldn't stay up to finish 
+> it.
+
+All the respect that you did it nonetheless :-).
+
+> Theres alot of potential approaches here-
+>
+> MASkinG approach - call a function in the gui which "takes over" and 
+> doesn't return until the GUI is "finished"
+>
+> GUIChan etc all approach - have one function or a series of functions 
+> which the user must call in their main loop to keep driving the GUI
+>
+> The windowing toolkit approach (gtk, qt, wx, native) - The GUI is 
+> threaded.
+>
+> Lemme start by saying I don't like the MASkinG approach.  It is 
+> incredibly simply to use, but the most inflexible.  It assumes that if 
+> you're using the GUI, you aren't doing anything else.  I don't like 
+> this assumption because, for me at least, it's never true.
+
+I also object this approach. As tempting the simplicity may be, it's too 
+restrictive.
+
+> Personally I thinking the multithreaded model is ideal and "the holy 
+> grail" and I would use it for all of my personal projects.  However I 
+> recognize that it has inherent complexity and difficulty to implement 
+> and automatically discounts certain platforms.
+>
+> That said, I'd like to strive for it.  I'd like to develop things such 
+> that they can be driven by calling an iterative GUI function in a main 
+> loop but can also be driven by a thread when supported.  Since our 
+> rendering will always be parallel - based on OpenGL - alot of the 
+> limitations of these 2d toolkits don't apply to us and we can easily 
+> exploit this flexibility to provide both approaches.
+>
+> That said, I like the GUIChan approach but abhore how complex it makes 
+> it - if you look at the simplest tutorial for GUIChan it just seems 
+> ludicrus.  I think having two simple, magical function such as 
+> "ol::gui::Update()" and "ol::gui::Render()" or something like that 
+> would be great.  They could be driven in a main loop manually or put 
+> behind the scenes in a thread later on.
+
+I second you. It would be stupid not to make use of the advantages we 
+have at hand. I very much like the two-function-approach, as it keeps 
+simple but still flexible enough (so the user can still decide with what 
+priority the GUI should be rendered etc.). I'd suggest we dive deeper 
+into this.
+
+>> The last (but very sensible) issue I'd like to address is skinning. 
+>> It wasn't clear to me from your proposal how that could be achieved. 
+>> I think we should account for that from the beginning, as it could 
+>> mean a major cut in the architecture when installed later on (making 
+>> the whole refactoring process a pain in the butt), even if it isn't 
+>> supported for a couple of releases. Would you mind elaborating on that?
+>
+> I also think it's key.  The native controls obviously can't be skinned 
+> the same as the rest of ol::gui so maybe they could be replaced with 
+> custom controls MUCH LATER down the line...  ;)
+>
+> As I already said, Gui.hpp was just a dirt basic "class shart".  Hard 
+> to get across my ideas on this.
+>
+> There can be a Skin class, and a default instance thereof.  I think 
+> the way MASkinG does skins is reasonable - having arrays of bitmaps 
+> and colors and fonts with standard indexes for the built-ins and room 
+> for custom indexes for the user.
+>
+> The Window class could have a "applySkin( const Skin& )" method and 
+> "applySkinToChildren( const Skin&)" or something similar and it would 
+> pull out elements from the skin it is interested in.  You could then 
+> reskin any Window in the hierarchy you wanted, or the Skin class could 
+> have an "applyToAll()" method to reskin the entire Window-set.
+>
+> Any other thoughts on this?
+Hm, I'll have to look into MASkinG first, because I don't know how it 
+handles this.
+
+Before any further discussion about the implementation details, we maybe 
+should get the goals, features and restrictions straight, and build the 
+system around that. To make a start:
+
+- Should the GUI support skins at all? (you can skip all further 
+questions on answering this with 'no')
+- Should the creation of a custom skin be focused on ease, or on maximum 
+flexibility?
+- Should skins be changeable at runtime?
+- Should skins be mixable? (i.e. a few controls of skin A, a few of skin 
+B, etc. - I think you get the idea)
+- Should a skin affect the looks, the feel, or both of them?
+
+These are a few questions that came to my mind, albeit I'm confident I 
+missed a bunch, so feel free to add to the list ;-)
+
+Yours,
+  David.
+
+
+From indeterminatus_ml at gmx.net  Wed Mar  8 17:44:11 2006
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Wed, 08 Mar 2006 17:44:11 +0100
+Subject: [Openlayer-developer] Eliminating implicit casts double->float
+Message-ID: <440F09DB.9010309@gmx.net>
+
+Hi gang,
+
+when browsing through the sources, I found several spots with 
+initialization/assignment of float variables with double values, like this:
+
+float aFloat = 0.0;
+
+Note that without the explicit specification of f or F at the end of the 
+floating point constant, its type defaults to double, which means that 
+in above initialization 0.0 will be casted implicitly to float. I know, 
+this is nit-picky, but I wanted to bring this to attention nonetheless.
+
+The "fix" to this would be to either make the variable's type double, or 
+add the "f" to 0.0.
+
+Yours,
+  David.
+
+
+From juvinious at gmail.com  Wed Mar  8 18:19:34 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Thu, 9 Mar 2006 01:19:34 +0800
+Subject: [Openlayer-developer] SourceForge cvs/svn
+In-Reply-To: <440DEF5F.90700@bradeeoh.com>
+References: <200603080038.11227.juvinious@gmail.com> <440DEF5F.90700@bradeeoh.com>
+Message-ID: <200603090119.35136.juvinious@gmail.com>
+
+Well I deleted all the files from the latest CVS on SF. That means if anybody 
+goes to try to check it out, there'll be nothing but empty directories. I 
+should probably upload a readme textfile pointing to the new website and SVN 
+repositories (which I can do right now). What I need done now is to have the 
+CVS shut off in the admin menu, since apparently it won't let me do it. And 
+if you want to add an SVN backup on SF you'll need to enable that. If that's 
+done I'll provide you with a script so that you can add to the crontab.
+
+On Wednesday 08 March 2006 04:38, B E wrote:
+> Miguel A. Gavidia wrote:
+> > Just a thought, maybe we can close out the CVS portion of the SF project
+> > page to avoid any confusions?
+>
+> Well if you were watching the forums, it was bound to happen - the first
+> person to publically grab the CVS copy and think it was the latest and
+> greatest  ;)
+>
+> Today I'll finish with the daily-snapshot script assuming our FTP space
+> has been made available and I'll announce it on A.cc - that'll probably
+> make it a non-issue.
+>
+>  > If anything, I can write up a script to add to the crontab that
+>  > autoupdates the now available SVN on SF so that we can have an
+>  > external backup. Let me know. :)
+>
+> I know that's doable - if it's easy enough, go for it!  But the SF CVS
+> itself seems to serve no further purpose and maybe should be shut off...
+>
+> Fladimir?
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From beidson at gmail.com  Wed Mar  8 22:55:05 2006
+From: beidson at gmail.com (Brady Eidson)
+Date: Wed, 08 Mar 2006 13:55:05 -0800
+Subject: [Openlayer-developer] RFC on incomplete GUI design
+In-Reply-To: <440EAF66.6000509@gmx.net>
+References: <440C62E6.2040500@bradeeoh.com> <440D53FD.3050601@gmx.net> <440DEDAC.5090001@bradeeoh.com> <440EAF66.6000509@gmx.net>
+Message-ID: <440F52B9.6010604@gmail.com>
+
+>> Hmmmmm  elaborate more on this.  Are you thinking like a basic 
+>> "spreadsheet"-type control with cells that can have arbitrary contents 
+>> and alignment?
+> 
+> 
+> I wasn't even thinking on such an abstract level, but now that I come to 
+> think of it, that would be probably even better, yes. I was thinking in 
+> terms of the Object Explorer in IDEs like Delphi, Visual Studio, etc.
+> The implementation of such control shouldn't be too difficult, as it is 
+> a panel with a grid layout manager and a bunch of labels (and possibly 
+> textboxes, or any other control for that matter). The most significant 
+> feature of this compound control would be methods for easily 
+> adding/modifying rows.
+
+I'm not familiar with any commercial IDE - my entire programmer 
+upbringing has been in text editors and FOSS ides that don't have such 
+things.  ;)
+
+So your ORIGINAL Idea was simply - if I'm getting this right - a two 
+column control, perhaps with a heading, that has keys in the left column 
+and values in the right column?  And the values editable?
+
+> This leads me to another thing, namely what to do with oversize? Should 
+> we go the Java awt way and provide both a Panel and a ScrollPanel?
+
+That, or just assume any panel can be scrollable but have the scrollbars 
+hidden by default and you can force them on/off as needed
+
+
+> Hm, I'll have to look into MASkinG first, because I don't know how it 
+> handles this.
+> 
+> Before any further discussion about the implementation details, we maybe 
+> should get the goals, features and restrictions straight, and build the 
+> system around that. To make a start:
+> 
+> - Should the GUI support skins at all? (you can skip all further 
+> questions on answering this with 'no')
+
+Yes
+
+> - Should the creation of a custom skin be focused on ease, or on maximum 
+> flexibility?
+
+Both  ;)  Sensible defaults (ease) with advanced usage possible
+
+> - Should skins be changeable at runtime?
+
+Hmmmm... I had always assumed "yes" but the possiblity of "no" is 
+intriguing.  I'll have to think about this...
+
+> - Should skins be mixable? (i.e. a few controls of skin A, a few of skin 
+> B, etc. - I think you get the idea)
+
+Yes.  For example, your main menus/config screens could be one skin, but 
+  a different set of dialogs in the game would be a different skin.  I 
+think a global-apply is very useful, but selectively applying to 
+different branches in the GUI hierarchy is useful as well!
+
+> - Should a skin affect the looks, the feel, or both of them?
+
+I tend to think any attempt to change the "feel" of a widget should 
+involve a custom widget as we're already just providing clean, basic 
+functionality.  I suppose SOME "feel" aspects could be configurable 
+based on skin, but I can't think of any right now as my head is still 
+foggy from being sick.
+
+> These are a few questions that came to my mind, albeit I'm confident I 
+> missed a bunch, so feel free to add to the list ;-)
+
+I'm sure you missed some, too, but I can't think of any now.  See 
+previously mentioned comment regarding my foggy head.
+
+
+If I'm awake long enough today, I may actually work a little on some 
+headers and a design doc, but, we'll see.
+
+I also want to track down a collision poly bug in OpenLayer core and fix 
+that.  I think trying to do so may knock me unconscious.  :)
+
+Peace
+-Brady
+
+
+From kotori83 at gmail.com  Wed Mar  8 23:24:05 2006
+From: kotori83 at gmail.com (kotori83)
+Date: Wed, 8 Mar 2006 22:24:05 +0000
+Subject: [Openlayer-developer] (no subject)
+Message-ID: <c9004b820603081424o39e1ff50l9b2bef4228832dd7@mail.gmail.com>
+
+Hi everyone, its me kotori from the allegro.cc forums
+
+--
+~ Kotori
+01001011 01101111 01110100 01101111 01110010 01101001
+HTP
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20060308/2ffe7022/attachment.html>
+
+From indeterminatus_ml at gmx.net  Thu Mar  9 14:37:03 2006
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Thu, 09 Mar 2006 14:37:03 +0100
+Subject: [Openlayer-developer] RFC on incomplete GUI design
+In-Reply-To: <440F52B9.6010604@gmail.com>
+References: <440C62E6.2040500@bradeeoh.com> <440D53FD.3050601@gmx.net> <440DEDAC.5090001@bradeeoh.com> <440EAF66.6000509@gmx.net> <440F52B9.6010604@gmail.com>
+Message-ID: <44102F7F.6090408@gmx.net>
+
+
+> I'm not familiar with any commercial IDE - my entire programmer 
+> upbringing has been in text editors and FOSS ides that don't have such 
+> things.  ;)
+>
+> So your ORIGINAL Idea was simply - if I'm getting this right - a two 
+> column control, perhaps with a heading, that has keys in the left 
+> column and values in the right column?  And the values editable?
+
+Yes, you got it right, that was my original idea. I attached a 
+screenshot (PNG-8), taken from Borland's Delphi 6 IDE, which should make 
+things more clear. Please ignore the possibility of hierarchies in the 
+screenshot, I wasn't even remotely thinking about supporting that.
+
+Other than that, I'll have a closer look at MASkinG, and wait for your 
+next header/design doc.
+
+Yours,
+  David.
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: object_inspector_delphi.png
+Type: image/png
+Size: 5320 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20060309/3248a3c4/attachment.png>
+
+From juvinious at gmail.com  Thu Mar  9 18:35:25 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Fri, 10 Mar 2006 01:35:25 +0800
+Subject: [Openlayer-developer] RFC on incomplete GUI design
+In-Reply-To: <44102F7F.6090408@gmx.net>
+References: <440C62E6.2040500@bradeeoh.com> <440F52B9.6010604@gmail.com> <44102F7F.6090408@gmx.net>
+Message-ID: <200603100135.25735.juvinious@gmail.com>
+
+On Thursday 09 March 2006 21:37, David Schwingenschl?gl wrote:
+> > I'm not familiar with any commercial IDE - my entire programmer
+> > upbringing has been in text editors and FOSS ides that don't have such
+> > things.  ;)
+> >
+> > So your ORIGINAL Idea was simply - if I'm getting this right - a two
+> > column control, perhaps with a heading, that has keys in the left
+> > column and values in the right column?  And the values editable?
+>
+> Yes, you got it right, that was my original idea. I attached a
+> screenshot (PNG-8), taken from Borland's Delphi 6 IDE, which should make
+> things more clear. Please ignore the possibility of hierarchies in the
+> screenshot, I wasn't even remotely thinking about supporting that.
+>
+> Other than that, I'll have a closer look at MASkinG, and wait for your
+> next header/design doc.
+>
+> Yours,
+>   David.
+
+Hmm that kind of widget is complex, not really a necessity, as far as I see 
+it, in a core GUI lib. If anything that can be implemented by the end 
+developer. From my point of view at looking at what a GUI for games requires 
+is that they need to be as simplified as possible, easy to implement and 
+contain very basic widgets of which to build off of. Too much excess and I 
+think the GUI has gone overboard. A simple framework is what anybody is 
+looking for most of the time. Something I hope to achieve with my own GUI.
+Though this brainstorming is good and definitely a step in the right direction 
+for implementing a GUI add-on to OpenLayer.
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From beidson at gmail.com  Thu Mar  9 19:56:28 2006
+From: beidson at gmail.com (Brady Eidson)
+Date: Thu, 09 Mar 2006 10:56:28 -0800
+Subject: [Openlayer-developer] RFC on incomplete GUI design
+In-Reply-To: <200603100135.25735.juvinious@gmail.com>
+References: <440C62E6.2040500@bradeeoh.com> <440F52B9.6010604@gmail.com> <44102F7F.6090408@gmx.net> <200603100135.25735.juvinious@gmail.com>
+Message-ID: <44107A5C.1000103@gmail.com>
+
+>>Yes, you got it right, that was my original idea. I attached a
+>>screenshot (PNG-8), taken from Borland's Delphi 6 IDE, which should make
+>>things more clear. Please ignore the possibility of hierarchies in the
+>>screenshot, I wasn't even remotely thinking about supporting that.
+>>
+>>Other than that, I'll have a closer look at MASkinG, and wait for your
+>>next header/design doc.
+>>
+>>Yours,
+>>  David.
+> 
+> 
+> Hmm that kind of widget is complex, not really a necessity, as far as I see 
+> it, in a core GUI lib. If anything that can be implemented by the end 
+> developer. From my point of view at looking at what a GUI for games requires 
+> is that they need to be as simplified as possible, easy to implement and 
+> contain very basic widgets of which to build off of. Too much excess and I 
+> think the GUI has gone overboard. A simple framework is what anybody is 
+> looking for most of the time. Something I hope to achieve with my own GUI.
+> Though this brainstorming is good and definitely a step in the right direction 
+> for implementing a GUI add-on to OpenLayer.
+> 
+
+I also tend to think that widget would be a tad complex for our core AIM 
+here.  It seems to me it can be implemented with a Panel, pairs of 
+Labels and Textboxes, and a GridSizer.
+
+Not that it wouldn't be nice to have!  I just think it can be filed 
+under the category of "compound widget that would be nice to have later 
+on"  ;)
+
+I think I'll have alot more concrete ideas down on paper today to show 
+y'all.
+
+juvinious - We've been exchanging for a few days on the basic layout 
+I've submitted without input from you.  Anything you wanna chime in?  I 
+know you have SAGGUI going on and I'm looking at it as a reference along 
+with all the other options out there.  I don't want you to feel like I'm 
+ignoring the work you presented to me  ;)
+
+-Brady
+
+
+From bradeeoh at bradeeoh.com  Fri Mar 10 19:59:49 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Fri, 10 Mar 2006 10:59:49 -0800
+Subject: [Openlayer-developer] Bitmap::GetCollisionPoly() - issue to resolve
+Message-ID: <4411CCA5.70006@bradeeoh.com>
+
+Just wanted to tell y'all before i forget, because I can't look into it 
+right now.
+
+I was just answering a call for help on a.cc regarding a Bitmap's 
+collision poly and ran into an interesting situation.  He wanted to draw 
+the collision poly on top of the Bitmap and that's easy.  Using the new 
+MoveTo() functionality it would be REALLY easy but I answered his post 
+in terms of using Transforms::SetPosition().  Here's why -
+
+Since the Bitmap::GetCollisionPoly() returns a pointer to a Poly it 
+would seem to be very bad taste to do a MoveTo on it, because that 
+screws up the association with the Bitmap.  There's alot of 
+possibilities here - does the Bitmap use the Poly's intrinsic Placement 
+for collision detection or does it use the parameterization?  Does the 
+Bitmap set the Poly's placement automatically before doing a collision 
+test?
+
+I dunno - I'll look at it a little later, I just wanted to bring it up 
+so if I forget, there will be a record of the problem and someone else 
+can get it  ;)
+
+-Brady
+
+
+From wrenczes at gmail.com  Sun Mar 12 20:08:57 2006
+From: wrenczes at gmail.com (wil renczes)
+Date: Sun, 12 Mar 2006 11:08:57 -0800
+Subject: [Openlayer-developer] petition process for fixes?
+Message-ID: <8e8874da0603121108t87450e7ue283eaecd67fd8e7@mail.gmail.com>
+
+I have a couple of code fixes for MSVC environment compiler errors
+(should be safe for gcc environments, as I've placed #ifdef _MSC_VER
+wrappers where appropriate) -
+
+ie:
+std::min() (used in Rectangle.hpp) not compiling on windows;
+__PRETTY_FUNCTION__  (used in OL::Assert()) doesn't exist in MSVC land...
+
+etc.
+
+
+what's the process for submitting fixes to the depot, and/or getting
+write access?
+
+Thanks -
+
+Wil
+
+
+From juvinious at gmail.com  Sun Mar 12 20:32:48 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Mon, 13 Mar 2006 03:32:48 +0800
+Subject: [Openlayer-developer] petition process for fixes?
+In-Reply-To: <8e8874da0603121108t87450e7ue283eaecd67fd8e7@mail.gmail.com>
+References: <8e8874da0603121108t87450e7ue283eaecd67fd8e7@mail.gmail.com>
+Message-ID: <200603130332.48382.juvinious@gmail.com>
+
+If you don't have access, I would just submit the patch here and hopefully the 
+devs will get it patched into the repository.
+
+On Monday 13 March 2006 03:08, wil renczes wrote:
+> I have a couple of code fixes for MSVC environment compiler errors
+> (should be safe for gcc environments, as I've placed #ifdef _MSC_VER
+> wrappers where appropriate) -
+>
+> ie:
+> std::min() (used in Rectangle.hpp) not compiling on windows;
+> __PRETTY_FUNCTION__  (used in OL::Assert()) doesn't exist in MSVC land...
+>
+> etc.
+>
+>
+> what's the process for submitting fixes to the depot, and/or getting
+> write access?
+>
+> Thanks -
+>
+> Wil
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From beidson at gmail.com  Sun Mar 12 21:36:03 2006
+From: beidson at gmail.com (Brady Eidson)
+Date: Sun, 12 Mar 2006 12:36:03 -0800
+Subject: [Openlayer-developer] petition process for fixes?
+In-Reply-To: <8e8874da0603121108t87450e7ue283eaecd67fd8e7@mail.gmail.com>
+References: <8e8874da0603121108t87450e7ue283eaecd67fd8e7@mail.gmail.com>
+Message-ID: <44148633.6090302@gmail.com>
+
+Hey there!
+
+Go ahead and submit a patch against the most recent subversion HEAD if 
+you know the patch util, or perhaps a copy of the fixed files as an 
+attachment.
+
+If you're interested in any ongoing support for the MSVC build (none of 
+us use it...) then maybe we can get you SVN access
+
+Thanks for your ideas and help  :)
+
+-Brady
+
+wil renczes wrote:
+> I have a couple of code fixes for MSVC environment compiler errors
+> (should be safe for gcc environments, as I've placed #ifdef _MSC_VER
+> wrappers where appropriate) -
+> 
+> ie:
+> std::min() (used in Rectangle.hpp) not compiling on windows;
+> __PRETTY_FUNCTION__  (used in OL::Assert()) doesn't exist in MSVC land...
+> 
+> etc.
+> 
+> 
+> what's the process for submitting fixes to the depot, and/or getting
+> write access?
+> 
+> Thanks -
+> 
+> Wil
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/openlayer-developer
+> 
+
+
+
+From kotori83 at gmail.com  Sun Mar 12 22:04:23 2006
+From: kotori83 at gmail.com (kotori83)
+Date: Sun, 12 Mar 2006 21:04:23 +0000
+Subject: [Openlayer-developer] svn and examples
+Message-ID: <c9004b820603121304n2bf7bf63n2d4dcadaff42d2a9@mail.gmail.com>
+
+Is the SVN version currently safe for me to use with Dev-Cpp for creating
+examples?
+
+--
+~ Kotori
+01001011 01101111 01110100 01101111 01110010 01101001
+HTP
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20060312/19fdbd2c/attachment.html>
+
+From beidson at gmail.com  Mon Mar 13 00:17:53 2006
+From: beidson at gmail.com (Brady Eidson)
+Date: Sun, 12 Mar 2006 15:17:53 -0800
+Subject: [Openlayer-developer] svn and examples
+In-Reply-To: <c9004b820603121304n2bf7bf63n2d4dcadaff42d2a9@mail.gmail.com>
+References: <c9004b820603121304n2bf7bf63n2d4dcadaff42d2a9@mail.gmail.com>
+Message-ID: <4414AC21.9010706@gmail.com>
+
+Sometime's if/when we're adding new features we will commit part of the 
+work to SVN - you can't use those new features yet, but all other 
+functionality (ie, features that are in documentation and that have been 
+around for awhile) are safe to use in the SVN head.
+
+-Brady
+
+kotori83 wrote:
+> Is the SVN version currently safe for me to use with Dev-Cpp for 
+> creating examples?
+> 
+> -- 
+> ~ Kotori
+> 01001011 01101111 01110100 01101111 01110010 01101001
+> HTP
+
+
+
+From bradeeoh at bradeeoh.com  Mon Mar 13 00:27:52 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Sun, 12 Mar 2006 15:27:52 -0800
+Subject: [Openlayer-developer] ol::gui status
+Message-ID: <4414AE78.9050705@bradeeoh.com>
+
+I've been working on the ol::gui a few hours a day for the last week. 
+So far I have basic Window and Cursor functionality and can render an 
+arbitrary Window hierarchy to the screen using a simple function call in 
+the program's main loop.
+
+I added another derivation off of Window called "TopLevelWindow" - name 
+is self explanatory.  For now it has two subclasses - "Frame" and 
+"Cursor".  The mouse cursor is rendered as a special case to all over 
+windows (ie - it's always the absolute last thing drawn) but otherwise 
+it can act like all other windows
+
+Frame isn't a window-manager style frame, but rather just a transparent 
+"panel" that is top level.  The class "Panel" will be a blank container 
+with a specifiable background but is non top-level.
+
+For the last couple of days I've been putting together the framework for 
+the event system.  A few tough decisions have held me up, namely 
+balancing robust RTTI versus raw efficiency.
+
+As it is, I have a minimal RTTI infrastructure which really uses only 
+the success/failure of a dynamic_cast<> call combined with some awesome 
+macro-fu used declaring a new class.  In a day or two the event system 
+will be "functional" and after that, I'll go ahead and make an initial 
+import into the ol-addon repository.
+
+Just wanted to keep you informed in case you're at all interested.  :)
+
+-Brady
+
+PS - Fladimir - you moved in with your PC back up?  Ready to start back 
+up work on the core library?  ;)
+
+
+
+From juvinious at gmail.com  Thu Mar 16 06:35:55 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Thu, 16 Mar 2006 13:35:55 +0800
+Subject: [Openlayer-developer] Makefile Targets
+In-Reply-To: <BAY21-F849832D4F7FF2E0CBA13FDFF60@phx.gbl>
+References: <BAY21-F849832D4F7FF2E0CBA13FDFF60@phx.gbl>
+Message-ID: <200603161335.55404.juvinious@gmail.com>
+
+Ok I made those changes in the Makefile and commited them to svn which allow 
+you to define those preprocessors.
+
+To enable them pass this items respectively when issuing make.
+
+NOTTF=1 (OL_NO_TTF)
+NOSTATECHANGE=1 (OL_NO_STATE_CHANGE)
+NOOLDAPI=1 (OL_NO_OLD_API)
+OL_NO_PNG=1 (OL_NO_PNG)
+
+Now what needs to be done is fix the errors that come up when enabling some of 
+these preprocessors. I've seen two so far, one in Rectangle.cpp and another 
+in a demo.  I'll look into it further and see what I can do to correct this.
+
+On Tuesday 28 February 2006 05:10, you wrote:
+> That'd be great, after all the makefile system should be used if one wants
+> to compile OL him/herself, and what's the use of those defines without
+> compiling OL manually? ;)
+>
+> >From: "Miguel A. Gavidia" <astarius at gmail.com>
+> >To: openlayer-developer at lists.berlios.de
+> >Subject: [Openlayer-developer] Makefile Targets
+> >Date: Mon, 27 Feb 2006 09:35:09 +0800
+> >
+> >I asked about this before in one of the existing threads on a.cc, but
+> > never received a definite answer on this. I was going to originally
+> > include these preprocessors to the makfile:
+> >OL_NO_STATE_CHANGE - OpenLayer tries to not to change the OpenGL state in
+> >most
+> >places
+> >OL_NO_OLD_API - Drops support for the old API (basically GfxRend)
+> >OL_NO_PNG - Drop support for PNG images
+> >OL_NO_TTF - Drop support for True Type font
+> >But never did because I didn't get an answer. So shoud I or not?
+> >
+> >I also saw the fix to the DestroyAll problem hopefully that resolves the
+> >*nix
+> >compilation issues. I'll checkout the source later on today and see if it
+> >does.
+> >
+> >Hopefully once the major bugs are squashed, we can discuss openlayer's
+> >dependencies and maybe how we can make them optional, besides PNG/TTF and
+> >more specifically regarding Glyph Keeper.
+> >
+> >--
+> >-juvinious
+> >
+> ><a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+> >_______________________________________________
+> >Openlayer-developer mailing list
+> >Openlayer-developer at lists.berlios.de
+> >http://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+> _________________________________________________________________
+> Hittej? ja harvinaisuuksia, halvalla ja helposti. MSN Music
+> http://sib1.od2.com/common/Framework.aspx?shid=075E002E&origin=MSNFI&promot
+>ion=Perm
+
+
+From juvinious at gmail.com  Thu Mar 16 06:38:55 2006
+From: juvinious at gmail.com (juvinious at gmail.com)
+Date: Thu, 16 Mar 2006 13:38:55 +0800
+Subject: [Openlayer-developer] Makefile Targets
+In-Reply-To: <200603161335.55404.juvinious@gmail.com>
+References: <BAY21-F849832D4F7FF2E0CBA13FDFF60@phx.gbl> <200603161335.55404.juvinious@gmail.com>
+Message-ID: <200603161338.55462.juvinious@gmail.com>
+
+On Thursday 16 March 2006 13:35, you wrote:
+Oops, scratch that last item.. it should read:
+NOPNG=1 (OL_NO_PNG)
+
+> Ok I made those changes in the Makefile and commited them to svn which
+> allow you to define those preprocessors.
+>
+> To enable them pass this items respectively when issuing make.
+>
+> NOTTF=1 (OL_NO_TTF)
+> NOSTATECHANGE=1 (OL_NO_STATE_CHANGE)
+> NOOLDAPI=1 (OL_NO_OLD_API)
+> OL_NO_PNG=1 (OL_NO_PNG)
+>
+> Now what needs to be done is fix the errors that come up when enabling some
+> of these preprocessors. I've seen two so far, one in Rectangle.cpp and
+> another in a demo.  I'll look into it further and see what I can do to
+> correct this.
+>
+> On Tuesday 28 February 2006 05:10, you wrote:
+> > That'd be great, after all the makefile system should be used if one
+> > wants to compile OL him/herself, and what's the use of those defines
+> > without compiling OL manually? ;)
+> >
+> > >From: "Miguel A. Gavidia" <astarius at gmail.com>
+> > >To: openlayer-developer at lists.berlios.de
+> > >Subject: [Openlayer-developer] Makefile Targets
+> > >Date: Mon, 27 Feb 2006 09:35:09 +0800
+> > >
+> > >I asked about this before in one of the existing threads on a.cc, but
+> > > never received a definite answer on this. I was going to originally
+> > > include these preprocessors to the makfile:
+> > >OL_NO_STATE_CHANGE - OpenLayer tries to not to change the OpenGL state
+> > > in most
+> > >places
+> > >OL_NO_OLD_API - Drops support for the old API (basically GfxRend)
+> > >OL_NO_PNG - Drop support for PNG images
+> > >OL_NO_TTF - Drop support for True Type font
+> > >But never did because I didn't get an answer. So shoud I or not?
+> > >
+> > >I also saw the fix to the DestroyAll problem hopefully that resolves the
+> > >*nix
+> > >compilation issues. I'll checkout the source later on today and see if
+> > > it does.
+> > >
+> > >Hopefully once the major bugs are squashed, we can discuss openlayer's
+> > >dependencies and maybe how we can make them optional, besides PNG/TTF
+> > > and more specifically regarding Glyph Keeper.
+> > >
+> > >--
+> > >-juvinious
+> > >
+> > ><a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+> > >_______________________________________________
+> > >Openlayer-developer mailing list
+> > >Openlayer-developer at lists.berlios.de
+> > >http://lists.berlios.de/mailman/listinfo/openlayer-developer
+> >
+> > _________________________________________________________________
+> > Hittej? ja harvinaisuuksia, halvalla ja helposti. MSN Music
+> > http://sib1.od2.com/common/Framework.aspx?shid=075E002E&origin=MSNFI&prom
+> >ot ion=Perm
+
+
+From vladivid at mail.ru  Wed Mar 22 08:22:16 2006
+From: vladivid at mail.ru (Demon)
+Date: Wed, 22 Mar 2006 12:22:16 +0500
+Subject: [Openlayer-developer] about SDL
+Message-ID: <4420FB28.7030104@mail.ru>
+
+Includes.hpp includes something about SDL
+any plans to support SDL ?
+it would be nice
+at least, it`s good idea to separate allegro dependent code from main code
+
+
+From fladimir2002 at hotmail.com  Wed Mar 22 22:05:53 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Wed, 22 Mar 2006 23:05:53 +0200
+Subject: [Openlayer-developer] Alrighty!
+Message-ID: <BAY21-F12C50C3A907052D8065C2BDFD90@phx.gbl>
+
+Finally back to business! A lot of interesting discussion going on...
+
+I still have quite hectic time, but it'll calm down eventually.
+
+About supporting SDL, that's in the TODO list. But even now before the 
+GlDriver for SDL side is made, separation of Allegro's code from OpenLayer 
+has already been under work for some time. Most (all?) of OpenLayer's 
+internal code don't depend on AllegroGL directly, but they use it through 
+the GlDriver interface. The next step is to make wrapper routines for 
+keyboard and mouse, which has been started already, too. Then it's time to 
+make a wrapper for a memory image and finally to make a GlDriver for SDL
+
+It's good to hear that the GUI project has started quickly. By the way (I 
+don't think I've asked for this before) but I think it'd be great to be able 
+to store the GUI and the skins as XML files. That way we'll be able to make 
+a WYSIWYG gui builder for OpenLayer, which would even support constructing 
+skins, too! That could be a big help for beginners...
+
+Currently the biggest project underway is general Shape <-> Shape 
+collisions. I may continue the development now, and after I've finished with 
+them I may finally drop my failed Glyph Keeper's OpenGL port and to use 
+FreeType directly from OpenLayer. It'd also mean that the compiler issues 
+that have came from integrating OpenLayer to GlyphKeeper, especially with 
+MSVC and OS X will be gone!
+
+Also when FreeType is used direcly I can finally allow for retrieving 
+separate glyphs as Bitmaps, and implementing the interface for custom text 
+rendering functions will be possible too.
+
+Then it's time to implement sweeping collisions and advanced textured 
+polygons for OpenLayer. What next? ;)
+
+/Esa "Fladimir" Tanskanen
+
+_________________________________________________________________
+MSN Search l?yt??! http://search.msn.fi
+
+
+
+From neil at retrospec.sgn.net  Wed Mar 22 23:36:53 2006
+From: neil at retrospec.sgn.net (neil)
+Date: Wed, 22 Mar 2006 22:36:53 +0000
+Subject: [Openlayer-developer] some MSVC faults
+In-Reply-To: <BAY21-F12C50C3A907052D8065C2BDFD90@phx.gbl>
+References: <BAY21-F12C50C3A907052D8065C2BDFD90@phx.gbl>
+Message-ID: <4421D185.9020609@retrospec.sgn.net>
+
+Hello,
+Neil here, first time poster. And hopefully this is the right mailing 
+list to subscribe to, I've tried for a few days to subscribe but never 
+received a mailman email.
+
+I've been compiling build 20060318 on VC8, VC6 and minGW and this time 
+I've managed to note down the problems. Some of which might be fixed in 
+later releases or maybe picked up from my post at allegro.cc.
+
+1.  __PRETTY_FUNCTION__ is gcc only. vc can use __FUNCDNAME__ or 
+__FUNCTION__ (the DNAME being the pretty one). I only tested this on VC8 
+though.
+
+2. Not an error as such, but an annoying warning that fills the scree 
+up. Even in VC8, the compiler grumbles badly about using the same named 
+variable in inner and outer blocks in the same function. All are in the 
+Bitmap.cpp file (around line 1129). Fixing (which is what I did) is as 
+simple as changing y to y2 in the 'for(int y=0;' statement. The VC 
+warning given is:
+nonstandard extension used : 'y' : loop control variable declared in the 
+for-loop is used outside the for-loop scope; it conflicts with the 
+declaration in the outer scope
+
+3. I don't know if it's a bad ordering of header files or not, but no 
+version of VS can compile the files that uses std::min and std::max. 
+Every build I have to change it to just min/max.
+
+4. Shapedemo. The bitmaps are missing.
+
+5. Shapedemo.Not an error, but END_OF_FUNCTION() should have the 
+function name in the ()
+
+6. VC doesn't support the use of ? in 'ballYSpeed += 
+((float(mouseYMovement) <? 2.5) <? 0 );' in it's compiler. I have to 
+redo this code every time.
+
+7. in Rect::SetAccuracy( float accuracy ), there's the possibility of a 
+divide by zero.
+
+8. in debug mode, VC crashes very badly at the following line in the 
+garbage collector, haven't a clue why, though, the error is in xutility
+   OlLog( std::string( "\nAuto Loader: Executing " ) + ToString( 
+pendings.size() ) + " pending loading commands" );
+
+finally, while all the above are easily fixed, there is a fault in 
+LineStrip that means I can't release a VC build, and there are lots of 
+people asking me for a VC binary build at my website of the latest SVN 
+so if anyone has a fix, it'll be welcomed. Heaven knows why it works 
+with minGW. From an allegro posting, Flad knows of it. Anyway, in 
+linstrip render method,
+
+  // Add a vertex to the beginning of the line strip //
+   inline void AddToBegin( Vec2D vertex ) {
+      if( vertices.size() > 1 ) {
+         float length = ( vertices.front() - vertex ).GetMagnitude();
+         lengths.push_front( length );
+         totalLength += length;
+      }
+
+      vertices.push_front( vertex );
+   }
+
+Crashes the linstrip demo. What's happening is the code:
+
+            sumLengths += *lengthIter;
+
+is being called even though lengths has not entries, due to vertices size not being >1
+
+Apologies, I can only list the faults as I don't have any SVN clients and don't really have that much time,
+but hopefully someone is not as lazy as me and implements the changes ;)
+
+
+Neil.
+
+
+
+
+From fladimir2002 at hotmail.com  Wed Mar 22 23:51:58 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Thu, 23 Mar 2006 00:51:58 +0200
+Subject: [Openlayer-developer] some MSVC faults
+In-Reply-To: <4421D185.9020609@retrospec.sgn.net>
+Message-ID: <BAY21-F412963A6866D93B6CC7A0DFD90@phx.gbl>
+
+>1.  __PRETTY_FUNCTION__ is gcc only. vc can use __FUNCDNAME__ or 
+>__FUNCTION__ (the DNAME being the pretty one). I only tested this on VC8 
+>though.
+
+Yeah, that'll be changed.
+
+>All are in the Bitmap.cpp file (around line 1129). Fixing (which is what I 
+>did) is as simple as changing y to y2 in the 'for(int y=0;' statement. The 
+>VC warning given is:
+>nonstandard extension used : 'y' : loop control variable declared in the 
+>for-loop is used outside the for-loop scope; it conflicts with the 
+>declaration in the outer scope
+
+OK, I first thought I could set up MSVC 8 before trying to find where I've 
+re-used the loop variables. But I never got that to work... :/
+
+>3. I don't know if it's a bad ordering of header files or not, but no 
+>version of VS can compile the files that uses std::min and std::max. Every 
+>build I have to change it to just min/max.
+
+Yeah, maybe some MSVC specific definitions have to be made
+
+>4. Shapedemo. The bitmaps are missing.
+
+They're now in the SNV.
+
+>6. VC doesn't support the use of ? in 'ballYSpeed += 
+>((float(mouseYMovement) <? 2.5) <? 0 );' in it's compiler. I have to redo 
+>this code every time.
+
+Yeah, that's been there for ages. I even though that I had corrected it but 
+seems like it's still there :P
+
+>7. in Rect::SetAccuracy( float accuracy ), there's the possibility of a 
+>divide by zero.
+
+Well, I know that but SetAccuracy (as in Circle::SetAccuracy and 
+Settings::SetCircleAccuracy) specify that the accuracy must be positive (not 
+zero). Maybe a test is in order, anyways. It's not OpenLayer's style to 
+crash if the parameter rules aren't followed ;)
+
+>8. in debug mode, VC crashes very badly at the following line in the 
+>garbage collector, haven't a clue why, though, the error is in xutility
+>   OlLog( std::string( "\nAuto Loader: Executing " ) + ToString( 
+>pendings.size() ) + " pending loading commands" );
+
+That's with 2.0+? I thought I corrected that by making the auto loader to be 
+intialized lazily. Maybe there's still some initializations which aren't 
+lazy yet.
+
+>finally, while all the above are easily fixed, there is a fault in 
+>LineStrip that means I can't release a VC build
+
+Yeah, I know that. But there's the following in the beginnin of 
+LineStrip::Render:
+
+  if( GetNumOfVertices() < 2 ) {
+      return;
+   }
+
+So if the number of vertices is one the LineStrip shouldn't be rendered. Can 
+you see the exact point of the crash in the debugger?
+
+_________________________________________________________________
+Hittej? ja harvinaisuuksia, halvalla ja helposti. MSN Music 
+http://sib1.od2.com/common/Framework.aspx?shid=075E002E&origin=MSNFI&promotion=Perm
+
+
+
+From neil at retrospec.sgn.net  Thu Mar 23 00:33:12 2006
+From: neil at retrospec.sgn.net (neil)
+Date: Wed, 22 Mar 2006 23:33:12 +0000
+Subject: [Openlayer-developer] some MSVC faults
+In-Reply-To: <BAY21-F412963A6866D93B6CC7A0DFD90@phx.gbl>
+References: <BAY21-F412963A6866D93B6CC7A0DFD90@phx.gbl>
+Message-ID: <4421DEB8.6030106@retrospec.sgn.net>
+
+ >So if the number of vertices is one the LineStrip shouldn't be 
+rendered. Can you see the exact point of the crash in the debugger?
+
+I've traced into it more, and have found the fault, basically at:
+   inline void AddToBegin( Vec2D vertex ) {
+      if( vertices.size() > 1 ) {
+         float length = ( vertices.front() - vertex ).GetMagnitude();
+         lengths.push_front( length );
+         totalLength += length;
+      }
+
+      vertices.push_front( vertex );
+   }
+
+It bypasses the code and just adds to vertices as you would expect. It 
+does this twice, so at that the point of the second addition to 
+vertices.push_front it hasn't called the code to add to lengths. 
+However, the render function is called. At this point the number of 
+vertices is 2 so the code bypasses the check you mentioned at the top of 
+vertices, however at this point:
+sumLengths += *lengthIter;
+
+lengths is still empty because AddToBeing has not been called. Follow? 
+Maybe the best thing is to add to the vertices before the check? as I 
+think a if(lengthIter) before the sumLengths+= statement might be too 
+costly ;)
+
+Neil.
+
+Esa Tanskanen wrote:
+
+>> 1.  __PRETTY_FUNCTION__ is gcc only. vc can use __FUNCDNAME__ or 
+>> __FUNCTION__ (the DNAME being the pretty one). I only tested this on 
+>> VC8 though.
+>
+>
+> Yeah, that'll be changed.
+>
+>> All are in the Bitmap.cpp file (around line 1129). Fixing (which is 
+>> what I did) is as simple as changing y to y2 in the 'for(int y=0;' 
+>> statement. The VC warning given is:
+>> nonstandard extension used : 'y' : loop control variable declared in 
+>> the for-loop is used outside the for-loop scope; it conflicts with 
+>> the declaration in the outer scope
+>
+>
+> OK, I first thought I could set up MSVC 8 before trying to find where 
+> I've re-used the loop variables. But I never got that to work... :/
+>
+>> 3. I don't know if it's a bad ordering of header files or not, but no 
+>> version of VS can compile the files that uses std::min and std::max. 
+>> Every build I have to change it to just min/max.
+>
+>
+> Yeah, maybe some MSVC specific definitions have to be made
+>
+>> 4. Shapedemo. The bitmaps are missing.
+>
+>
+> They're now in the SNV.
+>
+>> 6. VC doesn't support the use of ? in 'ballYSpeed += 
+>> ((float(mouseYMovement) <? 2.5) <? 0 );' in it's compiler. I have to 
+>> redo this code every time.
+>
+>
+> Yeah, that's been there for ages. I even though that I had corrected 
+> it but seems like it's still there :P
+>
+>> 7. in Rect::SetAccuracy( float accuracy ), there's the possibility of 
+>> a divide by zero.
+>
+>
+> Well, I know that but SetAccuracy (as in Circle::SetAccuracy and 
+> Settings::SetCircleAccuracy) specify that the accuracy must be 
+> positive (not zero). Maybe a test is in order, anyways. It's not 
+> OpenLayer's style to crash if the parameter rules aren't followed ;)
+>
+>> 8. in debug mode, VC crashes very badly at the following line in the 
+>> garbage collector, haven't a clue why, though, the error is in xutility
+>>   OlLog( std::string( "\nAuto Loader: Executing " ) + ToString( 
+>> pendings.size() ) + " pending loading commands" );
+>
+>
+> That's with 2.0+? I thought I corrected that by making the auto loader 
+> to be intialized lazily. Maybe there's still some initializations 
+> which aren't lazy yet.
+>
+>> finally, while all the above are easily fixed, there is a fault in 
+>> LineStrip that means I can't release a VC build
+>
+>
+> Yeah, I know that. But there's the following in the beginnin of 
+> LineStrip::Render:
+>
+>  if( GetNumOfVertices() < 2 ) {
+>      return;
+>   }
+>
+> So if the number of vertices is one the LineStrip shouldn't be 
+> rendered. Can you see the exact point of the crash in the debugger?
+>
+> _________________________________________________________________
+> Hittej? ja harvinaisuuksia, halvalla ja helposti. MSN Music 
+> http://sib1.od2.com/common/Framework.aspx?shid=075E002E&origin=MSNFI&promotion=Perm 
+>
+>
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+>
+
+
+From fladimir2002 at hotmail.com  Thu Mar 23 20:03:00 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Thu, 23 Mar 2006 21:03:00 +0200
+Subject: [Openlayer-developer] some MSVC faults
+In-Reply-To: <4421DEB8.6030106@retrospec.sgn.net>
+Message-ID: <BAY21-F145B359AE1D67FB0F713A7DFDE0@phx.gbl>
+
+OK, I think then it's fixed by moving the vertices.push_front( vertex ); to 
+the beginning of the function (same with addToBack). Other than that it 
+everything correct.
+
+I uploaded a new version with the correction to SVN repository. I hope that 
+helps ;)
+
+>From: neil <neil at retrospec.sgn.net>
+>To: Esa Tanskanen <fladimir2002 at hotmail.com>
+>CC: openlayer-developer at lists.berlios.de
+>Subject: Re: [Openlayer-developer] some MSVC faults
+>Date: Wed, 22 Mar 2006 23:33:12 +0000
+>
+> >So if the number of vertices is one the LineStrip shouldn't be rendered. 
+>Can you see the exact point of the crash in the debugger?
+>
+>I've traced into it more, and have found the fault, basically at:
+>   inline void AddToBegin( Vec2D vertex ) {
+>      if( vertices.size() > 1 ) {
+>         float length = ( vertices.front() - vertex ).GetMagnitude();
+>         lengths.push_front( length );
+>         totalLength += length;
+>      }
+>
+>      vertices.push_front( vertex );
+>   }
+>
+>It bypasses the code and just adds to vertices as you would expect. It does 
+>this twice, so at that the point of the second addition to 
+>vertices.push_front it hasn't called the code to add to lengths. However, 
+>the render function is called. At this point the number of vertices is 2 so 
+>the code bypasses the check you mentioned at the top of vertices, however 
+>at this point:
+>sumLengths += *lengthIter;
+>
+>lengths is still empty because AddToBeing has not been called. Follow? 
+>Maybe the best thing is to add to the vertices before the check? as I think 
+>a if(lengthIter) before the sumLengths+= statement might be too costly ;)
+>
+>Neil.
+>
+>Esa Tanskanen wrote:
+>
+>>>1.  __PRETTY_FUNCTION__ is gcc only. vc can use __FUNCDNAME__ or 
+>>>__FUNCTION__ (the DNAME being the pretty one). I only tested this on VC8 
+>>>though.
+>>
+>>
+>>Yeah, that'll be changed.
+>>
+>>>All are in the Bitmap.cpp file (around line 1129). Fixing (which is what 
+>>>I did) is as simple as changing y to y2 in the 'for(int y=0;' statement. 
+>>>The VC warning given is:
+>>>nonstandard extension used : 'y' : loop control variable declared in the 
+>>>for-loop is used outside the for-loop scope; it conflicts with the 
+>>>declaration in the outer scope
+>>
+>>
+>>OK, I first thought I could set up MSVC 8 before trying to find where I've 
+>>re-used the loop variables. But I never got that to work... :/
+>>
+>>>3. I don't know if it's a bad ordering of header files or not, but no 
+>>>version of VS can compile the files that uses std::min and std::max. 
+>>>Every build I have to change it to just min/max.
+>>
+>>
+>>Yeah, maybe some MSVC specific definitions have to be made
+>>
+>>>4. Shapedemo. The bitmaps are missing.
+>>
+>>
+>>They're now in the SNV.
+>>
+>>>6. VC doesn't support the use of ? in 'ballYSpeed += 
+>>>((float(mouseYMovement) <? 2.5) <? 0 );' in it's compiler. I have to redo 
+>>>this code every time.
+>>
+>>
+>>Yeah, that's been there for ages. I even though that I had corrected it 
+>>but seems like it's still there :P
+>>
+>>>7. in Rect::SetAccuracy( float accuracy ), there's the possibility of a 
+>>>divide by zero.
+>>
+>>
+>>Well, I know that but SetAccuracy (as in Circle::SetAccuracy and 
+>>Settings::SetCircleAccuracy) specify that the accuracy must be positive 
+>>(not zero). Maybe a test is in order, anyways. It's not OpenLayer's style 
+>>to crash if the parameter rules aren't followed ;)
+>>
+>>>8. in debug mode, VC crashes very badly at the following line in the 
+>>>garbage collector, haven't a clue why, though, the error is in xutility
+>>>   OlLog( std::string( "\nAuto Loader: Executing " ) + ToString( 
+>>>pendings.size() ) + " pending loading commands" );
+>>
+>>
+>>That's with 2.0+? I thought I corrected that by making the auto loader to 
+>>be intialized lazily. Maybe there's still some initializations which 
+>>aren't lazy yet.
+>>
+>>>finally, while all the above are easily fixed, there is a fault in 
+>>>LineStrip that means I can't release a VC build
+>>
+>>
+>>Yeah, I know that. But there's the following in the beginnin of 
+>>LineStrip::Render:
+>>
+>>  if( GetNumOfVertices() < 2 ) {
+>>      return;
+>>   }
+>>
+>>So if the number of vertices is one the LineStrip shouldn't be rendered. 
+>>Can you see the exact point of the crash in the debugger?
+>>
+>>_________________________________________________________________
+>>Hittej? ja harvinaisuuksia, halvalla ja helposti. MSN Music 
+>>http://sib1.od2.com/common/Framework.aspx?shid=075E002E&origin=MSNFI&promotion=Perm
+>>
+>>
+>>_______________________________________________
+>>Openlayer-developer mailing list
+>>Openlayer-developer at lists.berlios.de
+>>http://lists.berlios.de/mailman/listinfo/openlayer-developer
+>>
+>>
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Hittej? ja harvinaisuuksia, halvalla ja helposti. MSN Music 
+http://sib1.od2.com/common/Framework.aspx?shid=075E002E&origin=MSNFI&promotion=Perm
+
+
+
+From beidson at gmail.com  Fri Mar 24 18:40:46 2006
+From: beidson at gmail.com (Brady Eidson)
+Date: Fri, 24 Mar 2006 09:40:46 -0800
+Subject: [Openlayer-developer] some MSVC faults
+In-Reply-To: <BAY21-F145B359AE1D67FB0F713A7DFDE0@phx.gbl>
+References: <BAY21-F145B359AE1D67FB0F713A7DFDE0@phx.gbl>
+Message-ID: <44242F1E.8040808@gmail.com>
+
+I think some of the other stuff Juvinious was fixing/planning on fixing, 
+like maybe he mentioned PRETTYFUNCTION, or maybe I'm confusing him with 
+someone else.
+
+MSVC complaing about the same-named variables is a PITA considering it's 
+completely, 100% valid C++ code and MS should just butt out of our 
+business  ;)
+
+Anyways, glad you're back Esa.
+The Gui got a good start but I haven't worked on it in about 2 weeks as 
+I've gotten busy with tons of other stuff all of the sudden.  With any 
+luck I can get back to it in the next week.
+
+Having XML skins was always my plan, but XML for the widgets...  well, 
+no reason it can't be done but I'm not going to worry about it for some 
+time...  ;)
+
+-Brady
+
+PS:  Neil - I emailed you directly about adding you to the list, didn't 
+you get that email?  I dunno why berlios never sent you the response but 
+it sounds almost like you have an overzealous spam filter or something  :)
+
+
+From juvinious at gmail.com  Mon Mar 27 03:45:04 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Mon, 27 Mar 2006 09:45:04 +0800
+Subject: [Openlayer-developer] Cbuild script
+Message-ID: <200603270945.04859.juvinious@gmail.com>
+
+I just added a cbuild script to eventually replace the Makefile.
+Currently it just builds, installs and uninstalls the library so far. There is 
+an msvc build target but as of yet I don't know how to assemble it with msvc. 
+If somebody can explain to me how to do that and what I need to do to produce 
+an openlayer dll (if that's what msvc does?) I'd be happy to complete that.
+I will also extend it to build the demos later on.
+I will be away for the remainder of this week in Japan so I'll correct any 
+issues if any should arise with the script on my return.
+
+As about using the script to test it out, depending on your system or 
+environment you can:
+On linux/Unix you can run the source file as is like a shell script:
+./cbuild.c
+
+On windows in an msys environment you should be able to do the same.
+Without an msys environment you can just compile the file:
+gcc cbuild.c -o cbuild.exe
+and run cbuild.exe
+
+After running follow the configuration prompts and then it will build the lib.
+You can also pass some paramaters to cbuild (ie cbuild param).
+
+verbose - Will set verbose mode on (no longer supressing output)
+help - Displays help
+install - Begins install after prompting for location
+uninstall - Begins the uninstall from the last know installation. If not it 
+will prompt for the installation location to be removed.
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From juvinious at gmail.com  Mon Mar 27 03:57:24 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Mon, 27 Mar 2006 09:57:24 +0800
+Subject: [Openlayer-developer] Re: Cbuild script
+In-Reply-To: <200603270945.04859.juvinious@gmail.com>
+References: <200603270945.04859.juvinious@gmail.com>
+Message-ID: <200603270957.24112.juvinious@gmail.com>
+
+On Monday 27 March 2006 09:45, Miguel A. Gavidia wrote:
+> I just added a cbuild script to eventually replace the Makefile.
+> Currently it just builds, installs and uninstalls the library so far. There
+> is an msvc build target but as of yet I don't know how to assemble it with
+> msvc. If somebody can explain to me how to do that and what I need to do to
+> produce an openlayer dll (if that's what msvc does?) I'd be happy to
+> complete that. I will also extend it to build the demos later on.
+> I will be away for the remainder of this week in Japan so I'll correct any
+> issues if any should arise with the script on my return.
+>
+> As about using the script to test it out, depending on your system or
+> environment you can:
+> On linux/Unix you can run the source file as is like a shell script:
+> ./cbuild.c
+>
+> On windows in an msys environment you should be able to do the same.
+> Without an msys environment you can just compile the file:
+> gcc cbuild.c -o cbuild.exe
+> and run cbuild.exe
+>
+> After running follow the configuration prompts and then it will build the
+> lib. You can also pass some paramaters to cbuild (ie cbuild param).
+>
+> verbose - Will set verbose mode on (no longer supressing output)
+> help - Displays help
+> install - Begins install after prompting for location
+> uninstall - Begins the uninstall from the last know installation. If not it
+> will prompt for the installation location to be removed.
+
+Oops, you can also add: 
+configure - To force (re)configuration
+clean - To clean up resources
+
+Note that configure and verbose can be used alongside help, install, uninstall 
+and clean.
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From juvinious at gmail.com  Mon Mar 27 04:41:19 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Mon, 27 Mar 2006 10:41:19 +0800
+Subject: Fwd: Re: [Openlayer-developer] Alrighty!
+Message-ID: <200603271041.19926.juvinious@gmail.com>
+
+Ok this is ridiculous kmail is just acting weird, I accidently posted to the 
+svn mailinglist. I'm forwarding it to right list now.
+
+Subject: Re: [Openlayer-developer] Alrighty!
+Date: Monday 27 March 2006 10:35
+From: "Miguel A. Gavidia" <juvinious at gmail.com>
+To: openlayer-svn at lists.berlios.de
+
+Ok weird the last mail didn't go so well. :-/
+Here goes:
+
+On Monday 27 March 2006 10:32, Miguel A. Gavidia wrote:
+> On Thursday 23 March 2006 05:05, Esa Tanskanen wrote:
+> > Finally back to business! A lot of interesting discussion going on...
+> >
+> > I still have quite hectic time, but it'll calm down eventually.
+> >
+> > About supporting SDL, that's in the TODO list. But even now before the
+> > GlDriver for SDL side is made, separation of Allegro's code from
+> > OpenLayer has already been under work for some time. Most (all?) of
+> > OpenLayer's internal code don't depend on AllegroGL directly, but they
+> > use it through the GlDriver interface. The next step is to make wrapper
+> > routines for keyboard and mouse, which has been started already, too.
+> > Then it's time to make a wrapper for a memory image and finally to make a
+> > GlDriver for SDL
+> >
+> > It's good to hear that the GUI project has started quickly. By the way (I
+> > don't think I've asked for this before) but I think it'd be great to be
+> > able to store the GUI and the skins as XML files. That way we'll be able
+> > to make a WYSIWYG gui builder for OpenLayer, which would even support
+> > constructing skins, too! That could be a big help for beginners...
+> >
+> > Currently the biggest project underway is general Shape <-> Shape
+> > collisions. I may continue the development now, and after I've finished
+> > with them I may finally drop my failed Glyph Keeper's OpenGL port and to
+> > use FreeType directly from OpenLayer. It'd also mean that the compiler
+> > issues that have came from integrating OpenLayer to GlyphKeeper,
+> > especially with MSVC and OS X will be gone!
+> >
+> > Also when FreeType is used direcly I can finally allow for retrieving
+> > separate glyphs as Bitmaps, and implementing the interface for custom
+> > text rendering functions will be possible too.
+
+I'd have to say that having the GlyphKeeper dependency is the pita. How
+difficult would it be to implement and use FreeType in OpenLayer? I would
+assist in the transition if you want to pursue it, just need to know what has
+to be done. As you already said the added benefits definitely outweigh the
+negatives. :)
+
+> > Then it's time to implement sweeping collisions and advanced textured
+> > polygons for OpenLayer. What next? ;)
+> >
+> > /Esa "Fladimir" Tanskanen
+> >
+> > _________________________________________________________________
+> > MSN Search l?yt??! http://search.msn.fi
+> >
+> > _______________________________________________
+> > Openlayer-developer mailing list
+> > Openlayer-developer at lists.berlios.de
+> > http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+--
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+-------------------------------------------------------
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From neil at retrospec.sgn.net  Fri Mar 31 23:53:34 2006
+From: neil at retrospec.sgn.net (neil)
+Date: Fri, 31 Mar 2006 22:53:34 +0100
+Subject: [Openlayer-developer] build
+In-Reply-To: <44242F1E.8040808@gmail.com>
+References: <BAY21-F145B359AE1D67FB0F713A7DFDE0@phx.gbl> <44242F1E.8040808@gmail.com>
+Message-ID: <442DA4DE.5080008@retrospec.sgn.net>
+
+Hello,
+I keep meaning to mail about this, but I always forget, anyway a posting 
+by marcello at allegro.cc reminded me. I have a few suggestions about 
+the build system:
+
+To make things a bit simpler and require less dll's (i.e. none), why not 
+statically link the png loader and the z library? I know the exe becomes 
+a tad bigger, but when you strip the executable, it's the same size.
+
+Also, I know moves are afoot to replace glyphkeeper, but in the release 
+I put out on my website I've used 0.29 rather than 0.26 of glyph keeper 
+and compiled it with the option to embed freetype.
+
+This not only means you don't have to lump around any dll's (if you 
+assume people have alleg42.dll) but the dependencies are less, the 
+linking becomes easier and you require less .a files in the release.
+
+Neil.
+
+
+

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] A Proposal - OpenLayer Addons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20A%20Proposal%20-%20OpenLayer%20Addons&In-Reply-To=%3C440B2801.1060305%40bradeeoh.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000031.html">
+   <LINK REL="Next"  HREF="000033.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] A Proposal - OpenLayer Addons</H1>
+    <B>B E</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20A%20Proposal%20-%20OpenLayer%20Addons&In-Reply-To=%3C440B2801.1060305%40bradeeoh.com%3E"
+       TITLE="[Openlayer-developer] A Proposal - OpenLayer Addons">bradeeoh at bradeeoh.com
+       </A><BR>
+    <I>Sun Mar  5 19:03:45 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000031.html">[Openlayer-developer] A Proposal - OpenLayer Addons
+</A></li>
+        <LI>Next message: <A HREF="000033.html">[Openlayer-developer] Fwd: from Esa @ [openlayer-svn]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#32">[ date ]</a>
+              <a href="thread.html#32">[ thread ]</a>
+              <a href="subject.html#32">[ subject ]</a>
+              <a href="author.html#32">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> I like your proposal of OpenLayer add-ons. It wasn't quite clear to me, 
+</I>&gt;<i> however, if such add-on would be compiled into a library of its own 
+</I>&gt;<i> (depending on OpenLayer) or if it would be built into the main OpenLayer 
+</I>&gt;<i> library.
+</I>
+When it comes down to it a static library is just &quot;a collection of 
+object files&quot; so it would be absolute cake to either build them into the 
+main OL library or into seperatre librarys based on a compile time option.
+
+At least with the GCC-family of compilers (pretty much EVERYTHING except 
+MSVC) you can even take a preexisting static library and just add more 
+object files in as wanted.
+
+Not an issue  :)
+
+&gt;<i> Anyway, this is just a minor issue. I am in favor of creating a project 
+</I>&gt;<i> of its own, because that will keep the core OpenLayer stuff concise and 
+</I>&gt;<i> clean. Actually, every add-on should get its own repository, or will 
+</I>&gt;<i> things get too complicated then?
+</I>
+I've created the &quot;OpenLayer Add-ons&quot; project.  The project page is 
+<A HREF="http://developer.berlios.de/projects/oladdons">http://developer.berlios.de/projects/oladdons</A>
+
+Having a seperate repository for each addon may actually make things 
+harder in the long run...
+
+My personal preference would be to put everything into the same /trunk. 
+  That way if someone really wanted to check out one addon and not 
+others, they could checkout /trunk/[add-on name] and the master header 
+for the add-on.
+
+But there could also be multiple trunks, one for each add-on.  HOWEVER, 
+I also kind of forsee that different addons will interdepend on each 
+other - Add-on A won't work without Add-on B - therefore keeping them 
+seperate is kind of silly  ;)
+
+We'll figure that out in the next day or two before i make an initial 
+import.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000031.html">[Openlayer-developer] A Proposal - OpenLayer Addons
+</A></li>
+	<LI>Next message: <A HREF="000033.html">[Openlayer-developer] Fwd: from Esa @ [openlayer-svn]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#32">[ date ]</a>
+              <a href="thread.html#32">[ thread ]</a>
+              <a href="subject.html#32">[ subject ]</a>
+              <a href="author.html#32">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

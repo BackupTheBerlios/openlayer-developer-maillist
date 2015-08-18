@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] collision polygons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20collision%20polygons&In-Reply-To=%3C44377843.7020101%40retrospec.sgn.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000122.html">
+   <LINK REL="Next"  HREF="000131.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] collision polygons</H1>
+    <B>openlayer-developer-admin at lists.berlios.de</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20collision%20polygons&In-Reply-To=%3C44377843.7020101%40retrospec.sgn.net%3E"
+       TITLE="[Openlayer-developer] collision polygons">openlayer-developer-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat Apr  8 10:45:55 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000122.html">[Openlayer-developer] collision polygons
+</A></li>
+        <LI>Next message: <A HREF="000131.html">[Openlayer-developer] collision polygons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#123">[ date ]</a>
+              <a href="thread.html#123">[ thread ]</a>
+              <a href="subject.html#123">[ subject ]</a>
+              <a href="author.html#123">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>That's what I tried to say in the allegro.cc thread about the 
+documentation when Esa got upset ;)
+
+I don't mind the separate classes as it means you can use them for 
+different purposes (e.g. Vec2D) but it's the confusion between their 
+role/interaction with the other classes, e.g. 
+Collision/CollisionPoly/Poly and the overlapping ways of doing things 
+e.g. Bitmap.xxx/Placement/Transform.
+
+I think I've got the hang of most of these now, it's just collision/poly 
+I'm not following.
+
+But if we're talking about confusing things, and I guess this is just a 
+coding practice, but I think it would be much easier to follow the code 
+if all the methods (including constructors/destructors) were moved to 
+the .cpp file and the .hpp left for the declarations/enums. It's a right 
+pain tracing a bit of code, but at least it's coded in English ;)
+
+Neil.
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer-admin at berlios.de</A> wrote:
+
+&gt;<i> Maybe it's the way things are done in the C++ world, but I find some 
+</I>&gt;<i> of the stuff like this and the shape class pretty confusing. I 
+</I>&gt;<i> understand that you want to keep it using these classes, but is there 
+</I>&gt;<i> not a way to simplify things, or at least explain a bit more in the 
+</I>&gt;<i> docs? :-/
+</I>&gt;<i>
+</I>&gt;<i> Rich.
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer-admin at berlios.de</A> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hello,
+</I>&gt;&gt;<i> I've got to be perfectly honest and say I don't know the difference 
+</I>&gt;&gt;<i> between the Collision object and a polygon collision, so this might 
+</I>&gt;&gt;<i> all be done, but for my collisions I'm using the poly.collides method 
+</I>&gt;&gt;<i> and not the collision class for my bitmaps. How about a method, e.g. 
+</I>&gt;&gt;<i> CreateCollisionPoly(...) that has a few overloaded signatures that 
+</I>&gt;&gt;<i> lets you post create a bitmap's collision poly from a Poly object, a 
+</I>&gt;&gt;<i> filename for a text file that contains a series of vectors, or maybe a
+</I>&gt;&gt;<i> 'bool Settings::GenerateBoundingBox' to automatically generate a 
+</I>&gt;&gt;<i> simply bounding box poly for every bitmap. All the collision poly is, 
+</I>&gt;&gt;<i> is just a Poly so I can't see a problem with this.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> But like I said, I don't really know what the Collision object does, 
+</I>&gt;&gt;<i> but I guess there must be a big one, otherwise it wouldn't exist :)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> To overcome the problems with the CREATE_COLLISION_POLY I've just 
+</I>&gt;&gt;<i> been creating a poly for my sprites as a bounding box and using the 
+</I>&gt;&gt;<i> poly collides method.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Neil.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Openlayer-developer mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openlayer-developer mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000122.html">[Openlayer-developer] collision polygons
+</A></li>
+	<LI>Next message: <A HREF="000131.html">[Openlayer-developer] collision polygons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#123">[ date ]</a>
+              <a href="thread.html#123">[ thread ]</a>
+              <a href="subject.html#123">[ subject ]</a>
+              <a href="author.html#123">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

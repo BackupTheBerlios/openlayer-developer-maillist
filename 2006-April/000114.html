@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] bug in allegro conversion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20bug%20in%20allegro%20conversion&In-Reply-To=%3C4436FB8B.9080705%40retrospec.sgn.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000112.html">
+   <LINK REL="Next"  HREF="000115.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] bug in allegro conversion</H1>
+    <B>openlayer-developer-admin at lists.berlios.de</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20bug%20in%20allegro%20conversion&In-Reply-To=%3C4436FB8B.9080705%40retrospec.sgn.net%3E"
+       TITLE="[Openlayer-developer] bug in allegro conversion">openlayer-developer-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat Apr  8 01:53:47 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000112.html">[Openlayer-developer] bug in allegro conversion
+</A></li>
+        <LI>Next message: <A HREF="000115.html">[Openlayer-developer] bug in allegro conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#114">[ date ]</a>
+              <a href="thread.html#114">[ thread ]</a>
+              <a href="subject.html#114">[ subject ]</a>
+              <a href="author.html#114">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks. As for the sub-bitmap, how are you supposed to support 
+tiled/sheet graphics without being able to create a collision poly? one 
+of the major reasons for using sub-bitmaps is for extracting tiled graphics.
+
+As for the magic pink, I want my routine to fully support allegro and OL 
+transparently and be able to load bitmaps like this, which is why I want 
+it working. Plus it's easy to see the magic pink when you're drawing ;)
+
+If you think the wiki will be of use and not hamper the offline 
+documentation or become out of sync then I'll do it.
+
+If you want images then 
+<A HREF="http://retrospec.sgn.net/users/nwalker/axl/AXL_Projects1.2src.rar">http://retrospec.sgn.net/users/nwalker/axl/AXL_Projects1.2src.rar</A>
+
+Navigate to the tests/animation/gfx directory and fill your boots. The 
+sheet.bmp is a tiled version of the single bitmaps.
+
+Neil.
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer-admin at berlios.de</A> wrote:
+
+&gt;<i> OK, you guys type faster than I can read these posts ;)
+</I>&gt;<i>
+</I>&gt;<i> Firstly, there's no such thing as a CollisionPoly, it's a typo in the 
+</I>&gt;<i> manual. Such thing was planned in the beginning, but things changed.
+</I>&gt;<i>
+</I>&gt;<i> Secondly, the magic pink conversion might have been broken when all 
+</I>&gt;<i> the Allegro stuff was moved to neat containers, to allow for SDL 
+</I>&gt;<i> targets, for example. Why it's not fixed - that's because it hasn't 
+</I>&gt;<i> been detected before. I originally left out the magic pink conversion 
+</I>&gt;<i> in early versions of OL for a reason - it's not 80's anymore, guys! 
+</I>&gt;<i> Magic pink transparency hasn't been used in commercial products like, 
+</I>&gt;<i> a dozen of years? For some reason allegroids still think it's a good 
+</I>&gt;<i> and fresh idea, maybe because Allegro uses it. But I know it should be 
+</I>&gt;<i> fixed right away, could you just send me the images that you can't load?
+</I>&gt;<i>
+</I>&gt;<i> About the collision polygon generation. Creating the collision polygon 
+</I>&gt;<i> requires a memory copy of the Bitmap. However, no such thing exist 
+</I>&gt;<i> after the constructor/Load-method call. So there's no way the 
+</I>&gt;<i> sub-bitmap constructor would get the memory copy*. However, the flag 
+</I>&gt;<i> parameters should be listed in the Load methods, I'll go and add them 
+</I>&gt;<i> there.
+</I>&gt;<i>
+</I>&gt;<i> And finally about the Wiki - if someone wants to set one up and 
+</I>&gt;<i> somehow move the manual there, go ahead ;) I also think that if a Wiki 
+</I>&gt;<i> is set up, only registered members should be able to modify it...
+</I>&gt;<i>
+</I>&gt;<i> * Actually, there is, but it won't work with older GFX cards if the 
+</I>&gt;<i> image is too large
+</I>&gt;<i>
+</I>&gt;<i> /Esa
+</I>&gt;<i>
+</I>&gt;<i> _________________________________________________________________
+</I>&gt;<i> Uutiset ja kasvot uutisten takaa. MSN Search, t&#228;yden palvelun 
+</I>&gt;<i> hakukone. <A HREF="http://search.msn.fi">http://search.msn.fi</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openlayer-developer mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000112.html">[Openlayer-developer] bug in allegro conversion
+</A></li>
+	<LI>Next message: <A HREF="000115.html">[Openlayer-developer] bug in allegro conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#114">[ date ]</a>
+              <a href="thread.html#114">[ thread ]</a>
+              <a href="subject.html#114">[ subject ]</a>
+              <a href="author.html#114">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

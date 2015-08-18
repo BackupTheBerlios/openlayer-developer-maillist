@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] bug in allegro conversion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20bug%20in%20allegro%20conversion&In-Reply-To=%3C443763BE.9080707%40retrospec.sgn.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000117.html">
+   <LINK REL="Next"  HREF="000119.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] bug in allegro conversion</H1>
+    <B>openlayer-developer-admin at lists.berlios.de</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20bug%20in%20allegro%20conversion&In-Reply-To=%3C443763BE.9080707%40retrospec.sgn.net%3E"
+       TITLE="[Openlayer-developer] bug in allegro conversion">openlayer-developer-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat Apr  8 09:18:22 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000117.html">[Openlayer-developer] bug in allegro conversion
+</A></li>
+        <LI>Next message: <A HREF="000119.html">[Openlayer-developer] bug in allegro conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#118">[ date ]</a>
+              <a href="thread.html#118">[ thread ]</a>
+              <a href="subject.html#118">[ subject ]</a>
+              <a href="author.html#118">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>btw, is there much difference internally (I don't know how opengl works) 
+between creating sub-bitmaps and bitmaps?
+
+Neil.
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer-admin at berlios.de</A> wrote:
+
+&gt;<i> ok. when I say magic pink, really you can think of it as a bitmap that 
+</I>&gt;<i> is full of pixels with no transparency at the edges as I was just 
+</I>&gt;<i> loading the bitmaps as if they were normal bitmaps and the pink was 
+</I>&gt;<i> just another colour - didn't Rich have a fault where he had to have at 
+</I>&gt;<i> least the edge with transparency?
+</I>&gt;<i>
+</I>&gt;<i> I'll do the sub bitmap split as you say, but I guess the problem is I 
+</I>&gt;<i> was using sub-bitmaps for efficiency and I'll have to rewrite my code. 
+</I>&gt;<i> Not to worry.
+</I>&gt;<i>
+</I>&gt;<i> Neil.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer-admin at berlios.de</A> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;&gt;<i> Thanks. As for the sub-bitmap, how are you supposed to support 
+</I>&gt;&gt;&gt;<i> tiled/sheet graphics without being able to create a collision poly? 
+</I>&gt;&gt;&gt;<i> one of the major reasons for using sub-bitmaps is for extracting 
+</I>&gt;&gt;&gt;<i> tiled graphics.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> For now you could split the image in Allegro before conversion. Later 
+</I>&gt;&gt;<i> an automatic function to split a memory image to Bitmaps might be 
+</I>&gt;&gt;<i> implemented.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> As for the magic pink, I want my routine to fully support allegro 
+</I>&gt;&gt;&gt;<i> and OL transparently and be able to load bitmaps like this, which is 
+</I>&gt;&gt;&gt;<i> why I want it working. Plus it's easy to see the magic pink when 
+</I>&gt;&gt;&gt;<i> you're drawing ;)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Well, the transparency is just as easy to see if you set the 
+</I>&gt;&gt;<i> background layer to magic pink. For the collision polygon generation 
+</I>&gt;&gt;<i> not working with magic pink - that's because OL doesn't currently 
+</I>&gt;&gt;<i> know that the magic pink is the transparency in the generation 
+</I>&gt;&gt;<i> routine. Once again something I've forgot to test because I never use 
+</I>&gt;&gt;<i> magic pink transparency anymore.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> If you think the wiki will be of use and not hamper the offline 
+</I>&gt;&gt;&gt;<i> documentation or become out of sync then I'll do it.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Yeah, of course I'd have to synchronize the offline manual every now 
+</I>&gt;&gt;<i> and then. Or, I could just use wget etc. to grab a copy of the Wiki.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> /Esa
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _________________________________________________________________
+</I>&gt;&gt;<i> Uutisista turhaan tietoon. Mit&#228; ikin&#228; etsitkin, MSN Search l&#246;yt&#228;&#228; 
+</I>&gt;&gt;<i> hakemasi. <A HREF="http://search.msn.fi">http://search.msn.fi</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Openlayer-developer mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openlayer-developer mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000117.html">[Openlayer-developer] bug in allegro conversion
+</A></li>
+	<LI>Next message: <A HREF="000119.html">[Openlayer-developer] bug in allegro conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#118">[ date ]</a>
+              <a href="thread.html#118">[ thread ]</a>
+              <a href="subject.html#118">[ subject ]</a>
+              <a href="author.html#118">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

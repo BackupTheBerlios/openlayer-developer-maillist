@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] About general Shape &lt;-&gt; Shape collisions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20About%20general%20Shape%20%3C-%3E%20Shape%20collisions&In-Reply-To=%3C440B2B29.7000001%40bradeeoh.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000033.html">
+   <LINK REL="Next"  HREF="000035.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] About general Shape &lt;-&gt; Shape collisions</H1>
+    <B>B E</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20About%20general%20Shape%20%3C-%3E%20Shape%20collisions&In-Reply-To=%3C440B2B29.7000001%40bradeeoh.com%3E"
+       TITLE="[Openlayer-developer] About general Shape &lt;-&gt; Shape collisions">bradeeoh at bradeeoh.com
+       </A><BR>
+    <I>Sun Mar  5 19:17:13 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000033.html">[Openlayer-developer] Fwd: from Esa @ [openlayer-svn]
+</A></li>
+        <LI>Next message: <A HREF="000035.html">[Openlayer-developer] About general Shape &lt;-&gt; Shape collisions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Firstly, do you think that we need, for performance reasons, separate:
+</I>&gt;<i> 
+</I>&gt;<i> bool Collides(...)
+</I>&gt;<i> Collision GetCollision( ... )
+</I>
+Personally, I can see a few uses for bool Collides().  But, I also know 
+that it's currently implemented by calling GetCollision() and returning 
+collision.IsCollision()
+
+Meaning that instead of being quicker than GetCollision, which it could 
+be, it's actually a little slower.
+
+&gt;<i> Or maybe just GetCollision would be enough? I've implemented them both for
+</I>&gt;<i> the most time-consuming collisions, namely with Polys and LineStrips.
+</I>
+You've implemented both seperately, or &quot;Collides&quot; relies on GetCollision?
+/me looks at the code
+Yah, it's how I thought, but I think you have changes you just haven't 
+committed because I don't have anything for LineStrip  ;)
+
+So I guess my final opinion is - bool Collides() is useful and worth it 
+IF it is actually done quicker than GetCollision(), but that may require 
+restructuring how the functions are called and/or having two seperate 
+collision methods for the two cases.
+
+&gt;<i> Also, what do you suppose that the normal for a Point (when colliding)
+</I>&gt;<i> should return? Vec2D( 0, 0 ) I guess?
+</I>
+A Point colliding with a Point should be Vec2D( 0, 0 ), if that's what 
+you meant.  I can't think of any other good meaning...
+
+&gt;<i> And finally, I think aiming for clean and readable code would be better 
+</I>&gt;<i> than
+</I>&gt;<i> aiming for absolutely best performance. So maybe when colliding rotated
+</I>&gt;<i> Rects they should be converted to Polys first? What do you think?
+</I>
+I agree!
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000033.html">[Openlayer-developer] Fwd: from Esa @ [openlayer-svn]
+</A></li>
+	<LI>Next message: <A HREF="000035.html">[Openlayer-developer] About general Shape &lt;-&gt; Shape collisions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

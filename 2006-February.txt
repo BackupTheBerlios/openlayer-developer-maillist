@@ -1,0 +1,317 @@
+From bradeeoh at bradeeoh.com  Thu Feb 23 21:28:43 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Thu, 23 Feb 2006 12:28:43 -0800
+Subject: [Openlayer-developer] dev list test
+Message-ID: <43FE1AFB.4010808@bradeeoh.com>
+
+
+
+From bradeeoh at bradeeoh.com  Thu Feb 23 22:17:20 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Thu, 23 Feb 2006 13:17:20 -0800
+Subject: [Openlayer-developer] One more dev list test
+Message-ID: <43FE2660.2090900@bradeeoh.com>
+
+Just 1 more!
+
+
+From bradeeoh at bradeeoh.com  Fri Feb 24 19:11:17 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Fri, 24 Feb 2006 10:11:17 -0800
+Subject: [Openlayer-developer] Collision Demo (in SVN)
+Message-ID: <43FF4C45.8030106@bradeeoh.com>
+
+So I'm working on this demo with collisions.  Right now the player and 
+enemy just bounce off the ground with a 100% elastic collision.
+
+I want to take some energy out each time they hit the ground, so I 
+decided maybe instead of adding in 2x the surface speed I'd add in 1.8x
+
+This works - kind of!  In theory its great, but say the player has its 
+position updated and the next position is a collision with the ground. 
+BUT, the player polygon is actually quite a bit through the ground.
+
+Then the collision calculation changes its velocity and sends it back 
+the other way, but since some velocity is shaved off, it doesn't have 
+enough speed to get all the way clear of the ground and the next frame 
+detects a collision also.  So it gets stuck in the ground.
+
+This can happen with an elastic collision as well, if the object is 
+going fast enough and the deltaTime changes just enough such that the 
+reflected velocity doesn't let the object escape so it gets stuck.
+
+A solution would be to reset the object position in any collision so 
+instead of reflecting from the "sunken in" point, it reflects from the 
+actual surface.  Problem then is deciding what the bounds of the object 
+are and were the position should be!
+
+*sigh*
+
+I've done "basic physics" in code before but never in a realtime, 
+interactive manner like this.  How annoying!
+
+So, any ideas to solve this are welcome!
+
+On the plus side the player and enemy collision is resolved based on 
+momentum (they each have a compile-time configurable mass) and it looks 
+great.
+
+Just gotta solve the wall problem.  =/
+
+-Brady
+
+
+From bradeeoh at bradeeoh.com  Sun Feb 26 22:09:50 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Sun, 26 Feb 2006 13:09:50 -0800
+Subject: [Openlayer-developer] DestroyAll
+Message-ID: <4402191E.2070504@bradeeoh.com>
+
+There's mounting complaints about the DestroyAll thing.  Admitedly, I 
+haven't been testing on my Linux box either otherwise I might've seen 
+it, too.  Can anyone tell where the conflict is actually coming from?
+
+Because I think it's time to either figure out the source of the problem 
+to try to solve it, or change the name of DestroyAll to resolve it.  =/
+
+
+From bradeeoh at bradeeoh.com  Mon Feb 27 00:52:51 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Sun, 26 Feb 2006 15:52:51 -0800
+Subject: [Openlayer-developer] DestroyAll
+Message-ID: <44023F53.50305@bradeeoh.com>
+
+Not 5 minutes after I booted up my Linux box, grepped the headers for 
+DestroyAll and found it in x.h, someone posts the source of the problem 
+on the forums  *sigh*
+
+It's updated in CVS!
+
+Any thoughts on the virtual constructor thing?  I'm going to go ask on 
+the GCC irc channel (if there is one?) and maybe run an unscientific 
+test with gcc 3.4.2 to see if there is any performance hit and how much 
+it would be.
+
+
+
+From bradeeoh at bradeeoh.com  Mon Feb 27 00:53:02 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Sun, 26 Feb 2006 15:53:02 -0800
+Subject: [Openlayer-developer] DestroyAll
+Message-ID: <44023F5E.4060503@bradeeoh.com>
+
+Not 5 minutes after I booted up my Linux box, grepped the headers for 
+DestroyAll and found it in x.h, someone posts the source of the problem 
+on the forums  *sigh*
+
+It's updated in CVS!
+
+Any thoughts on the virtual destructor thing?  I'm going to go ask on 
+the GCC irc channel (if there is one?) and maybe run an unscientific 
+test with gcc 3.4.2 to see if there is any performance hit and how much 
+it would be.
+
+
+
+From juvinious at gmail.com  Mon Feb 27 04:12:35 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Mon, 27 Feb 2006 11:12:35 +0800
+Subject: [Openlayer-developer] Makefile Targets
+Message-ID: <200602271112.35937.juvinious@gmail.com>
+
+I asked about this before in one of the existing threads on a.cc, but never 
+received a definite answer on this. I was going to originally include these 
+preprocessors to the makfile:
+OL_NO_STATE_CHANGE - OpenLayer tries to not to change the OpenGL state in most 
+places
+OL_NO_OLD_API - Drops support for the old API (basically GfxRend)
+OL_NO_PNG - Drop support for PNG images
+OL_NO_TTF - Drop support for True Type font
+But never did because I didn't get an answer. So shoud I or not?
+
+I also saw the fix to the DestroyAll problem hopefully that resolves the *nix 
+compilation issues. I'll checkout the source later on today and see if it 
+does.
+
+Hopefully once the major bugs are squashed, we can discuss openlayer's 
+dependencies and maybe how we can make them optional, besides PNG/TTF and 
+more specifically regarding Glyph Keeper.
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From astarius at gmail.com  Mon Feb 27 02:35:09 2006
+From: astarius at gmail.com (Miguel A. Gavidia)
+Date: Mon, 27 Feb 2006 09:35:09 +0800
+Subject: [Openlayer-developer] Makefile Targets
+Message-ID: <200602270935.09906.juvinious@gmail.com>
+
+I asked about this before in one of the existing threads on a.cc, but never 
+received a definite answer on this. I was going to originally include these 
+preprocessors to the makfile:
+OL_NO_STATE_CHANGE - OpenLayer tries to not to change the OpenGL state in most 
+places
+OL_NO_OLD_API - Drops support for the old API (basically GfxRend)
+OL_NO_PNG - Drop support for PNG images
+OL_NO_TTF - Drop support for True Type font
+But never did because I didn't get an answer. So shoud I or not?
+
+I also saw the fix to the DestroyAll problem hopefully that resolves the *nix 
+compilation issues. I'll checkout the source later on today and see if it 
+does.
+
+Hopefully once the major bugs are squashed, we can discuss openlayer's 
+dependencies and maybe how we can make them optional, besides PNG/TTF and 
+more specifically regarding Glyph Keeper.
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From juvinious at gmail.com  Mon Feb 27 10:03:07 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Mon, 27 Feb 2006 17:03:07 +0800
+Subject: [Openlayer-developer] FrameBuffer DestroyAll() Problem
+Message-ID: <200602271703.07363.juvinious@gmail.com>
+
+The changes that you included for the definition problem of DestroyAll() still 
+has issues. All that needed to be done was #undef it at the beginning of the 
+header. Here is the patches for the corrections, afterwards everything 
+compiles soundly.
+
+
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: fbheader.patch
+Type: text/x-diff
+Size: 820 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20060227/bd45976a/attachment.patch>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: fbsource.patch
+Type: text/x-diff
+Size: 462 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20060227/bd45976a/attachment-0001.patch>
+
+From bradeeoh at bradeeoh.com  Mon Feb 27 21:49:00 2006
+From: bradeeoh at bradeeoh.com (B E)
+Date: Mon, 27 Feb 2006 12:49:00 -0800
+Subject: [Openlayer-developer] Virtual Destructors
+Message-ID: <440365BC.7000907@bradeeoh.com>
+
+I hunted around the GCC mailing lists and found no recent postings 
+regarding virtual dtors.
+
+I just finished running a few unscientific tests with virtual dtors 
+using gcc 3.4.2 (mingw).
+
+I ran one series a tests with the current SVN HEAD.  Then I change 
+ol::Shape to have a virtual dtor and added virtual dtors to a few other 
+derived classes.  Timed the tests with microsecond resolution.
+
+Results?
+
+I can create and delete 10,000,000 default ol::Rects in an average time 
+of 22.2 milliseconds.  Without a declared destructor, and with the 
+virtuals.  Doesn't matter.
+
+ol::Circles with a constant center and radius - 22.25ms on average.
+
+Same for ol::Polys.
+
+I think the virtual dtor thing is a non-issue and we should just add it 
+in to all the classes with virtual methods.
+
+If there's no objections, I'll go ahead and do this tonite...
+
+
+From juvinious at gmail.com  Tue Feb 28 00:46:00 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Tue, 28 Feb 2006 07:46:00 +0800
+Subject: [Openlayer-developer] Virtual Destructors
+In-Reply-To: <440365BC.7000907@bradeeoh.com>
+References: <440365BC.7000907@bradeeoh.com>
+Message-ID: <200602280746.00802.juvinious@gmail.com>
+
+Afaik, declaring a virtual dtor is standard amongst classes that are fully 
+abstract to ones that contain a virtual method here or there. I'd agree with 
+adding them in as it'll make the classes seem more uniformly correct. :)
+
+On Tuesday 28 February 2006 04:49, B E wrote:
+> I hunted around the GCC mailing lists and found no recent postings
+> regarding virtual dtors.
+>
+> I just finished running a few unscientific tests with virtual dtors
+> using gcc 3.4.2 (mingw).
+>
+> I ran one series a tests with the current SVN HEAD.  Then I change
+> ol::Shape to have a virtual dtor and added virtual dtors to a few other
+> derived classes.  Timed the tests with microsecond resolution.
+>
+> Results?
+>
+> I can create and delete 10,000,000 default ol::Rects in an average time
+> of 22.2 milliseconds.  Without a declared destructor, and with the
+> virtuals.  Doesn't matter.
+>
+> ol::Circles with a constant center and radius - 22.25ms on average.
+>
+> Same for ol::Polys.
+>
+> I think the virtual dtor thing is a non-issue and we should just add it
+> in to all the classes with virtual methods.
+>
+> If there's no objections, I'll go ahead and do this tonite...
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+-- 
+-juvinious
+
+<a href="http://chasm.hopto.org">The Chasm</a> - My Site.
+
+
+From indeterminatus_ml at gmx.net  Tue Feb 28 03:53:54 2006
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Tue, 28 Feb 2006 03:53:54 +0100
+Subject: [Openlayer-developer] Virtual Destructors
+In-Reply-To: <200602280746.00802.juvinious@gmail.com>
+References: <440365BC.7000907@bradeeoh.com> <200602280746.00802.juvinious@gmail.com>
+Message-ID: <4403BB42.90008@gmx.net>
+
+Miguel A. Gavidia wrote:
+> Afaik, declaring a virtual dtor is standard amongst classes that are 
+> fully abstract to ones that contain a virtual method here or there. 
+> I'd agree with adding them in as it'll make the classes seem more 
+> uniformly correct. :)
+>   
+I agree with juvinious here. Is the destruction of objects really that 
+frequent that the additional vtable lookup would matter? Most compilers 
+are capable of removing the virtual-ism of known object types anyway 
+(and replace them with a non-virtual method call), so for the formally 
+correct case speed shouldn't make a difference. For the incorrect case, 
+however, a non-virtual destructor isn't desirable (as you all know).
+
+I second the motion towards virtual destructors, as they seem to do no 
+harm speed-wise (and protect invalid use of the code). I am, however, 
+not opposing additional tests, although I strongly suggest object 
+pooling if the destruction of objects is that frequent that it actually 
+mattered (if that's possible at all).
+
+Yours,
+ David.
+
+

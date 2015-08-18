@@ -1,0 +1,192 @@
+From kotori83 at gmail.com  Thu Sep 14 09:43:54 2006
+From: kotori83 at gmail.com (kotori83)
+Date: Thu, 14 Sep 2006 02:43:54 -0500
+Subject: [Openlayer-developer] DevPak Created
+Message-ID: <c9004b820609140043v60dd3428p18eaac38c78aea77@mail.gmail.com>
+
+To help the adoption of OpenLayer I took it upon myself to create a DevPak
+for Dev-Cpp.  Here is the devpaks.org link
+http://devpaks.org/details.php?devpak=156
+
+Any advice on future updates to it would be greatly appreciated.  I'm just
+trying to do my part in getting the word out.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20060914/3a34ffd9/attachment.html>
+
+From fladimir2002 at hotmail.com  Thu Sep 14 12:42:46 2006
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Thu, 14 Sep 2006 13:42:46 +0300
+Subject: [Openlayer-developer] DevPak Created
+In-Reply-To: <c9004b820609140043v60dd3428p18eaac38c78aea77@mail.gmail.com>
+Message-ID: <BAY122-F13DCA8DBC9CBCA08EBFC5ADF290@phx.gbl>
+
+Thanks a lot! Is it for the 2.0 version or the latest SVN build? 2.0 is 
+quite old already, I should make a new release soon.
+
+
+>From: kotori83 <kotori83 at gmail.com>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at lists.berlios.de
+>Subject: [Openlayer-developer] DevPak Created
+>Date: Thu, 14 Sep 2006 02:43:54 -0500
+>
+>To help the adoption of OpenLayer I took it upon myself to create a DevPak
+>for Dev-Cpp.  Here is the devpaks.org link
+>http://devpaks.org/details.php?devpak=156
+>
+>Any advice on future updates to it would be greatly appreciated.  I'm just
+>trying to do my part in getting the word out.
+
+
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Windows-ty?p?yt?haun avulla l?yd?t tiedot koneeltasi silm?nr?p?yksess?. 
+http://toolbar.msn.fi
+
+
+
+From kotori83 at gmail.com  Thu Sep 14 21:13:38 2006
+From: kotori83 at gmail.com (kotori83)
+Date: Thu, 14 Sep 2006 14:13:38 -0500
+Subject: [Openlayer-developer] DevPak Created
+In-Reply-To: <BAY122-F13DCA8DBC9CBCA08EBFC5ADF290@phx.gbl>
+References: <c9004b820609140043v60dd3428p18eaac38c78aea77@mail.gmail.com>
+	<BAY122-F13DCA8DBC9CBCA08EBFC5ADF290@phx.gbl>
+Message-ID: <c9004b820609141213m2959abe3r50959b7870573600@mail.gmail.com>
+
+The one I did was for the 2.0 build.  I'd be more than happy to make one for
+the latest SVN too though.
+
+On 9/14/06, Esa Tanskanen <fladimir2002 at hotmail.com> wrote:
+>
+> Thanks a lot! Is it for the 2.0 version or the latest SVN build? 2.0 is
+> quite old already, I should make a new release soon.
+>
+>
+> >From: kotori83 <kotori83 at gmail.com>
+> >Reply-To: openlayer-developer at berlios.de
+> >To: openlayer-developer at lists.berlios.de
+> >Subject: [Openlayer-developer] DevPak Created
+> >Date: Thu, 14 Sep 2006 02:43:54 -0500
+> >
+> >To help the adoption of OpenLayer I took it upon myself to create a
+> DevPak
+> >for Dev-Cpp.  Here is the devpaks.org link
+> >http://devpaks.org/details.php?devpak=156
+> >
+> >Any advice on future updates to it would be greatly appreciated.  I'm
+> just
+> >trying to do my part in getting the word out.
+>
+>
+> >_______________________________________________
+> >Openlayer-developer mailing list
+> >Openlayer-developer at lists.berlios.de
+> >https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+> _________________________________________________________________
+> Windows-ty?p?yt?haun avulla l?yd?t tiedot koneeltasi silm?nr?p?yksess?.
+> http://toolbar.msn.fi
+>
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+
+
+
+-- 
+~ Kotori
+01001011 01101111 01110100 01101111 01110010 01101001
+HTP
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20060914/8e530d86/attachment.html>
+
+From kotori83 at gmail.com  Thu Sep 14 22:17:53 2006
+From: kotori83 at gmail.com (kotori83)
+Date: Thu, 14 Sep 2006 15:17:53 -0500
+Subject: [Openlayer-developer] DevPak Created
+In-Reply-To: <c9004b820609141213m2959abe3r50959b7870573600@mail.gmail.com>
+References: <c9004b820609140043v60dd3428p18eaac38c78aea77@mail.gmail.com>
+	<BAY122-F13DCA8DBC9CBCA08EBFC5ADF290@phx.gbl>
+	<c9004b820609141213m2959abe3r50959b7870573600@mail.gmail.com>
+Message-ID: <c9004b820609141317k1759c28axe19cddb00faed1c7@mail.gmail.com>
+
+I made one from the SVN just now, and I'd greatly appreciate it if someone
+has the time to just give it a quick test for me.  I handmade all of the
+projects for the demos, as its now easier for the user to compile them with
+Dev-Cpp.
+Any suggestions/improvements/criticism is welcome.
+
+Here is the link for the SVN DevPak:
+http://devpaks.org/details.php?devpak=157
+
+
+On 9/14/06, kotori83 <kotori83 at gmail.com> wrote:
+>
+> The one I did was for the 2.0 build.  I'd be more than happy to make one
+> for the latest SVN too though.
+>
+>
+> On 9/14/06, Esa Tanskanen < fladimir2002 at hotmail.com> wrote:
+> >
+> > Thanks a lot! Is it for the 2.0 version or the latest SVN build? 2.0 is
+> > quite old already, I should make a new release soon.
+> >
+> >
+> > >From: kotori83 <kotori83 at gmail.com>
+> > >Reply-To: openlayer-developer at berlios.de
+> > >To: openlayer-developer at lists.berlios.de
+> > >Subject: [Openlayer-developer] DevPak Created
+> > >Date: Thu, 14 Sep 2006 02:43:54 -0500
+> > >
+> > >To help the adoption of OpenLayer I took it upon myself to create a
+> > DevPak
+> > >for Dev-Cpp.  Here is the devpaks.org link
+> > > http://devpaks.org/details.php?devpak=156
+> > >
+> > >Any advice on future updates to it would be greatly appreciated.  I'm
+> > just
+> > >trying to do my part in getting the word out.
+> >
+> >
+> > >_______________________________________________
+> > >Openlayer-developer mailing list
+> > >Openlayer-developer at lists.berlios.de
+> > > https://lists.berlios.de/mailman/listinfo/openlayer-developer
+> >
+> > _________________________________________________________________
+> > Windows-ty?p?yt?haun avulla l?yd?t tiedot koneeltasi silm?nr?p?yksess?.
+> > http://toolbar.msn.fi
+> >
+> > _______________________________________________
+> > Openlayer-developer mailing list
+> > Openlayer-developer at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/openlayer-developer
+> >
+>
+>
+>
+> --
+> ~ Kotori
+> 01001011 01101111 01110100 01101111 01110010 01101001
+> HTP
+>
+
+
+
+-- 
+~ Kotori
+01001011 01101111 01110100 01101111 01110010 01101001
+HTP
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20060914/923694d5/attachment.html>
+

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] collision polygons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20collision%20polygons&In-Reply-To=%3C4437739C.6050109%40retrospec.sgn.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000113.html">
+   <LINK REL="Next"  HREF="000122.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] collision polygons</H1>
+    <B>openlayer-developer-admin at lists.berlios.de</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20collision%20polygons&In-Reply-To=%3C4437739C.6050109%40retrospec.sgn.net%3E"
+       TITLE="[Openlayer-developer] collision polygons">openlayer-developer-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat Apr  8 10:26:04 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000113.html">[Openlayer-developer] bug in allegro conversion
+</A></li>
+        <LI>Next message: <A HREF="000122.html">[Openlayer-developer] collision polygons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#120">[ date ]</a>
+              <a href="thread.html#120">[ thread ]</a>
+              <a href="subject.html#120">[ subject ]</a>
+              <a href="author.html#120">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+I've got to be perfectly honest and say I don't know the difference 
+between the Collision object and a polygon collision, so this might all 
+be done, but for my collisions I'm using the poly.collides method and 
+not the collision class for my bitmaps. How about a method, e.g. 
+CreateCollisionPoly(...) that has a few overloaded signatures that lets 
+you post create a bitmap's collision poly from a Poly object, a filename 
+for a text file that contains a series of vectors, or maybe a
+'bool Settings::GenerateBoundingBox' to automatically generate a simply 
+bounding box poly for every bitmap. All the collision poly is, is just a 
+Poly so I can't see a problem with this.
+
+But like I said, I don't really know what the Collision object does, but 
+I guess there must be a big one, otherwise it wouldn't exist :)
+
+To overcome the problems with the CREATE_COLLISION_POLY I've just been 
+creating a poly for my sprites as a bounding box and using the poly 
+collides method.
+
+Neil.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000113.html">[Openlayer-developer] bug in allegro conversion
+</A></li>
+	<LI>Next message: <A HREF="000122.html">[Openlayer-developer] collision polygons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#120">[ date ]</a>
+              <a href="thread.html#120">[ thread ]</a>
+              <a href="subject.html#120">[ subject ]</a>
+              <a href="author.html#120">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

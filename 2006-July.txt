@@ -1,0 +1,39 @@
+From juvinious at gmail.com  Sat Jul 15 01:16:17 2006
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Sat, 15 Jul 2006 07:16:17 +0800
+Subject: [Openlayer-developer] Regarding internal freetype
+Message-ID: <200607150716.17771.juvinious@gmail.com>
+
+Fladimir I seem to be having an issue with trying to do points to either the 
+screen or a bitmap. It could quite be possible that I am not doing something 
+right?
+Do I need to set anything up before trying to put points?
+Here is what I'm trying to do (I removed the Bitmap line for the time being I 
+just want it directly to the screen):
+
+unsigned char *line = tempChar.line;
+for (int y = y1; y < tempChar.rows; y++)
+{
+		unsigned char *buffer = line;
+		for (int x = x1; x < tempChar.width; x++)
+		{
+				Rgba col = colorConvert(buffer++,tempChar.grays);
+				Rgba tempCol(0,0,0,0);
+				if(col.r != tempCol.r && col.g != tempCol.g && col.b != tempCol.b && 
+col.a != tempCol.a)
+				{
+					//workBitmap->placePixel(x, y, color);
+					ol::Point(float(x),float(y)).Draw( col );
+				}
+		}
+		line += tempChar.pitch;
+}
+
+Any ideas?
+-- 
+-juvinious
+
+http://chasm.hopto.org - The Chasm - My Site
+http://openlayer.berlios.de - Openlayer
+
+

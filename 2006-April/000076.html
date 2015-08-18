@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] Problems with creating collision polygons.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Problems%20with%20creating%20collision%20polygons.&In-Reply-To=%3CBAY21-F227C2B9A2AA0997832EFB3DFD70%40phx.gbl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000075.html">
+   <LINK REL="Next"  HREF="000078.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] Problems with creating collision polygons.</H1>
+    <B>Esa Tanskanen</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Problems%20with%20creating%20collision%20polygons.&In-Reply-To=%3CBAY21-F227C2B9A2AA0997832EFB3DFD70%40phx.gbl%3E"
+       TITLE="[Openlayer-developer] Problems with creating collision polygons.">fladimir2002 at hotmail.com
+       </A><BR>
+    <I>Sat Apr  1 14:34:17 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000075.html">[Openlayer-developer] Problems with creating collision polygons.
+</A></li>
+        <LI>Next message: <A HREF="000078.html">[Openlayer-developer] Illustration of bitmap-&gt;polygon error.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#76">[ date ]</a>
+              <a href="thread.html#76">[ thread ]</a>
+              <a href="subject.html#76">[ subject ]</a>
+              <a href="author.html#76">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hmm... the second image loads just fine with the collision polygon for me... 
+But thanks for informing about the issues, maybe I can find the cause.
+
+/Esa
+
+&gt;<i>From: Richard Phipps &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">rich at reflectedgames.com</A>&gt;
+</I>&gt;<i>To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i>Subject: [Openlayer-developer] Problems with creating collision polygons.
+</I>&gt;<i>Date: Sat, 01 Apr 2006 11:09:28 +0100
+</I>&gt;<i>
+</I>&gt;<i>I'm trying to create some collsion polygons and OpenLayer just gets locked 
+</I>&gt;<i>up. I have to Ctrl+Alt+End to abort.
+</I>&gt;<i>
+</I>&gt;<i>I have 2 simple mask images which I am loading with:
+</I>&gt;<i>maskImages = Bitmap::LoadListOfBitmaps(&quot;Masks/&quot;, &quot;png&quot;, 3, 
+</I>&gt;<i>CREATE_COLLISION_POLY);
+</I>&gt;<i>
+</I>&gt;<i>The logfile:
+</I>&gt;<i>
+</I>&gt;<i>Loading bitmap: Masks/001.png
+</I>&gt;<i>Creating collision polygon (Number of skips between vertices: 0)
+</I>&gt;<i>OpenGL extension GL_ARB_texture_non_power_of_two was not found.
+</I>&gt;<i>Loading bitmap: Masks/002.png
+</I>&gt;<i>Creating collision polygon (Number of skips between vertices: 0)
+</I>&gt;<i>
+</I>&gt;<i>It seems to get stuck on the second image which is pretty simple. I've 
+</I>&gt;<i>tried saving with a magic pink background, with a alpha colour and tried 
+</I>&gt;<i>altering the collision accuracy to 1.0, but nothing helps.
+</I>&gt;<i>
+</I>&gt;<i>I've uploaded the images (which appear invisible due to the transparancy):
+</I>&gt;<i><A HREF="http://www.zunked.org/001.png">http://www.zunked.org/001.png</A>
+</I>&gt;<i><A HREF="http://www.zunked.org/002.png">http://www.zunked.org/002.png</A>
+</I>&gt;<i>
+</I>&gt;<i>Does anyone know why this is going wrong? :(
+</I>&gt;<i>
+</I>&gt;<i>Rich.
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Openlayer-developer mailing list
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i><A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>
+_________________________________________________________________
+Windows-ty&#246;p&#246;yt&#228;haun avulla l&#246;yd&#228;t tiedot koneeltasi silm&#228;nr&#228;p&#228;yksess&#228;. 
+<A HREF="http://toolbar.msn.fi">http://toolbar.msn.fi</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000075.html">[Openlayer-developer] Problems with creating collision polygons.
+</A></li>
+	<LI>Next message: <A HREF="000078.html">[Openlayer-developer] Illustration of bitmap-&gt;polygon error.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#76">[ date ]</a>
+              <a href="thread.html#76">[ thread ]</a>
+              <a href="subject.html#76">[ subject ]</a>
+              <a href="author.html#76">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,16 @@
+From juvinious at gmail.com  Wed Jul 18 22:36:48 2007
+From: juvinious at gmail.com (Miguel Gavidia)
+Date: Wed, 18 Jul 2007 15:36:48 -0500
+Subject: [Openlayer-developer] OpenLayer 2.1
+Message-ID: <7d8be2250707181336q50a9ec19yd26fc25586f83b59@mail.gmail.com>
+
+I made 3 releases on Berlios which includes a source archive and 2 binary
+archives.
+I made the announcement on a.cc here:
+http://www.allegro.cc/forums/thread/592355
+Let me know if there are any problems with it.
+:)
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20070718/46ee5b2e/attachment.html>
+

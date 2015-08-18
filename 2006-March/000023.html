@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] GUI
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20GUI&In-Reply-To=%3C200603031149.39810.juvinious%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000022.html">
+   <LINK REL="Next"  HREF="000024.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] GUI</H1>
+    <B>Miguel A. Gavidia</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20GUI&In-Reply-To=%3C200603031149.39810.juvinious%40gmail.com%3E"
+       TITLE="[Openlayer-developer] GUI">juvinious at gmail.com
+       </A><BR>
+    <I>Fri Mar  3 04:49:39 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000022.html">[Openlayer-developer] GUI
+</A></li>
+        <LI>Next message: <A HREF="000024.html">[Openlayer-developer] Shape::MoveTo()
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#23">[ date ]</a>
+              <a href="thread.html#23">[ thread ]</a>
+              <a href="subject.html#23">[ subject ]</a>
+              <a href="author.html#23">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Well I mentioned in that thread that I had been working on one for some time 
+now. My ideas are simply based on the experiences having from using other 
+peoples GUI's and windowing systems. Either they are overtly complex or lack 
+the desired items needed for a game IMO.
+Although I said I have been working on it, it still is a WIP, probably would 
+be like that for some time and more than likely probably doesn't meet your 
+criteria. :P 
+Although to start it would be nice to see OpenLayer's animation class to 
+include more functionality or to include some form of management system for 
+the animations. (which was being discussed in irc by you and several others).
+With that you can then extend that functionality into your own GUI to cover 
+the animations you so desire in your widgets.
+Although out of curiosity, how extensive do you need the animations in your 
+widgets? For the most part most of the things that I would see or can think 
+of animated are within a widget, which can easily be a canvas/bitmap that is 
+consistently updated like a map. Icons could be animated as well doing that. 
+Maybe I'm not seeing it the way you are thinking, maybe you can elaborate 
+some more on that?
+If anything at all to keep it simple, openlayer can probably just include a 
+simple framework of gui elements that can be extended by the end developer 
+according to his needs in his own projects. ie:
+//Basic classes in OL
+guiWidget
+guiInput
+guiMouse
+dialog : guiWidget : guiInput : guiMouse
+
+//End developers widgets
+myTextBox : dialog
+myInputBox : dialog
+myMap : guiWidget
+etc etc.
+
+Who knows though even that gets complex. :P
+But I think it would be much cleaner than say Allegro's GUI, which is horrible 
+IMO, especially since it OL is c++ and begs for things to be more OO 
+oriented.
+
+On Friday 03 March 2006 09:40, B E wrote:
+&gt;<i> Since I posted my RFC re: my GUI on a.cc, I've gotten private messages
+</I>&gt;<i> from 4 people saying &quot;this is good, OpenLayer will definitely benefit
+</I>&gt;<i> from a gui.&quot;  Combine that with interest here... I think it's something
+</I>&gt;<i> we should definitely pursue...
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openlayer-developer mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>
+-- 
+-juvinious
+
+&lt;a href=&quot;<A HREF="http://chasm.hopto.org">http://chasm.hopto.org</A>&quot;&gt;The Chasm&lt;/a&gt; - My Site.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000022.html">[Openlayer-developer] GUI
+</A></li>
+	<LI>Next message: <A HREF="000024.html">[Openlayer-developer] Shape::MoveTo()
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#23">[ date ]</a>
+              <a href="thread.html#23">[ thread ]</a>
+              <a href="subject.html#23">[ subject ]</a>
+              <a href="author.html#23">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

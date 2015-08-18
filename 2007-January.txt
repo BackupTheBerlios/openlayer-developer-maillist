@@ -1,0 +1,1510 @@
+From tobing at gmx.net  Sat Jan 13 22:23:08 2007
+From: tobing at gmx.net (tobing at gmx.net)
+Date: Sat, 13 Jan 2007 22:23:08 +0100
+Subject: [Openlayer-developer]  fix for Bitmap::Load
+In-Reply-To: <BAY122-F17D5C6B9B2583566D89557DFE10@phx.gbl>
+References: <BAY122-F17D5C6B9B2583566D89557DFE10@phx.gbl>
+Message-ID: <20070113212308.325410@gmx.net>
+
+Hi all, 
+
+As already explained in 
+http://www.allegro.cc/forums/thread/589556
+I think that this Bitmap::Load function is not working correctly and has to be changed. I have that change working fine for some time now, and would ask to have a look on it and commit it to SVN. 
+
+I found this during my efforts to make OpenLayer work with guichan, where this function is used and made problems. 
+
+The developer team of guichan is about to put the OpenLayer back end into their library and CVS, so in future they will officially support OpenLayer with their library. 
+
+-- 
+Viele Gr?sse / Best Regards / Amiti?s
+Tobing
+
+http://www.staedtebauen.de
+
+
+
+From juvinious at gmail.com  Sun Jan 14 03:08:56 2007
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Sun, 14 Jan 2007 10:08:56 +0800
+Subject: [Openlayer-developer] fix for Bitmap::Load
+In-Reply-To: <20070113212308.325410@gmx.net>
+References: <BAY122-F17D5C6B9B2583566D89557DFE10@phx.gbl>
+	<20070113212308.325410@gmx.net>
+Message-ID: <200701141008.56632.juvinious@gmail.com>
+
+On Sunday 14 January 2007 05:23, tobing at gmx.net wrote:
+> Hi all,
+>
+> As already explained in
+> http://www.allegro.cc/forums/thread/589556
+> I think that this Bitmap::Load function is not working correctly and has to
+> be changed. I have that change working fine for some time now, and would
+> ask to have a look on it and commit it to SVN.
+>
+> I found this during my efforts to make OpenLayer work with guichan, where
+> this function is used and made problems.
+>
+> The developer team of guichan is about to put the OpenLayer back end into
+> their library and CVS, so in future they will officially support OpenLayer
+> with their library.
+
+Sounds good, I'll make the change and commit.
+On another note, I'm going to be exporting the symbols in the library so that 
+it can be possible to turn openlayer into a dll. So hopefully I'll have that 
+done by sometime next week. :)
+
+-- 
+-juvinious
+
+http://saggui.sourceforge.net - Simplified All Gaming GUI
+http://chasm.hopto.org - The Chasm - My Site
+http://openlayer.berlios.de - Openlayer
+
+
+From juvinious at gmail.com  Sun Jan 14 19:58:57 2007
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Mon, 15 Jan 2007 02:58:57 +0800
+Subject: [Openlayer-developer] Updates
+Message-ID: <200701150258.57950.juvinious@gmail.com>
+
+Ok so I went about the task of exporting the symbols in OpenLayer. I tested it 
+on windows and was able to create a DLL of the library with success and was 
+able to link the demos with it. Any of the windows users that have any 
+interest in this I ask you to test it out yourself in your apps to make sure 
+all required symbols are exported. I know some people were asking for this 
+so, this is a good step in that general direction. In order to accomplish 
+this I added two new preprocessors:
+OL_SHARED and OL_LIB_BUILD
+It should be fairly straightforward, when building the library pass 
+both -DOL_SHARED and -DOL_LIB_BUILD. When linking against the library only 
+pass -DOL_SHARED, however you might just want to throw #define OL_SHARED into 
+the OpenLayer.hpp that way it's transparent.
+Additionally I also merged loadpng into the library as it is small and 
+required if OL_NO_PNG is not defined. Of course it won't be included if 
+OL_NO_PNG is enabled so there is no need to worry about it. Just make sure 
+you aren't linking with -lloadpng or -lldpng anymore in your link line. If 
+you are on linux nothing changes as `openlayer-config --libs` produces the 
+proper link line for you. :)
+So regarding the dll stuff if you do happen to run across problems with it, 
+missing symbols and what not, please post them here so I can correct them.
+Thanks.
+
+-- 
+-juvinious
+
+http://saggui.sourceforge.net - Simplified All Gaming GUI
+http://chasm.hopto.org - The Chasm - My Site
+http://openlayer.berlios.de - Openlayer
+
+
+From fladimir2002 at hotmail.com  Mon Jan 15 14:41:31 2007
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Mon, 15 Jan 2007 15:41:31 +0200
+Subject: [Openlayer-developer] Updates
+In-Reply-To: <200701150258.57950.juvinious@gmail.com>
+Message-ID: <BAY122-F8E78FF7E7D6A0482E10E6DFB50@phx.gbl>
+
+Excellent news, that's exactly what's missing from OL!
+
+However, when I (temporarily) added #define OL_LIB_BUILD and #define 
+OL_SHARED to OpenLayer.hpp and used the build system, I got:
+
+src/loadpng.c:113: warning: implicit declaration of function `png_get_valid'
+src/loadpng.c:113: error: `PNG_INFO_tRNS' undeclared (first use in this 
+function
+)
+src/loadpng.c:114: warning: implicit declaration of function 
+`png_set_tRNS_to_al
+pha'
+src/loadpng.c:120: warning: implicit declaration of function 
+`png_set_strip_16'
+src/loadpng.c:124: error: `PNG_COLOR_TYPE_GRAY_ALPHA' undeclared (first use 
+in t
+his function)
+src/loadpng.c:125: warning: implicit declaration of function 
+`png_set_gray_to_rg
+b'
+src/loadpng.c:131: warning: implicit declaration of function `png_get_sRGB'
+src/loadpng.c:132: warning: implicit declaration of function `png_set_gamma'
+src/loadpng.c:134: warning: implicit declaration of function `png_get_gAMA'
+src/loadpng.c:142: warning: implicit declaration of function 
+`png_set_interlace_
+handling'
+src/loadpng.c:147: warning: implicit declaration of function 
+`png_read_update_in
+fo'
+src/loadpng.c:152: error: `pal' undeclared (first use in this function)
+src/loadpng.c:156: error: `PNG_COLOR_MASK_PALETTE' undeclared (first use in 
+this
+function)
+src/loadpng.c:158: error: `png_colorp' undeclared (first use in this 
+function)
+src/loadpng.c:158: error: syntax error before "palette"
+src/loadpng.c:160: warning: implicit declaration of function `png_get_PLTE'
+src/loadpng.c:160: error: `palette' undeclared (first use in this function)
+src/loadpng.c:176: error: `rowbytes' undeclared (first use in this function)
+src/loadpng.c:176: warning: implicit declaration of function 
+`png_get_rowbytes'
+src/loadpng.c:193: warning: implicit declaration of function `png_set_bgr'
+src/loadpng.c:198: error: syntax error before "y"
+src/loadpng.c:199: error: `y' undeclared (first use in this function)
+src/loadpng.c:200: warning: implicit declaration of function `png_read_row'
+src/loadpng.c:208: warning: implicit declaration of function `png_read_end'
+src/loadpng.c: In function `load_png':
+src/loadpng.c:222: error: `png_structp' undeclared (first use in this 
+function)
+src/loadpng.c:222: error: syntax error before "png_ptr"
+src/loadpng.c:223: error: `png_infop' undeclared (first use in this 
+function)
+src/loadpng.c:242: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:242: warning: implicit declaration of function 
+`png_create_read_st
+ruct'
+src/loadpng.c:242: error: `PNG_LIBPNG_VER_STRING' undeclared (first use in 
+this
+function)
+src/loadpng.c:250: error: `info_ptr' undeclared (first use in this function)
+src/loadpng.c:250: warning: implicit declaration of function 
+`png_create_info_st
+ruct'
+src/loadpng.c:252: warning: implicit declaration of function 
+`png_destroy_read_s
+truct'
+src/loadpng.c:252: error: `png_infopp' undeclared (first use in this 
+function)
+src/loadpng.c:261: warning: implicit declaration of function `setjmp'
+src/loadpng.c:270: warning: implicit declaration of function 
+`png_set_read_fn'
+src/loadpng.c:270: error: `png_rw_ptr' undeclared (first use in this 
+function)
+src/loadpng.c:270: error: syntax error before "read_data"
+src/loadpng.c:273: warning: implicit declaration of function 
+`png_set_sig_bytes'
+
+src/loadpng.c: At top level:
+src/loadpng.c:295: error: syntax error before "png_uint_32"
+src/loadpng.c:295: warning: no semicolon at end of struct or union
+src/loadpng.c:296: warning: type defaults to `int' in declaration of 
+`current_po
+s'
+src/loadpng.c:296: warning: data definition has no type or storage class
+src/loadpng.c:297: warning: type defaults to `int' in declaration of 
+`MEMORY_REA
+DER_STATE'
+src/loadpng.c:297: warning: data definition has no type or storage class
+src/loadpng.c:299: error: syntax error before "png_ptr"
+src/loadpng.c: In function `read_data_memory':
+src/loadpng.c:301: error: `f' undeclared (first use in this function)
+src/loadpng.c:301: error: syntax error before ')' token
+src/loadpng.c:303: error: `length' undeclared (first use in this function)
+src/loadpng.c:304: warning: implicit declaration of function `png_error'
+src/loadpng.c:304: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:306: warning: implicit declaration of function `memcpy'
+src/loadpng.c:306: error: `data' undeclared (first use in this function)
+src/loadpng.c: In function `check_if_png_memory':
+src/loadpng.c:317: error: `png_byte' undeclared (first use in this function)
+src/loadpng.c:317: error: syntax error before ')' token
+src/loadpng.c: In function `load_memory_png':
+src/loadpng.c:327: error: syntax error before "memory_reader_state"
+src/loadpng.c:329: error: `png_structp' undeclared (first use in this 
+function)
+src/loadpng.c:329: error: syntax error before "png_ptr"
+src/loadpng.c:330: error: `png_infop' undeclared (first use in this 
+function)
+src/loadpng.c:344: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:344: error: `PNG_LIBPNG_VER_STRING' undeclared (first use in 
+this
+function)
+src/loadpng.c:350: error: `info_ptr' undeclared (first use in this function)
+src/loadpng.c:352: error: `png_infopp' undeclared (first use in this 
+function)
+src/loadpng.c:368: error: `memory_reader_state' undeclared (first use in 
+this fu
+nction)
+src/loadpng.c:373: error: `png_rw_ptr' undeclared (first use in this 
+function)
+src/loadpng.c:373: error: syntax error before "read_data_memory"
+src/loadpng.c: At top level:
+src/loadpng.c:50: warning: 'read_data' defined but not used
+src/loadpng.c:300: warning: 'read_data_memory' defined but not used
+
+C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat clean
+- Cleaning up -
+Deleting obj/Animation.o...
+Deleting dep/Animation.d...
+Deleting obj/Bitmap.o...
+Deleting dep/Bitmap.d...
+Deleting obj/Blenders.o...
+Deleting dep/Blenders.d...
+Deleting obj/Canvas.o...
+Deleting dep/Canvas.d...
+Deleting obj/Circle.o...
+Deleting dep/Circle.d...
+Deleting obj/Collisions.o...
+Deleting dep/Collisions.d...
+Deleting obj/Effects.o...
+Deleting dep/Effects.d...
+Deleting obj/FpsCounter.o...
+Deleting dep/FpsCounter.d...
+Deleting obj/Framebuffer.o...
+Deleting dep/Framebuffer.d...
+Deleting obj/GarbageCollector.o...
+Deleting dep/GarbageCollector.d...
+Deleting obj/General.o...
+Deleting dep/General.d...
+Deleting obj/GfxRend.o...
+Deleting dep/GfxRend.d...
+Deleting obj/GlDriver.o...
+Deleting dep/GlDriver.d...
+Deleting obj/Glyph.o...
+Deleting dep/Glyph.d...
+Deleting obj/Internal.o...
+Deleting dep/Internal.d...
+Deleting obj/Line.o...
+Deleting dep/Line.d...
+Deleting obj/LineStrip.o...
+Deleting dep/LineStrip.d...
+Deleting dep/loadpng.d...
+Deleting build/options...
+Deleting obj...
+Deleting lib...
+Deleting dep...
+
+C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat
+Seting up for msys environment
+Do you wish to drop TTF support? [y/N]
+
+Do you wish to use FreeType directly and drop GlyphKeeper? [y/N]
+
+Do you wish to drop PNG support? [y/N]
+
+Do you wish to drop old API Support? [y/N]
+
+Do you wish to drop State Changes? [y/N]
+
+- Creating required directories -
+Creating directory obj/...
+Creating directory dep/...
+Creating directory lib/...
+- Starting compilation -
+Compiling src/Animation.cpp...
+Compiling src/Bitmap.cpp...
+Compiling src/Blenders.cpp...
+Compiling src/Canvas.cpp...
+Compiling src/Circle.cpp...
+Compiling src/Collisions.cpp...
+Compiling src/Effects.cpp...
+Compiling src/FpsCounter.cpp...
+Compiling src/Framebuffer.cpp...
+Compiling src/GarbageCollector.cpp...
+Compiling src/General.cpp...
+Compiling src/GfxRend.cpp...
+Compiling src/GlDriver.cpp...
+src/GlDriver.cpp: In member function `virtual ol::OlTextureInfo 
+ol::AllegroGLDri
+ver::UploadTexture(BITMAP*, bool)':
+src/GlDriver.cpp:139: warning: unused variable 'useTemp'
+src/GlDriver.cpp:158: warning: unused variable 'useExtendedDimensions'
+src/GlDriver.cpp:162: warning: unused variable 'bitmapBpp'
+src/GlDriver.cpp: In member function `virtual BITMAP* 
+ol::AllegroGLDriver::GetMe
+moryBitmap(int, int, int, unsigned char*)':
+src/GlDriver.cpp:340: warning: unused variable 'bytesPerLine'
+Compiling src/Glyph.cpp...
+Compiling src/Internal.cpp...
+Compiling src/Line.cpp...
+Compiling src/LineStrip.cpp...
+Compiling src/loadpng.c...
+src/loadpng.c:8:17: png.h: No such file or directory
+src/loadpng.c:22: error: `Z_BEST_COMPRESSION' undeclared here (not in a 
+function
+)
+src/loadpng.c:49: error: syntax error before "png_ptr"
+src/loadpng.c: In function `read_data':
+src/loadpng.c:51: warning: implicit declaration of function `png_get_io_ptr'
+src/loadpng.c:51: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:51: error: (Each undeclared identifier is reported only once
+src/loadpng.c:51: error: for each function it appears in.)
+src/loadpng.c:52: error: `png_uint_32' undeclared (first use in this 
+function)
+src/loadpng.c:52: error: syntax error before "pack_fread"
+src/loadpng.c:51: warning: unused variable `f'
+src/loadpng.c: In function `check_if_png':
+src/loadpng.c:72: warning: implicit declaration of function `png_sig_cmp'
+src/loadpng.c:72: error: `png_byte' undeclared (first use in this function)
+src/loadpng.c:72: error: syntax error before ')' token
+src/loadpng.c: At top level:
+src/loadpng.c:80: error: syntax error before "png_ptr"
+src/loadpng.c: In function `really_load_png':
+src/loadpng.c:84: error: `png_uint_32' undeclared (first use in this 
+function)
+src/loadpng.c:84: error: syntax error before "width"
+src/loadpng.c:97: warning: implicit declaration of function `png_read_info'
+src/loadpng.c:97: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:97: error: `info_ptr' undeclared (first use in this function)
+src/loadpng.c:99: warning: implicit declaration of function `png_get_IHDR'
+src/loadpng.c:99: error: `width' undeclared (first use in this function)
+src/loadpng.c:99: error: `height' undeclared (first use in this function)
+src/loadpng.c:105: warning: implicit declaration of function 
+`png_set_packing'
+src/loadpng.c:108: error: `PNG_COLOR_TYPE_GRAY' undeclared (first use in 
+this fu
+nction)
+src/loadpng.c:109: warning: implicit declaration of function 
+`png_set_expand'
+src/loadpng.c:113: warning: implicit declaration of function `png_get_valid'
+src/loadpng.c:113: error: `PNG_INFO_tRNS' undeclared (first use in this 
+function
+)
+src/loadpng.c:114: warning: implicit declaration of function 
+`png_set_tRNS_to_al
+pha'
+src/loadpng.c:120: warning: implicit declaration of function 
+`png_set_strip_16'
+src/loadpng.c:124: error: `PNG_COLOR_TYPE_GRAY_ALPHA' undeclared (first use 
+in t
+his function)
+src/loadpng.c:125: warning: implicit declaration of function 
+`png_set_gray_to_rg
+b'
+src/loadpng.c:131: warning: implicit declaration of function `png_get_sRGB'
+src/loadpng.c:132: warning: implicit declaration of function `png_set_gamma'
+src/loadpng.c:134: warning: implicit declaration of function `png_get_gAMA'
+src/loadpng.c:142: warning: implicit declaration of function 
+`png_set_interlace_
+handling'
+src/loadpng.c:147: warning: implicit declaration of function 
+`png_read_update_in
+fo'
+src/loadpng.c:152: error: `pal' undeclared (first use in this function)
+src/loadpng.c:156: error: `PNG_COLOR_MASK_PALETTE' undeclared (first use in 
+this
+function)
+src/loadpng.c:158: error: `png_colorp' undeclared (first use in this 
+function)
+src/loadpng.c:158: error: syntax error before "palette"
+src/loadpng.c:160: warning: implicit declaration of function `png_get_PLTE'
+src/loadpng.c:160: error: `palette' undeclared (first use in this function)
+src/loadpng.c:176: error: `rowbytes' undeclared (first use in this function)
+src/loadpng.c:176: warning: implicit declaration of function 
+`png_get_rowbytes'
+src/loadpng.c:193: warning: implicit declaration of function `png_set_bgr'
+src/loadpng.c:198: error: syntax error before "y"
+src/loadpng.c:199: error: `y' undeclared (first use in this function)
+src/loadpng.c:200: warning: implicit declaration of function `png_read_row'
+src/loadpng.c:208: warning: implicit declaration of function `png_read_end'
+src/loadpng.c: In function `load_png':
+src/loadpng.c:222: error: `png_structp' undeclared (first use in this 
+function)
+src/loadpng.c:222: error: syntax error before "png_ptr"
+src/loadpng.c:223: error: `png_infop' undeclared (first use in this 
+function)
+src/loadpng.c:242: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:242: warning: implicit declaration of function 
+`png_create_read_st
+ruct'
+src/loadpng.c:242: error: `PNG_LIBPNG_VER_STRING' undeclared (first use in 
+this
+function)
+src/loadpng.c:250: error: `info_ptr' undeclared (first use in this function)
+src/loadpng.c:250: warning: implicit declaration of function 
+`png_create_info_st
+ruct'
+src/loadpng.c:252: warning: implicit declaration of function 
+`png_destroy_read_s
+truct'
+src/loadpng.c:252: error: `png_infopp' undeclared (first use in this 
+function)
+src/loadpng.c:261: warning: implicit declaration of function `setjmp'
+src/loadpng.c:270: warning: implicit declaration of function 
+`png_set_read_fn'
+src/loadpng.c:270: error: `png_rw_ptr' undeclared (first use in this 
+function)
+src/loadpng.c:270: error: syntax error before "read_data"
+src/loadpng.c:273: warning: implicit declaration of function 
+`png_set_sig_bytes'
+
+src/loadpng.c: At top level:
+src/loadpng.c:295: error: syntax error before "png_uint_32"
+src/loadpng.c:295: warning: no semicolon at end of struct or union
+src/loadpng.c:296: warning: type defaults to `int' in declaration of 
+`current_po
+s'
+src/loadpng.c:296: warning: data definition has no type or storage class
+src/loadpng.c:297: warning: type defaults to `int' in declaration of 
+`MEMORY_REA
+DER_STATE'
+src/loadpng.c:297: warning: data definition has no type or storage class
+src/loadpng.c:299: error: syntax error before "png_ptr"
+src/loadpng.c: In function `read_data_memory':
+src/loadpng.c:301: error: `f' undeclared (first use in this function)
+src/loadpng.c:301: error: syntax error before ')' token
+src/loadpng.c:303: error: `length' undeclared (first use in this function)
+src/loadpng.c:304: warning: implicit declaration of function `png_error'
+src/loadpng.c:304: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:306: warning: implicit declaration of function `memcpy'
+src/loadpng.c:306: error: `data' undeclared (first use in this function)
+src/loadpng.c: In function `check_if_png_memory':
+src/loadpng.c:317: error: `png_byte' undeclared (first use in this function)
+src/loadpng.c:317: error: syntax error before ')' token
+src/loadpng.c: In function `load_memory_png':
+src/loadpng.c:327: error: syntax error before "memory_reader_state"
+src/loadpng.c:329: error: `png_structp' undeclared (first use in this 
+function)
+src/loadpng.c:329: error: syntax error before "png_ptr"
+src/loadpng.c:330: error: `png_infop' undeclared (first use in this 
+function)
+src/loadpng.c:344: error: `png_ptr' undeclared (first use in this function)
+src/loadpng.c:344: error: `PNG_LIBPNG_VER_STRING' undeclared (first use in 
+this
+function)
+src/loadpng.c:350: error: `info_ptr' undeclared (first use in this function)
+src/loadpng.c:352: error: `png_infopp' undeclared (first use in this 
+function)
+src/loadpng.c:368: error: `memory_reader_state' undeclared (first use in 
+this fu
+nction)
+src/loadpng.c:373: error: `png_rw_ptr' undeclared (first use in this 
+function)
+src/loadpng.c:373: error: syntax error before "read_data_memory"
+src/loadpng.c: At top level:
+src/loadpng.c:50: warning: 'read_data' defined but not used
+src/loadpng.c:300: warning: 'read_data_memory' defined but not used
+
+C:\Projektit\OpenLayer\OpenLayer2D\Source>
+C:\Projektit\OpenLayer\OpenLayer2D\Source>
+
+Any ideas?
+
+/Esa
+
+>From: "Miguel A. Gavidia" <juvinious at gmail.com>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at lists.berlios.de
+>Subject: [Openlayer-developer] Updates
+>Date: Mon, 15 Jan 2007 02:58:57 +0800
+>
+>Ok so I went about the task of exporting the symbols in OpenLayer. I tested 
+>it
+>on windows and was able to create a DLL of the library with success and was
+>able to link the demos with it. Any of the windows users that have any
+>interest in this I ask you to test it out yourself in your apps to make 
+>sure
+>all required symbols are exported. I know some people were asking for this
+>so, this is a good step in that general direction. In order to accomplish
+>this I added two new preprocessors:
+>OL_SHARED and OL_LIB_BUILD
+>It should be fairly straightforward, when building the library pass
+>both -DOL_SHARED and -DOL_LIB_BUILD. When linking against the library only
+>pass -DOL_SHARED, however you might just want to throw #define OL_SHARED 
+>into
+>the OpenLayer.hpp that way it's transparent.
+>Additionally I also merged loadpng into the library as it is small and
+>required if OL_NO_PNG is not defined. Of course it won't be included if
+>OL_NO_PNG is enabled so there is no need to worry about it. Just make sure
+>you aren't linking with -lloadpng or -lldpng anymore in your link line. If
+>you are on linux nothing changes as `openlayer-config --libs` produces the
+>proper link line for you. :)
+>So regarding the dll stuff if you do happen to run across problems with it,
+>missing symbols and what not, please post them here so I can correct them.
+>Thanks.
+>
+>--
+>-juvinious
+>
+>http://saggui.sourceforge.net - Simplified All Gaming GUI
+>http://chasm.hopto.org - The Chasm - My Site
+>http://openlayer.berlios.de - Openlayer
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Nyt l?yd?t etsim?si tiedot nopeasti niin koneeltasi kuin netist?. 
+http://toolbar.msn.fi
+
+
+
+From juvinious at gmail.com  Mon Jan 15 16:21:59 2007
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Mon, 15 Jan 2007 23:21:59 +0800
+Subject: [Openlayer-developer] Updates
+In-Reply-To: <BAY122-F8E78FF7E7D6A0482E10E6DFB50@phx.gbl>
+References: <BAY122-F8E78FF7E7D6A0482E10E6DFB50@phx.gbl>
+Message-ID: <200701152321.59167.juvinious@gmail.com>
+
+Hmm it appears like you don't have libpng or it can't find it in your path. 
+Basically all it is png.h and libpng.a or libpng12.a ... 
+like c:\mingw\include\png.h and c:\mingw\lib\libpng.a.
+Unfortunately, I didn't get a chance to update the cbuild script to be able to 
+create the dll for you, however I did do so with cmake. 
+Regarding the new preprocessors you should only pass them in the command line 
+not in the header. Once it's built you can place #define OL_SHARED in there.
+If you want to test it out you can either do build it manually or I'd 
+recommend you grab www.cmake.org 
+(http://www.cmake.org/files/v2.4/cmake-2.4.6-win32-x86.exe) and install it.
+Then in a cmd window in the directory in which you the source do:
+mkdir temp
+cd temp
+cmakesetup ../
+From there you'll get a setup window, choose MinGW or MSYS makefiles 
+(depending on how your environment is setup) and then hit configure. You 
+might want to fix anything that appears in red and set CMAKE_INSTALL_PREFIX 
+to where you want openlayer to install to, ie c:\mingw. If everything is fine 
+you should be able to just hit ok which then it'll have generated makefiles 
+and drop you back to the cmd line. All you have to do then is 'make' and 
+then 'make install'.
+
+Hope this helps. :)
+
+On Monday 15 January 2007 21:41, Esa Tanskanen wrote:
+> Excellent news, that's exactly what's missing from OL!
+>
+> However, when I (temporarily) added #define OL_LIB_BUILD and #define
+> OL_SHARED to OpenLayer.hpp and used the build system, I got:
+>
+> src/loadpng.c:113: warning: implicit declaration of function
+> `png_get_valid' src/loadpng.c:113: error: `PNG_INFO_tRNS' undeclared (first
+> use in this function
+> )
+> src/loadpng.c:114: warning: implicit declaration of function
+> `png_set_tRNS_to_al
+> pha'
+> src/loadpng.c:120: warning: implicit declaration of function
+> `png_set_strip_16'
+> src/loadpng.c:124: error: `PNG_COLOR_TYPE_GRAY_ALPHA' undeclared (first use
+> in t
+> his function)
+> src/loadpng.c:125: warning: implicit declaration of function
+> `png_set_gray_to_rg
+> b'
+> src/loadpng.c:131: warning: implicit declaration of function `png_get_sRGB'
+> src/loadpng.c:132: warning: implicit declaration of function
+> `png_set_gamma' src/loadpng.c:134: warning: implicit declaration of
+> function `png_get_gAMA' src/loadpng.c:142: warning: implicit declaration of
+> function
+> `png_set_interlace_
+> handling'
+> src/loadpng.c:147: warning: implicit declaration of function
+> `png_read_update_in
+> fo'
+> src/loadpng.c:152: error: `pal' undeclared (first use in this function)
+> src/loadpng.c:156: error: `PNG_COLOR_MASK_PALETTE' undeclared (first use in
+> this
+> function)
+> src/loadpng.c:158: error: `png_colorp' undeclared (first use in this
+> function)
+> src/loadpng.c:158: error: syntax error before "palette"
+> src/loadpng.c:160: warning: implicit declaration of function `png_get_PLTE'
+> src/loadpng.c:160: error: `palette' undeclared (first use in this function)
+> src/loadpng.c:176: error: `rowbytes' undeclared (first use in this
+> function) src/loadpng.c:176: warning: implicit declaration of function
+> `png_get_rowbytes'
+> src/loadpng.c:193: warning: implicit declaration of function `png_set_bgr'
+> src/loadpng.c:198: error: syntax error before "y"
+> src/loadpng.c:199: error: `y' undeclared (first use in this function)
+> src/loadpng.c:200: warning: implicit declaration of function `png_read_row'
+> src/loadpng.c:208: warning: implicit declaration of function `png_read_end'
+> src/loadpng.c: In function `load_png':
+> src/loadpng.c:222: error: `png_structp' undeclared (first use in this
+> function)
+> src/loadpng.c:222: error: syntax error before "png_ptr"
+> src/loadpng.c:223: error: `png_infop' undeclared (first use in this
+> function)
+> src/loadpng.c:242: error: `png_ptr' undeclared (first use in this function)
+> src/loadpng.c:242: warning: implicit declaration of function
+> `png_create_read_st
+> ruct'
+> src/loadpng.c:242: error: `PNG_LIBPNG_VER_STRING' undeclared (first use in
+> this
+> function)
+> src/loadpng.c:250: error: `info_ptr' undeclared (first use in this
+> function) src/loadpng.c:250: warning: implicit declaration of function
+> `png_create_info_st
+> ruct'
+> src/loadpng.c:252: warning: implicit declaration of function
+> `png_destroy_read_s
+> truct'
+> src/loadpng.c:252: error: `png_infopp' undeclared (first use in this
+> function)
+> src/loadpng.c:261: warning: implicit declaration of function `setjmp'
+> src/loadpng.c:270: warning: implicit declaration of function
+> `png_set_read_fn'
+> src/loadpng.c:270: error: `png_rw_ptr' undeclared (first use in this
+> function)
+> src/loadpng.c:270: error: syntax error before "read_data"
+> src/loadpng.c:273: warning: implicit declaration of function
+> `png_set_sig_bytes'
+>
+> src/loadpng.c: At top level:
+> src/loadpng.c:295: error: syntax error before "png_uint_32"
+> src/loadpng.c:295: warning: no semicolon at end of struct or union
+> src/loadpng.c:296: warning: type defaults to `int' in declaration of
+> `current_po
+> s'
+> src/loadpng.c:296: warning: data definition has no type or storage class
+> src/loadpng.c:297: warning: type defaults to `int' in declaration of
+> `MEMORY_REA
+> DER_STATE'
+> src/loadpng.c:297: warning: data definition has no type or storage class
+> src/loadpng.c:299: error: syntax error before "png_ptr"
+> src/loadpng.c: In function `read_data_memory':
+> src/loadpng.c:301: error: `f' undeclared (first use in this function)
+> src/loadpng.c:301: error: syntax error before ')' token
+> src/loadpng.c:303: error: `length' undeclared (first use in this function)
+> src/loadpng.c:304: warning: implicit declaration of function `png_error'
+> src/loadpng.c:304: error: `png_ptr' undeclared (first use in this function)
+> src/loadpng.c:306: warning: implicit declaration of function `memcpy'
+> src/loadpng.c:306: error: `data' undeclared (first use in this function)
+> src/loadpng.c: In function `check_if_png_memory':
+> src/loadpng.c:317: error: `png_byte' undeclared (first use in this
+> function) src/loadpng.c:317: error: syntax error before ')' token
+> src/loadpng.c: In function `load_memory_png':
+> src/loadpng.c:327: error: syntax error before "memory_reader_state"
+> src/loadpng.c:329: error: `png_structp' undeclared (first use in this
+> function)
+> src/loadpng.c:329: error: syntax error before "png_ptr"
+> src/loadpng.c:330: error: `png_infop' undeclared (first use in this
+> function)
+> src/loadpng.c:344: error: `png_ptr' undeclared (first use in this function)
+> src/loadpng.c:344: error: `PNG_LIBPNG_VER_STRING' undeclared (first use in
+> this
+> function)
+> src/loadpng.c:350: error: `info_ptr' undeclared (first use in this
+> function) src/loadpng.c:352: error: `png_infopp' undeclared (first use in
+> this function)
+> src/loadpng.c:368: error: `memory_reader_state' undeclared (first use in
+> this fu
+> nction)
+> src/loadpng.c:373: error: `png_rw_ptr' undeclared (first use in this
+> function)
+> src/loadpng.c:373: error: syntax error before "read_data_memory"
+> src/loadpng.c: At top level:
+> src/loadpng.c:50: warning: 'read_data' defined but not used
+> src/loadpng.c:300: warning: 'read_data_memory' defined but not used
+>
+> C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat clean
+> - Cleaning up -
+> Deleting obj/Animation.o...
+> Deleting dep/Animation.d...
+> Deleting obj/Bitmap.o...
+> Deleting dep/Bitmap.d...
+> Deleting obj/Blenders.o...
+> Deleting dep/Blenders.d...
+> Deleting obj/Canvas.o...
+> Deleting dep/Canvas.d...
+> Deleting obj/Circle.o...
+> Deleting dep/Circle.d...
+> Deleting obj/Collisions.o...
+> Deleting dep/Collisions.d...
+> Deleting obj/Effects.o...
+> Deleting dep/Effects.d...
+> Deleting obj/FpsCounter.o...
+> Deleting dep/FpsCounter.d...
+> Deleting obj/Framebuffer.o...
+> Deleting dep/Framebuffer.d...
+> Deleting obj/GarbageCollector.o...
+> Deleting dep/GarbageCollector.d...
+> Deleting obj/General.o...
+> Deleting dep/General.d...
+> Deleting obj/GfxRend.o...
+> Deleting dep/GfxRend.d...
+> Deleting obj/GlDriver.o...
+> Deleting dep/GlDriver.d...
+> Deleting obj/Glyph.o...
+> Deleting dep/Glyph.d...
+> Deleting obj/Internal.o...
+> Deleting dep/Internal.d...
+> Deleting obj/Line.o...
+> Deleting dep/Line.d...
+> Deleting obj/LineStrip.o...
+> Deleting dep/LineStrip.d...
+> Deleting dep/loadpng.d...
+> Deleting build/options...
+> Deleting obj...
+> Deleting lib...
+> Deleting dep...
+>
+> C:\Projektit\OpenLayer\OpenLayer2D\Source>buildme.bat
+> Seting up for msys environment
+> Do you wish to drop TTF support? [y/N]
+>
+> Do you wish to use FreeType directly and drop GlyphKeeper? [y/N]
+>
+> Do you wish to drop PNG support? [y/N]
+>
+> Do you wish to drop old API Support? [y/N]
+>
+> Do you wish to drop State Changes? [y/N]
+>
+> - Creating required directories -
+> Creating directory obj/...
+> Creating directory dep/...
+> Creating directory lib/...
+> - Starting compilation -
+> Compiling src/Animation.cpp...
+> Compiling src/Bitmap.cpp...
+> Compiling src/Blenders.cpp...
+> Compiling src/Canvas.cpp...
+> Compiling src/Circle.cpp...
+> Compiling src/Collisions.cpp...
+> Compiling src/Effects.cpp...
+> Compiling src/FpsCounter.cpp...
+> Compiling src/Framebuffer.cpp...
+> Compiling src/GarbageCollector.cpp...
+> Compiling src/General.cpp...
+> Compiling src/GfxRend.cpp...
+> Compiling src/GlDriver.cpp...
+> src/GlDriver.cpp: In member function `virtual ol::OlTextureInfo
+> ol::AllegroGLDri
+> ver::UploadTexture(BITMAP*, bool)':
+> src/GlDriver.cpp:139: warning: unused variable 'useTemp'
+> src/GlDriver.cpp:158: warning: unused variable 'useExtendedDimensions'
+> src/GlDriver.cpp:162: warning: unused variable 'bitmapBpp'
+> src/GlDriver.cpp: In member function `virtual BITMAP*
+> ol::AllegroGLDriver::GetMe
+> moryBitmap(int, int, int, unsigned char*)':
+> src/GlDriver.cpp:340: warning: unused variable 'bytesPerLine'
+> Compiling src/Glyph.cpp...
+> Compiling src/Internal.cpp...
+> Compiling src/Line.cpp...
+> Compiling src/LineStrip.cpp...
+> Compiling src/loadpng.c...
+> src/loadpng.c:8:17: png.h: No such file or directory
+> src/loadpng.c:22: error: `Z_BEST_COMPRESSION' undeclared here (not in a
+> function
+> )
+> src/loadpng.c:49: error: syntax error before "png_ptr"
+> src/loadpng.c: In function `read_data':
+> src/loadpng.c:51: warning: implicit declaration of function
+> `png_get_io_ptr' src/loadpng.c:51: error: `png_ptr' undeclared (first use
+> in this function) src/loadpng.c:51: error: (Each undeclared identifier is
+> reported only once src/loadpng.c:51: error: for each function it appears
+> in.)
+> src/loadpng.c:52: error: `png_uint_32' undeclared (first use in this
+> function)
+> src/loadpng.c:52: error: syntax error before "pack_fread"
+> src/loadpng.c:51: warning: unused variable `f'
+> src/loadpng.c: In function `check_if_png':
+> src/loadpng.c:72: warning: implicit declaration of function `png_sig_cmp'
+> src/loadpng.c:72: error: `png_byte' undeclared (first use in this function)
+> src/loadpng.c:72: error: syntax error before ')' token
+> src/loadpng.c: At top level:
+> src/loadpng.c:80: error: syntax error before "png_ptr"
+> src/loadpng.c: In function `really_load_png':
+> src/loadpng.c:84: error: `png_uint_32' undeclared (first use in this
+> function)
+> src/loadpng.c:84: error: syntax error before "width"
+> src/loadpng.c:97: warning: implicit declaration of function `png_read_info'
+> src/loadpng.c:97: error: `png_ptr' undeclared (first use in this function)
+> src/loadpng.c:97: error: `info_ptr' undeclared (first use in this function)
+> src/loadpng.c:99: warning: implicit declaration of function `png_get_IHDR'
+> src/loadpng.c:99: error: `width' undeclared (first use in this function)
+> src/loadpng.c:99: error: `height' undeclared (first use in this function)
+> src/loadpng.c:105: warning: implicit declaration of function
+> `png_set_packing'
+> src/loadpng.c:108: error: `PNG_COLOR_TYPE_GRAY' undeclared (first use in
+> this fu
+> nction)
+> src/loadpng.c:109: warning: implicit declaration of function
+> `png_set_expand'
+> src/loadpng.c:113: warning: implicit declaration of function
+> `png_get_valid' src/loadpng.c:113: error: `PNG_INFO_tRNS' undeclared (first
+> use in this function
+> )
+> src/loadpng.c:114: warning: implicit declaration of function
+> `png_set_tRNS_to_al
+> pha'
+> src/loadpng.c:120: warning: implicit declaration of function
+> `png_set_strip_16'
+> src/loadpng.c:124: error: `PNG_COLOR_TYPE_GRAY_ALPHA' undeclared (first use
+> in t
+> his function)
+> src/loadpng.c:125: warning: implicit declaration of function
+> `png_set_gray_to_rg
+> b'
+> src/loadpng.c:131: warning: implicit declaration of function `png_get_sRGB'
+> src/loadpng.c:132: warning: implicit declaration of function
+> `png_set_gamma' src/loadpng.c:134: warning: implicit declaration of
+> function `png_get_gAMA' src/loadpng.c:142: warning: implicit declaration of
+> function
+> `png_set_interlace_
+> handling'
+> src/loadpng.c:147: warning: implicit declaration of function
+> `png_read_update_in
+> fo'
+> src/loadpng.c:152: error: `pal' undeclared (first use in this function)
+> src/loadpng.c:156: error: `PNG_COLOR_MASK_PALETTE' undeclared (first use in
+> this
+> function)
+> src/loadpng.c:158: error: `png_colorp' undeclared (first use in this
+> function)
+> src/loadpng.c:158: error: syntax error before "palette"
+> src/loadpng.c:160: warning: implicit declaration of function `png_get_PLTE'
+> src/loadpng.c:160: error: `palette' undeclared (first use in this function)
+> src/loadpng.c:176: error: `rowbytes' undeclared (first use in this
+> function) src/loadpng.c:176: warning: implicit declaration of function
+> `png_get_rowbytes'
+> src/loadpng.c:193: warning: implicit declaration of function `png_set_bgr'
+> src/loadpng.c:198: error: syntax error before "y"
+> src/loadpng.c:199: error: `y' undeclared (first use in this function)
+> src/loadpng.c:200: warning: implicit declaration of function `png_read_row'
+> src/loadpng.c:208: warning: implicit declaration of function `png_read_end'
+> src/loadpng.c: In function `load_png':
+> src/loadpng.c:222: error: `png_structp' undeclared (first use in this
+> function)
+> src/loadpng.c:222: error: syntax error before "png_ptr"
+> src/loadpng.c:223: error: `png_infop' undeclared (first use in this
+> function)
+> src/loadpng.c:242: error: `png_ptr' undeclared (first use in this function)
+> src/loadpng.c:242: warning: implicit declaration of function
+> `png_create_read_st
+> ruct'
+> src/loadpng.c:242: error: `PNG_LIBPNG_VER_STRING' undeclared (first use in
+> this
+> function)
+> src/loadpng.c:250: error: `info_ptr' undeclared (first use in this
+> function) src/loadpng.c:250: warning: implicit declaration of function
+> `png_create_info_st
+> ruct'
+> src/loadpng.c:252: warning: implicit declaration of function
+> `png_destroy_read_s
+> truct'
+> src/loadpng.c:252: error: `png_infopp' undeclared (first use in this
+> function)
+> src/loadpng.c:261: warning: implicit declaration of function `setjmp'
+> src/loadpng.c:270: warning: implicit declaration of function
+> `png_set_read_fn'
+> src/loadpng.c:270: error: `png_rw_ptr' undeclared (first use in this
+> function)
+> src/loadpng.c:270: error: syntax error before "read_data"
+> src/loadpng.c:273: warning: implicit declaration of function
+> `png_set_sig_bytes'
+>
+> src/loadpng.c: At top level:
+> src/loadpng.c:295: error: syntax error before "png_uint_32"
+> src/loadpng.c:295: warning: no semicolon at end of struct or union
+> src/loadpng.c:296: warning: type defaults to `int' in declaration of
+> `current_po
+> s'
+> src/loadpng.c:296: warning: data definition has no type or storage class
+> src/loadpng.c:297: warning: type defaults to `int' in declaration of
+> `MEMORY_REA
+> DER_STATE'
+> src/loadpng.c:297: warning: data definition has no type or storage class
+> src/loadpng.c:299: error: syntax error before "png_ptr"
+> src/loadpng.c: In function `read_data_memory':
+> src/loadpng.c:301: error: `f' undeclared (first use in this function)
+> src/loadpng.c:301: error: syntax error before ')' token
+> src/loadpng.c:303: error: `length' undeclared (first use in this function)
+> src/loadpng.c:304: warning: implicit declaration of function `png_error'
+> src/loadpng.c:304: error: `png_ptr' undeclared (first use in this function)
+> src/loadpng.c:306: warning: implicit declaration of function `memcpy'
+> src/loadpng.c:306: error: `data' undeclared (first use in this function)
+> src/loadpng.c: In function `check_if_png_memory':
+> src/loadpng.c:317: error: `png_byte' undeclared (first use in this
+> function) src/loadpng.c:317: error: syntax error before ')' token
+> src/loadpng.c: In function `load_memory_png':
+> src/loadpng.c:327: error: syntax error before "memory_reader_state"
+> src/loadpng.c:329: error: `png_structp' undeclared (first use in this
+> function)
+> src/loadpng.c:329: error: syntax error before "png_ptr"
+> src/loadpng.c:330: error: `png_infop' undeclared (first use in this
+> function)
+> src/loadpng.c:344: error: `png_ptr' undeclared (first use in this function)
+> src/loadpng.c:344: error: `PNG_LIBPNG_VER_STRING' undeclared (first use in
+> this
+> function)
+> src/loadpng.c:350: error: `info_ptr' undeclared (first use in this
+> function) src/loadpng.c:352: error: `png_infopp' undeclared (first use in
+> this function)
+> src/loadpng.c:368: error: `memory_reader_state' undeclared (first use in
+> this fu
+> nction)
+> src/loadpng.c:373: error: `png_rw_ptr' undeclared (first use in this
+> function)
+> src/loadpng.c:373: error: syntax error before "read_data_memory"
+> src/loadpng.c: At top level:
+> src/loadpng.c:50: warning: 'read_data' defined but not used
+> src/loadpng.c:300: warning: 'read_data_memory' defined but not used
+>
+> C:\Projektit\OpenLayer\OpenLayer2D\Source>
+> C:\Projektit\OpenLayer\OpenLayer2D\Source>
+>
+> Any ideas?
+>
+> /Esa
+>
+> >From: "Miguel A. Gavidia" <juvinious at gmail.com>
+> >Reply-To: openlayer-developer at berlios.de
+> >To: openlayer-developer at lists.berlios.de
+> >Subject: [Openlayer-developer] Updates
+> >Date: Mon, 15 Jan 2007 02:58:57 +0800
+> >
+> >Ok so I went about the task of exporting the symbols in OpenLayer. I
+> > tested it
+> >on windows and was able to create a DLL of the library with success and
+> > was able to link the demos with it. Any of the windows users that have
+> > any interest in this I ask you to test it out yourself in your apps to
+> > make sure
+> >all required symbols are exported. I know some people were asking for this
+> >so, this is a good step in that general direction. In order to accomplish
+> >this I added two new preprocessors:
+> >OL_SHARED and OL_LIB_BUILD
+> >It should be fairly straightforward, when building the library pass
+> >both -DOL_SHARED and -DOL_LIB_BUILD. When linking against the library only
+> >pass -DOL_SHARED, however you might just want to throw #define OL_SHARED
+> >into
+> >the OpenLayer.hpp that way it's transparent.
+> >Additionally I also merged loadpng into the library as it is small and
+> >required if OL_NO_PNG is not defined. Of course it won't be included if
+> >OL_NO_PNG is enabled so there is no need to worry about it. Just make sure
+> >you aren't linking with -lloadpng or -lldpng anymore in your link line. If
+> >you are on linux nothing changes as `openlayer-config --libs` produces the
+> >proper link line for you. :)
+> >So regarding the dll stuff if you do happen to run across problems with
+> > it, missing symbols and what not, please post them here so I can correct
+> > them. Thanks.
+> >
+> >--
+> >-juvinious
+> >
+> >http://saggui.sourceforge.net - Simplified All Gaming GUI
+> >http://chasm.hopto.org - The Chasm - My Site
+> >http://openlayer.berlios.de - Openlayer
+> >_______________________________________________
+> >Openlayer-developer mailing list
+> >Openlayer-developer at lists.berlios.de
+> >https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+> _________________________________________________________________
+> Nyt l?yd?t etsim?si tiedot nopeasti niin koneeltasi kuin netist?.
+> http://toolbar.msn.fi
+>
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+-- 
+-juvinious
+
+http://saggui.sourceforge.net - Simplified All Gaming GUI
+http://chasm.hopto.org - The Chasm - My Site
+http://openlayer.berlios.de - Openlayer
+
+
+From tobing at gmx.net  Mon Jan 29 21:37:35 2007
+From: tobing at gmx.net (tobing at gmx.net)
+Date: Mon, 29 Jan 2007 21:37:35 +0100
+Subject: [Openlayer-developer]  License
+In-Reply-To: <BAY122-F8E78FF7E7D6A0482E10E6DFB50@phx.gbl>
+References: <BAY122-F8E78FF7E7D6A0482E10E6DFB50@phx.gbl>
+Message-ID: <20070129203735.195440@gmx.net>
+
+Hi, 
+
+I have just (accidentally) discovered that OpenLayer is licensed under LGPL - at least that is what the official site at berlios says. 
+
+There's a problem here. 
+
+With LGPL, if you include the files into your project, even by using a static library, your own project becomes infected with the LGPL, thus forces to release your own sourcecode under LGPL. The only way out would be to build a DLL, so that the binary can be used. 
+
+I'm not sure if that is what you intended, and would ask you to check this issue. Maybe change the license to one that is less restrictive (the allegrogl project gives you the choice to use GPL or zlib, whatever you like better). I really would like to use OpenLayer for my own project, but I would not be able to use it with LGPL... 
+
+Thanks! 
+
+
+-- 
+Viele Gr?sse / Best Regards / Amiti?s
+Tobing
+
+http://www.staedtebauen.de
+
+
+
+From fladimir2002 at hotmail.com  Mon Jan 29 22:58:54 2007
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Mon, 29 Jan 2007 23:58:54 +0200
+Subject: [Openlayer-developer] License
+In-Reply-To: <20070129203735.195440@gmx.net>
+Message-ID: <BAY122-F124AC00E2712AC24D172D3DFA70@phx.gbl>
+
+Yeah, it originally used GZip license, but I thought LGPL would be the same. 
+At least I'll give you a special permission to use it the way you like, 
+until I've managed to change the license in Berlios' site...
+
+
+>From: tobing at gmx.net
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: [Openlayer-developer]  License
+>Date: Mon, 29 Jan 2007 21:37:35 +0100
+>
+>Hi,
+>
+>I have just (accidentally) discovered that OpenLayer is licensed under LGPL 
+>- at least that is what the official site at berlios says.
+>
+>There's a problem here.
+>
+>With LGPL, if you include the files into your project, even by using a 
+>static library, your own project becomes infected with the LGPL, thus 
+>forces to release your own sourcecode under LGPL. The only way out would be 
+>to build a DLL, so that the binary can be used.
+>
+>I'm not sure if that is what you intended, and would ask you to check this 
+>issue. Maybe change the license to one that is less restrictive (the 
+>allegrogl project gives you the choice to use GPL or zlib, whatever you 
+>like better). I really would like to use OpenLayer for my own project, but 
+>I would not be able to use it with LGPL...
+>
+>Thanks!
+>
+>
+>--
+>Viele Gr?sse / Best Regards / Amiti?s
+>Tobing
+>
+>http://www.staedtebauen.de
+>
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Nyt l?yd?t etsim?si tiedot nopeasti niin koneeltasi kuin netist?. 
+http://toolbar.msn.fi
+
+
+
+From juvinious at gmail.com  Mon Jan 29 23:09:01 2007
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Tue, 30 Jan 2007 06:09:01 +0800
+Subject: [Openlayer-developer] License
+In-Reply-To: <BAY122-F124AC00E2712AC24D172D3DFA70@phx.gbl>
+References: <BAY122-F124AC00E2712AC24D172D3DFA70@phx.gbl>
+Message-ID: <200701300609.02113.juvinious@gmail.com>
+
+Well it really depends on the restrictions you want to impose on the end user? 
+If you want a generic or near to the public domain license, I'd look into png 
+or zlib licenses. 
+LGPL, however has an advantage over GPL in that you can link against the 
+library and not have to LGPL your own code. However in tobings case I think 
+he includes all the source to every library in his projects, which is what 
+would cause his code to be infected. I didn't even know, honestly, that it 
+was licensed under LGPL, there is no mention of the LGPL license in the 
+openlayer sources. You should throw in a LICENSE file in the root directory, 
+that way there are no confusions or misunderstandings.
+
+On Tuesday 30 January 2007 05:58, Esa Tanskanen wrote:
+> Yeah, it originally used GZip license, but I thought LGPL would be the
+> same. At least I'll give you a special permission to use it the way you
+> like, until I've managed to change the license in Berlios' site...
+>
+> >From: tobing at gmx.net
+> >Reply-To: openlayer-developer at berlios.de
+> >To: openlayer-developer at berlios.de
+> >Subject: [Openlayer-developer]  License
+> >Date: Mon, 29 Jan 2007 21:37:35 +0100
+> >
+> >Hi,
+> >
+> >I have just (accidentally) discovered that OpenLayer is licensed under
+> > LGPL - at least that is what the official site at berlios says.
+> >
+> >There's a problem here.
+> >
+> >With LGPL, if you include the files into your project, even by using a
+> >static library, your own project becomes infected with the LGPL, thus
+> >forces to release your own sourcecode under LGPL. The only way out would
+> > be to build a DLL, so that the binary can be used.
+> >
+> >I'm not sure if that is what you intended, and would ask you to check this
+> >issue. Maybe change the license to one that is less restrictive (the
+> >allegrogl project gives you the choice to use GPL or zlib, whatever you
+> >like better). I really would like to use OpenLayer for my own project, but
+> >I would not be able to use it with LGPL...
+> >
+> >Thanks!
+> >
+> >
+> >--
+> >Viele Gr?sse / Best Regards / Amiti?s
+> >Tobing
+> >
+> >http://www.staedtebauen.de
+> >
+> >_______________________________________________
+> >Openlayer-developer mailing list
+> >Openlayer-developer at lists.berlios.de
+> >https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+> _________________________________________________________________
+> Nyt l?yd?t etsim?si tiedot nopeasti niin koneeltasi kuin netist?.
+> http://toolbar.msn.fi
+>
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+-- 
+-juvinious
+
+http://saggui.sourceforge.net - Simplified All Gaming GUI
+http://chasm.hopto.org - The Chasm - My Site
+http://openlayer.berlios.de - Openlayer
+
+
+From kotori83 at gmail.com  Tue Jan 30 07:14:00 2007
+From: kotori83 at gmail.com (kotori83)
+Date: Tue, 30 Jan 2007 00:14:00 -0600
+Subject: [Openlayer-developer] OpenLayer Errors upon compile
+Message-ID: <c9004b820701292214v23b1168v25e48c0b06098c57@mail.gmail.com>
+
+I got the following today while trying to compile with a fresh install.
+
+In file included from C:/Program
+Files/Dev-Cpp/include/OpenLayer/RenderModes.hpp:6,
+                 from C:/Program
+Files/Dev-Cpp/include/OpenLayer/Bitmap.hpp:13,
+                 from C:/Program
+Files/Dev-Cpp/include/OpenLayer/Animation.hpp:6,
+                 from C:/Program Files/Dev-Cpp/include/OpenLayer.hpp:35,
+                 from main.cpp:26:
+C:/Program Files/Dev-Cpp/include/OpenLayer/Rectangle.hpp: In member function
+`void ol::Rect::SetAccuracy(float)':
+C:/Program Files/Dev-Cpp/include/OpenLayer/Rectangle.hpp:72: error: `min'
+undeclared (first use this function)
+C:/Program Files/Dev-Cpp/include/OpenLayer/Rectangle.hpp:72: error: (Each
+undeclared identifier is reported only once for each function it appears
+in.)
+
+In file included from C:/Program Files/Dev-Cpp/include/OpenLayer.hpp:57,
+                 from main.cpp:26:
+C:/Program Files/Dev-Cpp/include/OpenLayer/Circle.hpp: In member function
+`void ol::Ellipse::SetAccuracy(float)':
+C:/Program Files/Dev-Cpp/include/OpenLayer/Circle.hpp:116: error: `max'
+undeclared (first use this function)
+C:/Program Files/Dev-Cpp/include/OpenLayer/Circle.hpp:118: error: `min'
+undeclared (first use this function)
+
+mingw32-make.exe: *** [obj/main.o] Error 1
+
+Execution terminated
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/openlayer-developer/attachments/20070130/c2dff1d9/attachment.html>
+
+From tobing at gmx.net  Tue Jan 30 08:44:31 2007
+From: tobing at gmx.net (tobing at gmx.net)
+Date: Tue, 30 Jan 2007 08:44:31 +0100
+Subject: [Openlayer-developer] License
+In-Reply-To: <200701300609.02113.juvinious@gmail.com>
+References: <BAY122-F124AC00E2712AC24D172D3DFA70@phx.gbl>
+	<200701300609.02113.juvinious@gmail.com>
+Message-ID: <20070130074431.97270@gmx.net>
+
+
+> Well it really depends on the restrictions you want to impose on the end
+> user? 
+> If you want a generic or near to the public domain license, I'd look into
+> png or zlib licenses. 
+> LGPL, however has an advantage over GPL in that you can link against the 
+> library and not have to LGPL your own code. 
+> However in tobings case I think he includes all the source to every 
+> library in his projects, which is what would cause his code to be 
+> infected. 
+
+Well, I just build the libraries all myself, mainly for debugging into any of them, or applying a small fix when I encounter a bug. 
+
+
+> I didn't even know, honestly, that it was licensed under LGPL, there is 
+> no mention of the LGPL license in the openlayer sources. You should 
+> throw in a LICENSE file in the root directory, that way there are no 
+> confusions or misunderstandings.
+
+Yes, please. 
+
+
+
+> > Yeah, it originally used GZip license, but I thought LGPL would be the
+> > same. At least I'll give you a special permission to use it the way you
+> > like, until I've managed to change the license in Berlios' site...
+
+Thank you very much! 
+
+
+Hmm, I have just re-read a german translation of the LGPL, and I'm a little worried now. It seems that I misunderstood the usage of 'binary', and I thought that it would mean that in order to not get infected you must use a 'binary' distribution, i.e. a DLL. Which seems not to be the case, the restriction means that you can link against a compiled binary file, which would include a static library as well. On the other hand, IF you make changes to the LGPLed code, you must provide those changes as source code. Which means that I wouldn't be able to make changes to OpenLayer and not share them (which is the intention of LGPL and GPL in the first place). 
+
+After all, LGPL does make sense with that interpretation, doesn't it? 
+
+
+-- 
+Viele Gr?sse / Best Regards / Amiti?s
+Tobing
+
+http://www.staedtebauen.de
+
+
+
+From fladimir2002 at hotmail.com  Tue Jan 30 09:55:45 2007
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Tue, 30 Jan 2007 10:55:45 +0200
+Subject: [Openlayer-developer] License
+In-Reply-To: <200701300609.02113.juvinious@gmail.com>
+Message-ID: <BAY122-F7C3CA7084FA5DAAA5AD2DDFA60@phx.gbl>
+
+Yeah, it should have GZip lisence, but there's been some confusion and a 
+wrong license has been entered in the website...
+
+
+>From: "Miguel A. Gavidia" <juvinious at gmail.com>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: Re: [Openlayer-developer] License
+>Date: Tue, 30 Jan 2007 06:09:01 +0800
+>
+>Well it really depends on the restrictions you want to impose on the end 
+>user?
+>If you want a generic or near to the public domain license, I'd look into 
+>png
+>or zlib licenses.
+>LGPL, however has an advantage over GPL in that you can link against the
+>library and not have to LGPL your own code. However in tobings case I think
+>he includes all the source to every library in his projects, which is what
+>would cause his code to be infected. I didn't even know, honestly, that it
+>was licensed under LGPL, there is no mention of the LGPL license in the
+>openlayer sources. You should throw in a LICENSE file in the root 
+>directory,
+>that way there are no confusions or misunderstandings.
+>
+>On Tuesday 30 January 2007 05:58, Esa Tanskanen wrote:
+> > Yeah, it originally used GZip license, but I thought LGPL would be the
+> > same. At least I'll give you a special permission to use it the way you
+> > like, until I've managed to change the license in Berlios' site...
+> >
+> > >From: tobing at gmx.net
+> > >Reply-To: openlayer-developer at berlios.de
+> > >To: openlayer-developer at berlios.de
+> > >Subject: [Openlayer-developer]  License
+> > >Date: Mon, 29 Jan 2007 21:37:35 +0100
+> > >
+> > >Hi,
+> > >
+> > >I have just (accidentally) discovered that OpenLayer is licensed under
+> > > LGPL - at least that is what the official site at berlios says.
+> > >
+> > >There's a problem here.
+> > >
+> > >With LGPL, if you include the files into your project, even by using a
+> > >static library, your own project becomes infected with the LGPL, thus
+> > >forces to release your own sourcecode under LGPL. The only way out 
+>would
+> > > be to build a DLL, so that the binary can be used.
+> > >
+> > >I'm not sure if that is what you intended, and would ask you to check 
+>this
+> > >issue. Maybe change the license to one that is less restrictive (the
+> > >allegrogl project gives you the choice to use GPL or zlib, whatever you
+> > >like better). I really would like to use OpenLayer for my own project, 
+>but
+> > >I would not be able to use it with LGPL...
+> > >
+> > >Thanks!
+> > >
+> > >
+> > >--
+> > >Viele Gr?sse / Best Regards / Amiti?s
+> > >Tobing
+> > >
+> > >http://www.staedtebauen.de
+> > >
+> > >_______________________________________________
+> > >Openlayer-developer mailing list
+> > >Openlayer-developer at lists.berlios.de
+> > >https://lists.berlios.de/mailman/listinfo/openlayer-developer
+> >
+> > _________________________________________________________________
+> > Nyt l?yd?t etsim?si tiedot nopeasti niin koneeltasi kuin netist?.
+> > http://toolbar.msn.fi
+> >
+> > _______________________________________________
+> > Openlayer-developer mailing list
+> > Openlayer-developer at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+>--
+>-juvinious
+>
+>http://saggui.sourceforge.net - Simplified All Gaming GUI
+>http://chasm.hopto.org - The Chasm - My Site
+>http://openlayer.berlios.de - Openlayer
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Nyt l?yd?t etsim?si tiedot nopeasti niin koneeltasi kuin netist?. 
+http://toolbar.msn.fi
+
+
+
+From neil at retrospec.sgn.net  Tue Jan 30 09:49:56 2007
+From: neil at retrospec.sgn.net (Neil)
+Date: Tue, 30 Jan 2007 08:49:56 +0000
+Subject: [Openlayer-developer] License
+In-Reply-To: <20070130074431.97270@gmx.net>
+References: <BAY122-F124AC00E2712AC24D172D3DFA70@phx.gbl>	<200701300609.02113.juvinious@gmail.com>
+	<20070130074431.97270@gmx.net>
+Message-ID: <45BF06B4.3030600@retrospec.sgn.net>
+
+Instead of weighing up the pros and cons of each licence and the 
+restrictions, why not think hard if a licence really needed for OL?
+
+Take Allegro, that's as close as you can get to not actually having a 
+licence, but having one, and is all you need if the source you are 
+writing is for public consumption for free.
+
+Neil.
+
+tobing at gmx.net wrote:
+>> Well it really depends on the restrictions you want to impose on the end
+>> user? 
+>> If you want a generic or near to the public domain license, I'd look into
+>> png or zlib licenses. 
+>> LGPL, however has an advantage over GPL in that you can link against the 
+>> library and not have to LGPL your own code. 
+>> However in tobings case I think he includes all the source to every 
+>> library in his projects, which is what would cause his code to be 
+>> infected. 
+>>     
+>
+> Well, I just build the libraries all myself, mainly for debugging into any of them, or applying a small fix when I encounter a bug. 
+>
+>
+>   
+>> I didn't even know, honestly, that it was licensed under LGPL, there is 
+>> no mention of the LGPL license in the openlayer sources. You should 
+>> throw in a LICENSE file in the root directory, that way there are no 
+>> confusions or misunderstandings.
+>>     
+>
+> Yes, please. 
+>
+>
+>
+>   
+>>> Yeah, it originally used GZip license, but I thought LGPL would be the
+>>> same. At least I'll give you a special permission to use it the way you
+>>> like, until I've managed to change the license in Berlios' site...
+>>>       
+>
+> Thank you very much! 
+>
+>
+> Hmm, I have just re-read a german translation of the LGPL, and I'm a little worried now. It seems that I misunderstood the usage of 'binary', and I thought that it would mean that in order to not get infected you must use a 'binary' distribution, i.e. a DLL. Which seems not to be the case, the restriction means that you can link against a compiled binary file, which would include a static library as well. On the other hand, IF you make changes to the LGPLed code, you must provide those changes as source code. Which means that I wouldn't be able to make changes to OpenLayer and not share them (which is the intention of LGPL and GPL in the first place). 
+>
+> After all, LGPL does make sense with that interpretation, doesn't it? 
+>
+>
+>   
+
+
+
+From fladimir2002 at hotmail.com  Tue Jan 30 09:56:46 2007
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Tue, 30 Jan 2007 10:56:46 +0200
+Subject: [Openlayer-developer] OpenLayer Errors upon compile
+In-Reply-To: <c9004b820701292214v23b1168v25e48c0b06098c57@mail.gmail.com>
+Message-ID: <BAY122-F193C86D69E53786738803DDFA60@phx.gbl>
+
+Seems like some modifications to make it work with MSVC has caused it to 
+cease work in GCC. I'll take a look, thanks!
+
+
+>From: kotori83 <kotori83 at gmail.com>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: [Openlayer-developer] OpenLayer Errors upon compile
+>Date: Tue, 30 Jan 2007 00:14:00 -0600
+>
+>I got the following today while trying to compile with a fresh install.
+>
+>In file included from C:/Program
+>Files/Dev-Cpp/include/OpenLayer/RenderModes.hpp:6,
+>                 from C:/Program
+>Files/Dev-Cpp/include/OpenLayer/Bitmap.hpp:13,
+>                 from C:/Program
+>Files/Dev-Cpp/include/OpenLayer/Animation.hpp:6,
+>                 from C:/Program Files/Dev-Cpp/include/OpenLayer.hpp:35,
+>                 from main.cpp:26:
+>C:/Program Files/Dev-Cpp/include/OpenLayer/Rectangle.hpp: In member 
+>function
+>`void ol::Rect::SetAccuracy(float)':
+>C:/Program Files/Dev-Cpp/include/OpenLayer/Rectangle.hpp:72: error: `min'
+>undeclared (first use this function)
+>C:/Program Files/Dev-Cpp/include/OpenLayer/Rectangle.hpp:72: error: (Each
+>undeclared identifier is reported only once for each function it appears
+>in.)
+>
+>In file included from C:/Program Files/Dev-Cpp/include/OpenLayer.hpp:57,
+>                 from main.cpp:26:
+>C:/Program Files/Dev-Cpp/include/OpenLayer/Circle.hpp: In member function
+>`void ol::Ellipse::SetAccuracy(float)':
+>C:/Program Files/Dev-Cpp/include/OpenLayer/Circle.hpp:116: error: `max'
+>undeclared (first use this function)
+>C:/Program Files/Dev-Cpp/include/OpenLayer/Circle.hpp:118: error: `min'
+>undeclared (first use this function)
+>
+>mingw32-make.exe: *** [obj/main.o] Error 1
+>
+>Execution terminated
+
+
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Uutisista turhaan tietoon. Mit? ikin? etsitkin, MSN Search l?yt?? hakemasi. 
+http://search.msn.fi
+
+
+
+From tobing at gmx.net  Tue Jan 30 10:05:38 2007
+From: tobing at gmx.net (tobing at gmx.net)
+Date: Tue, 30 Jan 2007 10:05:38 +0100
+Subject: [Openlayer-developer] License
+In-Reply-To: <45BF06B4.3030600@retrospec.sgn.net>
+References: <BAY122-F124AC00E2712AC24D172D3DFA70@phx.gbl>
+	<200701300609.02113.juvinious@gmail.com>	<20070130074431.97270@gmx.net>
+	<45BF06B4.3030600@retrospec.sgn.net>
+Message-ID: <20070130090538.97270@gmx.net>
+
+gzip license would be fine. 
+
+
+> Instead of weighing up the pros and cons of each licence and the 
+> restrictions, why not think hard if a licence really needed for OL?
+> 
+> Take Allegro, that's as close as you can get to not actually having a 
+> licence, but having one, and is all you need if the source you are 
+> writing is for public consumption for free.
+
+Without license, you can't use it. So you have to explicitely supply a license if you want people to be able to use it... 
+
+-- 
+Viele Gr?sse / Best Regards / Amiti?s
+Tobing
+
+http://www.staedtebauen.de
+
+
+

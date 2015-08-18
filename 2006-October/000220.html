@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] Using 8 bpp bitmap as alpha channel.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Using%208%20bpp%20bitmap%20as%20alpha%20channel.&In-Reply-To=%3CBAY122-F1441D58D18646390F1F447DF050%40phx.gbl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000219.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] Using 8 bpp bitmap as alpha channel.</H1>
+    <B>Esa Tanskanen</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Using%208%20bpp%20bitmap%20as%20alpha%20channel.&In-Reply-To=%3CBAY122-F1441D58D18646390F1F447DF050%40phx.gbl%3E"
+       TITLE="[Openlayer-developer] Using 8 bpp bitmap as alpha channel.">fladimir2002 at hotmail.com
+       </A><BR>
+    <I>Sat Oct 28 22:24:23 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000219.html">[Openlayer-developer] Using 8 bpp bitmap as alpha channel.
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#220">[ date ]</a>
+              <a href="thread.html#220">[ thread ]</a>
+              <a href="subject.html#220">[ subject ]</a>
+              <a href="author.html#220">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>One improvement would be to allow a 8bpp bitmap file to be loaded and
+</I>&gt;<i>&quot;deflated&quot; into a 32bpp in memory - it still wastes 24 bpp in memory,
+</I>&gt;<i>but at least the required harddisk footprint isn't as huge.
+</I>
+That may already be possible if you set a proper palette in Allegro.
+
+&gt;<i>The next (and best) thing would be, of course, if both on harddisk and
+</I>&gt;<i>in memory only the channel that is actually needed exists.
+</I>
+8-bit textures are possible, but may not be supported with all hardware. For 
+example, the text routines originally used 8-bit textures, but I changed 
+them to 32 bpp for compability reasons.
+
+_________________________________________________________________
+Uutiset ja kasvot uutisten takaa. MSN Search, t&#228;yden palvelun hakukone. 
+<A HREF="http://search.msn.fi">http://search.msn.fi</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000219.html">[Openlayer-developer] Using 8 bpp bitmap as alpha channel.
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#220">[ date ]</a>
+              <a href="thread.html#220">[ thread ]</a>
+              <a href="subject.html#220">[ subject ]</a>
+              <a href="author.html#220">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

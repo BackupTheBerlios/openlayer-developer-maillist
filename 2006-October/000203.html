@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] updates to files of OL
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20updates%20to%20files%20of%20OL&In-Reply-To=%3C200610230355.10986.juvinious%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000202.html">
+   <LINK REL="Next"  HREF="000204.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] updates to files of OL</H1>
+    <B>Miguel A. Gavidia</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20updates%20to%20files%20of%20OL&In-Reply-To=%3C200610230355.10986.juvinious%40gmail.com%3E"
+       TITLE="[Openlayer-developer] updates to files of OL">juvinious at gmail.com
+       </A><BR>
+    <I>Sun Oct 22 21:55:10 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000202.html">[Openlayer-developer] updates to files of OL
+</A></li>
+        <LI>Next message: <A HREF="000204.html">[Openlayer-developer] updates to files of OL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#203">[ date ]</a>
+              <a href="thread.html#203">[ thread ]</a>
+              <a href="subject.html#203">[ subject ]</a>
+              <a href="author.html#203">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ok I gave the changes a whirl and they worked flawlessly with gcc 4.1 on 
+linux. All compiled well and all the demos work just the same. Hopefully it 
+works just as well on gcc/mingw on windows. :D
+Good work neil and tobing. :)
+&#26376;&#26332;&#26085; 23 10&#26376; 2006 01:35&#12289;Esa Tanskanen &#12373;&#12435;&#12399;&#26360;&#12365;&#12414;&#12375;&#12383;:
+&gt;<i> Thanks a lot, I'll check it out and if everything goes OK, I'll submit it
+</I>&gt;<i> to the SVN repository!
+</I>&gt;<i>
+</I>&gt;<i> &gt;From: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">tobing at gmx.net</A>
+</I>&gt;<i> &gt;Reply-To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at berlios.de</A>
+</I>&gt;<i> &gt;To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at berlios.de</A>
+</I>&gt;<i> &gt;Subject: Re: [Openlayer-developer] updates to files of OL
+</I>&gt;<i> &gt;Date: Sun, 22 Oct 2006 17:03:03 +0200
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; Oops sorry about that tobing, I misread your name as tobias... my bad.
+</I>&gt;<i> &gt; &gt; Ignore
+</I>&gt;<i> &gt; &gt; that. ::)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;tobing is the pseudonym, Tobias is my real name. So there's no need to
+</I>&gt;<i> &gt;apologize...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;I've attached ol.rar, containing all 7 changed files.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;OlRectangle.hpp and Circle.hpp have a section included, which undefines
+</I>&gt;<i> &gt; min and max, if they are defined.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Bitmap.cpp has loop variables renamed.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Internal.hpp has different implementations of OlAssert. This code is
+</I>&gt;<i> &gt; copied from Neil Walker, from the thread in the forum.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;shapedemo/Main.cpp has two things corrected: END_OF_FUNCTION and to open
+</I>&gt;<i> &gt;the correct file.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;textdemo/Main.cpp das an added Canvas::Fill to have a blank black screen
+</I>&gt;<i> &gt; to write on, and the ctor of TextRenderer neuropol changed, then call
+</I>&gt;<i> &gt; Load explicitely (helps debugging, but maybe should not go into SVN?).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;gamedemo/Demo.cpp has the gcc-only &lt;? statement replaced by something that
+</I>&gt;<i> &gt;works for me - what does &lt;? mean?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Thanks for considering this stuff for updating SVN, hope it works all
+</I>&gt;<i> &gt; fine. I'll try to not use GK now...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;--
+</I>&gt;<i> &gt;Viele Gr&#252;sse / Best Regards / Amiti&#233;s
+</I>&gt;<i> &gt;Tobing
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;<A HREF="http://www.staedtebauen.de">http://www.staedtebauen.de</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;&lt;&lt; ol.rar &gt;&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;_______________________________________________
+</I>&gt;<i> &gt;Openlayer-developer mailing list
+</I>&gt;<i> &gt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> &gt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">https://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;<i>
+</I>&gt;<i> _________________________________________________________________
+</I>&gt;<i> Uutiset ja kasvot uutisten takaa. MSN Search, t&#228;yden palvelun hakukone.
+</I>&gt;<i> <A HREF="http://search.msn.fi">http://search.msn.fi</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openlayer-developer mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">https://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>
+-- 
+-juvinious
+
+<A HREF="http://chasm.hopto.org">http://chasm.hopto.org</A> - The Chasm - My Site
+<A HREF="http://openlayer.berlios.de">http://openlayer.berlios.de</A> - Openlayer
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000202.html">[Openlayer-developer] updates to files of OL
+</A></li>
+	<LI>Next message: <A HREF="000204.html">[Openlayer-developer] updates to files of OL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#203">[ date ]</a>
+              <a href="thread.html#203">[ thread ]</a>
+              <a href="subject.html#203">[ subject ]</a>
+              <a href="author.html#203">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

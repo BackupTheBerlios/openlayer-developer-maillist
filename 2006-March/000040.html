@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] RFC on incomplete GUI design
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20RFC%20on%20incomplete%20GUI%20design&In-Reply-To=%3C440D53FD.3050601%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000037.html">
+   <LINK REL="Next"  HREF="000043.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] RFC on incomplete GUI design</H1>
+    <B>David Schwingenschl&#246;gl</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20RFC%20on%20incomplete%20GUI%20design&In-Reply-To=%3C440D53FD.3050601%40gmx.net%3E"
+       TITLE="[Openlayer-developer] RFC on incomplete GUI design">indeterminatus_ml at gmx.net
+       </A><BR>
+    <I>Tue Mar  7 10:35:57 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000037.html">[Openlayer-developer] RFC on incomplete GUI design
+</A></li>
+        <LI>Next message: <A HREF="000043.html">[Openlayer-developer] RFC on incomplete GUI design
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#40">[ date ]</a>
+              <a href="thread.html#40">[ thread ]</a>
+              <a href="subject.html#40">[ subject ]</a>
+              <a href="author.html#40">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>See comments inline.
+
+Yours,
+  David.
+
+B E wrote:
+&gt;<i> Specifically I have 3 areas represented here - the Window/Widget 
+</I>&gt;<i> classes, Sizer (auto-layout) classes, and Event classes.  I have these 
+</I>&gt;<i> three areas covered because they are the clearest part of my personal 
+</I>&gt;<i> vision and my own libraries/projects have parts or all of the concepts 
+</I>&gt;<i> implemented already.
+</I>I like the general idea of that. Would you be willing to let us re-use 
+your (or parts of your) code?
+&gt;<i> So I thought I'd just shoot off this header file to see what any of 
+</I>&gt;<i> you think.
+</I>After taking a quick glance at the header file, here are my comments:
+1) class Frame. As you said, this is way beyond the scope of an initial 
+release. Keeping the possibility in mind, however, doesn't sound like a 
+bad idea to me.
+2) I'm missing a spin-edit kind of Control derivative. This might even 
+inherit from TextBox. Nothing too important, really, but I can imagine 
+it would come in handy in many situations.
+3) I'm also kind-of missing a control for tabular output of name&lt;-&gt;value 
+tuples. This might be useful especially for tool development (all kind 
+of editors etc.), and probably also for debugging purposes in-game.
+4) class Console. I think this goes beyond the scope of the GUI. I 
+already have my own console implemented, so I don't mind, but I think if 
+we're going to provide a console, it would be more sensible to provide 
+the complete package (along with a framework for command parsing etc.) 
+in another (dedicated) add-on.
+5) The layout managers (see Sizeable etc.) seem complete enough for me. 
+I like that.
+6) The event system also seems to be complete, I have no further 
+comments on that.
+
+What isn't clear to me still, is how the entire GUI system will be 
+integrated into the game. Will there be one routine (e.g. in a 
+singletoned class GUI) that has to be called periodically in the game 
+loop? Will the GUI system install a thread and run in there?
+
+As extension to your original proposal, I suggest a bunch of pre-made 
+dialogs, like a FileOpenDialog, FileSaveDialog, and whatnot. These, of 
+course, utilize the functionality of the base GUI system and do nothing 
+more than provide quick (and easy) access to them.
+
+The last (but very sensible) issue I'd like to address is skinning. It 
+wasn't clear to me from your proposal how that could be achieved. I 
+think we should account for that from the beginning, as it could mean a 
+major cut in the architecture when installed later on (making the whole 
+refactoring process a pain in the butt), even if it isn't supported for 
+a couple of releases. Would you mind elaborating on that?
+&gt;<i> And I'll take this opportunity to ask - there's the oladdons project 
+</I>&gt;<i> now but it doesn't make sense to me to seperate discussion of addons 
+</I>&gt;<i> into mailing lists there - not yet.  I think since OL is still raw and 
+</I>&gt;<i> in constant flux, and for the first few months the development of both 
+</I>&gt;<i> is going to be highly intertwined, we should just keep it all here.  
+</I>&gt;<i> Any arguments on that note?
+</I>The purist thing to do would be to separate the discussions, but I see 
+no need for that now. As long as the discussions can benefit from each 
+other, they can be put in the same pot, I think. Once they're both 
+established enough, we might want to come back to this very point and 
+decide whether their ways should part or not.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000037.html">[Openlayer-developer] RFC on incomplete GUI design
+</A></li>
+	<LI>Next message: <A HREF="000043.html">[Openlayer-developer] RFC on incomplete GUI design
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#40">[ date ]</a>
+              <a href="thread.html#40">[ thread ]</a>
+              <a href="subject.html#40">[ subject ]</a>
+              <a href="author.html#40">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

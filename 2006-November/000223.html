@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] cmake
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20cmake&In-Reply-To=%3C20061101204959.19820%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000222.html">
+   <LINK REL="Next"  HREF="000224.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] cmake</H1>
+    <B>tobing at gmx.net</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20cmake&In-Reply-To=%3C20061101204959.19820%40gmx.net%3E"
+       TITLE="[Openlayer-developer] cmake">tobing at gmx.net
+       </A><BR>
+    <I>Wed Nov  1 21:49:59 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000222.html">[Openlayer-developer] cmake
+</A></li>
+        <LI>Next message: <A HREF="000224.html">[Openlayer-developer] cmake
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#223">[ date ]</a>
+              <a href="thread.html#223">[ thread ]</a>
+              <a href="subject.html#223">[ subject ]</a>
+              <a href="author.html#223">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm one of the MSVC users - so I'll try that cmake stuff out and compare it to my own vcproj-file. 
+
+One point is, if you collect several vcproj-files into your solution, this affects linking. For example, I have all needed libraries in my solution, one vcproj-file for each: zlib, freetype, lpng, loadpng, allegrogl, allegro (and glyph-keeper, but that's not needed since it doesn't work properly). So if you put the libraries into the vcproj-file, you can't use extra vcproj-files in the same solution to be used with your link step. This is unfortunately so, because it makes distributing single vcproj-files hard, you have to decide upfront where you have vcproj-files and where not. 
+
+For the macros to use, if you want to have dll-files as well as static library, you need to define the preprocessor macros for 3 possibilities: static lib (doesn't need any decorations), using the dll (needs the declspec(dllimport)) and building the dll (needs declspec(dllexport)). So it has to be decided which of 'static lib' and 'using as dll' has to be the default. 
+
+I would propose that it should be done similar to the allegro library, which also offers both static lib and dll building, and discriminates using a certain preprocessor define (have to look up which it was). 
+
+Which symbols have to be exported? I woudl try to export at least everything needed in the examples, but in the end, Fladimir knows best. Once it works, it should be quite easy to add missing exports to the header files. 
+
+I'm not sure if I have the time to go complete this task in the next few days, but I'll try and at least give it a start, if that's OK for you. 
+
+best regards
+tobing
+
+
+
+&gt;<i> Yesterday I wrote up a cmake script for creating build files on different 
+</I>&gt;<i> platforms and environments. So far it can generate makefiles for mingw,
+</I>&gt;<i> msys 
+</I>&gt;<i> and *nix based platforms as well as MSVC vcproj files. On *nix based 
+</I>&gt;<i> platforms it's capable of creating the lib statically or shared. On mingw
+</I>&gt;<i> and 
+</I>&gt;<i> msys it can as well, shared being that it generates a dll. However since 
+</I>&gt;<i> nothing is exposed in the lib by means of __dllspec(export) the lib is 
+</I>&gt;<i> useless in that form. I recall somebody bringing up the idea that they
+</I>&gt;<i> would 
+</I>&gt;<i> like to see it as a dll. Now with the possibility of creating it as a dll,
+</I>&gt;<i> what should be exposed? We can probably add in a simple preprocessor like:
+</I>&gt;<i> #ifdef DLL_BUILD
+</I>&gt;<i> #define DLL_FUNC __dllspec(export)
+</I>&gt;<i> #else
+</I>&gt;<i> #define DLL_FUNC __dllspec(import)
+</I>&gt;<i> #endif
+</I>&gt;<i> and prepend the functions of the library that should be exposed.
+</I>&gt;<i> Any ideas?
+</I>&gt;<i> 
+</I>&gt;<i> Now for the MSVC related stuff. I wasn't able to get the project files to 
+</I>&gt;<i> build since I keep getting an error C1900 
+</I>&gt;<i> (<A HREF="http://msdn2.microsoft.com/en-us/library/ks07be9f.aspx">http://msdn2.microsoft.com/en-us/library/ks07be9f.aspx</A>)
+</I>&gt;<i> which has to do with my msvc installation.
+</I>&gt;<i> If the environment is setup properly and all the requisite libs are
+</I>&gt;<i> installed, 
+</I>&gt;<i> I believe that the compilation should work. In the end it should generate
+</I>&gt;<i> the 
+</I>&gt;<i> proper openlayer.lib and accompanying files as well as build the examples.
+</I>&gt;<i> If anybody has msvc and is willing to install cmake to give it a go, I'd
+</I>&gt;<i> be 
+</I>&gt;<i> gratefull. Oh and the names of the libraries I have it set to looks like 
+</I>&gt;<i> this:
+</I>&gt;<i> alleg.lib - allegro
+</I>&gt;<i> agl.lib - allegrogl
+</I>&gt;<i> libpng.lib - libpng
+</I>&gt;<i> ldpng.lib - loadpng
+</I>&gt;<i> freetype.lib - freetype2
+</I>&gt;<i> zlib.lib - zlib
+</I>&gt;<i> glyph-agl.lib - glyphkeeper (if you are not using the internal render)
+</I>&gt;<i> gdi32.lib - windows stuff ?
+</I>&gt;<i> glu32.lib - opengl related?
+</I>&gt;<i> opengl32.lib - opengl
+</I>&gt;<i> 
+</I>&gt;<i> If I'm missing any other libs I should be linking against please let me
+</I>&gt;<i> know 
+</I>&gt;<i> and I'll add them in.
+</I>&gt;<i> 
+</I>&gt;<i> And if you don't know what cmake is take a look: <A HREF="http://www.cmake.org">http://www.cmake.org</A>
+</I>&gt;<i> I believe this is the direction where the build system should be going.
+</I>&gt;<i> Since 
+</I>&gt;<i> it can provide us the means of allowing OpenLayer to be used in other 
+</I>&gt;<i> environments and not limited to gcc.
+</I>&gt;<i> And although cbuild works great, it still has the tendency to fail on some
+</I>&gt;<i> environments, allowing cmake to be the better alternative. Also, many FOSS
+</I>&gt;<i> projects (<A HREF="http://www.cmake.org/Wiki/CMake_Projects">http://www.cmake.org/Wiki/CMake_Projects</A>) are going in that 
+</I>&gt;<i> direction as well, KDE being the top one.
+</I>&gt;<i> 
+</I>&gt;<i> If you are on windows you can download the binary installer.
+</I>&gt;<i> It's relatively simple and straightforward.
+</I>&gt;<i> Here's a basic run down of how to get cmake to spit out the files.
+</I>&gt;<i> On windows:
+</I>&gt;<i> Create a temporary directory in the openlayer root directory. Change into
+</I>&gt;<i> it 
+</I>&gt;<i> and run &quot;cmakesetup ../&quot;.
+</I>&gt;<i> This will bring up a GUI for configuring it. Choose your environment (ie 
+</I>&gt;<i> MinGW, MSVC, etc.) and go through the options fixing anything that shows
+</I>&gt;<i> red 
+</I>&gt;<i> and then re-generate the configuration. Once you are done that hit ok. If
+</I>&gt;<i> you 
+</I>&gt;<i> are creating vcproj files you're going to have to be patient as that takes
+</I>&gt;<i> some time, it'll seem like the app is hanging, just wait it out. Once it's
+</I>&gt;<i> done if you did makefiles for msys/mingw then just run make. If you
+</I>&gt;<i> created 
+</I>&gt;<i> vcproj files open the OpenLayer.sln solution file with msvc and build it.
+</I>&gt;<i> 
+</I>&gt;<i> If any of you have experience working with cmake any help improving the
+</I>&gt;<i> script 
+</I>&gt;<i> would be appreciated. If not your feedback will be just as appreciated.
+</I>
+-- 
+Viele Gr&#252;sse / Best Regards / Amiti&#233;s
+Tobing
+
+<A HREF="http://www.staedtebauen.de">http://www.staedtebauen.de</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000222.html">[Openlayer-developer] cmake
+</A></li>
+	<LI>Next message: <A HREF="000224.html">[Openlayer-developer] cmake
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#223">[ date ]</a>
+              <a href="thread.html#223">[ thread ]</a>
+              <a href="subject.html#223">[ subject ]</a>
+              <a href="author.html#223">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

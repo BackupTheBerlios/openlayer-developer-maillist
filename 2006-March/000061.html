@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] Makefile Targets
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Makefile%20Targets&In-Reply-To=%3C200603161338.55462.juvinious%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000060.html">
+   <LINK REL="Next"  HREF="000062.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] Makefile Targets</H1>
+    <B>juvinious at gmail.com</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Makefile%20Targets&In-Reply-To=%3C200603161338.55462.juvinious%40gmail.com%3E"
+       TITLE="[Openlayer-developer] Makefile Targets">juvinious at gmail.com
+       </A><BR>
+    <I>Thu Mar 16 06:38:55 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000060.html">[Openlayer-developer] Makefile Targets
+</A></li>
+        <LI>Next message: <A HREF="000062.html">[Openlayer-developer] about SDL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#61">[ date ]</a>
+              <a href="thread.html#61">[ thread ]</a>
+              <a href="subject.html#61">[ subject ]</a>
+              <a href="author.html#61">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 16 March 2006 13:35, you wrote:
+Oops, scratch that last item.. it should read:
+NOPNG=1 (OL_NO_PNG)
+
+&gt;<i> Ok I made those changes in the Makefile and commited them to svn which
+</I>&gt;<i> allow you to define those preprocessors.
+</I>&gt;<i>
+</I>&gt;<i> To enable them pass this items respectively when issuing make.
+</I>&gt;<i>
+</I>&gt;<i> NOTTF=1 (OL_NO_TTF)
+</I>&gt;<i> NOSTATECHANGE=1 (OL_NO_STATE_CHANGE)
+</I>&gt;<i> NOOLDAPI=1 (OL_NO_OLD_API)
+</I>&gt;<i> OL_NO_PNG=1 (OL_NO_PNG)
+</I>&gt;<i>
+</I>&gt;<i> Now what needs to be done is fix the errors that come up when enabling some
+</I>&gt;<i> of these preprocessors. I've seen two so far, one in Rectangle.cpp and
+</I>&gt;<i> another in a demo.  I'll look into it further and see what I can do to
+</I>&gt;<i> correct this.
+</I>&gt;<i>
+</I>&gt;<i> On Tuesday 28 February 2006 05:10, you wrote:
+</I>&gt;<i> &gt; That'd be great, after all the makefile system should be used if one
+</I>&gt;<i> &gt; wants to compile OL him/herself, and what's the use of those defines
+</I>&gt;<i> &gt; without compiling OL manually? ;)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt;From: &quot;Miguel A. Gavidia&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">astarius at gmail.com</A>&gt;
+</I>&gt;<i> &gt; &gt;To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt;Subject: [Openlayer-developer] Makefile Targets
+</I>&gt;<i> &gt; &gt;Date: Mon, 27 Feb 2006 09:35:09 +0800
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;I asked about this before in one of the existing threads on a.cc, but
+</I>&gt;<i> &gt; &gt; never received a definite answer on this. I was going to originally
+</I>&gt;<i> &gt; &gt; include these preprocessors to the makfile:
+</I>&gt;<i> &gt; &gt;OL_NO_STATE_CHANGE - OpenLayer tries to not to change the OpenGL state
+</I>&gt;<i> &gt; &gt; in most
+</I>&gt;<i> &gt; &gt;places
+</I>&gt;<i> &gt; &gt;OL_NO_OLD_API - Drops support for the old API (basically GfxRend)
+</I>&gt;<i> &gt; &gt;OL_NO_PNG - Drop support for PNG images
+</I>&gt;<i> &gt; &gt;OL_NO_TTF - Drop support for True Type font
+</I>&gt;<i> &gt; &gt;But never did because I didn't get an answer. So shoud I or not?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;I also saw the fix to the DestroyAll problem hopefully that resolves the
+</I>&gt;<i> &gt; &gt;*nix
+</I>&gt;<i> &gt; &gt;compilation issues. I'll checkout the source later on today and see if
+</I>&gt;<i> &gt; &gt; it does.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;Hopefully once the major bugs are squashed, we can discuss openlayer's
+</I>&gt;<i> &gt; &gt;dependencies and maybe how we can make them optional, besides PNG/TTF
+</I>&gt;<i> &gt; &gt; and more specifically regarding Glyph Keeper.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;--
+</I>&gt;<i> &gt; &gt;-juvinious
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;&lt;a href=&quot;<A HREF="http://chasm.hopto.org">http://chasm.hopto.org</A>&quot;&gt;The Chasm&lt;/a&gt; - My Site.
+</I>&gt;<i> &gt; &gt;_______________________________________________
+</I>&gt;<i> &gt; &gt;Openlayer-developer mailing list
+</I>&gt;<i> &gt; &gt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt;<A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _________________________________________________________________
+</I>&gt;<i> &gt; Hittej&#228; ja harvinaisuuksia, halvalla ja helposti. MSN Music
+</I>&gt;<i> &gt; <A HREF="http://sib1.od2.com/common/Framework.aspx?shid=075E002E&amp;origin=MSNFI&amp;prom">http://sib1.od2.com/common/Framework.aspx?shid=075E002E&amp;origin=MSNFI&amp;prom</A>
+</I>&gt;<i> &gt;ot ion=Perm
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000060.html">[Openlayer-developer] Makefile Targets
+</A></li>
+	<LI>Next message: <A HREF="000062.html">[Openlayer-developer] about SDL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#61">[ date ]</a>
+              <a href="thread.html#61">[ thread ]</a>
+              <a href="subject.html#61">[ subject ]</a>
+              <a href="author.html#61">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

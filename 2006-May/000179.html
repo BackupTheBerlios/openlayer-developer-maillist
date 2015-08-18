@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] FreeType2 support addition
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-May/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20FreeType2%20support%20addition&In-Reply-To=%3CBAY122-F260188223F92A3A3A4D3F4DF9C0%40phx.gbl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000178.html">
+   <LINK REL="Next"  HREF="000180.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] FreeType2 support addition</H1>
+    <B>Esa Tanskanen</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20FreeType2%20support%20addition&In-Reply-To=%3CBAY122-F260188223F92A3A3A4D3F4DF9C0%40phx.gbl%3E"
+       TITLE="[Openlayer-developer] FreeType2 support addition">fladimir2002 at hotmail.com
+       </A><BR>
+    <I>Sun May 28 17:08:10 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000178.html">[Openlayer-developer] FreeType2 support addition
+</A></li>
+        <LI>Next message: <A HREF="000180.html">[Openlayer-developer] Ping: GUI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#179">[ date ]</a>
+              <a href="thread.html#179">[ thread ]</a>
+              <a href="subject.html#179">[ subject ]</a>
+              <a href="author.html#179">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>Oh yeah I'm going to replace all the C strings with C++ ones most 
+</I>&gt;<i>definitely.
+</I>&gt;<i>I just fleshed that out real quick so I can have a framework to build off 
+</I>&gt;<i>of.
+</I>&gt;<i>Those #defines I pulled from GK I plan to get rid of them, well the PI I 
+</I>&gt;<i>can
+</I>&gt;<i>keep. And most of the other GK stuff I pulled into Glyph. The friend
+</I>&gt;<i>functions will remain until Glyph is completely functional.
+</I>&gt;<i>I plan to make the Glyph class represent a complete font and will contain
+</I>&gt;<i>everything you need to transform, modify and render with it. That way you
+</I>&gt;<i>don't have a confusing assortment of different structures. FreeType is not
+</I>&gt;<i>that complicated to begin with and we don't need to support C.
+</I>&gt;<i>If you want or are going to need access to specific Glyph's I can do so. 
+</I>&gt;<i>I'm
+</I>&gt;<i>still learning the API so it's going to be a bit before I can actually do
+</I>&gt;<i>advanced stuff with FreeType.
+</I>
+Finding out the texture of each glyph (and the region inside a bigger 
+container texture) would be useful. But for starters just some functions to 
+render text are well enough - after all that's all that TextRenderer does 
+currently. Yeah, there's no reason to support C or anything, so let's do it 
+as C++ way as possible!
+
+/Esa
+
+_________________________________________________________________
+Windows-ty&#246;p&#246;yt&#228;haun avulla l&#246;yd&#228;t tiedot koneeltasi silm&#228;nr&#228;p&#228;yksess&#228;. 
+<A HREF="http://toolbar.msn.fi">http://toolbar.msn.fi</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000178.html">[Openlayer-developer] FreeType2 support addition
+</A></li>
+	<LI>Next message: <A HREF="000180.html">[Openlayer-developer] Ping: GUI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#179">[ date ]</a>
+              <a href="thread.html#179">[ thread ]</a>
+              <a href="subject.html#179">[ subject ]</a>
+              <a href="author.html#179">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] msvc
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20msvc&In-Reply-To=%3C20070201095220.304630%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000258.html">
+   <LINK REL="Next"  HREF="000260.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] msvc</H1>
+    <B>tobing at gmx.net</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20msvc&In-Reply-To=%3C20070201095220.304630%40gmx.net%3E"
+       TITLE="[Openlayer-developer] msvc">tobing at gmx.net
+       </A><BR>
+    <I>Thu Feb  1 10:52:20 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000258.html">[Openlayer-developer] msvc
+</A></li>
+        <LI>Next message: <A HREF="000260.html">[Openlayer-developer] RFE: Return value of Bitmap::Save
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#259">[ date ]</a>
+              <a href="thread.html#259">[ thread ]</a>
+              <a href="subject.html#259">[ subject ]</a>
+              <a href="author.html#259">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Right, the fix made for that was to introduce 
+
+#ifdef max
+#undef max
+#endif
+
+#ifdef min
+#undef min
+#endif
+
+in those headers that didn't compile. Was OlRectangle.hpp and Circle.hpp. 
+
+I have tried to remove those undefs and use NOMINMAX instead, but it didn't work. It seems that there are several places where the MS headers define min and max, and only windef.h has this NOMINMAX thing around the define. In minmax.h there's no blocking, and the template implementations in xutility don't look at NOMINMAX either. 
+
+So it depends on where exactly the NOMINMAX is placed (did not work in Internal.hpp for me) and how the windows header files are nested. 
+
+So I suggest to leave it as it is... the current SVN revision does compile with gcc, doesn't it? 
+
+
+
+&gt;<i> but didn't I read somewhere that the fix now works with msvc because 
+</I>&gt;<i> std:: was dropped from the min/max functions, but now it doesn't work 
+</I>&gt;<i> with gcc/mingw?
+</I>&gt;<i> 
+</I>&gt;<i> if so, then nominmax is the permanent solution I guess.
+</I>
+-- 
+Viele Gr&#252;sse / Best Regards / Amiti&#233;s
+Tobing
+
+<A HREF="http://www.staedtebauen.de">http://www.staedtebauen.de</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000258.html">[Openlayer-developer] msvc
+</A></li>
+	<LI>Next message: <A HREF="000260.html">[Openlayer-developer] RFE: Return value of Bitmap::Save
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#259">[ date ]</a>
+              <a href="thread.html#259">[ thread ]</a>
+              <a href="subject.html#259">[ subject ]</a>
+              <a href="author.html#259">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

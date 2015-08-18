@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] documentation error in collision poly?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20documentation%20error%20in%20collision%20poly%3F&In-Reply-To=%3C44361974.2010100%40retrospec.sgn.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000099.html">
+   <LINK REL="Next"  HREF="000101.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] documentation error in collision poly?</H1>
+    <B>openlayer-developer-admin at lists.berlios.de</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20documentation%20error%20in%20collision%20poly%3F&In-Reply-To=%3C44361974.2010100%40retrospec.sgn.net%3E"
+       TITLE="[Openlayer-developer] documentation error in collision poly?">openlayer-developer-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Apr  7 09:49:08 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000099.html">[Openlayer-developer] documentation error in collision poly?
+</A></li>
+        <LI>Next message: <A HREF="000101.html">[Openlayer-developer] Documentation Idea
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#100">[ date ]</a>
+              <a href="thread.html#100">[ thread ]</a>
+              <a href="subject.html#100">[ subject ]</a>
+              <a href="author.html#100">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>hmm. my problem is I've converted my Animation system completely to 
+openlayer (and it's pretty good I think), but one of the options is to 
+work with tiled bitmaps and without the ability to create collision 
+poly's, it sort of scuppers my plans. I suppose I could just make do 
+with a bounding box for now.
+
+Neil.
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer-admin at berlios.de</A> wrote:
+
+&gt;<i> Neil,
+</I>&gt;<i>
+</I>&gt;<i> It may just be that the manual has not yet been updated. It could also 
+</I>&gt;<i> be that Esa intends to write a public wrapper function around 
+</I>&gt;<i> GetCollisionPoly().
+</I>&gt;<i> At present the function doesn't produce the correct results for me 
+</I>&gt;<i> anyway. Hopefully this can be fixed soon.
+</I>&gt;<i>
+</I>&gt;<i> Richard.
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer-admin at berlios.de</A> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> As far as I can see GetCollisionPoly() returns the already created 
+</I>&gt;&gt;<i> poly from the constructor/load if make_collision_poly was set, but 
+</I>&gt;&gt;<i> all the make_collision_poly flag does in the constructor/load for a 
+</I>&gt;&gt;<i> bitmap is calls GetCollisionPoly(...) static, which is a public which 
+</I>&gt;&gt;<i> does the actual creation of the poly, so I guess even though it's not 
+</I>&gt;&gt;<i> documented I should be able to call the static method with valid 
+</I>&gt;&gt;<i> parameters to create a collision poly on a bitmap after it has been 
+</I>&gt;&gt;<i> created? But there must be a reason why it isn't documented. 
+</I>&gt;&gt;<i> Otherwise you can't create a collision poly easily on already loaded 
+</I>&gt;&gt;<i> bitmaps/bitmaps you create on the fly/sub bitmaps.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Neil.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer-admin at berlios.de</A> wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Maybe it's in a later version then as I've scanned the entire code 
+</I>&gt;&gt;&gt;<i> and there's no CollisionPoly class, yet the manual says so?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Another minor discrepency is the manual states only the Bitmap 
+</I>&gt;&gt;&gt;<i> constructor has the flags parameter (e.g. MAKE_COLLISION_POLY) and 
+</I>&gt;&gt;&gt;<i> Load doesn't, but looking at the Load declaration it does, even 
+</I>&gt;&gt;&gt;<i> though I can't figure out where it creates the collision poly ;)
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> What I'm trying to figure out is how to generate a collision poly 
+</I>&gt;&gt;&gt;<i> for a bitmap that you create using a sub-bitmap but I don't know 
+</I>&gt;&gt;&gt;<i> how. Any ideas? the bitmap constructor for this doesn't take any 
+</I>&gt;&gt;&gt;<i> flags and I can't figure out how to create a collision poly from the 
+</I>&gt;&gt;&gt;<i> manual.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Neil.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer-admin at berlios.de</A> wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> IIRC Esa says it returns a normal poly and so can be used for 
+</I>&gt;&gt;&gt;&gt;<i> drawing as well as with the poly&lt;-&gt;poly collision code.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Richard.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer-admin at berlios.de</A> wrote:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Hello,
+</I>&gt;&gt;&gt;&gt;&gt;<i> According to the manual for the GetCollisionPoly method it returns 
+</I>&gt;&gt;&gt;&gt;&gt;<i> a CollisionPoly pointer and there is a reference to the 
+</I>&gt;&gt;&gt;&gt;&gt;<i> CollisionPoly class. But there doesn't seem to be a CollisionPoly 
+</I>&gt;&gt;&gt;&gt;&gt;<i> class. GetCollisionPoly in the code returns a Poly. Am I seeing 
+</I>&gt;&gt;&gt;&gt;&gt;<i> things?
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Neil.
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;&gt;<i> Openlayer-developer mailing list
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> .
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;<i> Openlayer-developer mailing list
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Openlayer-developer mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Openlayer-developer mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openlayer-developer mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000099.html">[Openlayer-developer] documentation error in collision poly?
+</A></li>
+	<LI>Next message: <A HREF="000101.html">[Openlayer-developer] Documentation Idea
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#100">[ date ]</a>
+              <a href="thread.html#100">[ thread ]</a>
+              <a href="subject.html#100">[ subject ]</a>
+              <a href="author.html#100">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

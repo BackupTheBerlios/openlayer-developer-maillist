@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] Re: yet another problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Re%3A%20yet%20another%20problem&In-Reply-To=%3C200604072342.05454.juvinious%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000087.html">
+   <LINK REL="Next"  HREF="000084.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] Re: yet another problem</H1>
+    <B>openlayer-developer-admin at lists.berlios.de</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20Re%3A%20yet%20another%20problem&In-Reply-To=%3C200604072342.05454.juvinious%40gmail.com%3E"
+       TITLE="[Openlayer-developer] Re: yet another problem">openlayer-developer-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Apr  7 17:42:05 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000087.html">[Openlayer-developer] Re: yet another problem
+</A></li>
+        <LI>Next message: <A HREF="000084.html">[Openlayer-developer] samples
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#105">[ date ]</a>
+              <a href="thread.html#105">[ thread ]</a>
+              <a href="subject.html#105">[ subject ]</a>
+              <a href="author.html#105">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tuesday 04 April 2006 15:42, neil wrote:
+&gt;<i> I'm sure an nmake file can be made quite easily. But at the minute it
+</I>&gt;<i> isn't worth it as it usually takes about an hour of recoding the library
+</I>&gt;<i> and samples to get it to work with MSVC every time I do a new build. The
+</I>&gt;<i> bugs are getting less though, thankfully :)
+</I>Ugh figures, then until that gap is met were it compiles cleanly under gcc and 
+msvc I'll leave out the build target for it.
+&gt;<i> The main one is figuring out why the std versions min/max don't work in
+</I>&gt;<i> VC, I'm sure it's just a header file ordering but there are quite a few
+</I>&gt;<i> nested headers in OL making it difficult to trace the fault.
+</I>Indeed one thing that would help is to comb through the source and clean up 
+small things such as that.
+My main concern is to be able to get it to the point where you don't have to 
+recode at all. It should be straightforward so that any individual can grab 
+the source and compile it on their platfrom/environment of choice. And if so 
+desired you can still retain your binary releases without headache and on 
+time. :)
+&gt;<i>
+</I>&gt;<i> Neil.
+</I>&gt;<i>
+</I>&gt;<i> Miguel A. Gavidia wrote:
+</I>&gt;<i> &gt;On Tuesday 04 April 2006 06:32, neil wrote:
+</I>&gt;<i> &gt;Neil,
+</I>&gt;<i> &gt;Can you tell me how you put together the library with msvc? As in how, I
+</I>&gt;<i> &gt; mean command line options, output library file or dll, and install
+</I>&gt;<i> &gt; location. I currently have the build system building it for gcc and it's
+</I>&gt;<i> &gt; variants and would very much like to automate the build process for msvc.
+</I>&gt;<i> &gt; With that it will help others and probably can help you make your
+</I>&gt;<i> &gt; releases if you so desire. :)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Thanks.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;&gt;No worries, everytime I go to make a release, a big fecker of a bug
+</I>&gt;<i> &gt;&gt;appears and I stop. The last one was the linethingy bug that we
+</I>&gt;<i> &gt;&gt;eventually found.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;Neil.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;Esa Tanskanen wrote:
+</I>&gt;<i> &gt;&gt;&gt;Yes, it's an old bug and it's been fixed months ago... Great that you
+</I>&gt;<i> &gt;&gt;&gt;could make a new release for MSVC, the SVN version contains so many
+</I>&gt;<i> &gt;&gt;&gt;important improvements!
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;About the mailing lists - I'll have to ask birdeeoh about that. I
+</I>&gt;<i> &gt;&gt;&gt;really don't know much about Berlios actually...
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;/Esa
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt;From: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">neil.walker at bt.com</A>&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt;To:
+</I>&gt;<i> &gt;&gt;&gt;&gt;&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">fladimir2002 at hotmail.com</A>&gt;,&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">rich at reflectedgames.com</A>&gt;,&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">neil at retrospec.sg</A>
+</I>&gt;<i> &gt;&gt;&gt;&gt;n .net&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt;Subject: Re:yet another problem
+</I>&gt;<i> &gt;&gt;&gt;&gt;Date: Mon, 3 Apr 2006 18:22:25 +0100
+</I>&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt;&gt;Actually I know the bug, it's already fixed in the SVN version.
+</I>&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt;Will it be fixed in: openlayer-svn-snapshot-20060401.tar.gz
+</I>&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt;I'm hoping on making a binary release sometime soon and would rather
+</I>&gt;<i> &gt;&gt;&gt;&gt;have a fairly stable version to go on :)
+</I>&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt;Btw, Flad, in the version of mailman archive software that I use for my
+</I>&gt;<i> &gt;&gt;&gt;&gt;site, there is an option to reformat email addresses so that spam
+</I>&gt;<i> &gt;&gt;&gt;&gt;spiders can't get email address from trawling lists, can you do this
+</I>&gt;<i> &gt;&gt;&gt;&gt;with the berlios one? In fact, you should also really make the archive
+</I>&gt;<i> &gt;&gt;&gt;&gt;private to subscribed members?
+</I>&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt;Neil.
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;_________________________________________________________________
+</I>&gt;<i> &gt;&gt;&gt;Uutisista turhaan tietoon. Mit&#228; ikin&#228; etsitkin, MSN Search l&#246;yt&#228;&#228;
+</I>&gt;<i> &gt;&gt;&gt;hakemasi. <A HREF="http://search.msn.fi">http://search.msn.fi</A>
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;_______________________________________________
+</I>&gt;<i> &gt;&gt;Openlayer-developer mailing list
+</I>&gt;<i> &gt;&gt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt;<A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openlayer-developer mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>
+-- 
+-juvinious
+
+&lt;a href=&quot;<A HREF="http://chasm.hopto.org">http://chasm.hopto.org</A>&quot;&gt;The Chasm&lt;/a&gt; - My Site.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000087.html">[Openlayer-developer] Re: yet another problem
+</A></li>
+	<LI>Next message: <A HREF="000084.html">[Openlayer-developer] samples
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#105">[ date ]</a>
+              <a href="thread.html#105">[ thread ]</a>
+              <a href="subject.html#105">[ subject ]</a>
+              <a href="author.html#105">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

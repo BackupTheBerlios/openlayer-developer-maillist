@@ -1,0 +1,67 @@
+From fladimir2002 at hotmail.com  Thu Mar  1 00:56:16 2007
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Thu, 01 Mar 2007 01:56:16 +0200
+Subject: [Openlayer-developer] Safety of ol::Setup::SetupProgram()
+In-Reply-To: <20070228161958.136460@gmx.net>
+Message-ID: <BAY122-F138B6C28524FB64BF5F19EDF810@phx.gbl>
+
+OpenLayer calls allegro_init, so I guess that's the issue. There could be a 
+parameter to determine if Allegro should be set up or not, though. It might 
+be useful in some cases.
+
+/Esa
+
+
+>From: tobing at gmx.net
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: Re: [Openlayer-developer] Safety of ol::Setup::SetupProgram()
+>Date: Wed, 28 Feb 2007 17:19:58 +0100
+>
+>I had the same, but do you need allegro completely initialized or only 
+>parts? You could call
+>
+>install_allegro( SYSTEM_NONE, &errno, atexit );
+>
+>and use the config routines and many others, but not have a window opened.
+>At least for me that was sufficient...
+>
+>
+> > during the usual development work on our current game, I came across an
+> > issue in OpenLayer that I think should be part of the library, not my
+> > code. The thing is, I need to have Allegro initialized before I set up
+> > OpenLayer (this is due to the "runlevel"-ish layout of our homebrewn
+> > engine). ol::Setup::SetupProgram() has some really nasty effects, if
+> > allegro_init() had been called prior to invoking this method (there are
+> > two windows, the keyboard doesn't work properly, ...)
+> >
+> > I made the change by manually calling allegro_exit() before
+> > ol::Setup::SetupProgram(), and it appears to work. I'm not entirely
+> > convinced about the safety of this measure (i.e., what happens if
+> > allegro_exit() is called but Allegro had not been initialized), so take
+> > it with a grain of salt.
+> >
+> > I don't have the time right now to dig deeper into this stuff (deadlines
+> > :X), I just thought of giving you a pointer that
+> > ol::Setup::SetupProgram() doesn't like a pre-initialized Allegro.
+>
+>
+>--
+>Viele Gr?sse / Best Regards / Amiti?s
+>Tobing
+>
+>http://www.villages-and-cities.de
+>http://www.staedtebauen.de
+>
+>
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Uutiset ja kasvot uutisten takaa. MSN Search, t?yden palvelun hakukone. 
+http://search.msn.fi
+
+
+

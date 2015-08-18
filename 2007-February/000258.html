@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] msvc
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20msvc&In-Reply-To=%3C45C1B3B9.9030900%40retrospec.sgn.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000257.html">
+   <LINK REL="Next"  HREF="000259.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] msvc</H1>
+    <B>neil</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20msvc&In-Reply-To=%3C45C1B3B9.9030900%40retrospec.sgn.net%3E"
+       TITLE="[Openlayer-developer] msvc">neil at retrospec.sgn.net
+       </A><BR>
+    <I>Thu Feb  1 10:32:41 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000257.html">[Openlayer-developer] msvc
+</A></li>
+        <LI>Next message: <A HREF="000259.html">[Openlayer-developer] msvc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#258">[ date ]</a>
+              <a href="thread.html#258">[ thread ]</a>
+              <a href="subject.html#258">[ subject ]</a>
+              <a href="author.html#258">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>but didn't I read somewhere that the fix now works with msvc because 
+std:: was dropped from the min/max functions, but now it doesn't work 
+with gcc/mingw?
+
+if so, then nominmax is the permanent solution I guess.
+
+Neil.
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">tobing at gmx.net</A> wrote:
+&gt;<i> That's interesting, I assume you have the current SVN revision? I'm using MSVC 7.1, and it compiles and works fine as it is in the depot. Well, except this new member function of class Line of course. Haven't tried the latest fixes by Fladimir yet... 
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -------- Original-Nachricht --------
+</I>&gt;<i> Datum: Thu, 01 Feb 2007 08:54:21 +0000
+</I>&gt;<i> Von: neil &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">neil at retrospec.sgn.net</A>&gt;
+</I>&gt;<i> An: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at berlios.de</A>
+</I>&gt;<i> CC: 
+</I>&gt;<i> Betreff: [Openlayer-developer] msvc
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hello,
+</I>&gt;&gt;<i> Following a thread at allegro.cc about min/max not working properly with 
+</I>&gt;&gt;<i> gcc/msvc I posted this but I don't know if the latest svn fixes all the 
+</I>&gt;&gt;<i> std::min/min and std::max/max problems so this may be irrelevant. 
+</I>&gt;&gt;<i> Anyway, the fix I found to allow the same std::min and std::max to work 
+</I>&gt;&gt;<i> with msvc is to add the preprocessor directive NOMINMAX, this basically 
+</I>&gt;&gt;<i> tells msvc not to be so stupid.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I defined mine at the top of the internals.hpp and all worked when I 
+</I>&gt;&gt;<i> compiled both mingw and msvc.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Neil.
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000257.html">[Openlayer-developer] msvc
+</A></li>
+	<LI>Next message: <A HREF="000259.html">[Openlayer-developer] msvc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#258">[ date ]</a>
+              <a href="thread.html#258">[ thread ]</a>
+              <a href="subject.html#258">[ subject ]</a>
+              <a href="author.html#258">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

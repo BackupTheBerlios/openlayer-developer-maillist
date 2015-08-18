@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] updates to files of OL
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20updates%20to%20files%20of%20OL&In-Reply-To=%3C1161716948.4888.1.camel%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000207.html">
+   <LINK REL="Next"  HREF="000209.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] updates to files of OL</H1>
+    <B>neil</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20updates%20to%20files%20of%20OL&In-Reply-To=%3C1161716948.4888.1.camel%40localhost%3E"
+       TITLE="[Openlayer-developer] updates to files of OL">neil at retrospec.sgn.net
+       </A><BR>
+    <I>Tue Oct 24 21:09:08 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000207.html">[Openlayer-developer] updates to files of OL
+</A></li>
+        <LI>Next message: <A HREF="000209.html">[Openlayer-developer] updates to files of OL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#208">[ date ]</a>
+              <a href="thread.html#208">[ thread ]</a>
+              <a href="subject.html#208">[ subject ]</a>
+              <a href="author.html#208">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>All he means is where you might have:
+
+if(a==2) dosomething();
+
+change it to:
+if(a==2) 
+	dosomething();
+
+That way you can trace into the debugger easier and set breakpoints.
+
+Neil.
+
+
+
+On Tue, 2006-10-24 at 16:47 +0300, Esa Tanskanen wrote:
+&gt;<i> I remember that one OL user had made the library to compile as a DLL before 
+</I>&gt;<i> (I think it was of version 1.8, which is old now), but he never posted me 
+</I>&gt;<i> the code. I'm not sure what you mean by one statement per line. I don't 
+</I>&gt;<i> think there's many places where that's not true, or is there? If the changes 
+</I>&gt;<i> aren't drastical, I won't mind :)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> &gt;From: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">tobing at gmx.net</A>
+</I>&gt;<i> &gt;Reply-To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at berlios.de</A>
+</I>&gt;<i> &gt;To: <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer at berlios.de</A>
+</I>&gt;<i> &gt;Subject: Re: [Openlayer-developer] updates to files of OL
+</I>&gt;<i> &gt;Date: Tue, 24 Oct 2006 13:33:54 +0200
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; I just tried out the changes on windows mingw and it compiled just as
+</I>&gt;<i> &gt; &gt; well, no problems. All demos ran perfectly fine. Flad if you want, I can
+</I>&gt;<i> &gt; &gt; go ahead and commit the changes? Let me know, unless you have other
+</I>&gt;<i> &gt; &gt; plans/tests to do. :)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Thank you very much. Got the OL update yesterday.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Two remarks.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;I think that OpenLayer would be a good candidate for a DLL. I would try to 
+</I>&gt;<i> &gt;make it a DLL, if there's no specific reason to not do so? It might turn 
+</I>&gt;<i> &gt;out too difficult, but I expect that it would be fine. The advantage might 
+</I>&gt;<i> &gt;be that the application does not have to link all these libraries which are 
+</I>&gt;<i> &gt;referenced in OL.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;About coding format. I have since a few years adopted the habit to write 
+</I>&gt;<i> &gt;each statement into one separate line. The reason is simply that debuggers 
+</I>&gt;<i> &gt;are line-oriented, and single stepping is so much easier then. The question 
+</I>&gt;<i> &gt;would be, if you would mind to change the code layout, such that every 
+</I>&gt;<i> &gt;statement gets its own line?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;The point is, if I would start to make changes to make OL a DLL, I would 
+</I>&gt;<i> &gt;rather prefer to adhere to that convention. Generally, I would try to write 
+</I>&gt;<i> &gt;and changes in such a way that they go seamless into existing code, but the 
+</I>&gt;<i> &gt;one-statement-one-line-rule would be important to me.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Anyway, doing this DLL stuff will take its time, so there's no hurry to 
+</I>&gt;<i> &gt;have an ultra-fast decision here. I would like to hear your comments 
+</I>&gt;<i> &gt;though.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;--
+</I>&gt;<i> &gt;Viele Gr&#252;sse / Best Regards / Amiti&#233;s
+</I>&gt;<i> &gt;Tobing
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;<A HREF="http://www.staedtebauen.de">http://www.staedtebauen.de</A>
+</I>&gt;<i> &gt;_______________________________________________
+</I>&gt;<i> &gt;Openlayer-developer mailing list
+</I>&gt;<i> &gt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> &gt;<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">https://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;<i> 
+</I>&gt;<i> _________________________________________________________________
+</I>&gt;<i> Windows-ty&#246;p&#246;yt&#228;haun avulla l&#246;yd&#228;t tiedot koneeltasi silm&#228;nr&#228;p&#228;yksess&#228;. 
+</I>&gt;<i> <A HREF="http://toolbar.msn.fi">http://toolbar.msn.fi</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openlayer-developer mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">https://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000207.html">[Openlayer-developer] updates to files of OL
+</A></li>
+	<LI>Next message: <A HREF="000209.html">[Openlayer-developer] updates to files of OL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#208">[ date ]</a>
+              <a href="thread.html#208">[ thread ]</a>
+              <a href="subject.html#208">[ subject ]</a>
+              <a href="author.html#208">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

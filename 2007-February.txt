@@ -1,0 +1,478 @@
+From neil at retrospec.sgn.net  Thu Feb  1 09:54:21 2007
+From: neil at retrospec.sgn.net (neil)
+Date: Thu, 01 Feb 2007 08:54:21 +0000
+Subject: [Openlayer-developer] msvc
+Message-ID: <45C1AABD.60709@retrospec.sgn.net>
+
+Hello,
+Following a thread at allegro.cc about min/max not working properly with 
+gcc/msvc I posted this but I don't know if the latest svn fixes all the 
+std::min/min and std::max/max problems so this may be irrelevant. 
+Anyway, the fix I found to allow the same std::min and std::max to work 
+with msvc is to add the preprocessor directive NOMINMAX, this basically 
+tells msvc not to be so stupid.
+
+I defined mine at the top of the internals.hpp and all worked when I 
+compiled both mingw and msvc.
+
+Neil.
+
+
+
+From tobing at gmx.net  Thu Feb  1 10:08:50 2007
+From: tobing at gmx.net (tobing at gmx.net)
+Date: Thu, 01 Feb 2007 10:08:50 +0100
+Subject: [Openlayer-developer] msvc
+In-Reply-To: <45C1AABD.60709@retrospec.sgn.net>
+References: <45C1AABD.60709@retrospec.sgn.net>
+Message-ID: <20070201090850.304650@gmx.net>
+
+
+That's interesting, I assume you have the current SVN revision? I'm using MSVC 7.1, and it compiles and works fine as it is in the depot. Well, except this new member function of class Line of course. Haven't tried the latest fixes by Fladimir yet... 
+
+
+-------- Original-Nachricht --------
+Datum: Thu, 01 Feb 2007 08:54:21 +0000
+Von: neil <neil at retrospec.sgn.net>
+An: openlayer-developer at berlios.de
+CC: 
+Betreff: [Openlayer-developer] msvc
+
+> Hello,
+> Following a thread at allegro.cc about min/max not working properly with 
+> gcc/msvc I posted this but I don't know if the latest svn fixes all the 
+> std::min/min and std::max/max problems so this may be irrelevant. 
+> Anyway, the fix I found to allow the same std::min and std::max to work 
+> with msvc is to add the preprocessor directive NOMINMAX, this basically 
+> tells msvc not to be so stupid.
+> 
+> I defined mine at the top of the internals.hpp and all worked when I 
+> compiled both mingw and msvc.
+> 
+> Neil.
+
+-- 
+Viele Gr?sse / Best Regards / Amiti?s
+Tobing
+
+http://www.staedtebauen.de
+
+
+
+From neil at retrospec.sgn.net  Thu Feb  1 10:32:41 2007
+From: neil at retrospec.sgn.net (neil)
+Date: Thu, 01 Feb 2007 09:32:41 +0000
+Subject: [Openlayer-developer] msvc
+In-Reply-To: <20070201090850.304650@gmx.net>
+References: <45C1AABD.60709@retrospec.sgn.net> <20070201090850.304650@gmx.net>
+Message-ID: <45C1B3B9.9030900@retrospec.sgn.net>
+
+but didn't I read somewhere that the fix now works with msvc because 
+std:: was dropped from the min/max functions, but now it doesn't work 
+with gcc/mingw?
+
+if so, then nominmax is the permanent solution I guess.
+
+Neil.
+
+tobing at gmx.net wrote:
+> That's interesting, I assume you have the current SVN revision? I'm using MSVC 7.1, and it compiles and works fine as it is in the depot. Well, except this new member function of class Line of course. Haven't tried the latest fixes by Fladimir yet... 
+>
+>
+> -------- Original-Nachricht --------
+> Datum: Thu, 01 Feb 2007 08:54:21 +0000
+> Von: neil <neil at retrospec.sgn.net>
+> An: openlayer-developer at berlios.de
+> CC: 
+> Betreff: [Openlayer-developer] msvc
+>
+>   
+>> Hello,
+>> Following a thread at allegro.cc about min/max not working properly with 
+>> gcc/msvc I posted this but I don't know if the latest svn fixes all the 
+>> std::min/min and std::max/max problems so this may be irrelevant. 
+>> Anyway, the fix I found to allow the same std::min and std::max to work 
+>> with msvc is to add the preprocessor directive NOMINMAX, this basically 
+>> tells msvc not to be so stupid.
+>>
+>> I defined mine at the top of the internals.hpp and all worked when I 
+>> compiled both mingw and msvc.
+>>
+>> Neil.
+>>     
+>
+>   
+
+
+
+From tobing at gmx.net  Thu Feb  1 10:52:20 2007
+From: tobing at gmx.net (tobing at gmx.net)
+Date: Thu, 01 Feb 2007 10:52:20 +0100
+Subject: [Openlayer-developer] msvc
+In-Reply-To: <45C1B3B9.9030900@retrospec.sgn.net>
+References: <45C1AABD.60709@retrospec.sgn.net> <20070201090850.304650@gmx.net>
+	<45C1B3B9.9030900@retrospec.sgn.net>
+Message-ID: <20070201095220.304630@gmx.net>
+
+
+Right, the fix made for that was to introduce 
+
+#ifdef max
+#undef max
+#endif
+
+#ifdef min
+#undef min
+#endif
+
+in those headers that didn't compile. Was OlRectangle.hpp and Circle.hpp. 
+
+I have tried to remove those undefs and use NOMINMAX instead, but it didn't work. It seems that there are several places where the MS headers define min and max, and only windef.h has this NOMINMAX thing around the define. In minmax.h there's no blocking, and the template implementations in xutility don't look at NOMINMAX either. 
+
+So it depends on where exactly the NOMINMAX is placed (did not work in Internal.hpp for me) and how the windows header files are nested. 
+
+So I suggest to leave it as it is... the current SVN revision does compile with gcc, doesn't it? 
+
+
+
+> but didn't I read somewhere that the fix now works with msvc because 
+> std:: was dropped from the min/max functions, but now it doesn't work 
+> with gcc/mingw?
+> 
+> if so, then nominmax is the permanent solution I guess.
+
+-- 
+Viele Gr?sse / Best Regards / Amiti?s
+Tobing
+
+http://www.staedtebauen.de
+
+
+
+From indeterminatus_ml at gmx.net  Fri Feb 23 20:36:11 2007
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Fri, 23 Feb 2007 20:36:11 +0100
+Subject: [Openlayer-developer] RFE: Return value of Bitmap::Save
+Message-ID: <45DF422B.2080808@gmx.net>
+
+Hi there,
+
+I would like to request a feature, namely a return value for 
+Bitmap::Save (at least boolean). For my current application, I'm saving 
+a bitmap to file, and I need to know whether the operation was 
+successfully performed or not.
+
+Yours,
+   David.
+
+
+From fladimir2002 at hotmail.com  Fri Feb 23 22:19:58 2007
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Fri, 23 Feb 2007 23:19:58 +0200
+Subject: [Openlayer-developer] RFE: Return value of Bitmap::Save
+In-Reply-To: <45DF422B.2080808@gmx.net>
+Message-ID: <BAY122-F110DADE02E8075DE7919DFDF8E0@phx.gbl>
+
+That's a good idea indeed, by the way, for what do you use the image saving?
+
+
+>From: David Schwingenschl?gl <indeterminatus_ml at gmx.net>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: [Openlayer-developer] RFE: Return value of Bitmap::Save
+>Date: Fri, 23 Feb 2007 20:36:11 +0100
+>
+>Hi there,
+>
+>I would like to request a feature, namely a return value for
+>Bitmap::Save (at least boolean). For my current application, I'm saving
+>a bitmap to file, and I need to know whether the operation was
+>successfully performed or not.
+>
+>Yours,
+>    David.
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Uutiset ja kasvot uutisten takaa. MSN Search, t?yden palvelun hakukone. 
+http://search.msn.fi
+
+
+
+From juvinious at gmail.com  Sun Feb 25 08:12:37 2007
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Sun, 25 Feb 2007 15:12:37 +0800
+Subject: [Openlayer-developer] RFE: Return value of Bitmap::Save
+In-Reply-To: <45DF422B.2080808@gmx.net>
+References: <45DF422B.2080808@gmx.net>
+Message-ID: <200702251512.38022.juvinious@gmail.com>
+
+Simple fix, the GLDriver actually does return true or false, just never 
+extended into Bitmap. :)
+It's been updated.
+
+Fladimir, is it possible you can give me access to the mailinglist so I can 
+check the settings? I believe there are some issues with it concerning people 
+trying to post to the list, like tobing.
+
+On Saturday 24 February 2007 03:36:11 David Schwingenschl?gl wrote:
+> Hi there,
+>
+> I would like to request a feature, namely a return value for
+> Bitmap::Save (at least boolean). For my current application, I'm saving
+> a bitmap to file, and I need to know whether the operation was
+> successfully performed or not.
+>
+> Yours,
+>    David.
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+
+
+-- 
+-juvinious
+
+http://saggui.sourceforge.net - Simplified All Gaming GUI
+http://chasm.hopto.org - The Chasm - My Site
+http://openlayer.berlios.de - Openlayer
+
+
+From fladimir2002 at hotmail.com  Sun Feb 25 13:19:03 2007
+From: fladimir2002 at hotmail.com (Esa Tanskanen)
+Date: Sun, 25 Feb 2007 14:19:03 +0200
+Subject: [Openlayer-developer] RFE: Return value of Bitmap::Save
+In-Reply-To: <200702251512.38022.juvinious@gmail.com>
+Message-ID: <BAY122-F329A1ECACD3FAA876CFE6FDF8C0@phx.gbl>
+
+Well, it wasn't me who made the mailing list in the first place... I can't 
+remember anymore who of us it was, though.
+
+
+>From: "Miguel A. Gavidia" <juvinious at gmail.com>
+>Reply-To: openlayer-developer at berlios.de
+>To: openlayer-developer at berlios.de
+>Subject: Re: [Openlayer-developer] RFE: Return value of Bitmap::Save
+>Date: Sun, 25 Feb 2007 15:12:37 +0800
+>
+>Simple fix, the GLDriver actually does return true or false, just never
+>extended into Bitmap. :)
+>It's been updated.
+>
+>Fladimir, is it possible you can give me access to the mailinglist so I can
+>check the settings? I believe there are some issues with it concerning 
+>people
+>trying to post to the list, like tobing.
+>
+>On Saturday 24 February 2007 03:36:11 David Schwingenschl?gl wrote:
+> > Hi there,
+> >
+> > I would like to request a feature, namely a return value for
+> > Bitmap::Save (at least boolean). For my current application, I'm saving
+> > a bitmap to file, and I need to know whether the operation was
+> > successfully performed or not.
+> >
+> > Yours,
+> >    David.
+> > _______________________________________________
+> > Openlayer-developer mailing list
+> > Openlayer-developer at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+>
+>
+>--
+>-juvinious
+>
+>http://saggui.sourceforge.net - Simplified All Gaming GUI
+>http://chasm.hopto.org - The Chasm - My Site
+>http://openlayer.berlios.de - Openlayer
+>_______________________________________________
+>Openlayer-developer mailing list
+>Openlayer-developer at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+_________________________________________________________________
+Nyt l?yd?t etsim?si tiedot nopeasti niin koneeltasi kuin netist?. 
+http://toolbar.msn.fi
+
+
+
+From juvinious at gmail.com  Sun Feb 25 13:56:14 2007
+From: juvinious at gmail.com (Miguel A. Gavidia)
+Date: Sun, 25 Feb 2007 20:56:14 +0800
+Subject: [Openlayer-developer] RFE: Return value of Bitmap::Save
+In-Reply-To: <BAY122-F329A1ECACD3FAA876CFE6FDF8C0@phx.gbl>
+References: <BAY122-F329A1ECACD3FAA876CFE6FDF8C0@phx.gbl>
+Message-ID: <200702252056.14668.juvinious@gmail.com>
+
+Bradeeoh (Brady Eidson), he just upped and dissapeared. :|
+Unless you are still in contact with him?
+You should have access to give others access to maintaining certain aspects of 
+the project afaik.
+
+On Sunday 25 February 2007 20:19:03 Esa Tanskanen wrote:
+> Well, it wasn't me who made the mailing list in the first place... I can't
+> remember anymore who of us it was, though.
+>
+> >From: "Miguel A. Gavidia" <juvinious at gmail.com>
+> >Reply-To: openlayer-developer at berlios.de
+> >To: openlayer-developer at berlios.de
+> >Subject: Re: [Openlayer-developer] RFE: Return value of Bitmap::Save
+> >Date: Sun, 25 Feb 2007 15:12:37 +0800
+> >
+> >Simple fix, the GLDriver actually does return true or false, just never
+> >extended into Bitmap. :)
+> >It's been updated.
+> >
+> >Fladimir, is it possible you can give me access to the mailinglist so I
+> > can check the settings? I believe there are some issues with it
+> > concerning people
+> >trying to post to the list, like tobing.
+> >
+> >On Saturday 24 February 2007 03:36:11 David Schwingenschl?gl wrote:
+> > > Hi there,
+> > >
+> > > I would like to request a feature, namely a return value for
+> > > Bitmap::Save (at least boolean). For my current application, I'm saving
+> > > a bitmap to file, and I need to know whether the operation was
+> > > successfully performed or not.
+> > >
+> > > Yours,
+> > >    David.
+> > > _______________________________________________
+> > > Openlayer-developer mailing list
+> > > Openlayer-developer at lists.berlios.de
+> > > https://lists.berlios.de/mailman/listinfo/openlayer-developer
+> >
+> >--
+> >-juvinious
+> >
+> >http://saggui.sourceforge.net - Simplified All Gaming GUI
+> >http://chasm.hopto.org - The Chasm - My Site
+> >http://openlayer.berlios.de - Openlayer
+> >_______________________________________________
+> >Openlayer-developer mailing list
+> >Openlayer-developer at lists.berlios.de
+> >https://lists.berlios.de/mailman/listinfo/openlayer-developer
+>
+> _________________________________________________________________
+> Nyt l?yd?t etsim?si tiedot nopeasti niin koneeltasi kuin netist?.
+> http://toolbar.msn.fi
+>
+> _______________________________________________
+> Openlayer-developer mailing list
+> Openlayer-developer at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/openlayer-developer
+
+
+
+-- 
+-juvinious
+
+http://saggui.sourceforge.net - Simplified All Gaming GUI
+http://chasm.hopto.org - The Chasm - My Site
+http://openlayer.berlios.de - Openlayer
+
+
+From indeterminatus_ml at gmx.net  Sun Feb 25 17:51:32 2007
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Sun, 25 Feb 2007 17:51:32 +0100
+Subject: [Openlayer-developer] RFE: Return value of Bitmap::Save
+In-Reply-To: <200702251512.38022.juvinious@gmail.com>
+References: <45DF422B.2080808@gmx.net> <200702251512.38022.juvinious@gmail.com>
+Message-ID: <45E1BE94.6020106@gmx.net>
+
+Miguel A. Gavidia wrote:
+> Simple fix, the GLDriver actually does return true or false, just never 
+> extended into Bitmap. :)
+> It's been updated.
+
+Wow, that was fast. Thank you! Oh, and because it was asked previously, 
+we need it to save a pre-calculated lightmap in our game's editor. 
+Nothing fancy :)
+
+Yours,
+   David.
+
+
+From indeterminatus_ml at gmx.net  Wed Feb 28 16:17:44 2007
+From: indeterminatus_ml at gmx.net (=?ISO-8859-1?Q?David_Schwingenschl=F6gl?=)
+Date: Wed, 28 Feb 2007 16:17:44 +0100
+Subject: [Openlayer-developer] Safety of ol::Setup::SetupProgram()
+Message-ID: <45E59D18.1020301@gmx.net>
+
+Hello fellas,
+
+during the usual development work on our current game, I came across an 
+issue in OpenLayer that I think should be part of the library, not my 
+code. The thing is, I need to have Allegro initialized before I set up 
+OpenLayer (this is due to the "runlevel"-ish layout of our homebrewn 
+engine). ol::Setup::SetupProgram() has some really nasty effects, if 
+allegro_init() had been called prior to invoking this method (there are 
+two windows, the keyboard doesn't work properly, ...)
+
+I made the change by manually calling allegro_exit() before 
+ol::Setup::SetupProgram(), and it appears to work. I'm not entirely 
+convinced about the safety of this measure (i.e., what happens if 
+allegro_exit() is called but Allegro had not been initialized), so take 
+it with a grain of salt.
+
+I don't have the time right now to dig deeper into this stuff (deadlines 
+:X), I just thought of giving you a pointer that 
+ol::Setup::SetupProgram() doesn't like a pre-initialized Allegro.
+
+Yours,
+   David.
+
+
+From tobing at gmx.net  Wed Feb 28 17:19:58 2007
+From: tobing at gmx.net (tobing at gmx.net)
+Date: Wed, 28 Feb 2007 17:19:58 +0100
+Subject: [Openlayer-developer] Safety of ol::Setup::SetupProgram()
+In-Reply-To: <45E59D18.1020301@gmx.net>
+References: <45E59D18.1020301@gmx.net>
+Message-ID: <20070228161958.136460@gmx.net>
+
+I had the same, but do you need allegro completely initialized or only parts? You could call 
+
+install_allegro( SYSTEM_NONE, &errno, atexit );
+
+and use the config routines and many others, but not have a window opened. 
+At least for me that was sufficient... 
+
+
+> during the usual development work on our current game, I came across an 
+> issue in OpenLayer that I think should be part of the library, not my 
+> code. The thing is, I need to have Allegro initialized before I set up 
+> OpenLayer (this is due to the "runlevel"-ish layout of our homebrewn 
+> engine). ol::Setup::SetupProgram() has some really nasty effects, if 
+> allegro_init() had been called prior to invoking this method (there are 
+> two windows, the keyboard doesn't work properly, ...)
+> 
+> I made the change by manually calling allegro_exit() before 
+> ol::Setup::SetupProgram(), and it appears to work. I'm not entirely 
+> convinced about the safety of this measure (i.e., what happens if 
+> allegro_exit() is called but Allegro had not been initialized), so take 
+> it with a grain of salt.
+> 
+> I don't have the time right now to dig deeper into this stuff (deadlines 
+> :X), I just thought of giving you a pointer that 
+> ol::Setup::SetupProgram() doesn't like a pre-initialized Allegro.
+
+
+-- 
+Viele Gr?sse / Best Regards / Amiti?s
+Tobing
+
+http://www.villages-and-cities.de
+http://www.staedtebauen.de
+
+
+
+

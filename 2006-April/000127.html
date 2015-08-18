@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] I'm a tortoise
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20I%27m%20a%20tortoise&In-Reply-To=%3C44384F33.9040607%40retrospec.sgn.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000125.html">
+   <LINK REL="Next"  HREF="000141.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] I'm a tortoise</H1>
+    <B>neil</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20I%27m%20a%20tortoise&In-Reply-To=%3C44384F33.9040607%40retrospec.sgn.net%3E"
+       TITLE="[Openlayer-developer] I'm a tortoise">neil at retrospec.sgn.net
+       </A><BR>
+    <I>Sun Apr  9 02:02:59 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000125.html">[Openlayer-developer] I'm a tortoise
+</A></li>
+        <LI>Next message: <A HREF="000141.html">[Openlayer-developer] wiki
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#127">[ date ]</a>
+              <a href="thread.html#127">[ thread ]</a>
+              <a href="subject.html#127">[ subject ]</a>
+              <a href="author.html#127">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>don't know if this makes any sense, but I can't figure it out. At 
+vertices count of two the linestrip is showing ok.
+<A HREF="http://retrospec.sgn.net/1.jpg">http://retrospec.sgn.net/1.jpg</A>
+
+At a count of three it seems to lose the link between the second and 
+third vertice.
+<A HREF="http://retrospec.sgn.net/2.jpg">http://retrospec.sgn.net/2.jpg</A>
+
+ From then on I don't really know what is happening, it appears to be 
+losing everything apart from the first and the (possibly) last:
+<A HREF="http://retrospec.sgn.net/3.jpg">http://retrospec.sgn.net/3.jpg</A>
+
+The number on the screen is the number of vertices. I think the problem 
+is the link between vertices and lengths is being lost.
+
+Neil.
+
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer-admin at berlios.de</A> wrote:
+
+&gt;<i> Hello,
+</I>&gt;<i> Found the fault. It's the change made in linestrip.hpp to fix the 
+</I>&gt;<i> fault in MSVC that I mentioned last week. Except now the change makes 
+</I>&gt;<i> mingw linestrips not work!
+</I>&gt;<i>
+</I>&gt;<i> Basically it's in addtoend/addtobegin where vertices.push_front/back 
+</I>&gt;<i> is moved to before the for loop. Logically this should work and it 
+</I>&gt;<i> does with MSVC but it now fails with mingw, except instead of crashing 
+</I>&gt;<i> like MSVC does, you simply don't get any linestrips, only the last 
+</I>&gt;<i> one. Simply compile the linestrip demo and try it.
+</I>&gt;<i>
+</I>&gt;<i> Don't know how to fix it though :)
+</I>&gt;<i>
+</I>&gt;<i> Neil.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">openlayer-developer-admin at berlios.de</A> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hello,
+</I>&gt;&gt;<i> Does anyone trust me enough to give me an account? I've made a few 
+</I>&gt;&gt;<i> minor changes (well, just one so far - to rename the PointerAlpha.png 
+</I>&gt;&gt;<i> to Pointer.png) for the shapedemo - otherwise the demo code won't 
+</I>&gt;&gt;<i> compile, but I only got the SVN down via anonymous.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Also, I mentioned this in allegro.cc - with the latest version of SVN 
+</I>&gt;&gt;<i> the linestrip demo doesn't work anymore. I'll try and trace the fault 
+</I>&gt;&gt;<i> but I think it's got something to do with the changes to the 
+</I>&gt;&gt;<i> shape.hpp/cpp file. Basically, you don't get line strips anymore, 
+</I>&gt;&gt;<i> only a couple of dots. Means I can't do a release yet again!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Just a suggestion for the OL hero's - the ordering of where the code 
+</I>&gt;&gt;<i> is being stored (hpp/cpp) is getting a bit messy, any chance when you 
+</I>&gt;&gt;<i> get time you can make it more consistent, like put all the code in 
+</I>&gt;&gt;<i> the cpp files, or at least put all constructors in header files?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Neil.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Openlayer-developer mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openlayer-developer mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/openlayer-developer">Openlayer-developer at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/openlayer-developer">http://lists.berlios.de/mailman/listinfo/openlayer-developer</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000125.html">[Openlayer-developer] I'm a tortoise
+</A></li>
+	<LI>Next message: <A HREF="000141.html">[Openlayer-developer] wiki
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#127">[ date ]</a>
+              <a href="thread.html#127">[ thread ]</a>
+              <a href="subject.html#127">[ subject ]</a>
+              <a href="author.html#127">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>

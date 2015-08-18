@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Openlayer-developer] some MSVC faults
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/openlayer-developer/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20some%20MSVC%20faults&In-Reply-To=%3CBAY21-F412963A6866D93B6CC7A0DFD90%40phx.gbl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000064.html">
+   <LINK REL="Next"  HREF="000066.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Openlayer-developer] some MSVC faults</H1>
+    <B>Esa Tanskanen</B> 
+    <A HREF="mailto:openlayer-developer%40lists.berlios.de?Subject=Re%3A%20%5BOpenlayer-developer%5D%20some%20MSVC%20faults&In-Reply-To=%3CBAY21-F412963A6866D93B6CC7A0DFD90%40phx.gbl%3E"
+       TITLE="[Openlayer-developer] some MSVC faults">fladimir2002 at hotmail.com
+       </A><BR>
+    <I>Wed Mar 22 23:51:58 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000064.html">[Openlayer-developer] some MSVC faults
+</A></li>
+        <LI>Next message: <A HREF="000066.html">[Openlayer-developer] some MSVC faults
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#65">[ date ]</a>
+              <a href="thread.html#65">[ thread ]</a>
+              <a href="subject.html#65">[ subject ]</a>
+              <a href="author.html#65">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>1.  __PRETTY_FUNCTION__ is gcc only. vc can use __FUNCDNAME__ or 
+</I>&gt;<i>__FUNCTION__ (the DNAME being the pretty one). I only tested this on VC8 
+</I>&gt;<i>though.
+</I>
+Yeah, that'll be changed.
+
+&gt;<i>All are in the Bitmap.cpp file (around line 1129). Fixing (which is what I 
+</I>&gt;<i>did) is as simple as changing y to y2 in the 'for(int y=0;' statement. The 
+</I>&gt;<i>VC warning given is:
+</I>&gt;<i>nonstandard extension used : 'y' : loop control variable declared in the 
+</I>&gt;<i>for-loop is used outside the for-loop scope; it conflicts with the 
+</I>&gt;<i>declaration in the outer scope
+</I>
+OK, I first thought I could set up MSVC 8 before trying to find where I've 
+re-used the loop variables. But I never got that to work... :/
+
+&gt;<i>3. I don't know if it's a bad ordering of header files or not, but no 
+</I>&gt;<i>version of VS can compile the files that uses std::min and std::max. Every 
+</I>&gt;<i>build I have to change it to just min/max.
+</I>
+Yeah, maybe some MSVC specific definitions have to be made
+
+&gt;<i>4. Shapedemo. The bitmaps are missing.
+</I>
+They're now in the SNV.
+
+&gt;<i>6. VC doesn't support the use of ? in 'ballYSpeed += 
+</I>&gt;<i>((float(mouseYMovement) &lt;? 2.5) &lt;? 0 );' in it's compiler. I have to redo 
+</I>&gt;<i>this code every time.
+</I>
+Yeah, that's been there for ages. I even though that I had corrected it but 
+seems like it's still there :P
+
+&gt;<i>7. in Rect::SetAccuracy( float accuracy ), there's the possibility of a 
+</I>&gt;<i>divide by zero.
+</I>
+Well, I know that but SetAccuracy (as in Circle::SetAccuracy and 
+Settings::SetCircleAccuracy) specify that the accuracy must be positive (not 
+zero). Maybe a test is in order, anyways. It's not OpenLayer's style to 
+crash if the parameter rules aren't followed ;)
+
+&gt;<i>8. in debug mode, VC crashes very badly at the following line in the 
+</I>&gt;<i>garbage collector, haven't a clue why, though, the error is in xutility
+</I>&gt;<i>   OlLog( std::string( &quot;\nAuto Loader: Executing &quot; ) + ToString( 
+</I>&gt;<i>pendings.size() ) + &quot; pending loading commands&quot; );
+</I>
+That's with 2.0+? I thought I corrected that by making the auto loader to be 
+intialized lazily. Maybe there's still some initializations which aren't 
+lazy yet.
+
+&gt;<i>finally, while all the above are easily fixed, there is a fault in 
+</I>&gt;<i>LineStrip that means I can't release a VC build
+</I>
+Yeah, I know that. But there's the following in the beginnin of 
+LineStrip::Render:
+
+  if( GetNumOfVertices() &lt; 2 ) {
+      return;
+   }
+
+So if the number of vertices is one the LineStrip shouldn't be rendered. Can 
+you see the exact point of the crash in the debugger?
+
+_________________________________________________________________
+Hittej&#228; ja harvinaisuuksia, halvalla ja helposti. MSN Music 
+<A HREF="http://sib1.od2.com/common/Framework.aspx?shid=075E002E&amp;origin=MSNFI&amp;promotion=Perm">http://sib1.od2.com/common/Framework.aspx?shid=075E002E&amp;origin=MSNFI&amp;promotion=Perm</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000064.html">[Openlayer-developer] some MSVC faults
+</A></li>
+	<LI>Next message: <A HREF="000066.html">[Openlayer-developer] some MSVC faults
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#65">[ date ]</a>
+              <a href="thread.html#65">[ thread ]</a>
+              <a href="subject.html#65">[ subject ]</a>
+              <a href="author.html#65">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/openlayer-developer">More information about the Openlayer-developer
+mailing list</a><br>
+</body></html>
